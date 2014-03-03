@@ -1,6 +1,10 @@
 C:\Users\Frank\git\I4PRJ4\Projekt\Test\bin\Debug\Test.exe.config
+<<<<<<< HEAD
 C:\Users\Frank\git\I4PRJ4\Projekt\Test\bin\Debug\Test.exe
 C:\Users\Frank\git\I4PRJ4\Projekt\Test\bin\Debug\Test.pdb
 C:\Users\Frank\git\I4PRJ4\Projekt\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
 C:\Users\Frank\git\I4PRJ4\Projekt\Test\obj\Debug\Test.exe
 C:\Users\Frank\git\I4PRJ4\Projekt\Test\obj\Debug\Test.pdb
+=======
+C:\Users\PIRATE1\Git\I4PRJ\Projekt\Test\bin\Debug\Test.exe.config
+>>>>>>> b9d23630710322b1d02fa66ba55239cf3e9cba01
