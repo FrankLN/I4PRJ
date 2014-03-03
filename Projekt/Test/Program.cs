@@ -10,6 +10,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Denne funktion regner kvadratroden af 42\nResultatet er: {0}", Math.Sqrt(42));
         }
     }
 }
