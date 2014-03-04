@@ -58,4 +58,10 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DatabaseCreation.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo.Materiale.sql" />
+  </ItemGroup>
 </Project>
