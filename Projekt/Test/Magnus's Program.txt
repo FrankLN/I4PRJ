@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+Dit program stinker!
+=======
 FailFailFail
+>>>>>>> d95775176ad569bd612cf691f60a92ed2f61d14c
