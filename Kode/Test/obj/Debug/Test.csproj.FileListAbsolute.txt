@@ -1,6 +1,0 @@
-C:\Users\Frank\Desktop\Kode\Test\bin\Debug\Test.exe.config
-C:\Users\Frank\Desktop\Kode\Test\bin\Debug\Test.exe
-C:\Users\Frank\Desktop\Kode\Test\bin\Debug\Test.pdb
-C:\Users\Frank\Desktop\Kode\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
-C:\Users\Frank\Desktop\Kode\Test\obj\Debug\Test.exe
-C:\Users\Frank\Desktop\Kode\Test\obj\Debug\Test.pdb
