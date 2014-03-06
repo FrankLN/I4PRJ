@@ -1,0 +1,13 @@
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\bin\Debug\LogInd.exe.config
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\bin\Debug\LogInd.exe
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\bin\Debug\LogInd.pdb
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.csprojResolveAssemblyReference.cache
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\MainWindow.baml
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\MainWindow.g.cs
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\App.g.cs
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd_MarkupCompile.cache
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.g.resources
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.Properties.Resources.resources
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.csproj.GenerateResource.Cache
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.exe
+C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.pdb
