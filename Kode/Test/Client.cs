@@ -15,29 +15,42 @@ namespace Test
         private NetworkStream outStream;
         public Client()
         {
+            Connect();
+        }
+
+        private void Connect()
+        {
             client = new TcpClient();
-            client.Connect("10.168.0.103", 9000);
+            client.Connect("87.48.38.25", 9000);
 
             Console.WriteLine(" >>> Connected");
 
             outStream = client.GetStream();
         }
 
-        public string SendMessage(string str)
+        public void SendMessage(string str)
         {
             LIB.writeTextTCP(outStream, "Hej");
 
-            return LIB.readTextTCP(outStream);
         }
 
-        public void SendClass(ProtoAction objekt)
+        public void SendClass(ISerializable objekt)
         {
             BinaryFormatter bFormatter = new BinaryFormatter();
             
             bFormatter.Serialize(outStream, objekt);
+        }
 
-            outStream.Close();
-            client.Close();
+        public string ReadMessage()
+        {
+            return LIB.readTextTCP(outStream);
+        }
+
+        public ISerializable ReadClass()
+        {
+            BinaryFormatter bFormatter = new BinaryFormatter();
+
+            return (ISerializable) bFormatter.Deserialize(outStream);
         }
     }
 }

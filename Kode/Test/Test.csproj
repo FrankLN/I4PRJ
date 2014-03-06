@@ -45,6 +45,7 @@
     <Compile Include="IAction.cs" />
     <Compile Include="IServerApp.cs" />
     <Compile Include="lib.cs" />
+    <Compile Include="MyString.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtoAction.cs" />
