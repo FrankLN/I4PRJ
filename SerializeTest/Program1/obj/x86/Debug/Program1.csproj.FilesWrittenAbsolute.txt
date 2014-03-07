@@ -1,0 +1,5 @@
+/root/Desktop/SerializeTest/Program1/obj/x86/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/root/Desktop/SerializeTest/Program1/bin/Debug/Program1.exe.mdb
+/root/Desktop/SerializeTest/Program1/bin/Debug/Program1.exe
+/root/Desktop/SerializeTest/Program1/obj/x86/Debug/Program1.exe
+/root/Desktop/SerializeTest/Program1/obj/x86/Debug/Program1.exe.mdb
