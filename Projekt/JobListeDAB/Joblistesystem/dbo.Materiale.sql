@@ -1,5 +1,5 @@
-﻿CREATE TABLE [dbo].[Materiale]
+﻿CREATE TABLE [dbo].[Material]
 (
-	[MaterialeId] INT NOT NULL PRIMARY KEY, 
-    [MaterialeType] NVARCHAR(50) NOT NULL
+	[MaterialId] INT NOT NULL PRIMARY KEY, 
+    [MaterialType] NVARCHAR(50) NOT NULL
 )

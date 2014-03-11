@@ -8,3 +8,6 @@ C:\Users\Frank\git\I4PRJ4\Projekt\Test\obj\Debug\Test.pdb
 =======
 C:\Users\PIRATE1\Git\I4PRJ\Projekt\Test\bin\Debug\Test.exe.config
 >>>>>>> b9d23630710322b1d02fa66ba55239cf3e9cba01
+C:\Git\I4PRJ\Projekt\Test\bin\Debug\Test.exe.config
+C:\Git\I4PRJ\Projekt\Test\obj\Debug\Test.exe
+C:\Git\I4PRJ\Projekt\Test\obj\Debug\Test.pdb

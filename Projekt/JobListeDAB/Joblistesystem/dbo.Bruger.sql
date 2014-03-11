@@ -1,8 +1,8 @@
-﻿CREATE TABLE [dbo].[Bruger]
+﻿CREATE TABLE [dbo].[User]
 (
 	[Email] NVARCHAR(50) NOT NULL PRIMARY KEY, 
-    [Navn] NVARCHAR(MAX) NOT NULL, 
-    [TelefonNr] NVARCHAR(8) NULL DEFAULT NULL, 
-    [AdminRettighed] INT NULL DEFAULT NULL, 
-    [Kodeord] NVARCHAR(50) NOT NULL
+    [Name] NVARCHAR(MAX) NOT NULL, 
+    [PhoneNumber] NVARCHAR(8) NULL DEFAULT NULL, 
+    [AdminRights] INT NULL DEFAULT NULL, 
+    [Password] NVARCHAR(50) NOT NULL
 )

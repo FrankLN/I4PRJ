@@ -1,0 +1,1 @@
+C:\Git\I4PRJ\Projekt\JobListeDAB\DatabaseInterface\obj\Debug\DatabaseInterface.csprojResolveAssemblyReference.cache
