@@ -19,7 +19,7 @@ namespace DatabaseInterface
 
         int ValidateLogInIndo(string email, string password)
         {
-            DataContext db = new DataContext(@"C:\Users\Søren Emil\AppData\Local\Microsoft\VisualStudio\SSDT\JobListeDAB\Joblistesystem.mdf");
+            DataContext db = new DataContext(@"C:/Users/Søren Emil/AppData/Local/Microsoft/VisualStudio/SSDT/JobListeDAB/Joblistesystem.mdf");
 
             Table<User> users = db.GetTable<User>();
              /* Sammenligner email og password med databasen. Hvis der findes en bruger 
