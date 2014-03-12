@@ -66,4 +66,11 @@
     <Build Include="dbo.Bruger.sql" />
     <Build Include="dbo.3DJob.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Joblistesystem.refactorlog" />
+  </ItemGroup>
 </Project>

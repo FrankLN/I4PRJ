@@ -1,2 +1,2 @@
-﻿--Create Database JoblisteDAB
---Go
+﻿Create Database JoblisteDAB
+Go

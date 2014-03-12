@@ -1,0 +1,7 @@
+C:\Git\I4PRJ\Projekt\JobListeDAB\Joblistesystem\bin\Debug\Joblistesystem.dacpac
+C:\Git\I4PRJ\Projekt\JobListeDAB\Joblistesystem\obj\Debug\Model.xml
+C:\Git\I4PRJ\Projekt\JobListeDAB\Joblistesystem\obj\Debug\refactor.xml
+C:\Git\I4PRJ\Projekt\JobListeDAB\Joblistesystem\obj\Debug\postdeploy.sql
+C:\Git\I4PRJ\Projekt\JobListeDAB\Joblistesystem\obj\Debug\predeploy.sql
+C:\Git\I4PRJ\Projekt\JobListeDAB\Joblistesystem\obj\Debug\Joblistesystem.dll
+C:\Git\I4PRJ\Projekt\JobListeDAB\Joblistesystem\obj\Debug\Joblistesystem.pdb
