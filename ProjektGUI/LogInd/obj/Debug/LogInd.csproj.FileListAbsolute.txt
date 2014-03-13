@@ -11,3 +11,6 @@ C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.Properties
 C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.csproj.GenerateResource.Cache
 C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.exe
 C:\Users\TSO\Google Drev\Mine_PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.pdb
+C:\Users\Frank\git\I4PRJ4\ProjektGUI\LogInd\bin\Debug\LogInd.exe.config
+C:\Users\Frank\git\I4PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.exe
+C:\Users\Frank\git\I4PRJ4\ProjektGUI\LogInd\obj\Debug\LogInd.pdb
