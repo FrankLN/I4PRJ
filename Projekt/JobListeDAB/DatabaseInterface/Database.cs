@@ -12,10 +12,10 @@ namespace DatabaseInterface
 {
     public class Database
     {
-        //private SqlConnection conn;
+        private SqlConnection conn;
         Database()
         {
-            //conn = new SqlConnection(@"Data Source=(localdb)\Projects;Initial Catalog=Joblistesystem;Integrated Security=True;");
+            conn = new SqlConnection(@"Data Source=(localdb)\Projects;Initial Catalog=Joblistesystem;Integrated Security=True;");
         }
 
        /* void AddUser(User user)
@@ -27,8 +27,8 @@ namespace DatabaseInterface
 
         int ValidateLogInIndo(string email, string password)
         {
-            DataContext db = new DataContext(@"C:\Users\default.default-Pc\AppData\Local\Microsoft\VisualStudio\SSDT\JobListeDAB\Joblistesystem.mdf");
-            //conn.Open();
+            DataContext db = new DataContext(@"Data Source=(localdb)\Databases;Initial Catalog=Joblistesystem;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False");
+            conn.Open();
             Table<User> users = db.GetTable<User>();
              /* Sammenligner email og password med databasen. Hvis der findes en bruger 
              * med matchende email og password returneres dennes bruger ID. Ellers returneres -1. */
