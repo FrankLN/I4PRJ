@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
+using MessageTypes.Messages;
 
 namespace Server
 {
 	//Interface which define which methodes we need to use on the server
 	public interface IServerApp
 	{
-		void VerifyLogin(string email, string password);
-		void CreateUser(string email, string password, string firstName, string lastName, string phoneNumber);
-	    void CreateJob(string material, bool hollow, string date, string fileName, string email, string comment);
-	    void RequestJobs();
-	    void DownloadJob(string fileName);
-	    void GetMaterials();
-	    void ActivationCodeRequest(string email);
+		void VerifyLogin(ILoginMsg loginMsg);
+		void CreateUser(ICreateUserMsg createUserMsg);
+	    void CreateJob(ICreateJobMsg createJobMsg);
+	    void RequestJobs(IRequestJobsMsg requestJobsMsg);
+	    void DownloadJob(IDownloadJobMsg downloadJobMsg);
+	    void GetMaterials(IGetMaterialsMsg getMaterialsMsg);
+	    void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg);
 	}
 }
 

@@ -3,7 +3,11 @@ using Server;
 
 namespace MessageTypes.Messages
 {
-    public class GetMaterialsMsg : IMessage, ISerializable
+    public interface IGetMaterialsMsg
+    {
+        
+    }
+    public class GetMaterialsMsg : IMessage, ISerializable, IGetMaterialsMsg
     {
         public GetMaterialsMsg()
         {
@@ -17,7 +21,7 @@ namespace MessageTypes.Messages
 
         public void Run(IServerApp serverApp)
         {
-            serverApp.RequestJobs();
+            serverApp.GetMaterials(this);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

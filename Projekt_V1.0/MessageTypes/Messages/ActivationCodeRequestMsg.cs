@@ -3,7 +3,11 @@ using Server;
 
 namespace MessageTypes.Messages
 {
-    public class ActivationCodeRequestMsg : IMessage, ISerializable
+    public interface IActivationCodeRequestMsg
+    {
+        string FileName { get; }
+    }
+    public class ActivationCodeRequestMsg : IMessage, ISerializable, IActivationCodeRequestMsg
     {
         public string FileName { get; set; }
 
@@ -19,7 +23,7 @@ namespace MessageTypes.Messages
 
         public void Run(IServerApp serverApp)
         {
-            serverApp.ActivationCodeRequest(FileName);
+            serverApp.ActivationCodeRequest(this);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

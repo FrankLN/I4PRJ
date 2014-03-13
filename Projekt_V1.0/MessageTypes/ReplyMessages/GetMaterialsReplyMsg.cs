@@ -27,7 +27,7 @@ namespace MessageTypes.ReplyMessages
 
         public void Run(IServerApp serverApp)
         {
-            serverApp.CreateUser();
+           
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

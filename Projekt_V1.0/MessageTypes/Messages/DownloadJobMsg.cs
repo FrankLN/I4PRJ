@@ -3,7 +3,11 @@ using Server;
 
 namespace MessageTypes.Messages
 {
-    public class DownloadJobMsg : IMessage, ISerializable
+    public interface IDownloadJobMsg
+    {
+        string FileName { get; }
+    }
+    public class DownloadJobMsg : IMessage, ISerializable, IDownloadJobMsg
     {
         public string FileName { get; set; }
 
@@ -19,7 +23,7 @@ namespace MessageTypes.Messages
 
         public void Run(IServerApp serverApp)
         {
-            serverApp.DownloadJob(FileName);
+            serverApp.DownloadJob(this);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

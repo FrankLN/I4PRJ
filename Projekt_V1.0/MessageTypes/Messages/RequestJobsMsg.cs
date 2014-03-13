@@ -3,7 +3,12 @@ using Server;
 
 namespace MessageTypes.Messages
 {
-    public class RequestJobsMsg : IMessage, ISerializable
+
+    public interface IRequestJobsMsg
+    {
+        
+    }
+    public class RequestJobsMsg : IMessage, ISerializable, IRequestJobsMsg
     {
         public RequestJobsMsg()
         {
@@ -17,7 +22,7 @@ namespace MessageTypes.Messages
 
         public void Run(IServerApp serverApp)
         {
-            serverApp.RequestJobs();
+            serverApp.RequestJobs(this);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

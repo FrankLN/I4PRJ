@@ -1,4 +1,5 @@
 ﻿using System;
+using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
 namespace Server
@@ -20,40 +21,40 @@ namespace Server
         }
 
 
-        public void VerifyLogin(string email, string password)
+        public void VerifyLogin(ILoginMsg loginMsg)
         {
-            Console.WriteLine("VerifyLogin");
+            Console.WriteLine("VerifyLogin\n{0}\n{1}", loginMsg.Email, loginMsg.Password);
 
             LoginReplyMsg loginReplyMsg = new LoginReplyMsg();
             _server.SendToClient(loginReplyMsg);
         }
 
-        public void CreateUser(string email, string password, string firstName, string lastName, string phoneNumber = null)
+        public void CreateUser(ICreateUserMsg createUserMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateJob(string material, bool hollow, string date, string fileName, string email, string comment = null)
+        public void CreateJob(ICreateJobMsg createJobMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void RequestJobs()
+        public void RequestJobs(IRequestJobsMsg requestJobsMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void DownloadJob(string fileName)
+        public void DownloadJob(IDownloadJobMsg downloadJobMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void GetMaterials()
+        public void GetMaterials(IGetMaterialsMsg getMaterialsMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void ActivationCodeRequest(string email)
+        public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg)
         {
             throw new NotImplementedException();
         }

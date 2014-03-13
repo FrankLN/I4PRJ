@@ -3,7 +3,15 @@ using Server;
 
 namespace MessageTypes.Messages
 {
-    public class CreateUserMsg : IMessage, ISerializable
+    public interface ICreateUserMsg
+    {
+        string Email { get; }
+        string Password { get; }
+        string PhoneNumber { get; }
+        string FirstName { get; }
+        string LastName { get; }
+    }
+    public class CreateUserMsg : IMessage, ISerializable, ICreateUserMsg
     {
         public string Email { get; set; }
         public string Password { get; set; }
@@ -27,7 +35,7 @@ namespace MessageTypes.Messages
 
         public void Run(IServerApp serverApp)
         {
-            serverApp.CreateUser(Email, Password, FirstName, LastName, PhoneNumber);
+            serverApp.CreateUser(this);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

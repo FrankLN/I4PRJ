@@ -3,7 +3,12 @@ using Server;
 
 namespace MessageTypes.Messages
 {
-    public class LoginMsg : IMessage, ISerializable
+    public interface ILoginMsg
+    {
+        string Email { get; }
+        string Password { get; }
+    }
+    public class LoginMsg : IMessage, ISerializable, ILoginMsg
     {
         public string Email { get; set; }
         public string Password { get; set; }
@@ -21,7 +26,7 @@ namespace MessageTypes.Messages
 
         public void Run(IServerApp serverApp)
         {
-            serverApp.VerifyLogin(Email, Password);
+            serverApp.VerifyLogin(this);
 
         }
 

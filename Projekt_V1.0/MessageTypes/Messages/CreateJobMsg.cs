@@ -3,7 +3,16 @@ using Server;
 
 namespace MessageTypes.Messages
 {
-    public class CreateJobMsg : IMessage, ISerializable
+    public interface ICreateJobMsg
+    {
+        string Material { get; }
+        bool Hollow { get; }
+        string Date { get; }
+        string FileName { get; }
+        string Email { get; }
+        string Comment { get; }
+    }
+    public class CreateJobMsg : IMessage, ISerializable, ICreateJobMsg
     {
         public string Material { get; set; }
         public bool Hollow { get; set; }
@@ -29,7 +38,7 @@ namespace MessageTypes.Messages
 
         public void Run(IServerApp serverApp)
         {
-            serverApp.CreateJob(Material, Hollow, Date, FileName, Email, Comment);
+            serverApp.CreateJob(this);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Server;
@@ -13,7 +14,7 @@ namespace ServerApplication_V1._0
         {
             while (true)
             {
-                new ServerApp(9000);
+                new ServerApp("10.0.0.1", 9000);
             }
         }
     }
