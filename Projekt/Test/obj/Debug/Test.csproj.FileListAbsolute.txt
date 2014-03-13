@@ -11,3 +11,6 @@ C:\Users\PIRATE1\Git\I4PRJ\Projekt\Test\bin\Debug\Test.exe.config
 C:\Git\I4PRJ\Projekt\Test\bin\Debug\Test.exe.config
 C:\Git\I4PRJ\Projekt\Test\obj\Debug\Test.exe
 C:\Git\I4PRJ\Projekt\Test\obj\Debug\Test.pdb
+C:\Users\default.default-Pc\Desktop\IKT\Git\PJR4\Projekt\Test\bin\Debug\Test.exe.config
+C:\Users\default.default-Pc\Desktop\IKT\Git\PJR4\Projekt\Test\obj\Debug\Test.exe
+C:\Users\default.default-Pc\Desktop\IKT\Git\PJR4\Projekt\Test\obj\Debug\Test.pdb
