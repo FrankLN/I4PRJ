@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseInterface
 {
-    class JobClass
+    public class JobClass
     {
         public MaterialClass Material { get; set; }
         public string Deadline { get; set; }

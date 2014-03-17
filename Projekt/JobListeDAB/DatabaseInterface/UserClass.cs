@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseInterface
 {
-    class UserClass
+    public class UserClass
     {
         public string Email { get; set; }
         public string Name { get; set; }

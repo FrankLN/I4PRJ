@@ -10,16 +10,16 @@ using Microsoft.Win32;
 
 namespace DatabaseInterface
 {
-    public class Database
+    public class Database : IDatabase
     {
         private SqlConnection conn;
         Database()
         {
             conn = new SqlConnection(@"Data Source=(localdb)\Projects;Initial Catalog=Joblistesystem;Integrated Security=True;");
         }
-        
- 
-       void AddUser(UserClass user)
+
+
+        public void AddUser(UserClass user)
        // AddUser adds an object in the User tabel on the database.
         {
             //DataContext db = new DataContext(@"C:\Users\Søren Emil\AppData\Local\Microsoft\VisualStudio\SSDT\JobListeDAB\Joblistesystem.mdf");
@@ -48,7 +48,7 @@ namespace DatabaseInterface
                    cmd.Parameters["@Data5"].Value = user.Password;
 
                    //var id 
-                   User.HI = (int) cmd.ExecuteScalar(); //Returns the identity of the new tuple/record
+                   user = (int) cmd.ExecuteScalar(); //Returns the identity of the new tuple/record
                }
            }
            finally 
@@ -61,7 +61,7 @@ namespace DatabaseInterface
            }
         }
 
-        int ValidateLogInIndo(string email, string password)
+        public int ValidateLogInInfo(string email, string password)
         {
             //DataContext db = new DataContext(@"Data Source=(localdb)\Databases;Initial Catalog=Joblistesystem;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False");
             try
@@ -102,7 +102,7 @@ namespace DatabaseInterface
             }
         }
 
-        UserClass GetUserInfo(int userId)
+        public UserClass GetUserInfo(int userId)
          // Returns an object of UserClass with ID matching from the database.
          {
              try
