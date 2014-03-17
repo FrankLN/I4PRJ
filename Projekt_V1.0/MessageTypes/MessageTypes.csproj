@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IServerApp.cs" />
+    <Compile Include="JobClass.cs" />
+    <Compile Include="MaterialClass.cs" />
     <Compile Include="Messages\ActivationCodeRequestMsg.cs" />
     <Compile Include="Messages\CreateJobMsg.cs" />
     <Compile Include="Messages\CreateUserMsg.cs" />
@@ -57,6 +59,7 @@
     <Compile Include="ReplyMessages\IReplyMessage.cs" />
     <Compile Include="ReplyMessages\LoginReplyMsg.cs" />
     <Compile Include="ReplyMessages\RequestJobsReplyMsg.cs" />
+    <Compile Include="UserClass.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

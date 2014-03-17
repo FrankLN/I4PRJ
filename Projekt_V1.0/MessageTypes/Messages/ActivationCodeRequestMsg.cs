@@ -5,11 +5,11 @@ namespace MessageTypes.Messages
 {
     public interface IActivationCodeRequestMsg
     {
-        string FileName { get; }
+        string Email { get; }
     }
     public class ActivationCodeRequestMsg : IMessage, ISerializable, IActivationCodeRequestMsg
     {
-        public string FileName { get; set; }
+        public string Email { get; set; }
 
         public ActivationCodeRequestMsg()
         {
@@ -18,7 +18,7 @@ namespace MessageTypes.Messages
 
         public ActivationCodeRequestMsg(SerializationInfo info, StreamingContext context)
         {
-            FileName = (string) info.GetValue("FileName", typeof (string));
+            Email = (string) info.GetValue("Email", typeof (string));
         }
 
         public void Run(IServerApp serverApp)
@@ -28,7 +28,7 @@ namespace MessageTypes.Messages
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("FileName", FileName);
+            info.AddValue("Email", Email);
         }
     }
 }
