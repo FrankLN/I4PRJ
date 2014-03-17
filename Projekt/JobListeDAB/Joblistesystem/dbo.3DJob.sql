@@ -6,6 +6,8 @@
     [Deadline] NVARCHAR(50) NULL DEFAULT NULL, 
     [File] NVARCHAR(MAX) NOT NULL, 
     [CreationTime] NVARCHAR(50) NOT NULL, 
+	[Hollow] INT NOT NULL,
+	[Comment] NVARCHAR(MAX),
     CONSTRAINT [FK_3DJob_Material] FOREIGN KEY ([Material]) REFERENCES [Material]([MaterialType]), 
     CONSTRAINT [FK_3DJob_User] FOREIGN KEY ([Owner]) REFERENCES [User]([Email])
 )
