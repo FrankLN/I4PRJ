@@ -30,8 +30,8 @@ namespace DatabaseInterface
                conn.Open();
 
                // String with SQL statement
-               string userInsert = @"INSERT INTO [User] (Email, Name, PhoneNumber, AdminRights, Password) 
-                                        VALUES (@Data1,@Data2,@Data3,@Data4,@Data5)";
+               string userInsert = @"INSERT INTO [User] (Email, FirstName, LastName, PhoneNumber, AdminRights, Password) 
+                                        VALUES (@Data1,@Data2,@Data3,@Data4,@Data5, @Data6)";
 
                using (SqlCommand cmd = new SqlCommand(userInsert, conn))
                {
@@ -41,11 +41,13 @@ namespace DatabaseInterface
                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data3";
                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data4";
                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data5";
+                   cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data6";
                    cmd.Parameters["@Data1"].Value = user.Email;
-                   cmd.Parameters["@Data2"].Value = user.Name;
-                   cmd.Parameters["@Data3"].Value = user.PhoneNumber;
-                   cmd.Parameters["@Data4"].Value = user.AdminRights;
-                   cmd.Parameters["@Data5"].Value = user.Password;
+                   cmd.Parameters["@Data2"].Value = user.FirstName;
+                   cmd.Parameters["@Data3"].Value = user.LastName;
+                   cmd.Parameters["@Data4"].Value = user.PhoneNumber;
+                   cmd.Parameters["@Data5"].Value = user.AdminRights;
+                   cmd.Parameters["@Data6"].Value = user.Password;
 
                    //var id 
                    user.Email = (string) cmd.ExecuteScalar(); //Returns the identity of the new tuple/record
@@ -126,7 +128,8 @@ namespace DatabaseInterface
 
 
                         locUser.Email = (string) rdr["Email"];
-                        locUser.Name = (string) rdr["Name"];
+                        locUser.FirstName = (string) rdr["FirstName"];
+                        locUser.LastName = (string)rdr["LastName"];
                         locUser.PhoneNumber = (string) rdr["Phonenumber"];
                         locUser.AdminRights = (int) rdr["AdminRights"];
                         locUser.Password = (string) rdr["Password"];
@@ -189,7 +192,7 @@ namespace DatabaseInterface
          // Return a list of all jobs in the database.
          {
              try
-             {
+             { 
                  // Open the connection
                  conn.Open();
 

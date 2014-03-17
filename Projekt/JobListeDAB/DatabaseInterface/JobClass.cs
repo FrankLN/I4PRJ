@@ -16,6 +16,8 @@ namespace DatabaseInterface
             Owner = null;
             File = null;
             CreationTime = null;
+            Hollow = 0;             // Hollow is set to 0 as the 3DJob is full by default.
+            Comment = null;
         }
 
         public int OrderId { get; set; }
@@ -24,5 +26,7 @@ namespace DatabaseInterface
         public UserClass Owner { get; set; }
         public string File { get; set; }
         public string CreationTime { get; set; }
+        public int Hollow { get; set; }
+        public string Comment { get; set; }
     }
 }
