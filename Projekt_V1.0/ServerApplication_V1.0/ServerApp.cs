@@ -1,4 +1,5 @@
 ﻿using System;
+using DatabaseInterface;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
@@ -7,7 +8,7 @@ namespace Server
     class ServerApp : IServerApp
     {
         private IServer _server;
-        //private IDatabase _database;
+        private IDatabase _database;
 
         public ServerApp(string ip, int port)
         {
@@ -26,7 +27,7 @@ namespace Server
             LoginReplyMsg loginReplyMsg = new LoginReplyMsg();
             Console.WriteLine("VerifyLogin\n{0}\n{1}", loginMsg.Email, loginMsg.Password);
 
-            var user = dbInterface.getUser(loginMsg.Email);
+            UserClass user = _database.GetUserInfo(loginMsg.Email);
 
             if (user != null)
             {

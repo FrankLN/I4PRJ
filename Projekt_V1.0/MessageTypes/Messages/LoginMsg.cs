@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using Server;
 
@@ -8,6 +9,8 @@ namespace MessageTypes.Messages
         string Email { get; }
         string Password { get; }
     }
+
+    [Serializable]
     public class LoginMsg : IMessage, ISerializable, ILoginMsg
     {
         public string Email { get; set; }
