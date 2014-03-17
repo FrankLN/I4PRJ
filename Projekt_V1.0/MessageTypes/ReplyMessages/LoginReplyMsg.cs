@@ -1,8 +1,14 @@
 using System.Runtime.Serialization;
+using System.Security.Cryptography.X509Certificates;
 using Server;
 
 namespace MessageTypes.ReplyMessages
 {
+    public interface ILoginReplyReplyMsg
+    {
+        
+    }
+
     public class LoginReplyMsg : IReplyMessage, ISerializable
     {
         public bool Email { get; set; }
@@ -10,6 +16,7 @@ namespace MessageTypes.ReplyMessages
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
+        public bool AdminRights { get; set; }
 
         public LoginReplyMsg()
         {
@@ -23,6 +30,7 @@ namespace MessageTypes.ReplyMessages
             FirstName = (string)info.GetValue("FirstName", typeof(string));
             LastName = (string)info.GetValue("LastName", typeof(string));
             PhoneNumber = (string)info.GetValue("PhoneNumber", typeof(string));
+            AdminRights = (bool) info.GetValue("AdminRights", typeof (bool));
         }
 
         public void Run(IServerApp serverApp)
@@ -34,6 +42,10 @@ namespace MessageTypes.ReplyMessages
         {
             info.AddValue("email", Email);
             info.AddValue("password", Password);
+            info.AddValue("FirstName",FirstName);
+            info.AddValue("LastName", LastName);
+            info.AddValue("PhoneNumber",PhoneNumber);
+            info.AddValue("AdminRights",AdminRights);
         }
     }
 }

@@ -3,13 +3,16 @@ using Server;
 
 namespace MessageTypes.ReplyMessages
 {
-    public class ActivationCodeRequestReplyMsg : IReplyMessage, ISerializable
+    public interface IActivationCodeRequestReplyMsg
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string PhoneNumber { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        bool Accepted { get; }
+        string ActivationCode { get; }
+    }
+
+    public class ActivationCodeRequestReplyMsg : IReplyMessage, ISerializable, IActivationCodeRequestReplyMsg
+    {
+        public bool Accepted { get; set; }
+        public string ActivationCode { get; set; }
 
         public ActivationCodeRequestReplyMsg()
         {
@@ -18,11 +21,9 @@ namespace MessageTypes.ReplyMessages
 
         public ActivationCodeRequestReplyMsg(SerializationInfo info, StreamingContext context)
         {
-            Email = (string)info.GetValue("Email", typeof(string));
-            Password = (string)info.GetValue("Password", typeof(string));
-            PhoneNumber = (string)info.GetValue("PhoneNumber", typeof(string));
-            FirstName = (string)info.GetValue("FirstName", typeof(string));
-            LastName = (string)info.GetValue("LastName", typeof(string));
+            Accepted = (bool)info.GetValue("Accepted", typeof(bool));
+            ActivationCode = (string) info.GetValue("ActivationCode",typeof(string));
+
         }
 
         public void Run(IServerApp serverApp)
@@ -32,11 +33,9 @@ namespace MessageTypes.ReplyMessages
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Email", Email);
-            info.AddValue("Password", Password);
-            info.AddValue("PhoneNumber", PhoneNumber);
-            info.AddValue("FirsName", FirstName);
-            info.AddValue("LastName", LastName);
+            info.AddValue("Accepted", Accepted);
+            info.AddValue("ActivationCode", ActivationCode);
+
         }
     }
 }

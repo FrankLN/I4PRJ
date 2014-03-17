@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IClientApp.cs" />
     <Compile Include="IServerApp.cs" />
     <Compile Include="Messages\ActivationCodeRequestMsg.cs" />
     <Compile Include="Messages\CreateJobMsg.cs" />
