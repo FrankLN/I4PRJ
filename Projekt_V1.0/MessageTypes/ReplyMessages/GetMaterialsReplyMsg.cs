@@ -3,7 +3,12 @@ using Server;
 
 namespace MessageTypes.ReplyMessages
 {
-    public class GetMaterialsReplyMsg : IReplyMessage, ISerializable
+    public interface IGetMaterialsReplyMsg
+    {
+        
+    }
+
+    public class GetMaterialsReplyMsg : IReplyMessage, ISerializable, IGetMaterialsReplyMsg
     {
         public string Email { get; set; }
         public string Password { get; set; }

@@ -47,6 +47,9 @@ namespace GUI_first_iteration
         private void btnCreateUser_Click(object sender, RoutedEventArgs e)
         {
             createUserObj.Print();
+
+            ActivateUserWindow activateUserWin = new ActivateUserWindow(this);
+            activateUserWin.Show();
         }
 
         // -----------------------------------

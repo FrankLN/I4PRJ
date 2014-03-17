@@ -8,7 +8,6 @@ namespace Server
 {
     public interface IServer
     {
-        IMessage ServerRun();
         void SendToClient(ISerializable message);
     }
 

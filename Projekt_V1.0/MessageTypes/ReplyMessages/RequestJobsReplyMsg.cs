@@ -3,7 +3,11 @@ using Server;
 
 namespace MessageTypes.ReplyMessages
 {
-    public class RequestJobsReplyMsg : IReplyMessage, ISerializable
+    public interface IRequestJobsReplyMsg
+    {
+        
+    }
+    public class RequestJobsReplyMsg : IReplyMessage, ISerializable, IRequestJobsReplyMsg
     {
         public string Email { get; set; }
         public string Password { get; set; }
