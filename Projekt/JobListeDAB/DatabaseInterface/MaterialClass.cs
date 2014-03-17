@@ -8,6 +8,7 @@ namespace DatabaseInterface
 {
     public class MaterialClass
     {
+        public int MaterialId { get; set; }
         public string MaterialType { get; set; }
     }
 }

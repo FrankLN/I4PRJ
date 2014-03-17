@@ -48,7 +48,7 @@ namespace DatabaseInterface
                    cmd.Parameters["@Data5"].Value = user.Password;
 
                    //var id 
-                   user = (int) cmd.ExecuteScalar(); //Returns the identity of the new tuple/record
+                   user.Email = (string) cmd.ExecuteScalar(); //Returns the identity of the new tuple/record
                }
            }
            finally 
@@ -73,7 +73,7 @@ namespace DatabaseInterface
                 * med matchende email og password returneres dennes bruger ID. Ellers returneres -1. */
 
                 // String with SQL statement
-                string validate = @"SELECT Password FROM User WHERE User.Email = email GO";
+                string validate = @"SELECT Password FROM User WHERE User.Email = email";
 
                 string passReturn;
 
@@ -102,56 +102,46 @@ namespace DatabaseInterface
             }
         }
 
-        public UserClass GetUserInfo(int userId)
+        public UserClass GetUserInfo(string userId)
          // Returns an object of UserClass with ID matching from the database.
          {
-             try
-             {
-                 // Open the connection
-                 conn.Open();
+            try
+            {
+                // Open the connection
+                conn.Open();
 
-                 // String with SQL statement
-                 string userInfo = @"SELECT * FROM [User] WHERE User.Email = email";
+                // String with SQL statement
+                string userInfo = @"SELECT * FROM [User] WHERE User.Email = userId";
 
-                 using (SqlCommand cmd = new SqlCommand(userInfo, conn))
+                using (SqlCommand cmd = new SqlCommand(userInfo, conn))
                 {
-                    // Get your parameters ready 
+                    var locUser = new UserClass();
 
-                    /**********************************************************
-                     * FØLGENDE SKAL RETTES TIL ******************************
-                     **********************************************************/
+                    SqlDataReader rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
 
 
-                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data1";
-
-                    cmd.Parameters["@Data1"].Value = this.locHåndværker.HID;
-
-                    rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
-                    locHåndværker.Ejes_af = new List<Værktøjskasse>();
-
-                    Værktøjskasse vk = new Værktøjskasse();
                     while (rdr.Read())
                     {
                         Console.WriteLine(rdr[0]);
 
 
-                        vk.VKID = (int)rdr["VKasseId"];
-                        vk.Anskaffet = (DateTime)rdr["Anskaffet"];
-                        vk.Fabrikat = (string)rdr["Fabrikat"];
-                        vk.Håndværker = (int)rdr["Håndværker"];
-                        vk.Model = (string)rdr["Model"];
-                        vk.Seriennr = (string)rdr["Serienummer"];
-                        locHåndværker.Ejes_af.Add(vk);
+                        locUser.Email = (string) rdr["Email"];
+                        locUser.Name = (string) rdr["Name"];
+                        locUser.PhoneNumber = (string) rdr["Phonenumber"];
+                        locUser.AdminRights = (int) rdr["AdminRights"];
+                        locUser.Password = (string) rdr["Password"];
                     }
-             }
-             finally
-             {
-                 // Close the connection
-                 if (conn != null)
-                 {
-                     conn.Close();
-                 }
-             }
+                    return locUser;
+                }
+            }
+            finally
+            {
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
          }
 
          void AddJob(JobClass job)
@@ -175,7 +165,7 @@ namespace DatabaseInterface
              }
          }
 
-         List<JobClass> GetJobList()
+        public List<JobClass> GetJobList()
          // Return a list of all jobs in the database.
          {
              try
@@ -184,7 +174,28 @@ namespace DatabaseInterface
                  conn.Open();
 
                  // String with SQL statement
-                 string userInsert = @"";
+                 string userInsert = @"SELECT * FROM 3DJob";
+
+                 using (SqlCommand cmd = new SqlCommand(userInsert, conn))
+                 {
+                     List<JobClass> loc3DJobList = null;
+
+                     SqlDataReader rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
+
+                     for(int i = 0; rdr.Read(); i++)
+                     {
+                         var loc3DJob = new JobClass();
+
+                         loc3DJob.OrderId = (int) rdr["OrderId"];
+                         loc3DJob.Material = (MaterialClass)rdr["Material"];
+                         loc3DJob.Owner = (UserClass)rdr["Owner"];
+                         loc3DJob.Deadline = (string)rdr["Deadline"];
+                         loc3DJob.File = (string)rdr["File"];
+                         loc3DJob.CreationTime = (string)rdr["CreationTime"];
+                         loc3DJobList.Add(loc3DJob);
+                     }
+                     return loc3DJobList;
+                 }
              }
              finally
              {

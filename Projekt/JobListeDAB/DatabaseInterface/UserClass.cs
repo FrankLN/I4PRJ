@@ -8,6 +8,14 @@ namespace DatabaseInterface
 {
     public class UserClass
     {
+        public UserClass()
+        {
+            Email = null;
+            Name = null;
+            PhoneNumber = null;
+            Password = null;
+            AdminRights = 0;
+        }
         public string Email { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
