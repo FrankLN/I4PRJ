@@ -147,7 +147,7 @@ namespace DatabaseInterface
             }
          }
 
-         void AddJob(JobClass job)
+        public void AddJob(JobClass job)
          // Add a Jobclass object in the Job tabel on the database.
          {
              try
@@ -156,7 +156,27 @@ namespace DatabaseInterface
                  conn.Open();
 
                  // String with SQL statement
-                 string userInsert = @"";
+                 string userInsert = @"INSERT INTO [3DJob] VALUES (@Data1, @Data2, @Data3, @Data4, @Data5, @Data6, @Data7, @Data8)";
+
+                 using (SqlCommand cmd = new SqlCommand(userInsert, conn))
+                 {
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data1";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data2";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data3";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data4";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data5";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data6";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data7";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data8";
+                     cmd.Parameters[@"Data1"].Value = job.OrderId;
+                     cmd.Parameters[@"Data2"].Value = job.Material;
+                     cmd.Parameters[@"Data3"].Value = job.Owner;
+                     cmd.Parameters[@"Data4"].Value = job.Deadline;
+                     cmd.Parameters[@"Data5"].Value = job.File;
+                     cmd.Parameters[@"Data6"].Value = job.CreationTime;
+                     cmd.Parameters[@"Data7"].Value = job.Hollow;
+                     cmd.Parameters[@"Data8"].Value = job.Comment;
+                 }
              }
              finally
              {
