@@ -8,7 +8,7 @@ namespace DatabaseInterface
 
         int ValidateLogInInfo(string email, string password);
 
-        UserClass GetUserInfo(int userId);
+        UserClass GetUserInfo(string userId);
 
         void AddJob(JobClass job);
 
