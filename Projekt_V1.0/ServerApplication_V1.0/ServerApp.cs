@@ -23,15 +23,45 @@ namespace Server
 
         public void VerifyLogin(ILoginMsg loginMsg)
         {
+            LoginReplyMsg loginReplyMsg = new LoginReplyMsg();
             Console.WriteLine("VerifyLogin\n{0}\n{1}", loginMsg.Email, loginMsg.Password);
 
-            LoginReplyMsg loginReplyMsg = new LoginReplyMsg();
+            var user = dbInterface.getUser(loginMsg.Email);
+
+            if (user != null)
+            {
+                loginReplyMsg.Email = true;
+                if (user.Password == loginMsg.Password)
+                {
+                    loginReplyMsg.Password = true;
+                    loginReplyMsg.FirstName = user.FirstName;
+                    loginReplyMsg.LastName = user.LastName;
+                    loginReplyMsg.PhoneNumber = user.PhoneNumber;
+                }
+            }
+            else
+            {
+                loginReplyMsg.Email = false;
+                loginReplyMsg.Password = false;
+            }
+            
             _server.SendToClient(loginReplyMsg);
         }
 
         public void CreateUser(ICreateUserMsg createUserMsg)
         {
-            throw new NotImplementedException();
+            CreateUserReplyMsg createUserReplyMsg = new CreateUserReplyMsg();
+            
+            var user = new User();
+
+            user.FirstName = createUserMsg.FirstName;
+            user.LastName = createUserMsg.LastName;
+            user.PhoneNumber = createUserMsg.PhoneNumber;
+            user.Password = createUserMsg.Password;
+            user.Email = createUserMsg.Email;
+
+            dbInterface.InsertUser(user);
+
         }
 
         public void CreateJob(ICreateJobMsg createJobMsg)
