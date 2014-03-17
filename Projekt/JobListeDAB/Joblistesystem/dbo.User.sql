@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[User]
+﻿CREATE TABLE [dbo].[Customer]
 (
 	[Email] NVARCHAR(50) NOT NULL PRIMARY KEY, 
     [FirstName] NVARCHAR(MAX) NOT NULL, 

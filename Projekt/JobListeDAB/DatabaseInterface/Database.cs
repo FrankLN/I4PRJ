@@ -13,7 +13,7 @@ namespace DatabaseInterface
     public class Database : IDatabase
     {
         private SqlConnection conn;
-        Database()
+        public Database()
         {
             conn = new SqlConnection(@"Data Source=(localdb)\Projects;Initial Catalog=Joblistesystem;Integrated Security=True;");
         }
@@ -30,7 +30,7 @@ namespace DatabaseInterface
                conn.Open();
 
                // String with SQL statement
-               string userInsert = @"INSERT INTO [User] (Email, FirstName, LastName, PhoneNumber, AdminRights, Password) 
+               string userInsert = @"INSERT INTO [Customer] (Email, FirstName, LastName, PhoneNumber, AdminRights, Password) 
                                         VALUES (@Data1,@Data2,@Data3,@Data4,@Data5, @Data6)";
 
                using (SqlCommand cmd = new SqlCommand(userInsert, conn))
@@ -75,7 +75,7 @@ namespace DatabaseInterface
                 * med matchende email og password returneres dennes bruger ID. Ellers returneres -1. */
 
                 // String with SQL statement
-                string validate = @"SELECT Password FROM User WHERE User.Email = email";
+                string validate = @"SELECT Password FROM Customer WHERE Customer.Email = email";
 
                 string passReturn;
 
@@ -113,7 +113,7 @@ namespace DatabaseInterface
                 conn.Open();
 
                 // String with SQL statement
-                string userInfo = @"SELECT * FROM [User] WHERE User.Email = userId";
+                string userInfo = @"SELECT * FROM [Customer] WHERE Customer.Email = userId";
 
                 using (SqlCommand cmd = new SqlCommand(userInfo, conn))
                 {
@@ -147,7 +147,7 @@ namespace DatabaseInterface
             }
          }
 
-         void AddJob(JobClass job)
+         public void AddJob(JobClass job)
          // Add a Jobclass object in the Job tabel on the database.
          {
              try
@@ -156,7 +156,7 @@ namespace DatabaseInterface
                  conn.Open();
 
                  // String with SQL statement
-                 string userInsert = @"INSERT INTO [3DJob] VALUES (@Data1, @Data2, @Data3, @Data4, @Data5, @Data6, @Data7, @Data8)";
+                 string userInsert = @"INSERT INTO [My3DJob] VALUES (@Data1, @Data2, @Data3, @Data4, @Data5, @Data6, @Data7, @Data8)";
 
                  using (SqlCommand cmd = new SqlCommand(userInsert, conn))
                  {
@@ -169,8 +169,8 @@ namespace DatabaseInterface
                      cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data7";
                      cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data8";
                      cmd.Parameters[@"Data1"].Value = job.OrderId;
-                     cmd.Parameters[@"Data2"].Value = job.Material;
-                     cmd.Parameters[@"Data3"].Value = job.Owner;
+                     cmd.Parameters[@"Data2"].Value = job.Material.MaterialId;
+                     cmd.Parameters[@"Data3"].Value = job.Owner.Email;
                      cmd.Parameters[@"Data4"].Value = job.Deadline;
                      cmd.Parameters[@"Data5"].Value = job.File;
                      cmd.Parameters[@"Data6"].Value = job.CreationTime;
@@ -197,7 +197,7 @@ namespace DatabaseInterface
                  conn.Open();
 
                  // String with SQL statement
-                 string userInsert = @"SELECT * FROM 3DJob";
+                 string userInsert = @"SELECT * FROM My3DJob";
 
                  using (SqlCommand cmd = new SqlCommand(userInsert, conn))
                  {
@@ -205,7 +205,7 @@ namespace DatabaseInterface
 
                      SqlDataReader rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
 
-                     for(int i = 0; rdr.Read(); i++)
+                     while (rdr.Read())
                      {
                          var loc3DJob = new JobClass();
 
