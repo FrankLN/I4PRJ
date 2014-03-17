@@ -12,3 +12,14 @@ wp-content/cache/
 wp-content/backups/
 sitemap.xml.gz
 *.suo
+*.sln
+*.ncb
+*.ilk
+*.pdb
+*.user
+*.obj
+*.bin
+*/Debug/*
+*/debug/*
+*/Release/*
+*/release/*
