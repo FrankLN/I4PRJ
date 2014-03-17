@@ -3,7 +3,11 @@ using Server;
 
 namespace MessageTypes.ReplyMessages
 {
-    public class DownloadJobReplyMsg : IReplyMessage, ISerializable
+    public interface IDownloadJobReplyMsg
+    {
+        
+    }
+    public class DownloadJobReplyMsg : IReplyMessage, ISerializable, IDownloadJobReplyMsg
     {
         public string Email { get; set; }
         public string Password { get; set; }
