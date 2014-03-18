@@ -7,8 +7,8 @@ namespace ClientApplication
 {
     public interface IClient
     {
-        IReplyMessage ClientRun();
         void SendToServer(ISerializable message);
+        IReplyMessage ClientRun();
     }
     class Client : IClient
     {
@@ -36,6 +36,7 @@ namespace ClientApplication
         public void SendToServer(ISerializable objekt)
         {
             bFormatter.Serialize(outInStream, objekt);
+
         }
 
         public IReplyMessage ClientRun()

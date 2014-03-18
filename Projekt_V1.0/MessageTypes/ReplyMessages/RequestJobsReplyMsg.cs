@@ -1,32 +1,28 @@
 using System.Runtime.Serialization;
+using DatabaseInterface;
 using Server;
+using System.Collections.Generic;
 
 namespace MessageTypes.ReplyMessages
 {
     public interface IRequestJobsReplyMsg
     {
-        
+        List<JobClass> JobList { get; }  
     }
+
     public class RequestJobsReplyMsg : IReplyMessage, ISerializable, IRequestJobsReplyMsg
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string PhoneNumber { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public List<JobClass> JobList { get; set; }
 
         public RequestJobsReplyMsg()
         {
-
+            
         }
 
         public RequestJobsReplyMsg(SerializationInfo info, StreamingContext context)
         {
-            Email = (string)info.GetValue("Email", typeof(string));
-            Password = (string)info.GetValue("Password", typeof(string));
-            PhoneNumber = (string)info.GetValue("PhoneNumber", typeof(string));
-            FirstName = (string)info.GetValue("FirstName", typeof(string));
-            LastName = (string)info.GetValue("LastName", typeof(string));
+            JobList = (List<JobClass>)info.GetValue("jobList", typeof(List<JobClass>));
+
         }
 
         public void Run(IServerApp serverApp)
@@ -36,11 +32,9 @@ namespace MessageTypes.ReplyMessages
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Email", Email);
-            info.AddValue("Password", Password);
-            info.AddValue("PhoneNumber", PhoneNumber);
-            info.AddValue("FirsName", FirstName);
-            info.AddValue("LastName", LastName);
+            info.AddValue("jobList", JobList);
+
         }
+
     }
 }

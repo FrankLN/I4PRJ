@@ -1,22 +1,23 @@
 using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
+using DatabaseInterface;
 using Server;
 
 namespace MessageTypes.ReplyMessages
 {
     public interface ILoginReplyReplyMsg
     {
-        
+        bool Email { get; }
+        bool Password { get; }
+        UserClass User { get; }
+
     }
 
     public class LoginReplyMsg : IReplyMessage, ISerializable
     {
         public bool Email { get; set; }
         public bool Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool AdminRights { get; set; }
+        public UserClass User { get; set; }
 
         public LoginReplyMsg()
         {
@@ -27,10 +28,8 @@ namespace MessageTypes.ReplyMessages
         {
             Email = (bool)info.GetValue("email", typeof(bool));
             Password = (bool) info.GetValue("password", typeof (bool));
-            FirstName = (string)info.GetValue("FirstName", typeof(string));
-            LastName = (string)info.GetValue("LastName", typeof(string));
-            PhoneNumber = (string)info.GetValue("PhoneNumber", typeof(string));
-            AdminRights = (bool) info.GetValue("AdminRights", typeof (bool));
+            User = (UserClass)info.GetValue("User", typeof(UserClass));
+            
         }
 
         public void Run(IServerApp serverApp)
@@ -42,10 +41,8 @@ namespace MessageTypes.ReplyMessages
         {
             info.AddValue("email", Email);
             info.AddValue("password", Password);
-            info.AddValue("FirstName",FirstName);
-            info.AddValue("LastName", LastName);
-            info.AddValue("PhoneNumber",PhoneNumber);
-            info.AddValue("AdminRights",AdminRights);
+            info.AddValue("User", User);
+
         }
     }
 }
