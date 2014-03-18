@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="JobHistoryWindow" Height="476.538" Width="680.192" Closing="Window_Closing">
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Height="60" Margin="10,10,0,0" VerticalAlignment="Top" Width="652"/>
+        <StackPanel HorizontalAlignment="Left" Height="60" Margin="10,10,0,0" VerticalAlignment="Top" Width="652">
+            <Button Name="btnBack" Content="Back" Height="58" Click="btnBack_Click"/>
+        </StackPanel>
         <StackPanel HorizontalAlignment="Left" Height="362" Margin="10,75,0,0" VerticalAlignment="Top" Width="652">
             <Grid Height="362">
                 <Grid.RowDefinitions>

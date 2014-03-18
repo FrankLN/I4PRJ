@@ -12,10 +12,18 @@ namespace ServerApplication_V1._0
     {
         static void Main(string[] args)
         {
-            while (true)
+            try
             {
-                new ServerApp("10.0.0.1", 9000);
+                while (true)
+                {
+                    new ServerApp(9000); 
+                }
             }
+            catch (ServerException)
+            {
+                Console.WriteLine("Closing server...");
+            }
+            
         }
     }
 }

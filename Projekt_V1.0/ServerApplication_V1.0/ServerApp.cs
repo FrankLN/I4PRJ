@@ -23,9 +23,9 @@ namespace Server
             return result;
         }
 
-        public ServerApp(string ip, int port)
+        public ServerApp(int port)
         {
-            _server = new Server(ip, port);
+            _server = new Server(port);
 
             while (true)
             {
@@ -48,8 +48,8 @@ namespace Server
                 if (user.Password == loginMsg.Password)
                 {
                     loginReplyMsg.Password = true;
-                    loginReplyMsg.FirstName = user.Name;
-                    loginReplyMsg.LastName = user.Name;
+                    loginReplyMsg.FirstName = user.FirstName;
+                    loginReplyMsg.LastName = user.LastName;
                     loginReplyMsg.PhoneNumber = user.PhoneNumber;
                 }
             }
@@ -67,7 +67,7 @@ namespace Server
             CreateUserReplyMsg createUserReplyMsg = new CreateUserReplyMsg();
             
             _database.AddUser(createUserMsg.User);
-            createUserReplyMsg.User = createUserMsg.User;
+            //createUserReplyMsg.User = createUserMsg.User;
 
             //send email
 
