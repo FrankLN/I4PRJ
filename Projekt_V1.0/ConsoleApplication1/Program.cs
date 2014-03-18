@@ -10,6 +10,7 @@ namespace ClientApplication
     {
         static void Main(string[] args)
         {
+            new Client(9000);
         }
     }
 }
