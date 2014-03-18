@@ -24,16 +24,18 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private IClientCom clientCom { set; get; }
+        private MainMenuWindow mainMenuWin;
+        private IClientCom clientCom;
         private LoginCom loginObj;
 
         // -----------------------------------
         // CONSTRUCTOR -----------------------
         // -----------------------------------
 
-        public MainWindow()
-        {  
-            clientCom = new ClientCom();
+        public MainWindow(MainMenuWindow parent, IClientCom ccom)
+        {
+            mainMenuWin = parent;
+            clientCom = ccom;
             loginObj = new LoginCom();
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -45,10 +47,10 @@ namespace GUI_first_iteration
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CreateUserWindow createUserWin = new CreateUserWindow(this, clientCom);
+            CreateUserWindow createUserWin = new CreateUserWindow(mainMenuWin, clientCom);
             createUserWin.Show(); // ShowDialog
 
-            this.Hide(); 
+            this.Close(); 
         }
 
         // -----------------------------------
@@ -57,12 +59,12 @@ namespace GUI_first_iteration
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            // Send object
             loginObj.Print();
 
-            MainMenuWindow mainMenuWin = new MainMenuWindow(this, clientCom);
             mainMenuWin.Show();
 
-            this.Hide();
+            this.Close();
         }
 
         private void tbxPassword_GotFocus(object sender, RoutedEventArgs e)
