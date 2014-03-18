@@ -94,11 +94,9 @@ C:\Users\Jonas\Dropbox\JonasOgParsaGUI\PRJ4 - Copy\GUI_first_iteration\obj\Debug
 C:\Users\Jonas\Dropbox\JonasOgParsaGUI\PRJ4 - Copy\GUI_first_iteration\obj\Debug\App.baml
 C:\Users\Jonas\Dropbox\JonasOgParsaGUI\PRJ4 - Copy\GUI_first_iteration\obj\Debug\App.g.cs
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe.config
-C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
-C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\bin\Debug\GUI_first_iteration.pdb
-C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.csprojResolveAssemblyReference.cache
+C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\ActivateUserWindow.baml
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\CreateUserWindow.baml
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\EditUserWindow.baml
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\JobDetailsWindow.baml
@@ -107,6 +105,7 @@ C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\MainMenuWindow.
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\MainWindow.baml
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\NewJobWindow.baml
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\App.baml
+C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\ActivateUserWindow.g.cs
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\CreateUserWindow.g.cs
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\EditUserWindow.g.cs
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\JobDetailsWindow.g.cs
@@ -119,5 +118,5 @@ C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration_Mar
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.g.resources
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.Properties.Resources.resources
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.csproj.GenerateResource.Cache
-C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\ActivateUserWindow.baml
-C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\ActivateUserWindow.g.cs
+C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
+C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb

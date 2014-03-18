@@ -23,18 +23,23 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private MainMenuWindow main_parent;
+        private MainMenuWindow mainMenuWin;
         private IClientCom clientCom;
+        private ILoggedInUser loggedInUser;
         private NewJobCom newJobObj;
+        private bool ClosedInCode;
 
         // -----------------------------------
         // CONSTRUCTOR -----------------------
         // -----------------------------------
 
-        public NewJobWindow(MainMenuWindow parent, IClientCom ccom)
+        public NewJobWindow(MainMenuWindow mWin, IClientCom ccom, ILoggedInUser user)
         {
-            main_parent = parent;
+            mainMenuWin = mWin;
             clientCom = ccom;
+            loggedInUser = user;
+            ClosedInCode = false;
+
             newJobObj = new NewJobCom();
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -51,8 +56,11 @@ namespace GUI_first_iteration
 
         private void btnBackToMain_Click(object sender, RoutedEventArgs e)
         {
+            // Indicate that the window is closed in code
+            ClosedInCode = true;
             this.Close();
-            main_parent.Show();
+
+            mainMenuWin.Show();
         }
 
         private void cbxMaterial_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -77,7 +85,12 @@ namespace GUI_first_iteration
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Application.Current.Shutdown();
+            if (!ClosedInCode)
+            {
+                Application.Current.Shutdown();
+            }
         }
+
+      
     }
 }

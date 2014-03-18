@@ -23,20 +23,22 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private MainMenuWindow main_parent;
+        private MainMenuWindow mainMenuWin;
         private IClientCom clientCom;
         private ILoggedInUser loggedInUser;
         private EditUserCom editUserObj;
+        private bool ClosedInCode;
 
         // -----------------------------------
         // CONSTRUCTOR - EditUserWindow ------
         // -----------------------------------
 
-        public EditUserWindow(MainMenuWindow parent, IClientCom ccom, ILoggedInUser user)
+        public EditUserWindow(MainMenuWindow mWin, IClientCom ccom, ILoggedInUser user)
         {
-            main_parent = parent;
+            mainMenuWin = mWin;
             clientCom = ccom;
             loggedInUser = user;
+            ClosedInCode = false;
 
             InitializeComponent();
 
@@ -65,8 +67,11 @@ namespace GUI_first_iteration
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            main_parent.Show();
+            // Indicate that the window is closed in code
+            ClosedInCode = true;
+            this.Close();
+
+            mainMenuWin.Show();
         }
 
         // ----------------------------------------------------------------------------
@@ -95,8 +100,10 @@ namespace GUI_first_iteration
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Application.Current.Shutdown();
+            if (!ClosedInCode)
+            {
+                Application.Current.Shutdown();
+            }
         }
-
     }
 }
