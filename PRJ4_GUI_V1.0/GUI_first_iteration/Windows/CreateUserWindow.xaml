@@ -7,12 +7,12 @@
         <StackPanel HorizontalAlignment="Left" Height="338" Margin="10,10,0,0" VerticalAlignment="Top" Width="465">
             <Grid Height="336">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="29*"/>
@@ -33,14 +33,14 @@
             </Grid>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Height="84" Margin="10,353,0,0" VerticalAlignment="Top" Width="465">
-            <Grid Height="100">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="29*"/>
                     <ColumnDefinition Width="64*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="btnCreateUser" Content="Create user" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="97" Height="65" Click="btnCreateUser_Click"/>
-                <Button Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Height="65" Click="btnBack_Click_1"/>
-                <TextBlock Name="tblTestNewUser"  Grid.Column="1" HorizontalAlignment="Left" Margin="131,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="179"/>
+                <Button Name="btnCreateUser" Content="Create user" Grid.Column="1" HorizontalAlignment="right" Margin="0,10,10,0" VerticalAlignment="Top" Width="100" Height="35" Click="btnCreateUser_Click"/>
+                <Button Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="100" Height="35" Click="btnBack_Click_1"/>
+
             </Grid>
         </StackPanel>
     </Grid>

@@ -27,7 +27,7 @@ namespace GUI_first_iteration
         private MainMenuWindow mainMenuWin;
         private IClientCom clientCom;
         private LoginCom loginObj;
-
+        private bool ClosedInCode;
         // -----------------------------------
         // CONSTRUCTOR -----------------------
         // -----------------------------------
@@ -37,6 +37,7 @@ namespace GUI_first_iteration
             mainMenuWin = parent;
             clientCom = ccom;
             loginObj = new LoginCom();
+            ClosedInCode = false;
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
@@ -49,7 +50,7 @@ namespace GUI_first_iteration
         {
             CreateUserWindow createUserWin = new CreateUserWindow(mainMenuWin, clientCom);
             createUserWin.Show(); // ShowDialog
-
+            ClosedInCode = true;
             this.Close(); 
         }
 
@@ -63,7 +64,7 @@ namespace GUI_first_iteration
             loginObj.Print();
 
             mainMenuWin.Show();
-
+            ClosedInCode = true;
             this.Close();
         }
 
@@ -103,10 +104,7 @@ namespace GUI_first_iteration
             }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+      
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -114,5 +112,22 @@ namespace GUI_first_iteration
                 this.DragMove();
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+         if (!ClosedInCode)
+            {
+                Application.Current.Shutdown();
+            }
+
+      }
+
+        private void LbExit_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!ClosedInCode)
+            {
+                Application.Current.Shutdown();
+            }
+
+        }
     }
 }
