@@ -40,38 +40,6 @@ USE [$(DatabaseName)];
 
 
 GO
-PRINT N'Creating FK_3DJob_Material...';
-
-
-GO
-ALTER TABLE [dbo].[My3DJob] WITH NOCHECK
-    ADD CONSTRAINT [FK_3DJob_Material] FOREIGN KEY ([Material]) REFERENCES [dbo].[Material] ([MaterialId]);
-
-
-GO
-PRINT N'Creating FK_3DJob_User...';
-
-
-GO
-ALTER TABLE [dbo].[My3DJob] WITH NOCHECK
-    ADD CONSTRAINT [FK_3DJob_User] FOREIGN KEY ([Owner]) REFERENCES [dbo].[Customer] ([Email]);
-
-
-GO
-PRINT N'Checking existing data against newly created constraints';
-
-
-GO
-USE [$(DatabaseName)];
-
-
-GO
-ALTER TABLE [dbo].[My3DJob] WITH CHECK CHECK CONSTRAINT [FK_3DJob_Material];
-
-ALTER TABLE [dbo].[My3DJob] WITH CHECK CHECK CONSTRAINT [FK_3DJob_User];
-
-
-GO
 PRINT N'Update complete.';
 
 

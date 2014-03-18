@@ -4,7 +4,7 @@
     [Material] INT NOT NULL, 
     [Owner] NVARCHAR(50) NOT NULL, 
     [Deadline] NVARCHAR(50) NULL DEFAULT NULL, 
-    [File] NVARCHAR(MAX) NOT NULL, 
+    [MyFile] NVARCHAR(MAX) NOT NULL, 
     [CreationTime] NVARCHAR(50) NOT NULL, 
     [Hollow] INT NOT NULL, 
     [Comment] NVARCHAR(MAX) NULL, 

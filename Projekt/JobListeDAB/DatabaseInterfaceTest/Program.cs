@@ -16,6 +16,7 @@ namespace DatabaseInterfaceTest
             user.Email = "test@email.dk";
             user.FirstName = "NN";
             user.LastName = "XXX";
+            user.PhoneNumber = "20346726";
             user.Password = "password";
 
             var material = new MaterialClass();
@@ -30,15 +31,16 @@ namespace DatabaseInterfaceTest
             job.Deadline = "21-03-2014";
             job.Hollow = 1;
             job.Comment = "Make me!";
+            job.MyFile = "hej";
 
             var db = new Database();
 
-            db.AddUser(user);
+            //db.AddUser(user);
             //db.AddJob(job);
-            //var user2 = db.GetUserInfo("test@email.dk");
-            //Console.WriteLine(user2.FirstName);
-            //var jobliste = db.GetJobList();
-            //Console.WriteLine(jobliste[0].Comment);
+            var user2 = db.GetUserInfo("test@email.dk");
+            Console.WriteLine(user2.FirstName);
+            var jobliste = db.GetJobList();
+            Console.WriteLine(jobliste[0].Comment);
         }
     }
 }
