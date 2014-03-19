@@ -121,3 +121,6 @@ C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.Pro
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.csproj.GenerateResource.Cache
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\ActivateUserWindow.baml
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\Windows\ActivateUserWindow.g.cs
+C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe.config
+C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
+C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
