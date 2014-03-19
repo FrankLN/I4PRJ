@@ -23,20 +23,22 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private MainMenuWindow main_parent;
+        private MainMenuWindow mainMenuWin;
         private IClientCom clientCom;
         private JobHistoryCom jobHistoryObj;
         private ILoggedInUser loggedInUser;
+        private bool ClosedInCode;
 
         // -----------------------------------
         // CONSTRUCTOR -----------------------
         // -----------------------------------
 
-        public JobHistoryWindow(MainMenuWindow parent, IClientCom ccom, ILoggedInUser user)
+        public JobHistoryWindow(MainMenuWindow mWin, IClientCom ccom, ILoggedInUser user)
         {
-            main_parent = parent;
+            mainMenuWin = mWin;
             clientCom = ccom;
             loggedInUser = user;
+            ClosedInCode = false;
 
             jobHistoryObj = new JobHistoryCom();
             jobHistoryObj.Email = loggedInUser.Email;
@@ -48,15 +50,26 @@ namespace GUI_first_iteration
 
         private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
         {
-            JobDetailsWindow jobDetailsWin = new JobDetailsWindow(this, clientCom);
+            JobDetailsWindow jobDetailsWin = new JobDetailsWindow(clientCom, loggedInUser);
 
             jobDetailsWin.Show();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            // Indicate that the window is closed in code
+            ClosedInCode = true;
+            this.Close();
+
+            mainMenuWin.Show();
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!ClosedInCode)
+            {
+                Application.Current.Shutdown();
+            }
+        }
     }
 }

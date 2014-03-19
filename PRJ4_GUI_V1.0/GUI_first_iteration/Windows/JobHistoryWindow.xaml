@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="JobHistoryWindow" Height="476.538" Width="680.192" Closing="Window_Closing">
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Height="60" Margin="10,10,0,0" VerticalAlignment="Top" Width="652"/>
-        <StackPanel HorizontalAlignment="Left" Height="362" Margin="10,75,0,0" VerticalAlignment="Top" Width="652">
+
+        <StackPanel HorizontalAlignment="Left" Height="351" Margin="10,10,0,0" VerticalAlignment="Top" Width="652">
             <Grid Height="362">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="156*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
@@ -21,7 +21,7 @@
                 <ListBox HorizontalAlignment="Left" Height="292" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="197">
                     <ListBoxItem Selected="ListBoxItem_Selected">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Pictures\printerSymbol.jpg"  Stretch="Fill" Height="30" />
+                            <Image Source="/Pictures\printerSymbol.jpg"  Stretch="Fill" Height="30" />
                             <TextBlock Text="Job 1" FontSize="30"/>
                         </StackPanel>
                     </ListBoxItem>
@@ -37,6 +37,9 @@
                 <ListBox HorizontalAlignment="Left" Height="292" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="197" Grid.Column="2">
                 </ListBox>
             </Grid>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Height="60" Margin="10,10,0,0" VerticalAlignment="Bottom" Width="100">
+            <Button x:Name="btnBack" Content="Back" Height="35" Click="btnBack_Click"/>
         </StackPanel>
 
     </Grid>

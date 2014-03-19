@@ -23,18 +23,16 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private MainWindow main_parent;
         private IClientCom clientCom;
         private ILoggedInUser loggedInUser;
 
         // -----------------------------------
         // CONSTRUCTOR -----------------------
         // -----------------------------------
-
-        public MainMenuWindow(MainWindow parent, IClientCom ccom)
+        
+        public MainMenuWindow()
         {
-            main_parent = parent;
-            clientCom = ccom;
+            clientCom = new ClientCom();
 
             loggedInUser = new LoggedInUser();
             loggedInUser.FirstName = "Jonas";
@@ -44,6 +42,10 @@ namespace GUI_first_iteration
 
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            this.Hide();
+            MainWindow mainWin = new MainWindow(this, clientCom);
+            mainWin.Show();
         }
 
         // -----------------------------------
@@ -52,8 +54,12 @@ namespace GUI_first_iteration
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-            main_parent.Show();
+            // Indicate user is logged out
+            loggedInUser.IsLoggedIn = false;
+
             this.Hide();
+            MainWindow mainWin = new MainWindow(this, clientCom);
+            mainWin.Show();
             
         }
 
@@ -63,7 +69,7 @@ namespace GUI_first_iteration
 
         private void btnNewJob_Click(object sender, RoutedEventArgs e)
         {
-            NewJobWindow newJobWin = new NewJobWindow(this, clientCom);
+            NewJobWindow newJobWin = new NewJobWindow(this, clientCom, loggedInUser);
             newJobWin.Show();
 
             this.Hide();

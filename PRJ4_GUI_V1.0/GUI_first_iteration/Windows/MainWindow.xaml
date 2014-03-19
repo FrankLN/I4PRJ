@@ -1,18 +1,23 @@
 ﻿<Window x:Class="GUI_first_iteration.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="400" Width="525" AllowsTransparency="True" MouseDown="Window_MouseDown" WindowStyle="None">
+        Title="MainWindow" Height="400" Width="525" AllowsTransparency="True" MouseDown="Window_MouseDown" WindowStyle="None" Closing="Window_Closing" >
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2" Margin="0" >
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="20" />
             </Border.Effect>
         </Border>
-        <Grid Grid.RowSpan="2">
+        <Grid>
             <StackPanel Margin="0,0,0,226">
-                <Image   Source="login1.png"  Margin="0,10,0,0" Width="100" HorizontalAlignment="Center"/>
                 <DockPanel>
-                    <Label  Name="LogoLabel" Content="3D Printer User interface" FontSize="15" Margin="0,10,0,0" HorizontalAlignment="Center"  />
+                <Label Name="LbExit" Content="X"  Margin="500,0,0,0"  MouseLeftButtonDown="LbExit_OnMouseLeftButtonDown"/>
+                <Label Name="LbMin" Content="-" Margin="-50,0,0,0" Width="19" />
+                </DockPanel>
+                <Image  Source="/Pictures/login1.png"   Margin="0,10,0,0" Width="100" HorizontalAlignment="Center"/>
+                
+                <DockPanel>
+                    <Label  x:Name="LogoLabel" Content="3D Printer User interface" FontSize="15" Margin="0,10,0,0" HorizontalAlignment="Center"  />
                 </DockPanel>
             </StackPanel>
             <StackPanel Margin="0,179,0,5">
@@ -35,8 +40,6 @@
                     <Button Name="btnNewUser" Content="Opret bruger" Grid.Column="0" HorizontalAlignment="Center" Margin="0,10,0,0"  Width="100" Height="30"  Grid.Row="3" Click="Button_Click"/>
                 </Grid>
             </StackPanel>
-
-
 
         </Grid>
 

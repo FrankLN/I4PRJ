@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using System.Net;
+using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using MessageTypes.ReplyMessages;
@@ -7,8 +8,8 @@ namespace ClientApplication
 {
     public interface IClient
     {
-        IReplyMessage ClientRun();
         void SendToServer(ISerializable message);
+        IReplyMessage ClientRun();
     }
     class Client : IClient
     {
@@ -18,14 +19,15 @@ namespace ClientApplication
         private BinaryFormatter bFormatter;
 
         //Constructor which take ip and port belonging to the targeting server
-        public Client(string ip, int port)
+        public Client(int port)
         {
-            Init(ip, port);
+            Init(port);
         }
 
         //Init method setting the up the client 
-        private void Init(string ip, int port)
+        private void Init(int port)
         {
+            IPAddress ip = Dns.GetHostEntry("localhost").AddressList[0];
             clientSocket = new TcpClient();
             clientSocket.Connect(ip, port);
             outInStream = clientSocket.GetStream();
@@ -36,6 +38,7 @@ namespace ClientApplication
         public void SendToServer(ISerializable objekt)
         {
             bFormatter.Serialize(outInStream, objekt);
+
         }
 
         public IReplyMessage ClientRun()

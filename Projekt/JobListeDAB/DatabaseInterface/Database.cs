@@ -13,7 +13,7 @@ namespace DatabaseInterface
     public class Database : IDatabase
     {
         private SqlConnection conn;
-        Database()
+        public Database()
         {
             conn = new SqlConnection(@"Data Source=(localdb)\Projects;Initial Catalog=Joblistesystem;Integrated Security=True;");
         }
@@ -30,7 +30,7 @@ namespace DatabaseInterface
                conn.Open();
 
                // String with SQL statement
-               string userInsert = @"INSERT INTO [User] (Email, FirstName, LastName, PhoneNumber, AdminRights, Password) 
+               string userInsert = @"INSERT INTO [Customer] (Email, FirstName, LastName, PhoneNumber, AdminRights, Password) 
                                         VALUES (@Data1,@Data2,@Data3,@Data4,@Data5, @Data6)";
 
                using (SqlCommand cmd = new SqlCommand(userInsert, conn))
@@ -75,7 +75,7 @@ namespace DatabaseInterface
                 * med matchende email og password returneres dennes bruger ID. Ellers returneres -1. */
 
                 // String with SQL statement
-                string validate = @"SELECT Password FROM User WHERE User.Email = email";
+                string validate = @"SELECT Password FROM Customer WHERE Customer.Email = email";
 
                 string passReturn;
 
@@ -113,7 +113,7 @@ namespace DatabaseInterface
                 conn.Open();
 
                 // String with SQL statement
-                string userInfo = @"SELECT * FROM [User] WHERE User.Email = userId";
+                string userInfo = @"SELECT * FROM [Customer] WHERE Customer.Email = '" + userId + "'";
 
                 using (SqlCommand cmd = new SqlCommand(userInfo, conn))
                 {
@@ -147,7 +147,11 @@ namespace DatabaseInterface
             }
          }
 
+<<<<<<< HEAD
         public void AddJob(JobClass job)
+=======
+         public void AddJob(JobClass job)
+>>>>>>> 38d1e1354da14ccb92a071232dd81ab3a455e98a
          // Add a Jobclass object in the Job tabel on the database.
          {
              try
@@ -156,26 +160,28 @@ namespace DatabaseInterface
                  conn.Open();
 
                  // String with SQL statement
-                 string userInsert = @"INSERT INTO [3DJob] VALUES (@Data1, @Data2, @Data3, @Data4, @Data5, @Data6, @Data7, @Data8)";
+                 string jobInsert = @"INSERT INTO [My3DJob] (OrderId, Material, Owner, Deadline, MyFile, CreationTime, Hollow, Comment) VALUES (@Data1, @Data2, @Data3, @Data4, @Data5, @Data6, @Data7, @Data8)";
 
-                 using (SqlCommand cmd = new SqlCommand(userInsert, conn))
+                 using (SqlCommand cmd = new SqlCommand(jobInsert, conn))
                  {
-                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data1";
-                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data2";
-                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data3";
-                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data4";
-                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data5";
-                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data6";
-                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data7";
-                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = @"Data8";
-                     cmd.Parameters[@"Data1"].Value = job.OrderId;
-                     cmd.Parameters[@"Data2"].Value = job.Material;
-                     cmd.Parameters[@"Data3"].Value = job.Owner;
-                     cmd.Parameters[@"Data4"].Value = job.Deadline;
-                     cmd.Parameters[@"Data5"].Value = job.File;
-                     cmd.Parameters[@"Data6"].Value = job.CreationTime;
-                     cmd.Parameters[@"Data7"].Value = job.Hollow;
-                     cmd.Parameters[@"Data8"].Value = job.Comment;
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data1";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data2";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data3";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data4";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data5";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data6";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data7";
+                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data8";
+                     cmd.Parameters["@Data1"].Value = job.OrderId;
+                     cmd.Parameters["@Data2"].Value = job.Material.MaterialId;
+                     cmd.Parameters["@Data3"].Value = job.Owner.Email;
+                     cmd.Parameters["@Data4"].Value = job.Deadline;
+                     cmd.Parameters["@Data5"].Value = job.MyFile;
+                     cmd.Parameters["@Data6"].Value = job.CreationTime;
+                     cmd.Parameters["@Data7"].Value = job.Hollow;
+                     cmd.Parameters["@Data8"].Value = job.Comment;
+
+                     job.OrderId = (int) cmd.ExecuteScalar();
                  }
              }
              finally
@@ -197,7 +203,7 @@ namespace DatabaseInterface
                  conn.Open();
 
                  // String with SQL statement
-                 string userInsert = @"SELECT * FROM 3DJob";
+                 string userInsert = @"SELECT * FROM My3DJob";
 
                  using (SqlCommand cmd = new SqlCommand(userInsert, conn))
                  {
@@ -205,17 +211,22 @@ namespace DatabaseInterface
 
                      SqlDataReader rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
 
-                     for(int i = 0; rdr.Read(); i++)
+                     //int i = 1;
+
+                     while (rdr.Read())
                      {
                          var loc3DJob = new JobClass();
 
+                         //loc3DJob.OrderId = i;
                          loc3DJob.OrderId = (int) rdr["OrderId"];
-                         loc3DJob.Material = (MaterialClass)rdr["Material"];
-                         loc3DJob.Owner = (UserClass)rdr["Owner"];
+                         loc3DJob.Material.MaterialId = (int)rdr["Material"];
+                         loc3DJob.Owner.Email = (string)rdr["Owner"];
                          loc3DJob.Deadline = (string)rdr["Deadline"];
-                         loc3DJob.File = (string)rdr["File"];
+                         loc3DJob.MyFile = (string)rdr["MyFile"];
                          loc3DJob.CreationTime = (string)rdr["CreationTime"];
                          loc3DJobList.Add(loc3DJob);
+
+                         //i++;
                      }
                      return loc3DJobList;
                  }
