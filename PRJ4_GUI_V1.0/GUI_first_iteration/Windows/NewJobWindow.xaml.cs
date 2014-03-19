@@ -30,7 +30,7 @@ namespace GUI_first_iteration
         private bool ClosedInCode;
 
         // -----------------------------------
-        // CONSTRUCTOR -----------------------
+        // CONSTRUCTOR - NewJobWindow --------
         // -----------------------------------
 
         public NewJobWindow(MainMenuWindow mWin, IClientCom ccom, ILoggedInUser user)
@@ -53,6 +53,10 @@ namespace GUI_first_iteration
         {
             newJobObj.Print();
         }
+
+        // -----------------------------------
+        // BUTTON - Back to main menu --------
+        // -----------------------------------
 
         private void btnBackToMain_Click(object sender, RoutedEventArgs e)
         {
@@ -83,6 +87,10 @@ namespace GUI_first_iteration
             newJobObj.Comments = tbxComments.Text;
         }
 
+        // -----------------------------------
+        // METHOD - Window closing -----------
+        // -----------------------------------
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!ClosedInCode)
@@ -90,7 +98,5 @@ namespace GUI_first_iteration
                 Application.Current.Shutdown();
             }
         }
-
-      
     }
 }

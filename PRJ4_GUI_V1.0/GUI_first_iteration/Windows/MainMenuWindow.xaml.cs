@@ -27,7 +27,7 @@ namespace GUI_first_iteration
         private ILoggedInUser loggedInUser;
 
         // -----------------------------------
-        // CONSTRUCTOR -----------------------
+        // CONSTRUCTOR - MainMenuWindow ------
         // -----------------------------------
         
         public MainMenuWindow()
@@ -41,6 +41,8 @@ namespace GUI_first_iteration
             loggedInUser.Phone = "60535052";
 
             InitializeComponent();
+
+            // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             this.Hide();
@@ -60,7 +62,6 @@ namespace GUI_first_iteration
             this.Hide();
             MainWindow mainWin = new MainWindow(this, clientCom);
             mainWin.Show();
-            
         }
 
         // -----------------------------------
@@ -73,7 +74,6 @@ namespace GUI_first_iteration
             newJobWin.Show();
 
             this.Hide();
-
         }
 
         // -----------------------------------
@@ -88,6 +88,10 @@ namespace GUI_first_iteration
             this.Hide();
         }
 
+        // -----------------------------------
+        // BUTTON - Edit profile --------------
+        // -----------------------------------
+
         private void btnEditProfile_Click(object sender, RoutedEventArgs e)
         {
             EditUserWindow newJobWin = new EditUserWindow(this, clientCom, loggedInUser);
@@ -95,6 +99,10 @@ namespace GUI_first_iteration
 
             this.Hide();
         }
+
+        // -----------------------------------
+        // METHOD - Window closing -----------
+        // -----------------------------------
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

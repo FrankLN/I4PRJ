@@ -4,16 +4,27 @@
 winexe
 C#
 .cs
-C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\
+<<<<<<< HEAD
+C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\
+=======
+C:\Users\Frank\git\I4PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\
+>>>>>>> 821fb22be6c563197352a0514a4cf05c7b1a073e
 GUI_first_iteration
 none
 false
 DEBUG;TRACE
-C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\App.xaml
+<<<<<<< HEAD
+C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\App.xaml
 81609241794
 
-262094273043
-121886138872
+26813936240
+=======
+C:\Users\Frank\git\I4PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\App.xaml
+81609241794
+
+26-168618115
+>>>>>>> 821fb22be6c563197352a0514a4cf05c7b1a073e
+12-1401562060
 Windows\ActivateUserWindow.xaml;Windows\CreateUserWindow.xaml;Windows\EditUserWindow.xaml;Windows\JobDetailsWindow.xaml;Windows\JobHistoryWindow.xaml;Windows\MainMenuWindow.xaml;Windows\MainWindow.xaml;Windows\NewJobWindow.xaml;
 
 False
