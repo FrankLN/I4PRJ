@@ -1,8 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Resources;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
 using MessageTypes.ReplyMessages;
 
 namespace ClientApplication
@@ -10,8 +13,10 @@ namespace ClientApplication
     public interface IClient
     {
         void SendToServer(ISerializable message);
-        IReplyMessage ClientRun();
-        
+        IReplyMessage ReceiveMessage();
+        void ReceiveFile(long fileSize,string fileName);
+        void SendFile(long fileSize, string path);
+
     }
     class Client : IClient
     {
@@ -19,7 +24,7 @@ namespace ClientApplication
         private TcpClient clientSocket;
         private NetworkStream outInStream;
         private BinaryFormatter bFormatter;
-        private int maxPackageSize = 1000;
+        private const int MaxPackageSize = 1000;
 
         //Constructor which take ip and port belonging to the targeting server
         public Client(int port)
@@ -43,26 +48,43 @@ namespace ClientApplication
             bFormatter.Serialize(outInStream, objekt);
 
         }
-        // Methode that receives messages
-        public IReplyMessage ClientRun()
+
+        public IReplyMessage ReceiveMessage()
         {
             IReplyMessage reply = (IReplyMessage)bFormatter.Deserialize(outInStream);
             return reply;
-
         }
+
         // Methode that receives files
-        public void ReceiveFromServer(long fileSize, string fileName)
+        public void ReceiveFile(long fileSize, string fileName)
         {
             int n;
-            long rest = fileSize;
-            string path;
-            FileStream downloadFile = new FileStream(path,FileMode.Create,FileAccess.Write);
-            
-            var receiveBuffer = new byte[1000];
+            var rest = fileSize;
+            var name = fileName.Substring(fileName.LastIndexOf("/"));
+            var pathAndName = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "Downloads" + name;
+                
+            var downloadFile = new FileStream(pathAndName,FileMode.Create,FileAccess.Write);
+
+            var receiveBuffer = new byte[MaxPackageSize];
             while (rest != 0)
             {
-                n = outInStream.Read(receiveBuffer, 0, maxPackageSize);
+                n = outInStream.Read(receiveBuffer, 0, MaxPackageSize);
+                downloadFile.Write(receiveBuffer, 0, MaxPackageSize);
 
+                rest -= n;
+            }
+        }
+        // Methode that sends a file of a job
+        public void SendFile(long fileSize ,string path)
+        {
+            int n;
+            var rest = fileSize;
+            var sendBuffer = new byte[MaxPackageSize];
+            var uploadFile = new FileStream(path,FileMode.Open);
+            while (rest != 0)
+            {
+                n = uploadFile.Read(sendBuffer, 0, MaxPackageSize);
+                outInStream.Write(sendBuffer, 0, n);
                 rest -= n;
             }
         }
