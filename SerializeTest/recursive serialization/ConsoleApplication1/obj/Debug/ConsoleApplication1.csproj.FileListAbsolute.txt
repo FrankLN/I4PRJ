@@ -1,6 +1,0 @@
-C:\Users\Frank\Desktop\recursive serialization\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
-C:\Users\Frank\Desktop\recursive serialization\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
-C:\Users\Frank\Desktop\recursive serialization\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
-C:\Users\Frank\Desktop\recursive serialization\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
-C:\Users\Frank\Desktop\recursive serialization\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
-C:\Users\Frank\Desktop\recursive serialization\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

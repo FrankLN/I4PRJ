@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 using DatabaseInterface;
 using Server;
 
-
 namespace MessageTypes.ReplyMessages
 {
     public interface IGetMaterialsReplyMsg

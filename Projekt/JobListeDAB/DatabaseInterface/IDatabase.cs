@@ -6,7 +6,7 @@ namespace DatabaseInterface
     {
         void AddUser(UserClass user);
 
-        int ValidateLogInInfo(string email, string password);
+        //int ValidateLogInInfo(string email, string password);
 
         UserClass GetUserInfo(string userId);
 
