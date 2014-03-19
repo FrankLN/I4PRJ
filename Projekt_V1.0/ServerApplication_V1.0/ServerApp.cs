@@ -99,7 +99,7 @@ namespace Server
         {
             CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
 
-            _server.RecieveFile(createJobMsg.Job.File, createJobMsg.Job.FileSize);
+            _server.RecieveFile("C:/Jobs/" + createJobMsg.Job.File, createJobMsg.Job.FileSize);
 
             _database.AddJob(createJobMsg.Job);
             createJobReplyMsg.Created = true;
@@ -120,12 +120,17 @@ namespace Server
         {
             DownloadJobReplyMsg downloadJobReplyMsg = new DownloadJobReplyMsg();
 
-            if (File.Exists("/Jobs/" + downloadJobMsg.FileName))
+            if (File.Exists("C:/Jobs/" + downloadJobMsg.FileName))
             {
+                downloadJobReplyMsg.FileSize = File.ReadAllBytes("C:/Jobs/" + downloadJobMsg.FileName).Length;
 
                 _server.SendToClient(downloadJobReplyMsg);
 
-                _server.SendFile(downloadJobMsg.FileName, File.ReadAllBytes("/Jobs" + downloadJobMsg.FileName).Length); 
+                _server.SendFile(downloadJobMsg.FileName, downloadJobReplyMsg.FileSize); 
+            }
+            else
+            {
+                downloadJobReplyMsg.FileSize = 0;
             }
             
         }

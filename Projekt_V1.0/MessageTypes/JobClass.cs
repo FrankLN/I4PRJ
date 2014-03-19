@@ -15,6 +15,7 @@ namespace DatabaseInterface
         public UserClass Owner { get; set; }
         public string File { get; set; }
         public string CreationTime { get; set; }
+        public long FileSize { get; set; }
 
         public JobClass(SerializationInfo info, StreamingContext context)
         {
@@ -24,6 +25,7 @@ namespace DatabaseInterface
             File = (string)info.GetValue("File", typeof(string));
             Owner = (UserClass)info.GetValue("Owner", typeof(UserClass));
             CreationTime = (string)info.GetValue("CreationTime", typeof(string));
+            FileSize = (long)info.GetValue("FileSize", typeof(long));
         }
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -33,6 +35,8 @@ namespace DatabaseInterface
             info.AddValue("File", File);
             info.AddValue("Owner", Owner);
             info.AddValue("CreationTime", CreationTime);
+            info.AddValue("FileSize", FileSize);
+
         }
     }
 }

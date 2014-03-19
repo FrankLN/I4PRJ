@@ -27,7 +27,7 @@ namespace GUI_first_iteration
         private ILoggedInUser loggedInUser;
 
         // -----------------------------------
-        // CONSTRUCTOR -----------------------
+        // CONSTRUCTOR - JobDetailsWindow ----
         // -----------------------------------
      
         public JobDetailsWindow(IClientCom ccom, ILoggedInUser user)
@@ -35,8 +35,14 @@ namespace GUI_first_iteration
             clientCom = ccom;
             loggedInUser = user;
             InitializeComponent();
+
+            // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
+
+        // -----------------------------------
+        // BUTTON -- Back --------------------
+        // -----------------------------------
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {

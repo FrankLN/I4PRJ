@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\
+C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\
 GUI_first_iteration
 none
 false
 DEBUG;TRACE
-C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\App.xaml
+C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\App.xaml
 81609241794
 
 22-660148910
-121886138872
+12-1401562060
 Windows\ActivateUserWindow.xaml;Windows\CreateUserWindow.xaml;Windows\EditUserWindow.xaml;Windows\JobDetailsWindow.xaml;Windows\JobHistoryWindow.xaml;Windows\MainMenuWindow.xaml;Windows\MainWindow.xaml;Windows\NewJobWindow.xaml;
 
 False
