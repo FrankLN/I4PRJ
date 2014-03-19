@@ -13,8 +13,8 @@ namespace Server
     {
         void SendToClient(ISerializable message);
         IMessage ServerRun();
-        void RecieveFile(string fileName, int fileSize);
-        void SendFile(string fileName, int fileSize);
+        void RecieveFile(string fileName, long fileSize);
+        void SendFile(string fileName, long fileSize);
     }
 
 	//Server has interface IServer

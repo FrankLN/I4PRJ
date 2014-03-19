@@ -63,6 +63,9 @@ namespace GUI_first_iteration
         private void btnSaveUser_Click(object sender, RoutedEventArgs e)
         {
             editUserObj.Print();
+            ClosedInCode = true;
+            this.Close();
+           mainMenuWin.Show();
         }
 
         // -----------------------------------

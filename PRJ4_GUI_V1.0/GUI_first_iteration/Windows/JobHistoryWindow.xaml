@@ -27,7 +27,7 @@
                     </ListBoxItem>
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="printerSymbol.jpg"  Stretch="Fill" Height="30" />
+                            <Image Source="/Pictures\printerSymbol.jpg"  Stretch="Fill" Height="30" />
                             <TextBlock Text="Job 2" FontSize="30"/>
                         </StackPanel>
                     </ListBoxItem>
