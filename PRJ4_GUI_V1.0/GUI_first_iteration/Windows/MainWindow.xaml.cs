@@ -28,8 +28,9 @@ namespace GUI_first_iteration
         private IClientCom clientCom;
         private LoginCom loginObj;
         private bool ClosedInCode;
+
         // -----------------------------------
-        // CONSTRUCTOR -----------------------
+        // CONSTRUCTOR - MainWindow ----------
         // -----------------------------------
 
         public MainWindow(MainMenuWindow parent, IClientCom ccom)
@@ -103,8 +104,6 @@ namespace GUI_first_iteration
                 loginObj.Password = tbxPassword.Password;
             }
         }
-
-      
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {

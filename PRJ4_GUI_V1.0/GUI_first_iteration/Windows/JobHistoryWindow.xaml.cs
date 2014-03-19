@@ -30,7 +30,7 @@ namespace GUI_first_iteration
         private bool ClosedInCode;
 
         // -----------------------------------
-        // CONSTRUCTOR -----------------------
+        // CONSTRUCTOR - JobHistoryWindow ----
         // -----------------------------------
 
         public JobHistoryWindow(MainMenuWindow mWin, IClientCom ccom, ILoggedInUser user)
@@ -45,8 +45,14 @@ namespace GUI_first_iteration
             jobHistoryObj.Print();
 
             InitializeComponent();
+
+            // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
+
+        // -----------------------------------
+        // LISTBOX CLICK - Listbox item selected 
+        // -----------------------------------
 
         private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
         {
@@ -54,6 +60,10 @@ namespace GUI_first_iteration
 
             jobDetailsWin.Show();
         }
+
+        // -----------------------------------
+        // BUTTON - Back ---------------------
+        // -----------------------------------
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -63,6 +73,10 @@ namespace GUI_first_iteration
 
             mainMenuWin.Show();
         }
+
+        // -----------------------------------
+        // METHOD - Window closing -----------
+        // -----------------------------------
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

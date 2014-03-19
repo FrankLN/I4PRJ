@@ -41,6 +41,8 @@ namespace GUI_first_iteration
 
             createUserObj = new CreateUserCom();
             InitializeComponent();
+
+            // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
@@ -103,6 +105,10 @@ namespace GUI_first_iteration
         {
             createUserObj.PasswordRepeat = TbxPasswordRepeat.Password;
         }
+
+        // -----------------------------------
+        // METHOD - Window closing -----------
+        // -----------------------------------
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

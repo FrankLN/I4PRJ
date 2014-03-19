@@ -19,23 +19,35 @@ namespace GUI_first_iteration
     /// </summary>
     public partial class ActivateUserWindow : Window
     {
-        private CreateUserWindow main_parent;
+        // -----------------------------------
+        // DATA MEMBERS ----------------------  
+        // -----------------------------------
+
+        private CreateUserWindow createUserWin;
         private ActivateUserCom activateUserObj;
 
-        public ActivateUserWindow(CreateUserWindow parent)
+        // -----------------------------------
+        // CONSTRUCTOR - ActivateUserWindow --
+        // -----------------------------------
+
+        public ActivateUserWindow(CreateUserWindow cuWin)
         {
-            main_parent = parent;
+            createUserWin = cuWin;
             activateUserObj = new ActivateUserCom();
             InitializeComponent();
 
+            // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
+
+        // -----------------------------------
+        // BUTTON - Activate user ------------
+        // -----------------------------------
 
         private void btnActivateUser_Click(object sender, RoutedEventArgs e)
         {
             activateUserObj.ActivationKey = tbxActivateUser.Text;
             activateUserObj.Print();
         }
-
     }
 }
