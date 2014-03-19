@@ -23,30 +23,36 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private MainMenuWindow main_parent;
+        private MainMenuWindow mainMenuWin;
         private IClientCom clientCom;
         private ILoggedInUser loggedInUser;
         private EditUserCom editUserObj;
+        private bool ClosedInCode;
 
         // -----------------------------------
         // CONSTRUCTOR - EditUserWindow ------
         // -----------------------------------
 
-        public EditUserWindow(MainMenuWindow parent, IClientCom ccom, ILoggedInUser user)
+        public EditUserWindow(MainMenuWindow mWin, IClientCom ccom, ILoggedInUser user)
         {
-            main_parent = parent;
+            // Set private data members
+            mainMenuWin = mWin;
             clientCom = ccom;
             loggedInUser = user;
+            ClosedInCode = false;
+
+            // Create object to be sent to server
+            editUserObj = new EditUserCom();
 
             InitializeComponent();
 
+            // Fill textbox with information about current logged in user
             TbxName.Text = user.FirstName;
             TbxSurname.Text = user.Surname;
             TbxEmail.Text = user.Email;
             TbxPhone.Text = user.Phone;
 
-            editUserObj = new EditUserCom();
-
+            // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
@@ -65,38 +71,23 @@ namespace GUI_first_iteration
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            main_parent.Show();
+            // Indicate that the window is closed in code
+            ClosedInCode = true;
+            this.Close();
+
+            mainMenuWin.Show();
         }
 
-        // ----------------------------------------------------------------------------
-        // Methods for updating class with content of textbox, upon leaving the textbox
-        // ----------------------------------------------------------------------------
-
-        private void TbxName_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            editUserObj.FirstName = TbxName.Text;
-        }
-
-        private void TbxSurname_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            editUserObj.Surname = TbxSurname.Text;
-        }
-
-        private void TbxEmail_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            editUserObj.Email = TbxEmail.Text;
-        }
-
-        private void TbxPhone_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            editUserObj.Phone = TbxPhone.Text;
-        }
+        // -----------------------------------
+        // METHOD - Window closing -----------
+        // -----------------------------------
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Application.Current.Shutdown();
+            if (!ClosedInCode)
+            {
+                Application.Current.Shutdown();
+            }
         }
-
     }
 }

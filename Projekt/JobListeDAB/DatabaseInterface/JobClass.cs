@@ -14,7 +14,7 @@ namespace DatabaseInterface
             Material = null;
             Deadline = null;
             Owner = null;
-            File = null;
+            MyFile = null;
             CreationTime = null;
             Hollow = 0;             // Hollow is set to 0 as the 3DJob is full by default.
             Comment = null;
@@ -24,7 +24,7 @@ namespace DatabaseInterface
         public MaterialClass Material { get; set; }
         public string Deadline { get; set; }
         public UserClass Owner { get; set; }
-        public string File { get; set; }
+        public string MyFile { get; set; }
         public string CreationTime { get; set; }
         public int Hollow { get; set; }
         public string Comment { get; set; }

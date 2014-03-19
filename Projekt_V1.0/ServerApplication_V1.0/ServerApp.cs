@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using DatabaseInterface;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
@@ -10,9 +11,37 @@ namespace Server
         private IServer _server;
         private IDatabase _database;
 
-        public ServerApp(string ip, int port)
+        private string GenerateActivationCode()
         {
-            _server = new Server(ip, port);
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            var result = new string(
+                Enumerable.Repeat(chars, 8)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+
+            return result;
+        }
+
+        private void SendEmail(string email, string subject, string text, string server)
+        {
+            System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+            message.To.Add(email);
+            message.Subject = subject;
+            message.From = new System.Net.Mail.MailAddress("automail@cartesius.dk");
+            message.Body = text;
+            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(server);
+            smtp.Send(message);
+        }
+
+        private void SendFile()
+        {
+            
+        }
+
+        public ServerApp(int port)
+        {
+            _server = new Server(port);
 
             while (true)
             {
@@ -35,9 +64,7 @@ namespace Server
                 if (user.Password == loginMsg.Password)
                 {
                     loginReplyMsg.Password = true;
-                    loginReplyMsg.FirstName = user.FirstName;
-                    loginReplyMsg.LastName = user.LastName;
-                    loginReplyMsg.PhoneNumber = user.PhoneNumber;
+                    loginReplyMsg.User = user;
                 }
             }
             else
@@ -53,41 +80,90 @@ namespace Server
         {
             CreateUserReplyMsg createUserReplyMsg = new CreateUserReplyMsg();
             
-            var user = new User();
+            _database.AddUser(createUserMsg.User);
+            createUserReplyMsg.Created = true;
+            createUserReplyMsg.ActivationCode = GenerateActivationCode();
 
-            user.FirstName = createUserMsg.FirstName;
-            user.LastName = createUserMsg.LastName;
-            user.PhoneNumber = createUserMsg.PhoneNumber;
-            user.Password = createUserMsg.Password;
-            user.Email = createUserMsg.Email;
+            //send email
+            string emailText = "Hello " + createUserMsg.User.FirstName + 
+                "\n\nThanks for your reg. on 3D-Printer. To succesfully " +
+                "activate your account copy the activation code below and " +
+                "paste it in the application. \n\nApplication code: " +
+                createUserReplyMsg.ActivationCode + "\n\nThis email cannot be replied.";
 
-            dbInterface.InsertUser(user);
+            SendEmail(createUserMsg.User.Email, "Activation code to 3D-Printer", 
+                                                    emailText, "smtp.google.com");
 
+            //reply
+            _server.SendToClient(createUserReplyMsg);
         }
 
         public void CreateJob(ICreateJobMsg createJobMsg)
         {
-            throw new NotImplementedException();
+            CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
+
+            _database.AddJob(createJobMsg.Job);
+            createJobReplyMsg.Created = true;
+
+            _server.SendToClient(createJobReplyMsg);
         }
 
         public void RequestJobs(IRequestJobsMsg requestJobsMsg)
         {
-            throw new NotImplementedException();
+            RequestJobsReplyMsg requestJobsReplyMsg = new RequestJobsReplyMsg();
+
+            requestJobsReplyMsg.JobList = _database.GetJobList();
+
+            _server.SendToClient(requestJobsReplyMsg);
         }
 
         public void DownloadJob(IDownloadJobMsg downloadJobMsg)
         {
-            throw new NotImplementedException();
+            DownloadJobReplyMsg downloadJobReplyMsg = new DownloadJobReplyMsg();
+
+            _server.SendToClient(downloadJobReplyMsg);
+
+            SendFile();
         }
 
         public void GetMaterials(IGetMaterialsMsg getMaterialsMsg)
         {
-            throw new NotImplementedException();
+            GetMaterialsReplyMsg getMaterialsReplyMsg = new GetMaterialsReplyMsg();
+
+            //getMaterialsReplyMsg.Materials = _database.GetMaterials();
+
+            _server.SendToClient(getMaterialsReplyMsg);
         }
 
         public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg)
         {
-            throw new NotImplementedException();
+            ActivationCodeRequestReplyMsg activationCodeRequestReplyMsg = new ActivationCodeRequestReplyMsg();
+
+
+
+            if (_database.GetUserInfo(activationCodeRequestMsg.Email) != null)
+            {
+
+                activationCodeRequestReplyMsg.Accepted = true;
+                activationCodeRequestReplyMsg.ActivationCode = GenerateActivationCode();
+
+                //send email
+                string emailText = "Hello " + _database.GetUserInfo(activationCodeRequestMsg.Email).FirstName +
+                                   "\n\nThanks for your reg. on 3D-Printer. To succesfully " +
+                                   "activate your account copy the activation code below and " +
+                                   "paste it in the application. \n\nApplication code: " +
+                                   activationCodeRequestReplyMsg.ActivationCode + "\n\nThis email cannot be replied.";
+
+                SendEmail(activationCodeRequestMsg.Email, "Activation code to 3D-Printer",
+                    emailText, "smtp.google.com");
+            }
+            else
+            {
+                activationCodeRequestReplyMsg.Accepted = false;
+
+            }
+
+            _server.SendToClient(activationCodeRequestReplyMsg);
         }
     }
 }

@@ -23,24 +23,30 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private JobHistoryWindow main_parent;
         private IClientCom clientCom;
+        private ILoggedInUser loggedInUser;
 
         // -----------------------------------
-        // CONSTRUCTOR -----------------------
+        // CONSTRUCTOR - JobDetailsWindow ----
         // -----------------------------------
      
-        public JobDetailsWindow(JobHistoryWindow parent, IClientCom ccom)
+        public JobDetailsWindow(IClientCom ccom, ILoggedInUser user)
         {
-            main_parent = parent;
             clientCom = ccom;
+            loggedInUser = user;
             InitializeComponent();
+
+            // Center window at startup
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        // -----------------------------------
+        // BUTTON -- Back --------------------
+        // -----------------------------------
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            main_parent.Show();
         }
     }
 }

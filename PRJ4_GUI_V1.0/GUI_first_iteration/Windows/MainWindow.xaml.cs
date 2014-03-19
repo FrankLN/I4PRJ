@@ -24,17 +24,21 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private IClientCom clientCom { set; get; }
+        private MainMenuWindow mainMenuWin;
+        private IClientCom clientCom;
         private LoginCom loginObj;
+        private bool ClosedInCode;
 
         // -----------------------------------
-        // CONSTRUCTOR -----------------------
+        // CONSTRUCTOR - MainWindow ----------
         // -----------------------------------
 
-        public MainWindow()
-        {  
-            clientCom = new ClientCom();
+        public MainWindow(MainMenuWindow parent, IClientCom ccom)
+        {
+            mainMenuWin = parent;
+            clientCom = ccom;
             loginObj = new LoginCom();
+            ClosedInCode = false;
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
@@ -45,10 +49,10 @@ namespace GUI_first_iteration
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CreateUserWindow createUserWin = new CreateUserWindow(this, clientCom);
+            CreateUserWindow createUserWin = new CreateUserWindow(mainMenuWin, clientCom);
             createUserWin.Show(); // ShowDialog
-
-            this.Hide(); 
+            ClosedInCode = true;
+            this.Close(); 
         }
 
         // -----------------------------------
@@ -57,12 +61,12 @@ namespace GUI_first_iteration
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            // Send object
             loginObj.Print();
 
-            MainMenuWindow mainMenuWin = new MainMenuWindow(this, clientCom);
             mainMenuWin.Show();
-
-            this.Hide();
+            ClosedInCode = true;
+            this.Close();
         }
 
         private void tbxPassword_GotFocus(object sender, RoutedEventArgs e)
@@ -101,16 +105,28 @@ namespace GUI_first_iteration
             }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+         if (!ClosedInCode)
+            {
+                Application.Current.Shutdown();
+            }
+
+      }
+
+        private void LbExit_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!ClosedInCode)
+            {
+                Application.Current.Shutdown();
+            }
+
+        }
     }
 }

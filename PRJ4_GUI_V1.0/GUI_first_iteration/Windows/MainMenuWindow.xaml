@@ -1,24 +1,20 @@
 ﻿<Window x:Class="GUI_first_iteration.MainMenuWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainMenuWindow" Height="476.538" Width="492.692" Closing="Window_Closing">
+        Title="MainMenuWindow" Height="380" Width="492.692" Closing="Window_Closing">
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Height="131" Margin="10,10,0,0" VerticalAlignment="Top" Width="465">
-            <Button Name="btnLogOut" Content="Log out" Height="71" Click="btnLogOut_Click"/>
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="220" Margin="10,146,0,0" VerticalAlignment="Top" Width="465">
-            <Grid Height="219">
+      
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="70*"/>
-                    <RowDefinition Height="70*"/>
-                    <RowDefinition Height="70*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Button Name="btnEditProfile" Content="Edit profile" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="445" Height="53" Click="btnEditProfile_Click"/>
-                <Button Name="btnNewJob" Content="New job" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="445" Height="53" Grid.Row="1" Click="btnNewJob_Click"/>
-                <Button Name="btnJobHistory" Content="Job history" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="445" Height="53" Grid.Row="2" Click="btnJobHistory_Click"/>
+                <Button Name="btnEditProfile" Content="Edit profile" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="445" Height="53" Click="btnEditProfile_Click"/>
+                <Button Name="btnNewJob" Content="New job" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="445" Height="53" Grid.Row="1" Click="btnNewJob_Click"/>
+                <Button Name="btnJobHistory" Content="Job history" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="445" Height="53" Grid.Row="2" Click="btnJobHistory_Click"/>
+                <Button Name="btnLogOut" Content="Log out" Grid.Row="3" Height="53" Click="btnLogOut_Click" Width="100" Margin="0,50,0,0" HorizontalAlignment="Center"/>
             </Grid>
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="66" Margin="10,371,0,0" VerticalAlignment="Top" Width="465"/>
-
-    </Grid>
+     
+       
 </Window>

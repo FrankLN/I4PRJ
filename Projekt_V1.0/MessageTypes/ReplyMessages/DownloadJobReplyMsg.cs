@@ -1,15 +1,17 @@
+using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization;
 using Server;
 
 namespace MessageTypes.ReplyMessages
 {
-    public class DownloadJobReplyMsg : IReplyMessage, ISerializable
+    public interface IDownloadJobReplyMsg
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string PhoneNumber { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+         List<byte> File3D 
+    }
+    public class DownloadJobReplyMsg : IReplyMessage, ISerializable, IDownloadJobReplyMsg
+    {
+        public List<byte> File3D { get; set; }
 
         public DownloadJobReplyMsg()
         {
@@ -18,11 +20,8 @@ namespace MessageTypes.ReplyMessages
 
         public DownloadJobReplyMsg(SerializationInfo info, StreamingContext context)
         {
-            Email = (string)info.GetValue("Email", typeof(string));
-            Password = (string)info.GetValue("Password", typeof(string));
-            PhoneNumber = (string)info.GetValue("PhoneNumber", typeof(string));
-            FirstName = (string)info.GetValue("FirstName", typeof(string));
-            LastName = (string)info.GetValue("LastName", typeof(string));
+            File3D = (List<byte>)info.GetValue("Email", typeof(List<byte>));
+
         }
 
         public void Run(IServerApp serverApp)
@@ -32,11 +31,7 @@ namespace MessageTypes.ReplyMessages
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Email", Email);
-            info.AddValue("Password", Password);
-            info.AddValue("PhoneNumber", PhoneNumber);
-            info.AddValue("FirsName", FirstName);
-            info.AddValue("LastName", LastName);
+            info.AddValue("File3D", File3D);
         }
     }
 }

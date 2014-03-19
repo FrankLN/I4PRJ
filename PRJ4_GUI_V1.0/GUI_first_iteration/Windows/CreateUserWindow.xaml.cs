@@ -23,20 +23,26 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------  
         // -----------------------------------
 
-        private MainWindow main_parent;
+        private MainMenuWindow mainMenuWin;
         private IClientCom clientCom;
         private CreateUserCom createUserObj;
+
+        private bool ClosedInCode;
 
         // -----------------------------------
         // CONSTRUCTOR - CreateUserWindow ----
         // -----------------------------------
 
-        public CreateUserWindow(MainWindow parent, IClientCom ccom)
+        public CreateUserWindow(MainMenuWindow mWin, IClientCom ccom)
         {
-            main_parent = parent;
+            mainMenuWin = mWin;
             clientCom = ccom;
+            ClosedInCode = false;
+
             createUserObj = new CreateUserCom();
             InitializeComponent();
+
+            // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
@@ -58,8 +64,12 @@ namespace GUI_first_iteration
 
         private void btnBack_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            main_parent.Show();
+            MainWindow mainWin = new MainWindow(mainMenuWin, clientCom);
+            mainWin.Show();
+
+            // Indicate that the window is closed in code
+            ClosedInCode = true;
+            this.Close();
         }
 
         // ----------------------------------------------------------------------------
@@ -88,17 +98,27 @@ namespace GUI_first_iteration
 
         private void TbxPassword_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            createUserObj.Password = TbxPassword.Text;
+            createUserObj.Password = TbxPassword.Password;
         }
 
         private void TbxPasswordRepeat_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            createUserObj.PasswordRepeat = TbxPasswordRepeat.Text;
+            createUserObj.PasswordRepeat = TbxPasswordRepeat.Password;
         }
+
+        // -----------------------------------
+        // METHOD - Window closing -----------
+        // -----------------------------------
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Application.Current.Shutdown();
+            // Application should only shut down if window was closed manually (alt f4  or  x-button)
+            if (!ClosedInCode)
+            {
+                Application.Current.Shutdown();
+            }
+            
         }
+
     }
 }

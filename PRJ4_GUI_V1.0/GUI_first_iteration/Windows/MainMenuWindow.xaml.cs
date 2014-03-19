@@ -23,18 +23,16 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private MainWindow main_parent;
         private IClientCom clientCom;
         private ILoggedInUser loggedInUser;
 
         // -----------------------------------
-        // CONSTRUCTOR -----------------------
+        // CONSTRUCTOR - MainMenuWindow ------
         // -----------------------------------
-
-        public MainMenuWindow(MainWindow parent, IClientCom ccom)
+        
+        public MainMenuWindow()
         {
-            main_parent = parent;
-            clientCom = ccom;
+            clientCom = new ClientCom();
 
             loggedInUser = new LoggedInUser();
             loggedInUser.FirstName = "Jonas";
@@ -43,7 +41,13 @@ namespace GUI_first_iteration
             loggedInUser.Phone = "60535052";
 
             InitializeComponent();
+
+            // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            this.Hide();
+            MainWindow mainWin = new MainWindow(this, clientCom);
+            mainWin.Show();
         }
 
         // -----------------------------------
@@ -52,9 +56,12 @@ namespace GUI_first_iteration
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-            main_parent.Show();
+            // Indicate user is logged out
+            loggedInUser.IsLoggedIn = false;
+
             this.Hide();
-            
+            MainWindow mainWin = new MainWindow(this, clientCom);
+            mainWin.Show();
         }
 
         // -----------------------------------
@@ -63,11 +70,10 @@ namespace GUI_first_iteration
 
         private void btnNewJob_Click(object sender, RoutedEventArgs e)
         {
-            NewJobWindow newJobWin = new NewJobWindow(this, clientCom);
+            NewJobWindow newJobWin = new NewJobWindow(this, clientCom, loggedInUser);
             newJobWin.Show();
 
             this.Hide();
-
         }
 
         // -----------------------------------
@@ -82,6 +88,10 @@ namespace GUI_first_iteration
             this.Hide();
         }
 
+        // -----------------------------------
+        // BUTTON - Edit profile --------------
+        // -----------------------------------
+
         private void btnEditProfile_Click(object sender, RoutedEventArgs e)
         {
             EditUserWindow newJobWin = new EditUserWindow(this, clientCom, loggedInUser);
@@ -89,6 +99,10 @@ namespace GUI_first_iteration
 
             this.Hide();
         }
+
+        // -----------------------------------
+        // METHOD - Window closing -----------
+        // -----------------------------------
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

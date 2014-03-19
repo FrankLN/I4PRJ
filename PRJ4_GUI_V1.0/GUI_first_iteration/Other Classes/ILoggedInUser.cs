@@ -8,6 +8,7 @@ namespace GUI_first_iteration
 {
     public interface ILoggedInUser
     {
+        bool IsLoggedIn { set; get; }
         string FirstName { set; get; }
         string Surname { set; get; }
         string Email { set; get; }
