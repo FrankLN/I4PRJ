@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "Joblistesystem"
 :setvar DefaultFilePrefix "Joblistesystem"
-:setvar DefaultDataPath "C:\Users\default.default-Pc\AppData\Local\Microsoft\VisualStudio\SSDT\JobListeDAB\"
-:setvar DefaultLogPath "C:\Users\default.default-Pc\AppData\Local\Microsoft\VisualStudio\SSDT\JobListeDAB\"
+:setvar DefaultDataPath "C:\Users\Søren Emil\AppData\Local\Microsoft\VisualStudio\SSDT\JobListeDAB\"
+:setvar DefaultLogPath "C:\Users\Søren Emil\AppData\Local\Microsoft\VisualStudio\SSDT\JobListeDAB\"
 
 GO
 :on error exit

@@ -25,8 +25,8 @@ namespace DatabaseInterfaceTest
 
             var job = new JobClass();
             job.OrderId = 1;
-            job.Material = material;
-            job.Owner = user;
+            job.MaterialFK = material.MaterialId;
+            job.Owner = user.Email;
             job.CreationTime = "17-03-2014";
             job.Deadline = "21-03-2014";
             job.Hollow = 1;
@@ -36,11 +36,11 @@ namespace DatabaseInterfaceTest
             var db = new Database();
 
             //db.AddUser(user);
-            //db.AddJob(job);
-            var user2 = db.GetUserInfo("test@email.dk");
+            db.AddJob(job);
+            /*var user2 = db.GetUserInfo("test@email.dk");
             Console.WriteLine(user2.FirstName);
             var jobliste = db.GetJobList();
-            Console.WriteLine(jobliste[0].Comment);
+            Console.WriteLine(jobliste[0].Comment);*/
         }
     }
 }

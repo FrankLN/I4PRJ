@@ -64,7 +64,7 @@
   <ItemGroup>
     <Build Include="dbo.Material.sql" />
     <Build Include="dbo.User.sql" />
-    <Build Include="dbo.3DJob.sql" />
+    <Build Include="dbo.My3DJob.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Data.Linq" />
