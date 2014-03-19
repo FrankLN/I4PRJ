@@ -7,11 +7,11 @@ namespace MessageTypes.ReplyMessages
 {
     public interface IDownloadJobReplyMsg
     {
-         List<byte> File3D 
+        long FileSize { get; }
     }
     public class DownloadJobReplyMsg : IReplyMessage, ISerializable, IDownloadJobReplyMsg
     {
-        public List<byte> File3D { get; set; }
+        public long FileSize { get; set; }
 
         public DownloadJobReplyMsg()
         {
@@ -20,8 +20,7 @@ namespace MessageTypes.ReplyMessages
 
         public DownloadJobReplyMsg(SerializationInfo info, StreamingContext context)
         {
-            File3D = (List<byte>)info.GetValue("Email", typeof(List<byte>));
-
+            FileSize = (long)info.GetValue("FileSize", typeof(long));
         }
 
         public void Run(IServerApp serverApp)
@@ -31,7 +30,7 @@ namespace MessageTypes.ReplyMessages
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("File3D", File3D);
+            info.AddValue("FileSize", FileSize);
         }
     }
 }
