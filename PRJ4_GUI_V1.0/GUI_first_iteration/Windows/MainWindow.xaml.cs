@@ -128,5 +128,10 @@ namespace GUI_first_iteration
             }
 
         }
+
+        private void LbMin_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+           this.WindowState = WindowState.Minimized;
+        }
     }
 }
