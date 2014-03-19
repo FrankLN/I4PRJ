@@ -1,0 +1,8 @@
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\ServerApplication_V1.0\bin\Debug\ServerApplication_V1.0.exe.config
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\ServerApplication_V1.0\obj\Debug\ServerApplication_V1.0.csprojResolveAssemblyReference.cache
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\ServerApplication_V1.0\bin\Debug\ServerApplication_V1.0.exe
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\ServerApplication_V1.0\bin\Debug\ServerApplication_V1.0.pdb
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\ServerApplication_V1.0\bin\Debug\MessageTypes.dll
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\ServerApplication_V1.0\bin\Debug\MessageTypes.pdb
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\ServerApplication_V1.0\obj\Debug\ServerApplication_V1.0.exe
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\ServerApplication_V1.0\obj\Debug\ServerApplication_V1.0.pdb

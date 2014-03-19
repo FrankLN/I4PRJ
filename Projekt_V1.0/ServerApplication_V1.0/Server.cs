@@ -111,7 +111,7 @@ namespace Server
 	        
 	    }
 
-	    public void RecieveFile(string fileName, int fileSize)
+	    public void RecieveFile(string fileName, long fileSize)
 	    {
             FileStream fs = File.Open("/Jobs/" + fileName, FileMode.Create);
             byte[] buffer = new byte[maxPacketSize];
@@ -130,12 +130,12 @@ namespace Server
             int j = 0;
             while (j < fileSize)
             {
-                j += inStream.Read(buffer, j, fileSize - j);
+                j += inStream.Read(buffer, j, (int)fileSize - j);
             }
-            fs.Write(buffer, 0, fileSize);
+            fs.Write(buffer, 0, (int)fileSize);
 	    }
 
-        public void SendFile(string fileName, int fileSize)
+        public void SendFile(string fileName, long fileSize)
         {
             byte[] buffer = File.ReadAllBytes("/Jobs/" + fileName);
 
@@ -147,7 +147,7 @@ namespace Server
                 i += maxPacketSize;
                 fileSize -= maxPacketSize;
             }
-            inStream.Write(buffer, i, fileSize);
+            inStream.Write(buffer, i, (int)fileSize);
 
         }
 	}

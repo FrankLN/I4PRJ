@@ -1,0 +1,5 @@
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\MessageTypes\bin\Debug\MessageTypes.dll
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\MessageTypes\bin\Debug\MessageTypes.pdb
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\MessageTypes\obj\Debug\MessageTypes.csprojResolveAssemblyReference.cache
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\MessageTypes\obj\Debug\MessageTypes.dll
+C:\Users\Frank\git\I4PRJ4\Projekt_V1.0\MessageTypes\obj\Debug\MessageTypes.pdb
