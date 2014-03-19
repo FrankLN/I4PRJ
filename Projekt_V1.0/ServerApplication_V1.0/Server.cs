@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Sockets;
 using System.Net;
 using System.Runtime.Serialization;
@@ -12,18 +13,21 @@ namespace Server
     {
         void SendToClient(ISerializable message);
         IMessage ServerRun();
+        void RecieveFile(string fileName, int fileSize);
+        void SendFile(string fileName, int fileSize);
     }
 
 	//Server has interface IServer
 	public class Server : IServer
 	{
 		//Memberdata
-		TcpListener serverSocket;
-		TcpClient clientSocket;
-		NetworkStream inStream;
-		BinaryFormatter bFormatter;
+		private TcpListener serverSocket;
+		private TcpClient clientSocket;
+		private NetworkStream inStream;
+		private BinaryFormatter bFormatter;
+	    private const int maxPacketSize = 1000;
 
-		//Constructor which takes which ip-addres and port to listening on
+	    //Constructor which takes which ip-addres and port to listening on
 		public Server (int port)
 		{
 			Init (port);
@@ -106,6 +110,46 @@ namespace Server
 	        }
 	        
 	    }
+
+	    public void RecieveFile(string fileName, int fileSize)
+	    {
+            FileStream fs = File.Open("/Jobs/" + fileName, FileMode.Create);
+            byte[] buffer = new byte[maxPacketSize];
+	        while (fileSize > maxPacketSize)
+	        {
+	            int i = 0;
+	            while (i < maxPacketSize)
+	            {
+	                i += inStream.Read(buffer, i, 1000-i);
+	            }
+                fs.Write(buffer, 0, 1000);
+                
+	            fileSize -= maxPacketSize;
+	        }
+
+            int j = 0;
+            while (j < fileSize)
+            {
+                j += inStream.Read(buffer, j, fileSize - j);
+            }
+            fs.Write(buffer, 0, fileSize);
+	    }
+
+        public void SendFile(string fileName, int fileSize)
+        {
+            byte[] buffer = File.ReadAllBytes("/Jobs/" + fileName);
+
+            int i = 0;
+            while (fileSize < maxPacketSize)
+            {
+                inStream.Write(buffer, i, maxPacketSize);
+
+                i += maxPacketSize;
+                fileSize -= maxPacketSize;
+            }
+            inStream.Write(buffer, i, fileSize);
+
+        }
 	}
 
     public class ServerException : Exception

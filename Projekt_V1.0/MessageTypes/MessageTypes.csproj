@@ -55,7 +55,6 @@
     <Compile Include="ReplyMessages\ActivationCodeRequestReplyMsg.cs" />
     <Compile Include="ReplyMessages\CreateJobReplyMsg.cs" />
     <Compile Include="ReplyMessages\CreateUserReplyMsg.cs" />
-    <Compile Include="ReplyMessages\DownloadJobReplyMsg.cs" />
     <Compile Include="ReplyMessages\GetMaterialsReplyMsg.cs" />
     <Compile Include="ReplyMessages\IReplyMessage.cs" />
     <Compile Include="ReplyMessages\LoginReplyMsg.cs" />

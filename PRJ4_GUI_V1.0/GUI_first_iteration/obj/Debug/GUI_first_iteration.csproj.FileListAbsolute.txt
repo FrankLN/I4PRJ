@@ -124,6 +124,7 @@ C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_it
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe
 C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\bin\Debug\GUI_first_iteration.pdb
 C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.csprojResolveAssemblyReference.cache
@@ -149,3 +150,8 @@ C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_it
 C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.g.resources
 C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.Properties.Resources.resources
 C:\Users\Jonas\GIT\PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.csproj.GenerateResource.Cache
+=======
+C:\Users\Frank\git\I4PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe.config
+C:\Users\Frank\git\I4PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
+C:\Users\Frank\git\I4PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
+>>>>>>> 821fb22be6c563197352a0514a4cf05c7b1a073e
