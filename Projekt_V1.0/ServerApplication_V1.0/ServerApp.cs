@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using DatabaseInterface;
 using MessageTypes.Messages;
@@ -34,10 +35,6 @@ namespace Server
             smtp.Send(message);
         }
 
-        private void SendFile()
-        {
-            
-        }
 
         public ServerApp(int port)
         {
@@ -102,6 +99,8 @@ namespace Server
         {
             CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
 
+            _server.RecieveFile(createJobMsg.Job.File, createJobMsg.Job.FileSize);
+
             _database.AddJob(createJobMsg.Job);
             createJobReplyMsg.Created = true;
 
@@ -121,9 +120,14 @@ namespace Server
         {
             DownloadJobReplyMsg downloadJobReplyMsg = new DownloadJobReplyMsg();
 
-            _server.SendToClient(downloadJobReplyMsg);
+            if (File.Exists("/Jobs/" + downloadJobMsg.FileName))
+            {
 
-            SendFile();
+                _server.SendToClient(downloadJobReplyMsg);
+
+                _server.SendFile(downloadJobMsg.FileName, File.ReadAllBytes("/Jobs" + downloadJobMsg.FileName).Length); 
+            }
+            
         }
 
         public void GetMaterials(IGetMaterialsMsg getMaterialsMsg)
@@ -138,7 +142,6 @@ namespace Server
         public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg)
         {
             ActivationCodeRequestReplyMsg activationCodeRequestReplyMsg = new ActivationCodeRequestReplyMsg();
-
 
 
             if (_database.GetUserInfo(activationCodeRequestMsg.Email) != null)

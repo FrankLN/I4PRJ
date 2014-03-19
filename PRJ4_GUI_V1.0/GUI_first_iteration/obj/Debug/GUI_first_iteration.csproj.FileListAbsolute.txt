@@ -121,3 +121,6 @@ C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.csp
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
 C:\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.csprojResolveAssemblyReference.cache
+C:\Users\Frank\git\I4PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe.config
+C:\Users\Frank\git\I4PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
+C:\Users\Frank\git\I4PRJ4\PRJ4_GUI_V1.0\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
