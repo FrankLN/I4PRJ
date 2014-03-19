@@ -147,7 +147,11 @@ namespace DatabaseInterface
             }
          }
 
+<<<<<<< HEAD
+        public void AddJob(JobClass job)
+=======
          public void AddJob(JobClass job)
+>>>>>>> 38d1e1354da14ccb92a071232dd81ab3a455e98a
          // Add a Jobclass object in the Job tabel on the database.
          {
              try
