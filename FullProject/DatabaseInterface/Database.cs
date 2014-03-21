@@ -64,7 +64,7 @@ namespace DatabaseInterface
         }
 
         
-        /*
+        
         public int ValidateLogInInfo(string email, string password)
         {
             //DataContext db = new DataContext(@"Data Source=(localdb)\Databases;Initial Catalog=Joblistesystem;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False");
@@ -106,7 +106,7 @@ namespace DatabaseInterface
             }
         }
  
-        */
+        
 
         public UserClass GetUserInfo(string userId)
          // Returns an object of UserClass with ID matching from the database.

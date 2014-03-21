@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿/*using System.Collections.Generic;
 
 namespace DatabaseInterface
 {
@@ -14,4 +14,4 @@ namespace DatabaseInterface
 
         List<JobClass> GetJobList();
     }
-}
+}*/

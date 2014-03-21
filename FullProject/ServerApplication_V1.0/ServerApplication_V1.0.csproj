@@ -51,6 +51,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseInterface\DatabaseInterface.csproj">
+      <Project>{1e63ce71-cb6d-4fb9-9d15-03af62821cd3}</Project>
+      <Name>DatabaseInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joblistesystem\Joblistesystem.sqlproj">
+      <Project>{a3c3e6d7-c12e-47af-974c-c4b429a09c68}</Project>
+      <Name>Joblistesystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MessageTypes\MessageTypes.csproj">
       <Project>{a8a6f0c4-5bfa-4eb7-b85d-6a02aad99be9}</Project>
       <Name>MessageTypes</Name>
