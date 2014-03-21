@@ -10,7 +10,11 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
+using ClientApplication;
+using DatabaseInterface;
+using MessageTypes.Messages;
 
 namespace GUI_first_iteration
 {
@@ -24,25 +28,37 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClientCom clientCom;
+        private IClient clientCom;
         private ILoggedInUser loggedInUser;
-        private NewJobCom newJobObj;
+
+        private CreateJobMsg createJobObj;
+        private GetMaterialsMsg getMaterialsObj;
+        private JobClass jobObj;
+
+
         private bool ClosedInCode;
 
         // -----------------------------------
         // CONSTRUCTOR - NewJobWindow --------
         // -----------------------------------
 
-        public NewJobWindow(MainMenuWindow mWin, IClientCom ccom, ILoggedInUser user)
+        public NewJobWindow(MainMenuWindow mWin, IClient ccom, ILoggedInUser user)
         {
             mainMenuWin = mWin;
             clientCom = ccom;
             loggedInUser = user;
             ClosedInCode = false;
 
-            newJobObj = new NewJobCom();
+            createJobObj = new CreateJobMsg();
+            jobObj = new JobClass();
+
+
+
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            getMaterialsObj = new GetMaterialsMsg();
+            clientCom.SendToServer(getMaterialsObj);
         }
 
         // -----------------------------------
@@ -51,7 +67,19 @@ namespace GUI_first_iteration
 
         private void btnCreateJob_Click(object sender, RoutedEventArgs e)
         {
-            newJobObj.Print();
+            MaterialClass FakeMaterialObj = new MaterialClass();
+            FakeMaterialObj.MaterialType = "Material 1";
+            FakeMaterialObj.MaterialId = 0;
+
+            jobObj.Material = FakeMaterialObj;
+            jobObj.Deadline = dpDate.SelectedDate.ToString();
+
+
+            createJobObj.Job = jobObj;
+
+            clientCom.SendToServer(createJobObj);
+
+
         }
 
         // -----------------------------------
@@ -69,22 +97,22 @@ namespace GUI_first_iteration
 
         private void cbxMaterial_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            newJobObj.Material = cbxMaterial.SelectionBoxItem.ToString();
+            //createJobObj.Job.Material = cbxMaterial.SelectionBoxItem.ToString();
         }
 
         private void cbxHolSol_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            newJobObj.HolSol = cbxHolSol.SelectionBoxItem.ToString();
+            //createJobObj.HolSol = cbxHolSol.SelectionBoxItem.ToString();
         }
 
         private void dpDate_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            newJobObj.Date = dpDate.SelectedDate.ToString();
+            //createJobObj.Date = dpDate.SelectedDate.ToString();
         }
 
         private void tbxComments_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            newJobObj.Comments = tbxComments.Text;
+            //createJobObj.Comments = tbxComments.Text;
         }
 
         // -----------------------------------

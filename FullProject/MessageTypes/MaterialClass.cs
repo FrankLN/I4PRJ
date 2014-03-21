@@ -14,6 +14,11 @@ namespace DatabaseInterface
         public int MaterialId { get; set; }
         public string MaterialType { get; set; }
 
+        public MaterialClass()
+        {
+            
+        }
+
         public MaterialClass(SerializationInfo info, StreamingContext context)
         {
             MaterialId = (int)info.GetValue("MaterialId", typeof(int));

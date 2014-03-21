@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClientApplication;
 
 namespace GUI_first_iteration
 {
@@ -24,7 +25,7 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClientCom clientCom;
+        private IClient clientCom;
         private ILoggedInUser loggedInUser;
         private EditUserCom editUserObj;
         private bool ClosedInCode;
@@ -33,7 +34,7 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - EditUserWindow ------
         // -----------------------------------
 
-        public EditUserWindow(MainMenuWindow mWin, IClientCom ccom, ILoggedInUser user)
+        public EditUserWindow(MainMenuWindow mWin, IClient ccom, ILoggedInUser user)
         {
             // Set private data members
             mainMenuWin = mWin;

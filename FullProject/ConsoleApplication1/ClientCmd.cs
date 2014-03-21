@@ -7,7 +7,7 @@ using MessageTypes.ReplyMessages;
 
 namespace ConsoleApplication1
 {
-    class ClientCmd : IClientCmd
+    public class ClientCmd : IClientCmd
     {
         public void LoginVerification(ILoginReplyReplyMsg msg)
         {

@@ -14,7 +14,7 @@ namespace MessageTypes.Messages
 
         public CreateUserMsg()
         {
-
+            User = new UserClass();
         }
 
         public CreateUserMsg(SerializationInfo info, StreamingContext context)

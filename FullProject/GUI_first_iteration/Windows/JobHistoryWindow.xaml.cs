@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClientApplication;
+using MessageTypes.Messages;
 
 namespace GUI_first_iteration
 {
@@ -24,8 +26,8 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClientCom clientCom;
-        private JobHistoryCom jobHistoryObj;
+        private IClient clientCom;
+        private RequestJobsMsg requestJobsObj;
         private ILoggedInUser loggedInUser;
         private bool ClosedInCode;
 
@@ -33,18 +35,17 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - JobHistoryWindow ----
         // -----------------------------------
 
-        public JobHistoryWindow(MainMenuWindow mWin, IClientCom ccom, ILoggedInUser user)
+        public JobHistoryWindow(MainMenuWindow mWin, IClient ccom, ILoggedInUser user)
         {
             mainMenuWin = mWin;
             clientCom = ccom;
             loggedInUser = user;
             ClosedInCode = false;
 
-            jobHistoryObj = new JobHistoryCom();
-            jobHistoryObj.Email = loggedInUser.Email;
-            jobHistoryObj.Print();
-
             InitializeComponent();
+
+            requestJobsObj = new RequestJobsMsg();
+            clientCom.SendToServer(requestJobsObj);
 
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;

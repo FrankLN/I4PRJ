@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClientApplication;
+using MessageTypes.Messages;
 
 namespace GUI_first_iteration
 {
@@ -23,14 +25,14 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private IClientCom clientCom;
+        private IClient clientCom;
         private ILoggedInUser loggedInUser;
 
         // -----------------------------------
         // CONSTRUCTOR - JobDetailsWindow ----
         // -----------------------------------
      
-        public JobDetailsWindow(IClientCom ccom, ILoggedInUser user)
+        public JobDetailsWindow(IClient ccom, ILoggedInUser user)
         {
             clientCom = ccom;
             loggedInUser = user;
@@ -47,6 +49,19 @@ namespace GUI_first_iteration
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnDownloadJob_Click(object sender, RoutedEventArgs e)
+        {
+
+            // Instead of putting FakeFileName into the downloadJobObj.FileName,
+            // we should retreive a filename from the JobClass object we are viewing details for.
+            string FakeFileName = "myfile.txt";
+
+            DownloadJobMsg downloadJobObj = new DownloadJobMsg();
+            downloadJobObj.FileName = FakeFileName;
+
+            clientCom.SendToServer(downloadJobObj);
         }
     }
 }

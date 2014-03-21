@@ -17,6 +17,11 @@ namespace DatabaseInterface
         public string CreationTime { get; set; }
         public long FileSize { get; set; }
 
+        public JobClass()
+        {
+            
+        }
+
         public JobClass(SerializationInfo info, StreamingContext context)
         {
             Material = (MaterialClass)info.GetValue("Material", typeof(MaterialClass));

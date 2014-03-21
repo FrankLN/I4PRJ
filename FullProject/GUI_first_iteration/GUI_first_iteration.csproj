@@ -89,7 +89,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Other Classes\ClientCom.cs" />
     <Compile Include="Communication Classes\LoginCom.cs" />
     <Compile Include="Communication Classes\CreateUserCom.cs" />
     <Compile Include="Communication Classes\EditUserCom.cs" />
@@ -101,7 +100,6 @@
     <Compile Include="Windows\EditUserWindow.xaml.cs">
       <DependentUpon>EditUserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Other Classes\IClientCom.cs" />
     <Compile Include="Other Classes\ILoggedInUser.cs" />
     <Compile Include="Windows\JobDetailsWindow.xaml.cs">
       <DependentUpon>JobDetailsWindow.xaml</DependentUpon>
@@ -157,6 +155,20 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pictures\login1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientApplication.Test\ClientApplication.Test.csproj">
+      <Project>{c9fa5a71-a776-48bd-b9e4-3ab1124a5412}</Project>
+      <Name>ClientApplication.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleApplication1\ClientApplication.csproj">
+      <Project>{7b5e762b-f442-4ffe-a5c4-f41a16699fcf}</Project>
+      <Name>ClientApplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MessageTypes\MessageTypes.csproj">
+      <Project>{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}</Project>
+      <Name>MessageTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

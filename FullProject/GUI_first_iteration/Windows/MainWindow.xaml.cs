@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClientApplication;
+using MessageTypes.Messages;
 
 namespace GUI_first_iteration
 {
@@ -25,19 +27,19 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClientCom clientCom;
-        private LoginCom loginObj;
+        private IClient clientCom;
+        private LoginMsg loginObj;
         private bool ClosedInCode;
 
         // -----------------------------------
         // CONSTRUCTOR - MainWindow ----------
         // -----------------------------------
 
-        public MainWindow(MainMenuWindow parent, IClientCom ccom)
+        public MainWindow(MainMenuWindow parent, IClient ccom)
         {
             mainMenuWin = parent;
             clientCom = ccom;
-            loginObj = new LoginCom();
+            loginObj = new LoginMsg();
             ClosedInCode = false;
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -62,7 +64,7 @@ namespace GUI_first_iteration
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             // Send object
-            loginObj.Print();
+            clientCom.SendToServer(loginObj);
 
             mainMenuWin.Show();
             ClosedInCode = true;

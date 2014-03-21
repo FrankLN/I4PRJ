@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using ConsoleApplication1;
 using DatabaseInterface;
 using Server;
 using System.Collections.Generic;
@@ -25,10 +26,7 @@ namespace MessageTypes.ReplyMessages
 
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            
-        }
+
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -36,5 +34,9 @@ namespace MessageTypes.ReplyMessages
 
         }
 
+        public void Run(IClientCmd clientCmd)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace ClientApplication
         void SendFile(long fileSize, string path);
 
     }
-    class Client : IClient
+    public class Client : IClient
     {
         //Memberdata...
         private TcpClient clientSocket;

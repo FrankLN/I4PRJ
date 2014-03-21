@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClientApplication;
+using MessageTypes.Messages;
 
 namespace GUI_first_iteration
 {
@@ -24,8 +26,8 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClientCom clientCom;
-        private CreateUserCom createUserObj;
+        private IClient clientCom;
+        private CreateUserMsg createUserObj;
 
         private bool ClosedInCode;
 
@@ -33,13 +35,13 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - CreateUserWindow ----
         // -----------------------------------
 
-        public CreateUserWindow(MainMenuWindow mWin, IClientCom ccom)
+        public CreateUserWindow(MainMenuWindow mWin, IClient ccom)
         {
             mainMenuWin = mWin;
             clientCom = ccom;
             ClosedInCode = false;
 
-            createUserObj = new CreateUserCom();
+            createUserObj = new CreateUserMsg();
             InitializeComponent();
 
             // Center window at startup
@@ -52,8 +54,7 @@ namespace GUI_first_iteration
 
         private void btnCreateUser_Click(object sender, RoutedEventArgs e)
         {
-            createUserObj.Print();
-
+            clientCom.SendToServer(createUserObj);
             ActivateUserWindow activateUserWin = new ActivateUserWindow(this);
             activateUserWin.Show();
         }
@@ -78,32 +79,33 @@ namespace GUI_first_iteration
 
         private void TbxName_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            createUserObj.FirstName = TbxName.Text;
+            createUserObj.User.FirstName = TbxName.Text;
         }
 
         private void TbxSurname_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            createUserObj.Surname = TbxSurname.Text;
+            createUserObj.User.LastName = TbxSurname.Text;
         }
 
         private void TbxEmail_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            createUserObj.Email = TbxEmail.Text;
+            createUserObj.User.Email = TbxEmail.Text;
         }
 
         private void TbxPhone_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            createUserObj.Phone = TbxPhone.Text;
+            createUserObj.User.PhoneNumber = TbxPhone.Text;
         }
 
         private void TbxPassword_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            createUserObj.Password = TbxPassword.Password;
+            createUserObj.User.Password = TbxPassword.Password;
         }
 
         private void TbxPasswordRepeat_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            createUserObj.PasswordRepeat = TbxPasswordRepeat.Password;
+            // remember to add repeat password attribute in CreateUserMsg
+            //createUserObj.User.RepeatPassword = TbxPasswordRepeat.Password;
         }
 
         // -----------------------------------
