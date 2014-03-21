@@ -1,5 +1,6 @@
 using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
+using ConsoleApplication1;
 using DatabaseInterface;
 using Server;
 
@@ -13,7 +14,7 @@ namespace MessageTypes.ReplyMessages
 
     }
 
-    public class LoginReplyMsg : IReplyMessage, ISerializable
+    public class LoginReplyMsg : IReplyMessage, ISerializable,ILoginReplyReplyMsg
     {
         public bool Email { get; set; }
         public bool Password { get; set; }
@@ -32,10 +33,6 @@ namespace MessageTypes.ReplyMessages
             
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            
-        }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -43,6 +40,11 @@ namespace MessageTypes.ReplyMessages
             info.AddValue("password", Password);
             info.AddValue("User", User);
 
+        }
+
+        public void Run(IClientCmd clientCmd)
+        {
+            clientCmd.LoginVerification(this);
         }
     }
 }

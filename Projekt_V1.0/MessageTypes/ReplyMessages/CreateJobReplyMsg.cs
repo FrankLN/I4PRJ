@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using ConsoleApplication1;
 using Server;
 
 namespace MessageTypes.ReplyMessages
@@ -23,9 +24,9 @@ namespace MessageTypes.ReplyMessages
 
         }
 
-        public void Run(IServerApp serverApp)
+        public void Run(IClientCmd clientCmd)
         {
-            
+            clientCmd.CreateJobVerification(this);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

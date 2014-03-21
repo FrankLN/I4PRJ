@@ -7,21 +7,41 @@ using MessageTypes.ReplyMessages;
 
 namespace ConsoleApplication1
 {
-    public interface IClientCmd
+    class ClientCmd : IClientCmd
     {
-        //MsgHandler + action metode for all reply messages
-        void MsgHandler(IReplyMessage replyMsg);
-        void LoginVerification();
-        void ActivationVerification();
-        void CreateJobVerification();
-        void CreateUserVerification();
-        void DownloadCommencing();
-        void LoadMaterials();
-        void LoadJobList();
-    }
+        public void LoginVerification(ILoginReplyReplyMsg msg)
+        {
+            throw new NotImplementedException();
+        }
 
-    class ClientCmd
-    {
+        public void ActivationVerification(IActivationCodeRequestReplyMsg msg)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void CreateJobVerification(ICreateJobReplyMsg msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateUserVerification(ICreateUserReplyMsg msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DownloadCommencing(IDownloadJobReplyMsg msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoadMaterials(IGetMaterialsReplyMsg msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoadJobList(IRequestJobsReplyMsg msg)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
