@@ -40,6 +40,8 @@ namespace Server
         {
             _server = new Server(port);
 
+            _database = new Database();
+
             while (true)
             {
                 _server.ServerRun().Run(this);
