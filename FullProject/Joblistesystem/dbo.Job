@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Job]
+(
+	[Email] NVARCHAR(50) NOT NULL PRIMARY KEY, 
+    [Navn] NVARCHAR(MAX) NOT NULL, 
+    [TelefonNr] NVARCHAR(8) NULL DEFAULT NULL, 
+    [AdminRettighed] INT NULL DEFAULT NULL, 
+    [Kodeord] NVARCHAR(50) NOT NULL
+)

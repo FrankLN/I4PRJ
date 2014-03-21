@@ -1,0 +1,33 @@
+using System.Runtime.Serialization;
+using Server;
+
+namespace MessageTypes.Messages
+{
+
+    public interface IRequestJobsMsg
+    {
+        
+    }
+    public class RequestJobsMsg : IMessage, ISerializable, IRequestJobsMsg
+    {
+        public RequestJobsMsg()
+        {
+
+        }
+
+        public RequestJobsMsg(SerializationInfo info, StreamingContext context)
+        {
+            
+        }
+
+        public void Run(IServerApp serverApp)
+        {
+            serverApp.RequestJobs(this);
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            
+        }
+    }
+}

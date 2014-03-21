@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_first_iteration", "..\..\..\..\..\..\..\Skrivebord\4. Semester\Projekt 4\Git\I4PRJ\PRJ4_GUI_V1.0\GUI_first_iteration\GUI_first_iteration.csproj", "{009D5240-40B2-4228-8E2C-FE83D3581B8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerApplication_V1.0", "ServerApplication_V1.0\ServerApplication_V1.0.csproj", "{BFBCCA8B-0300-48D1-9BC4-6D77EC6DAB0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApplication", "..\..\..\..\..\..\..\Skrivebord\4. Semester\Projekt 4\Git\I4PRJ\Projekt_V1.0\ConsoleApplication1\ClientApplication.csproj", "{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageTypes", "MessageTypes\MessageTypes.csproj", "{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageTypes", "..\..\..\..\..\..\..\Skrivebord\4. Semester\Projekt 4\Git\I4PRJ\Projekt_V1.0\MessageTypes\MessageTypes.csproj", "{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Joblistesystem", "Joblistesystem\Joblistesystem.sqlproj", "{A3C3E6D7-C12E-47AF-974C-C4B429A09C68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerApplication_V1.0", "..\..\..\..\..\..\..\Skrivebord\4. Semester\Projekt 4\Git\I4PRJ\Projekt_V1.0\ServerApplication_V1.0\ServerApplication_V1.0.csproj", "{BFBCCA8B-0300-48D1-9BC4-6D77EC6DAB0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_first_iteration", "GUI_first_iteration\GUI_first_iteration.csproj", "{009D5240-40B2-4228-8E2C-FE83D3581B8A}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Joblistesystem", "..\..\..\..\..\..\..\Skrivebord\4. Semester\Projekt 4\Git\I4PRJ\Projekt\JobListeDAB\Joblistesystem\Joblistesystem.sqlproj", "{A3C3E6D7-C12E-47AF-974C-C4B429A09C68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseInterface", "DatabaseInterface\DatabaseInterface.csproj", "{1E63CE71-CB6D-4FB9-9D15-03AF62821CD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseInterface", "..\..\..\..\..\..\..\Skrivebord\4. Semester\Projekt 4\Git\I4PRJ\Projekt\JobListeDAB\DatabaseInterface\DatabaseInterface.csproj", "{1E63CE71-CB6D-4FB9-9D15-03AF62821CD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApplication", "ConsoleApplication1\ClientApplication.csproj", "{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,32 +21,32 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{009D5240-40B2-4228-8E2C-FE83D3581B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{009D5240-40B2-4228-8E2C-FE83D3581B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{009D5240-40B2-4228-8E2C-FE83D3581B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{009D5240-40B2-4228-8E2C-FE83D3581B8A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BFBCCA8B-0300-48D1-9BC4-6D77EC6DAB0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BFBCCA8B-0300-48D1-9BC4-6D77EC6DAB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFBCCA8B-0300-48D1-9BC4-6D77EC6DAB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFBCCA8B-0300-48D1-9BC4-6D77EC6DAB0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A3C3E6D7-C12E-47AF-974C-C4B429A09C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A3C3E6D7-C12E-47AF-974C-C4B429A09C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3C3E6D7-C12E-47AF-974C-C4B429A09C68}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{A3C3E6D7-C12E-47AF-974C-C4B429A09C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3C3E6D7-C12E-47AF-974C-C4B429A09C68}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A3C3E6D7-C12E-47AF-974C-C4B429A09C68}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{009D5240-40B2-4228-8E2C-FE83D3581B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{009D5240-40B2-4228-8E2C-FE83D3581B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{009D5240-40B2-4228-8E2C-FE83D3581B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{009D5240-40B2-4228-8E2C-FE83D3581B8A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1E63CE71-CB6D-4FB9-9D15-03AF62821CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1E63CE71-CB6D-4FB9-9D15-03AF62821CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E63CE71-CB6D-4FB9-9D15-03AF62821CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E63CE71-CB6D-4FB9-9D15-03AF62821CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
