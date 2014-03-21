@@ -89,11 +89,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Communication Classes\LoginCom.cs" />
-    <Compile Include="Communication Classes\CreateUserCom.cs" />
     <Compile Include="Communication Classes\EditUserCom.cs" />
-    <Compile Include="Communication Classes\JobHistoryCom.cs" />
-    <Compile Include="Communication Classes\NewJobCom.cs" />
     <Compile Include="Windows\CreateUserWindow.xaml.cs">
       <DependentUpon>CreateUserWindow.xaml</DependentUpon>
     </Compile>
