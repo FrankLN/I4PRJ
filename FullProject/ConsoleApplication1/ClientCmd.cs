@@ -12,52 +12,59 @@ namespace ConsoleApplication1
     public class ClientCmd : IClientCmd
     {
         public delegate void mydelegate(IReplyMessage msg);
-
+        public delegate void yourdelegate(IActivationCodeRequestReplyMsg msg);
         public event mydelegate onReplyMsgReceived;
+        private IReplyMessage _replyMessage = null;
 
-        public void eventFire()
+     
+        private void FireLogiReply()
         {
             if (onReplyMsgReceived != null)
             {
-                onReplyMsgReceived();
-                MessageBox.Show("Event fired");
+                onReplyMsgReceived(_replyMessage);
             }
         }
 
-
         public void LoginVerification(ILoginReplyReplyMsg msg)
         {
-            throw new NotImplementedException();
+            _replyMessage = (IReplyMessage)msg;
+            FireLogiReply();            
         }
 
         public void ActivationVerification(IActivationCodeRequestReplyMsg msg)
-        {
-            throw new NotImplementedException();
-        }
+        { 
+            _replyMessage = (IReplyMessage)msg;
+            FireLogiReply();
+        }   
 
         public void CreateJobVerification(ICreateJobReplyMsg msg)
         {
-            throw new NotImplementedException();
+            _replyMessage = (IReplyMessage)msg;
+            FireLogiReply();
         }
 
         public void CreateUserVerification(ICreateUserReplyMsg msg)
         {
-            throw new NotImplementedException();
+            _replyMessage = (IReplyMessage)msg;
+            FireLogiReply();
         }
 
         public void DownloadCommencing(IDownloadJobReplyMsg msg)
         {
-            throw new NotImplementedException();
+            _replyMessage = (IReplyMessage)msg;
+            FireLogiReply();
         }
 
         public void LoadMaterials(IGetMaterialsReplyMsg msg)
         {
-            throw new NotImplementedException();
+            _replyMessage = (IReplyMessage)msg;
+            FireLogiReply();
         }
 
         public void LoadJobList(IRequestJobsReplyMsg msg)
         {
-            throw new NotImplementedException();
+            _replyMessage = (IReplyMessage)msg;
+            FireLogiReply();
         }
 
         public void ClientCmdRun(IClient client)
