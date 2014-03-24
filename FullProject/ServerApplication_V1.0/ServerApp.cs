@@ -12,6 +12,7 @@ namespace Server
         private IServer _server;
         private IDatabase _database;
 
+        #region helpFunktions
         private string GenerateActivationCode()
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -34,7 +35,7 @@ namespace Server
             System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(server);
             smtp.Send(message);
         }
-
+        #endregion
 
         public ServerApp(int port)
         {
@@ -64,6 +65,10 @@ namespace Server
                 {
                     loginReplyMsg.Password = true;
                     loginReplyMsg.User = user;
+                }
+                else
+                {
+                    loginReplyMsg.Password = false;
                 }
             }
             else

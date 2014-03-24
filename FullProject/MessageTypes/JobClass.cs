@@ -10,6 +10,7 @@ namespace DatabaseInterface
     [Serializable]
     public class JobClass : ISerializable
     {
+        public int OrderId { get; set; }
         public MaterialClass Material { get; set; }
         public string Deadline { get; set; }
         public UserClass Owner { get; set; }

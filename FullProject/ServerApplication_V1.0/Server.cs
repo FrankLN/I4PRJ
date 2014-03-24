@@ -40,6 +40,7 @@ namespace Server
 		    try
 		    {
 		        IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
+                Console.WriteLine(ipAddress);
 		        serverSocket = new TcpListener(ipAddress, port);
 		    }
 		    catch (SocketException e)

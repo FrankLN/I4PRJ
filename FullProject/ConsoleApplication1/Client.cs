@@ -35,9 +35,8 @@ namespace ClientApplication
         //Init method setting the up the client 
         private void Init(int port)
         {
-            IPAddress ip = Dns.GetHostEntry("localhost").AddressList[0];
             clientSocket = new TcpClient();
-            clientSocket.Connect(ip, port);
+            clientSocket.Connect(IPAddress.Parse("10.0.0.1"), port);
             outInStream = clientSocket.GetStream();
             bFormatter = new BinaryFormatter();
         }
