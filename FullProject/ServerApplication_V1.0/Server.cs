@@ -39,9 +39,9 @@ namespace Server
 
 		    try
 		    {
-		        IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
-                Console.WriteLine(ipAddress);
-		        serverSocket = new TcpListener(ipAddress, port);
+
+
+                serverSocket = new TcpListener(port);
 		    }
 		    catch (SocketException e)
 		    {
