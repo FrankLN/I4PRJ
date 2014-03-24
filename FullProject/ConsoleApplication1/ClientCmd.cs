@@ -13,13 +13,21 @@ namespace ConsoleApplication1
     public class ClientCmd : IClientCmd
     {
         public delegate void LogiDelegate(ILoginReplyReplyMsg msg);
+
+        public delegate void ActivationDelegate(IActivationCodeRequestReplyMsg msg);
+
         public delegate void CreateJobDelegate(ICreateJobReplyMsg msg);
-        public delegate void CreateUserDelegate(IActivationCodeRequestReplyMsg msg);
-        public delegate void DownloadDelegate(IActivationCodeRequestReplyMsg msg);
-        public delegate void LoadJobListDelegate(IActivationCodeRequestReplyMsg msg);
-        public delegate void LoadMaterialsDelegate(IActivationCodeRequestReplyMsg msg);
+
+        public delegate void CreateUserDelegate(ICreateUserReplyMsg msg);
+
+        public delegate void DownloadDelegate(IDownloadJobReplyMsg msg);
+
+        public delegate void LoadJobListDelegate(IRequestJobsReplyMsg msg);
+
+        public delegate void LoadMaterialsDelegate(IGetMaterialsReplyMsg msg);
 
         public event LogiDelegate onLogiMsgReceived;
+        public event ActivationDelegate onActivationReceived;
         public event CreateJobDelegate onCreateJobMsgReceived;
         public event CreateUserDelegate onCreateUserMsgReceived;
         public event DownloadDelegate onDownloadMsgReceived;
@@ -34,50 +42,99 @@ namespace ConsoleApplication1
         {
             if (onLogiMsgReceived != null)
             {
-                onLogiMsgReceived((ILoginReplyReplyMsg)_replyMessage);
+                onLogiMsgReceived((ILoginReplyReplyMsg) _replyMessage);
+            }
+        }
+
+        private void FireActivationReply()
+        {
+            if (onActivationReceived != null)
+            {
+                onActivationReceived((IActivationCodeRequestReplyMsg) _replyMessage);
+            }
+        }
+
+        private void FireCreateJobReply()
+        {
+            if (onCreateJobMsgReceived != null)
+            {
+                onCreateJobMsgReceived((ICreateJobReplyMsg) _replyMessage);
+            }
+        }
+
+        private void FireCreateUserReply()
+        {
+            if (onCreateUserMsgReceived != null)
+            {
+                onCreateUserMsgReceived((ICreateUserReplyMsg) _replyMessage);
+            }
+        }
+
+        private void FireDownloadReply()
+        {
+            if (onDownloadMsgReceived != null)
+            {
+                onDownloadMsgReceived((IDownloadJobReplyMsg) _replyMessage);
+            }
+        }
+
+        private void FireJobListReply()
+        {
+            if (onJobListMsgReceived != null)
+            {
+                onJobListMsgReceived((IRequestJobsReplyMsg) _replyMessage);
+            }
+        }
+
+        private void FireMaterialsReply()
+        {
+            if (onMaterialsMsgReceived != null)
+            {
+                onMaterialsMsgReceived((IGetMaterialsReplyMsg) _replyMessage);
             }
         }
 
         public void LoginVerification(ILoginReplyReplyMsg msg)
         {
-            _replyMessage = (IReplyMessage)msg;
+            _replyMessage = (IReplyMessage) msg;
             FireLogiReply();
         }
 
         public void ActivationVerification(IActivationCodeRequestReplyMsg msg)
         {
-            _replyMessage = (IReplyMessage)msg;
-            FireLogiReply();
+            _replyMessage = (IReplyMessage) msg;
+            FireActivationReply();
         }
 
         public void CreateJobVerification(ICreateJobReplyMsg msg)
         {
-            _replyMessage = (IReplyMessage)msg;
-            FireLogiReply();
+            _replyMessage = (IReplyMessage) msg;
+            FireCreateJobReply();
         }
 
         public void CreateUserVerification(ICreateUserReplyMsg msg)
         {
-            _replyMessage = (IReplyMessage)msg;
-            FireLogiReply();
+            _replyMessage = (IReplyMessage) msg;
+            FireCreateUserReply();
         }
 
         public void DownloadCommencing(IDownloadJobReplyMsg msg)
         {
-            _replyMessage = (IReplyMessage)msg;
-            FireLogiReply();
+            _replyMessage = (IReplyMessage) msg;
+            FireDownloadReply();
         }
+
 
         public void LoadMaterials(IGetMaterialsReplyMsg msg)
         {
-            _replyMessage = (IReplyMessage)msg;
-            FireLogiReply();
+            _replyMessage = (IReplyMessage) msg;
+            FireMaterialsReply();
         }
 
         public void LoadJobList(IRequestJobsReplyMsg msg)
         {
-            _replyMessage = (IReplyMessage)msg;
-            FireLogiReply();
+            _replyMessage = (IReplyMessage) msg;
+            FireJobListReply();
         }
 
 
@@ -87,5 +144,4 @@ namespace ConsoleApplication1
             client.ReceiveMessage().Run(this);
         }
     }
-
 }
