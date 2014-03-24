@@ -26,9 +26,6 @@ namespace ConsoleApplication1
         public event LoadMaterialsDelegate onMaterialsMsgReceived;
 
 
-
-
-
         private IReplyMessage _replyMessage = null;
 
      
@@ -36,7 +33,7 @@ namespace ConsoleApplication1
         {
             if (onLogiMsgReceived != null)
             {
-                onLogiMsgReceived(_replyMessage);
+                onLogiMsgReceived((ILoginReplyReplyMsg)_replyMessage);
             }
         }
 

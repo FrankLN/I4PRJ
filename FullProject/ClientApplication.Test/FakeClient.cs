@@ -17,12 +17,12 @@ namespace ClientApplication.Test
     {
 
         public IReplyMessage Reply { get; set; }
-        private ClientCmd clientCmd;
+        //private ClientCmd clientCmd;
 
         public FakeClient(int port)
         {
             MessageBox.Show("FakeClient: SendToServer called with port: " + port.ToString());
-            clientCmd = new ClientCmd();
+            //clientCmd = new ClientCmd();
         }
         public void SendToServer(ISerializable message)
         {
