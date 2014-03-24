@@ -11,17 +11,32 @@ namespace ConsoleApplication1
 {
     public class ClientCmd : IClientCmd
     {
-        public delegate void mydelegate(IReplyMessage msg);
-        public delegate void yourdelegate(IActivationCodeRequestReplyMsg msg);
-        public event mydelegate onReplyMsgReceived;
+        public delegate void LogiDelegate(ILoginReplyReplyMsg msg);
+        public delegate void CreateJobDelegate(ICreateJobReplyMsg msg);
+        public delegate void CreateUserDelegate(IActivationCodeRequestReplyMsg msg);
+        public delegate void DownloadDelegate(IActivationCodeRequestReplyMsg msg);
+        public delegate void LoadJobListDelegate(IActivationCodeRequestReplyMsg msg);
+        public delegate void LoadMaterialsDelegate(IActivationCodeRequestReplyMsg msg);
+
+        public event LogiDelegate onLogiMsgReceived;
+        public event CreateJobDelegate onCreateJobMsgReceived;
+        public event CreateUserDelegate onCreateUserMsgReceived;
+        public event DownloadDelegate onDownloadMsgReceived;
+        public event LoadJobListDelegate onJobListMsgReceived;
+        public event LoadMaterialsDelegate onMaterialsMsgReceived;
+
+
+
+
+
         private IReplyMessage _replyMessage = null;
 
      
         private void FireLogiReply()
         {
-            if (onReplyMsgReceived != null)
+            if (onLogiMsgReceived != null)
             {
-                onReplyMsgReceived(_replyMessage);
+                onLogiMsgReceived(_replyMessage);
             }
         }
 

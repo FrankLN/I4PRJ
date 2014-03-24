@@ -27,13 +27,15 @@ namespace ClientApplication.Test
         public void SendToServer(ISerializable message)
         {
             IMessage tmpMsg = (IMessage) message;
-            clientCmd.ClientCmdRun(this);
-            tmpMsg.Run(this);
+            //clientCmd.ClientCmdRun(this);
+            //tmpMsg.Run(this);
         }
 
         public IReplyMessage ReceiveMessage()
         {
-            return Reply;
+            //return Reply;
+
+            throw new NotImplementedException();
         }
 
         public void ReceiveFile(long fileSize, string fileName)
