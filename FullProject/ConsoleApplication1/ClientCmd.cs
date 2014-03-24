@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using ClientApplication;
+using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
 namespace ConsoleApplication1
@@ -27,7 +28,7 @@ namespace ConsoleApplication1
 
 
         private IReplyMessage _replyMessage = null;
-
+        private IClient client = new Client(9000);
 
         private void FireLogiReply()
         {
@@ -79,10 +80,11 @@ namespace ConsoleApplication1
             FireLogiReply();
         }
 
-        public void ClientCmdRun(IClient client)
-        {
-            client.ReceiveMessage().Run(this);
 
+        public void SendToServer(IMessage msg)
+        {
+            client.SendToServer((ISerializable) msg);
+            client.ReceiveMessage().Run(this);
         }
     }
 
