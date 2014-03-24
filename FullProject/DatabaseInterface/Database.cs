@@ -161,7 +161,7 @@ namespace DatabaseInterface
                  conn.Open();
 
                  // String with SQL statement
-                 string jobInsert = @"INSERT INTO [My3DJob] (OrderId, MaterialFK, Owner, Deadline, MyFile, CreationTime, Hollow, Comment) VALUES ("+job.OrderId+", "+job.MaterialFK+", '"+job.Owner+"', '"+job.Deadline+"', '"+job.MyFile+"', '"+job.CreationTime+"', "+job.Hollow+",'"+job.Comment+"')";
+                 string jobInsert = @"INSERT INTO [My3DJob] (OrderId, MaterialFK, Owner, Deadline, MyFile, CreationTime, Hollow, Comment) VALUES ("+job.OrderId+", "+job.Material+", '"+job.Owner+"', '"+job.Deadline+"', '"+job.File+"', '"+job.CreationTime+"', "+job.Hollow+",'"+job.Comment+"')";
 
                  SqlCommand cmd = new SqlCommand(jobInsert, conn);
                 
@@ -222,10 +222,10 @@ namespace DatabaseInterface
 
                          loc3DJob.OrderId = i;
                          //loc3DJob.OrderId = (int) rdr["OrderId"];
-                         loc3DJob.MaterialFK = (int)rdr["MaterialFK"];
-                         loc3DJob.Owner = (string)rdr["Owner"];
+                         loc3DJob.Material.MaterialId = (int)rdr["MaterialFK"];
+                         loc3DJob.Owner.Email = (string)rdr["Owner"];
                          loc3DJob.Deadline = (string)rdr["Deadline"];
-                         loc3DJob.MyFile = (string)rdr["MyFile"];
+                         loc3DJob.File = (string)rdr["MyFile"];
                          loc3DJob.CreationTime = (string)rdr["CreationTime"];
                          loc3DJob.Hollow = (int) rdr["Hollow"];
                          loc3DJob.Comment = (string)rdr["Comment"];

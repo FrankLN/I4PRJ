@@ -16,7 +16,8 @@ namespace DatabaseInterface
 
         public MaterialClass()
         {
-            
+            MaterialId = 0;
+            MaterialType = "";
         }
 
         public MaterialClass(SerializationInfo info, StreamingContext context)
