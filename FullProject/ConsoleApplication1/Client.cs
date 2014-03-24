@@ -6,7 +6,6 @@ using System.Resources;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
-using ConsoleApplication1;
 using MessageTypes.ReplyMessages;
 
 namespace ClientApplication
@@ -26,7 +25,6 @@ namespace ClientApplication
         private NetworkStream outInStream;
         private BinaryFormatter bFormatter;
         private const int MaxPackageSize = 1000;
-        private ClientCmd clientCmdObj;
 
         //Constructor which take ip and port belonging to the targeting server
         public Client(int port)
@@ -42,15 +40,12 @@ namespace ClientApplication
             clientSocket.Connect(ip, port);
             outInStream = clientSocket.GetStream();
             bFormatter = new BinaryFormatter();
-            clientCmdObj = new ClientCmd();
-
         }
 
         //Method for sending classobject
         public void SendToServer(ISerializable objekt)
         {
             bFormatter.Serialize(outInStream, objekt);
-            clientCmdObj.ClientCmdRun(this);
 
         }
 

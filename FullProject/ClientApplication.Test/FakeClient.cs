@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ConsoleApplication1;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 using Server;
@@ -15,26 +13,18 @@ namespace ClientApplication.Test
 {
     public class FakeClient : IClient, IServerApp
     {
-
-        public IReplyMessage Reply { get; set; }
-        //private ClientCmd clientCmd;
-
         public FakeClient(int port)
         {
             MessageBox.Show("FakeClient: SendToServer called with port: " + port.ToString());
-            //clientCmd = new ClientCmd();
         }
         public void SendToServer(ISerializable message)
         {
             IMessage tmpMsg = (IMessage) message;
-            //clientCmd.ClientCmdRun(this);
-            //tmpMsg.Run(this);
+            tmpMsg.Run(this);
         }
 
         public IReplyMessage ReceiveMessage()
         {
-            //return Reply;
-
             throw new NotImplementedException();
         }
 
