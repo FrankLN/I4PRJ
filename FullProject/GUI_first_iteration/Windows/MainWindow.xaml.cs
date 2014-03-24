@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClientApplication;
+using ConsoleApplication1;
 using MessageTypes.Messages;
 
 namespace GUI_first_iteration
@@ -27,7 +28,8 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClient clientCom;
+        //private IClient clientCom;
+        private IClientCmd clientCmd;
         private LoginMsg loginObj;
         private bool ClosedInCode;
 
