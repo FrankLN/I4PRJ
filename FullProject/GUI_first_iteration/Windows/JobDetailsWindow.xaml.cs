@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
+using ConsoleApplication1;
+using DatabaseInterface;
 using MessageTypes.Messages;
 
 namespace GUI_first_iteration
@@ -25,14 +27,14 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private IClient clientCom;
-        private ILoggedInUser loggedInUser;
+        private IClientCmd clientCom;
+        private UserClass loggedInUser;
 
         // -----------------------------------
         // CONSTRUCTOR - JobDetailsWindow ----
         // -----------------------------------
      
-        public JobDetailsWindow(IClient ccom, ILoggedInUser user)
+        public JobDetailsWindow(IClientCmd ccom, UserClass user)
         {
             clientCom = ccom;
             loggedInUser = user;

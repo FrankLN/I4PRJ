@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
+using ConsoleApplication1;
 using MessageTypes.Messages;
+using MessageTypes.ReplyMessages;
 
 namespace GUI_first_iteration
 {
@@ -25,8 +27,8 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------  
         // -----------------------------------
 
-        private MainMenuWindow mainMenuWin;
-        private IClient clientCom;
+        private MainWindow mainWin;
+        private IClientCmd clientCom;
         private CreateUserMsg createUserObj;
 
         private bool ClosedInCode;
@@ -35,9 +37,9 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - CreateUserWindow ----
         // -----------------------------------
 
-        public CreateUserWindow(MainMenuWindow mWin, IClient ccom)
+        public CreateUserWindow(MainWindow mWin, IClientCmd ccom)
         {
-            mainMenuWin = mWin;
+            mainWin = mWin;
             clientCom = ccom;
             ClosedInCode = false;
 
@@ -54,9 +56,29 @@ namespace GUI_first_iteration
 
         private void btnCreateUser_Click(object sender, RoutedEventArgs e)
         {
+            var clientCmd = new ClientCmd();
+            clientCmd = (ClientCmd)clientCom;
+            clientCmd.onCreateUserMsgReceived += new ClientCmd.CreateUserDelegate(createUserEvent);
             clientCom.SendToServer(createUserObj);
-            ActivateUserWindow activateUserWin = new ActivateUserWindow(this);
-            activateUserWin.Show();
+            //ActivateUserWindow activateUserWin = new ActivateUserWindow(this);
+            //activateUserWin.Show();
+        }
+        
+        // -----------------------------------
+        // Event - Activated on reply --------
+        // -----------------------------------
+        private void createUserEvent(ICreateUserReplyMsg msg)
+        {
+            if (msg.Created)
+            {
+                
+                ActivateUserWindow activateUserWin = new ActivateUserWindow(msg, this, mainWin);
+                activateUserWin.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please try again");
+            }
         }
 
         // -----------------------------------
@@ -65,7 +87,6 @@ namespace GUI_first_iteration
 
         private void btnBack_Click_1(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWin = new MainWindow(mainMenuWin, clientCom);
             mainWin.Show();
 
             // Indicate that the window is closed in code

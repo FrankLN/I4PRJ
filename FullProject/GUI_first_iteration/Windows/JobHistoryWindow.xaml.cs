@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
+using ConsoleApplication1;
+using DatabaseInterface;
 using MessageTypes.Messages;
 
 namespace GUI_first_iteration
@@ -26,16 +28,16 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClient clientCom;
+        private IClientCmd clientCom;
         private RequestJobsMsg requestJobsObj;
-        private ILoggedInUser loggedInUser;
+        private UserClass loggedInUser;
         private bool ClosedInCode;
 
         // -----------------------------------
         // CONSTRUCTOR - JobHistoryWindow ----
         // -----------------------------------
 
-        public JobHistoryWindow(MainMenuWindow mWin, IClient ccom, ILoggedInUser user)
+        public JobHistoryWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
         {
             mainMenuWin = mWin;
             clientCom = ccom;
