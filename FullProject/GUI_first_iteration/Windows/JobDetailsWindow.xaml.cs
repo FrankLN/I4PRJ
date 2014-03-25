@@ -15,6 +15,7 @@ using ClientApplication;
 using ConsoleApplication1;
 using DatabaseInterface;
 using MessageTypes.Messages;
+using MessageTypes.ReplyMessages;
 
 namespace GUI_first_iteration
 {
@@ -29,15 +30,18 @@ namespace GUI_first_iteration
 
         private IClientCmd clientCom;
         private UserClass loggedInUser;
+        private JobClass currentJob;
 
         // -----------------------------------
         // CONSTRUCTOR - JobDetailsWindow ----
         // -----------------------------------
      
-        public JobDetailsWindow(IClientCmd ccom, UserClass user)
+        public JobDetailsWindow(IClientCmd ccom, UserClass user, JobClass job)
         {
             clientCom = ccom;
             loggedInUser = user;
+            currentJob = job;
+
             InitializeComponent();
 
             // Center window at startup
@@ -62,8 +66,23 @@ namespace GUI_first_iteration
 
             DownloadJobMsg downloadJobObj = new DownloadJobMsg();
             downloadJobObj.FileName = FakeFileName;
-
+            var clientCmd = new ClientCmd();
+            clientCmd.onDownloadMsgReceived += new ClientCmd.DownloadDelegate(downloadEvent);
+            clientCmd = (ClientCmd) clientCom;
             clientCom.SendToServer(downloadJobObj);
+            
+        }
+
+        // -----------------------------------
+        // Event -- init receive at client---
+        // -----------------------------------
+
+        private void downloadEvent(IDownloadJobReplyMsg msg)
+        {
+            MessageBox.Show("Download started\n Find the file in your download folder!");
+            
+            clientCom.receiveFromFileServer(msg.FileSize, currentJob.File);
+
         }
     }
 }

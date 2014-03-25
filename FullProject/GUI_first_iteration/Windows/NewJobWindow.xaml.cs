@@ -32,9 +32,8 @@ namespace GUI_first_iteration
         private MainMenuWindow mainMenuWin;
         private IClientCmd clientCom;
         private UserClass loggedInUser;
-
+        private List<MaterialClass> materialList;  
         private CreateJobMsg createJobObj;
-        private GetMaterialsMsg getMaterialsObj;
         private JobClass jobObj;
 
 
@@ -58,9 +57,21 @@ namespace GUI_first_iteration
 
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            var clientCmd = new ClientCmd();
+            clientCmd = (ClientCmd) clientCom;
+            clientCmd.onMaterialsMsgReceived += new ClientCmd.LoadMaterialsDelegate(loadMaterialsEvent);
+            clientCom.SendToServer(new GetMaterialsMsg());
+        }
 
-            getMaterialsObj = new GetMaterialsMsg();
-            clientCom.SendToServer(getMaterialsObj);
+        // -----------------------------------------------------------
+        // Event - Load Materials to the window ----------------------
+        // -----------------------------------------------------------
+
+        private void loadMaterialsEvent(IGetMaterialsReplyMsg msg)
+        {
+            materialList = msg.Materials;
+            // The materials should be shown!!!!!!!
+   
         }
 
         // -----------------------------------
@@ -87,7 +98,9 @@ namespace GUI_first_iteration
 
 
         }
-
+        // -----------------------------------------------------------
+        // Event - confirm that the server have created the job ------
+        // -----------------------------------------------------------
         public void createJobEvent(ICreateJobReplyMsg msg)
         {
             if (msg.Created)
@@ -96,6 +109,7 @@ namespace GUI_first_iteration
                 
             }
         }
+
 
         // -----------------------------------
         // BUTTON - Back to main menu --------

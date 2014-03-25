@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
@@ -16,5 +17,8 @@ namespace ConsoleApplication1
         void LoadJobList(IRequestJobsReplyMsg msg);
 
         void SendToServer(IMessage msg);
+
+        void receiveFromFileServer(long fileSize, string name);
+        void sendFileToServer(long fileSize, string path);
     }
 }
