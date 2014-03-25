@@ -58,7 +58,7 @@ namespace Server
 
             UserClass user = _database.GetUserInfo(loginMsg.Email);
 
-            if (user != null)
+            if (user.Email != loginMsg.Email)
             {
                 loginReplyMsg.Email = true;
                 if (user.Password == loginMsg.Password)

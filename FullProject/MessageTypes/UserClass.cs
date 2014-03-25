@@ -19,7 +19,12 @@ namespace DatabaseInterface
 
         public UserClass()
         {
-            
+            Email = "";
+            FirstName = "";
+            LastName = "";
+            PhoneNumber = "";
+            Password = "";
+            AdminRights = 0;
         }
 
         public UserClass(SerializationInfo info, StreamingContext context)

@@ -25,8 +25,8 @@ namespace ClientApplication
                 
             temp = (LoginReplyMsg)client.ReceiveMessage();
 
-            Console.WriteLine(temp.Email);
-            Console.WriteLine(temp.Password);
+            Console.WriteLine("Email is {0}", temp.Email);
+            Console.WriteLine("Password is {0}", temp.Password);
         }
     }
 }
