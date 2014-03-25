@@ -13,8 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using ClientApplication;
+using ConsoleApplication1;
 using DatabaseInterface;
 using MessageTypes.Messages;
+using MessageTypes.ReplyMessages;
 
 namespace GUI_first_iteration
 {
@@ -28,11 +30,10 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClient clientCom;
-        private ILoggedInUser loggedInUser;
-
+        private IClientCmd clientCom;
+        private UserClass loggedInUser;
+        private List<MaterialClass> materialList;  
         private CreateJobMsg createJobObj;
-        private GetMaterialsMsg getMaterialsObj;
         private JobClass jobObj;
 
 
@@ -42,7 +43,7 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - NewJobWindow --------
         // -----------------------------------
 
-        public NewJobWindow(MainMenuWindow mWin, IClient ccom, ILoggedInUser user)
+        public NewJobWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
         {
             mainMenuWin = mWin;
             clientCom = ccom;
@@ -56,9 +57,21 @@ namespace GUI_first_iteration
 
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            var clientCmd = new ClientCmd();
+            clientCmd = (ClientCmd) clientCom;
+            clientCmd.onMaterialsMsgReceived += new ClientCmd.LoadMaterialsDelegate(loadMaterialsEvent);
+            clientCom.SendToServer(new GetMaterialsMsg());
+        }
 
-            getMaterialsObj = new GetMaterialsMsg();
-            clientCom.SendToServer(getMaterialsObj);
+        // -----------------------------------------------------------
+        // Event - Load Materials to the window ----------------------
+        // -----------------------------------------------------------
+
+        private void loadMaterialsEvent(IGetMaterialsReplyMsg msg)
+        {
+            materialList = msg.Materials;
+            // The materials should be shown!!!!!!!
+   
         }
 
         // -----------------------------------
@@ -77,10 +90,26 @@ namespace GUI_first_iteration
 
             createJobObj.Job = jobObj;
 
+            var clientCmd = new ClientCmd();
+            clientCmd = (ClientCmd)clientCom;
+            clientCmd.onCreateJobMsgReceived += new ClientCmd.CreateJobDelegate(createJobEvent);
+            
             clientCom.SendToServer(createJobObj);
 
 
         }
+        // -----------------------------------------------------------
+        // Event - confirm that the server have created the job ------
+        // -----------------------------------------------------------
+        public void createJobEvent(ICreateJobReplyMsg msg)
+        {
+            if (msg.Created)
+            {
+                MessageBox.Show("Your job has been created!");
+                
+            }
+        }
+
 
         // -----------------------------------
         // BUTTON - Back to main menu --------

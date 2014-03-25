@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MessageTypes.ReplyMessages;
 
 namespace GUI_first_iteration
 {
@@ -23,16 +24,20 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------  
         // -----------------------------------
 
+        private ICreateUserReplyMsg userReplyMsg;
         private CreateUserWindow createUserWin;
+        private MainWindow mainWin;
         private ActivateUserCom activateUserObj;
 
         // -----------------------------------
         // CONSTRUCTOR - ActivateUserWindow --
         // -----------------------------------
 
-        public ActivateUserWindow(CreateUserWindow cuWin)
+        public ActivateUserWindow(ICreateUserReplyMsg msg, CreateUserWindow uWin, MainWindow mWin)
         {
-            createUserWin = cuWin;
+            userReplyMsg = msg;
+            createUserWin = uWin;
+            mainWin = mWin;
             activateUserObj = new ActivateUserCom();
             InitializeComponent();
 
@@ -47,7 +52,16 @@ namespace GUI_first_iteration
         private void btnActivateUser_Click(object sender, RoutedEventArgs e)
         {
             activateUserObj.ActivationKey = tbxActivateUser.Text;
-            activateUserObj.Print();
+            if (activateUserObj.ActivationKey == userReplyMsg.ActivationCode)
+            {
+                MessageBox.Show("Good activation code\n You can now log in!");
+                mainWin.Show();
+                createUserWin.Close();
+                this.Close();
+               
+            }
+
+
         }
     }
 }

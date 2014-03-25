@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
 using ClientApplication.Test;
+using ConsoleApplication1;
+using DatabaseInterface;
 
 namespace GUI_first_iteration
 {
@@ -25,8 +27,8 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private IClient clientCom;
-        private ILoggedInUser loggedInUser;
+        private IClientCmd clientCom;
+        public UserClass loggedInUser { get; set; }
 
         // -----------------------------------
         // CONSTRUCTOR - MainMenuWindow ------
@@ -34,13 +36,7 @@ namespace GUI_first_iteration
         
         public MainMenuWindow()
         {
-            clientCom = new FakeClient(9000);
-
-            loggedInUser = new LoggedInUser();
-            loggedInUser.FirstName = "Jonas";
-            loggedInUser.Surname = "Ulleberg";
-            loggedInUser.Email = "test@iha.dk";
-            loggedInUser.Phone = "60535052";
+            clientCom = new ClientCmd();
 
             InitializeComponent();
 
@@ -58,8 +54,6 @@ namespace GUI_first_iteration
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-            // Indicate user is logged out
-            loggedInUser.IsLoggedIn = false;
 
             this.Hide();
             MainWindow mainWin = new MainWindow(this, clientCom);
