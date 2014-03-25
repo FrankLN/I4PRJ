@@ -16,6 +16,7 @@ using ClientApplication;
 using ConsoleApplication1;
 using DatabaseInterface;
 using MessageTypes.Messages;
+using MessageTypes.ReplyMessages;
 
 namespace GUI_first_iteration
 {
@@ -30,7 +31,7 @@ namespace GUI_first_iteration
 
         private MainMenuWindow mainMenuWin;
         private IClientCmd clientCom;
-        private ILoggedInUser loggedInUser;
+        private UserClass loggedInUser;
 
         private CreateJobMsg createJobObj;
         private GetMaterialsMsg getMaterialsObj;
@@ -43,7 +44,7 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - NewJobWindow --------
         // -----------------------------------
 
-        public NewJobWindow(MainMenuWindow mWin, IClientCmd ccom, ILoggedInUser user)
+        public NewJobWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
         {
             mainMenuWin = mWin;
             clientCom = ccom;
@@ -78,9 +79,22 @@ namespace GUI_first_iteration
 
             createJobObj.Job = jobObj;
 
+            var clientCmd = new ClientCmd();
+            clientCmd = (ClientCmd)clientCom;
+            clientCmd.onCreateJobMsgReceived += new ClientCmd.CreateJobDelegate(createJobEvent);
+            
             clientCom.SendToServer(createJobObj);
 
 
+        }
+
+        public void createJobEvent(ICreateJobReplyMsg msg)
+        {
+            if (msg.Created)
+            {
+                MessageBox.Show("Your job has been created!");
+                
+            }
         }
 
         // -----------------------------------

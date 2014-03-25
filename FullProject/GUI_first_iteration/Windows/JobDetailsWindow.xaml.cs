@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
 using ConsoleApplication1;
+using DatabaseInterface;
 using MessageTypes.Messages;
 
 namespace GUI_first_iteration
@@ -27,13 +28,13 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private IClientCmd clientCom;
-        private ILoggedInUser loggedInUser;
+        private UserClass loggedInUser;
 
         // -----------------------------------
         // CONSTRUCTOR - JobDetailsWindow ----
         // -----------------------------------
      
-        public JobDetailsWindow(IClientCmd ccom, ILoggedInUser user)
+        public JobDetailsWindow(IClientCmd ccom, UserClass user)
         {
             clientCom = ccom;
             loggedInUser = user;

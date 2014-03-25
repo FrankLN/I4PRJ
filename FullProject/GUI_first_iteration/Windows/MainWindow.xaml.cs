@@ -53,10 +53,11 @@ namespace GUI_first_iteration
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CreateUserWindow createUserWin = new CreateUserWindow(mainMenuWin, clientCom);
+            CreateUserWindow createUserWin = new CreateUserWindow(this, clientCom);
+    
             createUserWin.Show(); // ShowDialog
             ClosedInCode = true;
-            this.Close(); 
+            this.Hide(); 
         }
 
         // -----------------------------------
@@ -76,10 +77,12 @@ namespace GUI_first_iteration
 
         public void loginEvent(ILoginReplyReplyMsg msg)
         {
+            
             if (msg.Email)
             {
                 if (msg.Password)
                 {
+                    mainMenuWin.loggedInUser = msg.User;
                     mainMenuWin.Show();
                     ClosedInCode = true;
                     this.Close();

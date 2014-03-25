@@ -27,7 +27,7 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------  
         // -----------------------------------
 
-        private MainMenuWindow mainMenuWin;
+        private MainWindow mainWin;
         private IClientCmd clientCom;
         private CreateUserMsg createUserObj;
 
@@ -37,9 +37,9 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - CreateUserWindow ----
         // -----------------------------------
 
-        public CreateUserWindow(MainMenuWindow mWin, IClientCmd ccom)
+        public CreateUserWindow(MainWindow mWin, IClientCmd ccom)
         {
-            mainMenuWin = mWin;
+            mainWin = mWin;
             clientCom = ccom;
             ClosedInCode = false;
 
@@ -72,7 +72,7 @@ namespace GUI_first_iteration
             if (msg.Created)
             {
                 
-                ActivateUserWindow activateUserWin = new ActivateUserWindow(msg);
+                ActivateUserWindow activateUserWin = new ActivateUserWindow(msg, this, mainWin);
                 activateUserWin.Show();
             }
             else
@@ -87,7 +87,6 @@ namespace GUI_first_iteration
 
         private void btnBack_Click_1(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWin = new MainWindow(mainMenuWin, clientCom);
             mainWin.Show();
 
             // Indicate that the window is closed in code

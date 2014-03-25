@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using ClientApplication;
 using ClientApplication.Test;
 using ConsoleApplication1;
+using DatabaseInterface;
 
 namespace GUI_first_iteration
 {
@@ -27,7 +28,7 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private IClientCmd clientCom;
-        private ILoggedInUser loggedInUser;
+        public UserClass loggedInUser { get; set; }
 
         // -----------------------------------
         // CONSTRUCTOR - MainMenuWindow ------
@@ -36,12 +37,6 @@ namespace GUI_first_iteration
         public MainMenuWindow()
         {
             clientCom = new ClientCmd();
-
-            loggedInUser = new LoggedInUser();
-            loggedInUser.FirstName = "Jonas";
-            loggedInUser.Surname = "Ulleberg";
-            loggedInUser.Email = "test@iha.dk";
-            loggedInUser.Phone = "60535052";
 
             InitializeComponent();
 
@@ -59,8 +54,6 @@ namespace GUI_first_iteration
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-            // Indicate user is logged out
-            loggedInUser.IsLoggedIn = false;
 
             this.Hide();
             MainWindow mainWin = new MainWindow(this, clientCom);
