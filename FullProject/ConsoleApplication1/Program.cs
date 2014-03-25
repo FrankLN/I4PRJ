@@ -13,7 +13,6 @@ namespace ClientApplication
     {
         static void Main(string[] args)
         {
-            ClientCmd clientCmd = new ClientCmd();
             Client client = new Client(9000);
             LoginMsg msg = new LoginMsg();
 

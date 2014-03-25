@@ -39,9 +39,8 @@ namespace Server
 
 		    try
 		    {
-
-
-                serverSocket = new TcpListener(port);
+                Console.WriteLine("test");
+                serverSocket = new TcpListener(IPAddress.Parse("10.0.0.2"), port);
 		    }
 		    catch (SocketException e)
 		    {

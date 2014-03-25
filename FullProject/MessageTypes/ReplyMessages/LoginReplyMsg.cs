@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
 using ConsoleApplication1;
@@ -14,6 +15,7 @@ namespace MessageTypes.ReplyMessages
 
     }
 
+    [Serializable()]
     public class LoginReplyMsg : IReplyMessage, ISerializable,ILoginReplyReplyMsg
     {
         public bool Email { get; set; }

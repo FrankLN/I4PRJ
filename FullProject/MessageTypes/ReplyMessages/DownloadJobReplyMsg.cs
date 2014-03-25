@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
@@ -10,6 +11,8 @@ namespace MessageTypes.ReplyMessages
     {
         long FileSize { get; }
     }
+
+    [Serializable()]
     public class DownloadJobReplyMsg : IReplyMessage, ISerializable, IDownloadJobReplyMsg
     {
         public long FileSize { get; set; }

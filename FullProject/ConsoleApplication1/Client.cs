@@ -36,7 +36,7 @@ namespace ClientApplication
         private void Init(int port)
         {
             clientSocket = new TcpClient();
-            clientSocket.Connect(IPAddress.Parse("10.0.0.1"), port);
+            clientSocket.Connect("87.48.38.25", port);
             outInStream = clientSocket.GetStream();
             bFormatter = new BinaryFormatter();
         }

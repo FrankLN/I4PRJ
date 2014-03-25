@@ -59,7 +59,7 @@
     <Compile Include="ReplyMessages\GetMaterialsReplyMsg.cs" />
     <Compile Include="ReplyMessages\IReplyMessage.cs" />
     <Compile Include="ReplyMessages\LoginReplyMsg.cs" />
-    <Compile Include="RequestJobsReplyMsg.cs" />
+    <Compile Include="ReplyMessages\RequestJobsReplyMsg.cs" />
     <Compile Include="UserClass.cs" />
   </ItemGroup>
   <ItemGroup />

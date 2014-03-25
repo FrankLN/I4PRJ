@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using ConsoleApplication1;
 using Server;
@@ -11,6 +12,7 @@ namespace MessageTypes.ReplyMessages
 
     }
 
+    [Serializable()]
     public class CreateUserReplyMsg : IReplyMessage, ISerializable, ICreateUserReplyMsg
     {
         public bool Created { get; set; }

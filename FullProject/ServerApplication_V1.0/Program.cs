@@ -12,6 +12,8 @@ namespace ServerApplication_V1._0
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Starting server...");
+
             try
             {
                 while (true)

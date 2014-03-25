@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using ConsoleApplication1;
 using DatabaseInterface;
@@ -11,6 +12,7 @@ namespace MessageTypes.ReplyMessages
         List<JobClass> JobList { get; }  
     }
 
+    [Serializable()]
     public class RequestJobsReplyMsg : IReplyMessage, ISerializable, IRequestJobsReplyMsg
     {
         public List<JobClass> JobList { get; set; }

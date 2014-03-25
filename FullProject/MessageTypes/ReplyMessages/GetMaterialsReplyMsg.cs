@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ConsoleApplication1;
@@ -11,6 +12,7 @@ namespace MessageTypes.ReplyMessages
         List<MaterialClass> Materials { get; }
     }
 
+    [Serializable()]
     public class GetMaterialsReplyMsg : IReplyMessage, ISerializable, IGetMaterialsReplyMsg
     {
         public List<MaterialClass> Materials { get; set; }

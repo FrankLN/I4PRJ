@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using ConsoleApplication1;
 using Server;
@@ -10,6 +11,7 @@ namespace MessageTypes.ReplyMessages
         string ActivationCode { get; }
     }
 
+    [Serializable()]
     public class ActivationCodeRequestReplyMsg : IReplyMessage, ISerializable, IActivationCodeRequestReplyMsg
     {
         public bool Accepted { get; set; }
