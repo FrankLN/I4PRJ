@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using DatabaseInterface;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
@@ -25,15 +27,14 @@ namespace Server
             return result;
         }
 
-        private void SendEmail(string email, string subject, string text, string server)
+        private void SendEmail(string email, string subject, string text)
         {
-            System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-            message.To.Add(email);
-            message.Subject = subject;
-            message.From = new System.Net.Mail.MailAddress("automail@cartesius.dk");
-            message.Body = text;
-            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(server);
-            smtp.Send(message);
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("3D.Cartesius@gmail.com", "I4PRJGruppe4"),
+                EnableSsl = true
+            };
+            client.Send(email, email, subject, text);
         }
         #endregion
 
@@ -58,7 +59,7 @@ namespace Server
 
             UserClass user = _database.GetUserInfo(loginMsg.Email);
 
-            if (user.Email != loginMsg.Email)
+            if (user.Email == loginMsg.Email)
             {
                 loginReplyMsg.Email = true;
                 if (user.Password == loginMsg.Password)
@@ -96,7 +97,7 @@ namespace Server
                 createUserReplyMsg.ActivationCode + "\n\nThis email cannot be replied.";
 
             SendEmail(createUserMsg.User.Email, "Activation code to 3D-Printer", 
-                                                    emailText, "smtp.google.com");
+                                                    emailText);
 
             //reply
             _server.SendToClient(createUserReplyMsg);
@@ -170,7 +171,7 @@ namespace Server
                                    activationCodeRequestReplyMsg.ActivationCode + "\n\nThis email cannot be replied.";
 
                 SendEmail(activationCodeRequestMsg.Email, "Activation code to 3D-Printer",
-                    emailText, "smtp.google.com");
+                    emailText);
             }
             else
             {

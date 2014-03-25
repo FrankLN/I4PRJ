@@ -34,8 +34,7 @@ namespace DatabaseInterface
             PhoneNumber = (string)info.GetValue("PhoneNumber", typeof(string));
             FirstName = (string)info.GetValue("FirstName", typeof(string));
             LastName = (string)info.GetValue("LastName", typeof(string));
-
-            AdminRights = (int) info.GetValue("AdminRight", typeof (int));
+            AdminRights = (int) info.GetValue("AdminRights", typeof (int));
         }
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -44,7 +43,6 @@ namespace DatabaseInterface
             info.AddValue("PhoneNumber", PhoneNumber);
             info.AddValue("FirstName", FirstName);
             info.AddValue("LastName", LastName);
-
             info.AddValue("AdminRights", AdminRights);
         }
     }

@@ -49,8 +49,10 @@ namespace DatabaseInterface
                    cmd.Parameters["@Data5"].Value = user.AdminRights;
                    cmd.Parameters["@Data6"].Value = user.Password;
 
+
                    //var id 
-                   user.Email = (string) cmd.ExecuteScalar(); //Returns the identity of the new tuple/record
+                   //user.Email = (string) cmd.ExecuteScalar(); //Returns the identity of the new tuple/record
+                   cmd.ExecuteScalar();
                }
            }
            finally 

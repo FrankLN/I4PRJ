@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using NSubstitute;
 
 namespace DatabaseInterface
 {
@@ -14,4 +15,5 @@ namespace DatabaseInterface
 
         List<JobClass> GetJobList();
     }
+
 }

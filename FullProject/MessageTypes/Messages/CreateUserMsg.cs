@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using DatabaseInterface;
 using Server;
@@ -8,6 +9,8 @@ namespace MessageTypes.Messages
     {
         UserClass User { get; }
     }
+
+    [Serializable()]
     public class CreateUserMsg : IMessage, ISerializable, ICreateUserMsg
     {
         public UserClass User { get; set; }
