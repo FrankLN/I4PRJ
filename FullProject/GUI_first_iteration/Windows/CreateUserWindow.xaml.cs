@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
+using ConsoleApplication1;
 using MessageTypes.Messages;
+using MessageTypes.ReplyMessages;
 
 namespace GUI_first_iteration
 {
@@ -26,7 +28,7 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClient clientCom;
+        private IClientCmd clientCom;
         private CreateUserMsg createUserObj;
 
         private bool ClosedInCode;
@@ -35,7 +37,7 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - CreateUserWindow ----
         // -----------------------------------
 
-        public CreateUserWindow(MainMenuWindow mWin, IClient ccom)
+        public CreateUserWindow(MainMenuWindow mWin, IClientCmd ccom)
         {
             mainMenuWin = mWin;
             clientCom = ccom;
@@ -54,9 +56,29 @@ namespace GUI_first_iteration
 
         private void btnCreateUser_Click(object sender, RoutedEventArgs e)
         {
+            var clientCmd = new ClientCmd();
+            clientCmd = (ClientCmd)clientCom;
+            clientCmd.onCreateUserMsgReceived += new ClientCmd.CreateUserDelegate(createUserEvent);
             clientCom.SendToServer(createUserObj);
-            ActivateUserWindow activateUserWin = new ActivateUserWindow(this);
-            activateUserWin.Show();
+            //ActivateUserWindow activateUserWin = new ActivateUserWindow(this);
+            //activateUserWin.Show();
+        }
+        
+        // -----------------------------------
+        // Event - Activated on reply --------
+        // -----------------------------------
+        private void createUserEvent(ICreateUserReplyMsg msg)
+        {
+            if (msg.Created)
+            {
+                
+                ActivateUserWindow activateUserWin = new ActivateUserWindow(msg);
+                activateUserWin.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please try again");
+            }
         }
 
         // -----------------------------------

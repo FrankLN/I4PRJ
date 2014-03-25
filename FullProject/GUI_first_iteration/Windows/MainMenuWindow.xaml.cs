@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
 using ClientApplication.Test;
+using ConsoleApplication1;
 
 namespace GUI_first_iteration
 {
@@ -25,7 +26,7 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------
         // -----------------------------------
 
-        private IClient clientCom;
+        private IClientCmd clientCom;
         private ILoggedInUser loggedInUser;
 
         // -----------------------------------
@@ -34,7 +35,7 @@ namespace GUI_first_iteration
         
         public MainMenuWindow()
         {
-            clientCom = new FakeClient(9000);
+            clientCom = new ClientCmd();
 
             loggedInUser = new LoggedInUser();
             loggedInUser.FirstName = "Jonas";

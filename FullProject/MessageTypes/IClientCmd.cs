@@ -1,3 +1,4 @@
+using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
 namespace ConsoleApplication1
@@ -13,5 +14,7 @@ namespace ConsoleApplication1
         void DownloadCommencing(IDownloadJobReplyMsg msg);
         void LoadMaterials(IGetMaterialsReplyMsg msg);
         void LoadJobList(IRequestJobsReplyMsg msg);
+
+        void SendToServer(IMessage msg);
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using ClientApplication;
+using ConsoleApplication1;
 using DatabaseInterface;
 using MessageTypes.Messages;
 
@@ -28,7 +29,7 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClient clientCom;
+        private IClientCmd clientCom;
         private ILoggedInUser loggedInUser;
 
         private CreateJobMsg createJobObj;
@@ -42,7 +43,7 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - NewJobWindow --------
         // -----------------------------------
 
-        public NewJobWindow(MainMenuWindow mWin, IClient ccom, ILoggedInUser user)
+        public NewJobWindow(MainMenuWindow mWin, IClientCmd ccom, ILoggedInUser user)
         {
             mainMenuWin = mWin;
             clientCom = ccom;
