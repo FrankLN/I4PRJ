@@ -56,6 +56,7 @@ namespace GUI_first_iteration
             {
                 MessageBox.Show("Good activation code\n You can now log in!");
                 mainWin.Show();
+                createUserWin.ClosedInCode = true;
                 createUserWin.Close();
                 this.Close();
                

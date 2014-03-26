@@ -33,9 +33,11 @@
                 </ComboBox>
                 <DatePicker DisplayDateStart="{x:Static System:DateTime.Today}" Name="dpDate" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="29" Width="298" IsKeyboardFocusedChanged="dpDate_IsKeyboardFocusedChanged"/>
                 <TextBox Name="tbxComments" Grid.Column="1" HorizontalAlignment="Left" Height="125" Margin="10,13,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" IsKeyboardFocusedChanged="tbxComments_IsKeyboardFocusedChanged"/>
+                <TextBox Name="tbxFilePath"  Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="207"/>
+                <Button Name="btnBrowse" Content="Browse" Grid.Column="1" HorizontalAlignment="Left" Margin="222,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="86" Height="20" Click="btnBrowse_Click"/>
             </Grid>
         </StackPanel>
-    
+
         <StackPanel HorizontalAlignment="Left" Height="125" Margin="10,317,0,0" VerticalAlignment="Top" Width="465">
             <Grid>
                 <Grid.ColumnDefinitions>

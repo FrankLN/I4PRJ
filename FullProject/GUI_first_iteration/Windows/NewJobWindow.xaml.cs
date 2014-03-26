@@ -95,7 +95,7 @@ namespace GUI_first_iteration
             clientCmd.onCreateJobMsgReceived += new ClientCmd.CreateJobDelegate(createJobEvent);
             
             clientCom.SendToServer(createJobObj);
-
+            //clientCmd.sendFileToServer();
 
         }
         // -----------------------------------------------------------
@@ -106,7 +106,6 @@ namespace GUI_first_iteration
             if (msg.Created)
             {
                 MessageBox.Show("Your job has been created!");
-                
             }
         }
 
@@ -126,12 +125,12 @@ namespace GUI_first_iteration
 
         private void cbxMaterial_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            //createJobObj.Job.Material = cbxMaterial.SelectionBoxItem.ToString();
+            //createJobObj. = cbxMaterial.SelectionBoxItem.ToString();
         }
 
         private void cbxHolSol_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            //createJobObj.HolSol = cbxHolSol.SelectionBoxItem.ToString();
+            //createJobObj.Jo = cbxHolSol.SelectionBoxItem.ToString();
         }
 
         private void dpDate_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -154,6 +153,20 @@ namespace GUI_first_iteration
             {
                 Application.Current.Shutdown();
             }
+        }
+
+        private void btnBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "STL Files (*.stl)|*.stl|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif" };
+
+            var result = ofd.ShowDialog();
+
+            if (result == false)
+            {
+                return;
+            }
+
+            tbxFilePath.Text = ofd.FileName;
         }
     }
 }
