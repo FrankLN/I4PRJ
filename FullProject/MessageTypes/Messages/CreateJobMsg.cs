@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using DatabaseInterface;
 using Server;
@@ -8,6 +9,7 @@ namespace MessageTypes.Messages
     {
         JobClass Job { get; }
     }
+    [Serializable()]
     public class CreateJobMsg : IMessage, ISerializable, ICreateJobMsg
     {
         public JobClass Job { get; set; }

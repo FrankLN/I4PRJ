@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using Server;
 
@@ -7,6 +8,7 @@ namespace MessageTypes.Messages
     {
         string Email { get; }
     }
+    [Serializable()]
     public class ActivationCodeRequestMsg : IMessage, ISerializable, IActivationCodeRequestMsg
     {
         public string Email { get; set; }

@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using Server;
 
@@ -7,6 +8,7 @@ namespace MessageTypes.Messages
     {
         string FileName { get; }
     }
+    [Serializable()]
     public class DownloadJobMsg : IMessage, ISerializable, IDownloadJobMsg
     {
         public string FileName { get; set; }
