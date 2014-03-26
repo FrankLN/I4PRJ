@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using ClientApplication;
 using ConsoleApplication1;
 using MessageTypes.Messages;
+using MessageTypes.ReplyMessages;
 
 namespace GUI_first_iteration
 {
@@ -28,8 +29,7 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        //private IClient clientCom;
-        private IClientCmd clientCmd;
+        private IClientCmd clientCom;
         private LoginMsg loginObj;
         private bool ClosedInCode;
 
@@ -37,7 +37,7 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - MainWindow ----------
         // -----------------------------------
 
-        public MainWindow(MainMenuWindow parent, IClient ccom)
+        public MainWindow(MainMenuWindow parent, IClientCmd ccom)
         {
             mainMenuWin = parent;
             clientCom = ccom;
@@ -53,10 +53,11 @@ namespace GUI_first_iteration
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CreateUserWindow createUserWin = new CreateUserWindow(mainMenuWin, clientCom);
+            CreateUserWindow createUserWin = new CreateUserWindow(this, clientCom);
+    
             createUserWin.Show(); // ShowDialog
             ClosedInCode = true;
-            this.Close(); 
+            this.Hide(); 
         }
 
         // -----------------------------------
@@ -66,11 +67,35 @@ namespace GUI_first_iteration
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             // Send object
+            var clientCmd = new ClientCmd();
+            clientCmd = (ClientCmd) clientCom;
+            clientCmd.onLogiMsgReceived += new ClientCmd.LogiDelegate(loginEvent);
             clientCom.SendToServer(loginObj);
 
-            mainMenuWin.Show();
-            ClosedInCode = true;
-            this.Close();
+
+        }
+
+        public void loginEvent(ILoginReplyReplyMsg msg)
+        {
+            
+            if (msg.Email)
+            {
+                if (msg.Password)
+                {
+                    mainMenuWin.loggedInUser = msg.User;
+                    mainMenuWin.Show();
+                    ClosedInCode = true;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong password\n Please reenter...");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wrong email\n Please reenter...");
+            }
         }
 
         private void tbxPassword_GotFocus(object sender, RoutedEventArgs e)
