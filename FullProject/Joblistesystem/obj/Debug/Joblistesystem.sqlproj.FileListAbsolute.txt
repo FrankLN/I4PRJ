@@ -1,0 +1,9 @@
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\Joblistesystem\bin\Debug\Joblistesystem.dacpac
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\Joblistesystem\obj\Debug\Joblistesystem.dll
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\Joblistesystem\obj\Debug\Joblistesystem.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\Joblistesystem\bin\Debug\Joblistesystem.dll
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\Joblistesystem\bin\Debug\Joblistesystem.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\Joblistesystem\obj\Debug\Model.xml
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\Joblistesystem\obj\Debug\refactor.xml
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\Joblistesystem\obj\Debug\postdeploy.sql
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\Joblistesystem\obj\Debug\predeploy.sql

@@ -1,0 +1,9 @@
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\ClientApplication.Test.dll
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\ClientApplication.Test.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\ConsoleApplication1.exe
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\MessageTypes.dll
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\ConsoleApplication1.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\MessageTypes.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ClientApplication.Test\obj\Debug\ClientApplication.Test.csprojResolveAssemblyReference.cache
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ClientApplication.Test\obj\Debug\ClientApplication.Test.dll
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ClientApplication.Test\obj\Debug\ClientApplication.Test.pdb

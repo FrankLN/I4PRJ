@@ -1,0 +1,12 @@
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\bin\Debug\ServerApplication_V1.0.exe.config
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\obj\Debug\ServerApplication_V1.0.csprojResolveAssemblyReference.cache
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\bin\Debug\ServerApplication_V1.0.exe
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\bin\Debug\ServerApplication_V1.0.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\bin\Debug\DatabaseInterface.dll
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\bin\Debug\Joblistesystem.dll
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\bin\Debug\MessageTypes.dll
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\bin\Debug\DatabaseInterface.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\bin\Debug\Joblistesystem.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\bin\Debug\MessageTypes.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\obj\Debug\ServerApplication_V1.0.exe
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ServerApplication_V1.0\obj\Debug\ServerApplication_V1.0.pdb
