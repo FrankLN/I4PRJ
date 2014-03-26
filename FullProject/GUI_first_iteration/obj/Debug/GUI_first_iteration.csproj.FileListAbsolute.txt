@@ -32,3 +32,6 @@ C:\Users\PIRATE1\Git\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\GUI_first_i
 C:\Users\PIRATE1\Git\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\GUI_first_iteration.csproj.GenerateResource.Cache
 C:\Users\PIRATE1\Git\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
 C:\Users\PIRATE1\Git\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe.config
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
+Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
