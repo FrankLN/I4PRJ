@@ -15,7 +15,8 @@ namespace DatabaseInterface
         private SqlConnection conn;
         public Database()
         {
-            conn = new SqlConnection(@"Data Source=10.29.0.29;Initial Catalog=F14I4SemProj4Gr4;Integrated Security=False;User ID=F14I4SemProj4Gr4;Password=F14I4SemProj4Gr4;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;");
+            //conn = new SqlConnection(@"Data Source=10.29.0.29;Initial Catalog=F14I4SemProj4Gr4;Integrated Security=False;User ID=F14I4SemProj4Gr4;Password=F14I4SemProj4Gr4;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;");
+            conn = new SqlConnection(@"Data Source=(localdb)\Projects;Initial Catalog=Joblistesystem;Integrated Security=True;");
         }
 
 
@@ -245,5 +246,47 @@ namespace DatabaseInterface
                  }
              }
          }
+
+        public List<MaterialClass> GetMaterials()
+        {
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // String with SQL statement
+                string userInsert = @"SELECT * FROM Material";
+
+                using (SqlCommand cmd = new SqlCommand(userInsert, conn))
+                {
+                    List<MaterialClass> materials = new List<MaterialClass>();
+
+                    SqlDataReader rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
+
+                    int i = 1;
+
+                    while (rdr.Read())
+                    {
+                        MaterialClass tempMaterial = new MaterialClass();
+
+                        tempMaterial.MaterialId = i;
+                        tempMaterial.MaterialType = (string) rdr["MaterialType"];
+
+                        materials.Add(tempMaterial);
+
+                        i++;
+                    }
+                    return materials;
+                }
+            }
+            finally
+            {
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }

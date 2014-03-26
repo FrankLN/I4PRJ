@@ -132,7 +132,7 @@ namespace Server
             {
                 downloadJobReplyMsg.FileSize = File.ReadAllBytes("C:/Jobs/" + downloadJobMsg.FileName).Length;
 
-                _server.SendToClient(downloadJobReplyMsg);
+                IMessage temp = _server.SendToClient(downloadJobReplyMsg);
 
                 _server.SendFile(downloadJobMsg.FileName, downloadJobReplyMsg.FileSize); 
             }
@@ -141,6 +141,7 @@ namespace Server
                 downloadJobReplyMsg.FileSize = 0;
             }
             
+            _server.SendToClient(downloadJobReplyMsg).Run(this);
         }
 
         public void GetMaterials(IGetMaterialsMsg getMaterialsMsg)
@@ -149,7 +150,7 @@ namespace Server
 
             Console.WriteLine("Get meterials called");
 
-            //getMaterialsReplyMsg.Materials = _database.GetMaterials();
+            getMaterialsReplyMsg.Materials = _database.GetMaterials();
 
             _server.SendToClient(getMaterialsReplyMsg).Run(this);
         }
