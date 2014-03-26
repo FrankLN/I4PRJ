@@ -11,7 +11,7 @@ namespace Server
 {
     public interface IServer
     {
-        void SendToClient(ISerializable message);
+        IMessage SendToClient(ISerializable message);
         IMessage ServerRun();
         void RecieveFile(string fileName, long fileSize);
         void SendFile(string fileName, long fileSize);
@@ -87,7 +87,7 @@ namespace Server
 	        return (IMessage) bFormatter.Deserialize(inStream);
 	    }
 
-	    public void SendToClient(ISerializable message)
+	    public IMessage SendToClient(ISerializable message)
 	    {
 	        try
 	        {
@@ -108,7 +108,8 @@ namespace Server
 	            Console.WriteLine(e.Message);
                 throw new ServerException();
 	        }
-	        
+
+            return (IMessage)bFormatter.Deserialize(inStream);
 	    }
 
 	    public void RecieveFile(string fileName, long fileSize)

@@ -78,7 +78,7 @@ namespace Server
                 loginReplyMsg.Password = false;
             }
             
-            _server.SendToClient(loginReplyMsg);
+            _server.SendToClient(loginReplyMsg).Run(this);
         }
 
         public void CreateUser(ICreateUserMsg createUserMsg)
@@ -100,7 +100,7 @@ namespace Server
                                                     emailText);
 
             //reply
-            _server.SendToClient(createUserReplyMsg);
+            _server.SendToClient(createUserReplyMsg).Run(this);
         }
 
         public void CreateJob(ICreateJobMsg createJobMsg)
@@ -112,7 +112,7 @@ namespace Server
             _database.AddJob(createJobMsg.Job);
             createJobReplyMsg.Created = true;
 
-            _server.SendToClient(createJobReplyMsg);
+            _server.SendToClient(createJobReplyMsg).Run(this);
         }
 
         public void RequestJobs(IRequestJobsMsg requestJobsMsg)
@@ -121,7 +121,7 @@ namespace Server
 
             requestJobsReplyMsg.JobList = _database.GetJobList();
 
-            _server.SendToClient(requestJobsReplyMsg);
+            _server.SendToClient(requestJobsReplyMsg).Run(this);
         }
 
         public void DownloadJob(IDownloadJobMsg downloadJobMsg)
@@ -147,9 +147,11 @@ namespace Server
         {
             GetMaterialsReplyMsg getMaterialsReplyMsg = new GetMaterialsReplyMsg();
 
+            Console.WriteLine("Get meterials called");
+
             //getMaterialsReplyMsg.Materials = _database.GetMaterials();
 
-            _server.SendToClient(getMaterialsReplyMsg);
+            _server.SendToClient(getMaterialsReplyMsg).Run(this);
         }
 
         public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg)
@@ -179,7 +181,7 @@ namespace Server
 
             }
 
-            _server.SendToClient(activationCodeRequestReplyMsg);
+            _server.SendToClient(activationCodeRequestReplyMsg).Run(this);
         }
     }
 }

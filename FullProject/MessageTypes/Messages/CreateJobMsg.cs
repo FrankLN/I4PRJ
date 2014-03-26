@@ -21,7 +21,7 @@ namespace MessageTypes.Messages
 
         public CreateJobMsg(SerializationInfo info, StreamingContext context)
         {
-            Job = (JobClass)info.GetValue("job", typeof(JobClass));
+            Job = (JobClass)info.GetValue("Job", typeof(JobClass));
        
         }
 
