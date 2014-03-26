@@ -70,7 +70,7 @@ namespace GUI_first_iteration
         private void loadMaterialsEvent(IGetMaterialsReplyMsg msg)
         {
             materialList = msg.Materials;
-            // The materials should be shown!!!!!!!
+            // The loaded materials should be shown!!!!!!!
    
         }
 
