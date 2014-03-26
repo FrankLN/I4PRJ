@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.Serialization;
 using Server;
 
@@ -8,6 +9,7 @@ namespace MessageTypes.Messages
     {
         
     }
+    [Serializable()]
     public class RequestJobsMsg : IMessage, ISerializable, IRequestJobsMsg
     {
         public RequestJobsMsg()
