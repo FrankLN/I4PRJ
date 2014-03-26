@@ -80,11 +80,11 @@ namespace GUI_first_iteration
 
         private void btnCreateJob_Click(object sender, RoutedEventArgs e)
         {
-            MaterialClass FakeMaterialObj = new MaterialClass();
-            FakeMaterialObj.MaterialType = "Material 1";
-            FakeMaterialObj.MaterialId = 0;
+            MaterialClass MaterialObj = new MaterialClass();
+            MaterialObj.MaterialType = cbxMaterial.SelectedItem.ToString(); //"Material 1";
+            MaterialObj.MaterialId = cbxMaterial.SelectedIndex; //0;
 
-            jobObj.Material = FakeMaterialObj;
+            jobObj.Material = MaterialObj;
             jobObj.Deadline = dpDate.SelectedDate.ToString();
 
 
