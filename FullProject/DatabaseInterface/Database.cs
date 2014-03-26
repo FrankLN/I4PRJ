@@ -15,15 +15,13 @@ namespace DatabaseInterface
         private SqlConnection conn;
         public Database()
         {
-            conn = new SqlConnection(@"Data Source=(localdb)\Projects;Initial Catalog=Joblistesystem;Integrated Security=True;");
+            conn = new SqlConnection(@"Data Source=10.29.0.29;Initial Catalog=F14I4SemProj4Gr4;Integrated Security=False;User ID=F14I4SemProj4Gr4;Password=F14I4SemProj4Gr4;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;");
         }
 
 
         public void AddUser(UserClass user)
        // AddUser adds an object in the User tabel on the database.
-        {
-            //DataContext db = new DataContext(@"C:\Users\Søren Emil\AppData\Local\Microsoft\VisualStudio\SSDT\JobListeDAB\Joblistesystem.mdf");
-
+        {          
            try
            {
                // Open the connection
