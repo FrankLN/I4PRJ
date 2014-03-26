@@ -15,6 +15,7 @@ using ClientApplication;
 using ConsoleApplication1;
 using DatabaseInterface;
 using MessageTypes.Messages;
+using MessageTypes.ReplyMessages;
 
 namespace GUI_first_iteration
 {
@@ -32,6 +33,8 @@ namespace GUI_first_iteration
         private RequestJobsMsg requestJobsObj;
         private UserClass loggedInUser;
         private bool ClosedInCode;
+        private List<JobClass> allJobs;
+        private JobClass selectedJob;
 
         // -----------------------------------
         // CONSTRUCTOR - JobHistoryWindow ----
@@ -45,12 +48,21 @@ namespace GUI_first_iteration
             ClosedInCode = false;
 
             InitializeComponent();
-
+            var clientCmd = new ClientCmd();
+            clientCmd = (ClientCmd) clientCom;
+            clientCmd.onJobListMsgReceived += new ClientCmd.LoadJobListDelegate(LoadJobsEvent);
             requestJobsObj = new RequestJobsMsg();
             clientCom.SendToServer(requestJobsObj);
 
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+        // -----------------------------------------------
+        // Event - Receives the joblist after requset ----
+        // -----------------------------------------------
+        private void LoadJobsEvent(IRequestJobsReplyMsg msg)
+        {
+            allJobs = msg.JobList;
         }
 
         // -----------------------------------
@@ -59,7 +71,7 @@ namespace GUI_first_iteration
 
         private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
         {
-            JobDetailsWindow jobDetailsWin = new JobDetailsWindow(clientCom, loggedInUser);
+            JobDetailsWindow jobDetailsWin = new JobDetailsWindow(clientCom, loggedInUser, selectedJob);
 
             jobDetailsWin.Show();
         }

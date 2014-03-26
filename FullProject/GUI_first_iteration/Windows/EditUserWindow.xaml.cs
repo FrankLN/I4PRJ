@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
 using ConsoleApplication1;
+using DatabaseInterface;
 
 namespace GUI_first_iteration
 {
@@ -27,7 +28,7 @@ namespace GUI_first_iteration
 
         private MainMenuWindow mainMenuWin;
         private IClientCmd clientCom;
-        private ILoggedInUser loggedInUser;
+        private UserClass loggedInUser;
         private EditUserCom editUserObj;
         private bool ClosedInCode;
 
@@ -35,7 +36,7 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - EditUserWindow ------
         // -----------------------------------
 
-        public EditUserWindow(MainMenuWindow mWin, IClientCmd ccom, ILoggedInUser user)
+        public EditUserWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
         {
             // Set private data members
             mainMenuWin = mWin;
@@ -49,10 +50,10 @@ namespace GUI_first_iteration
             InitializeComponent();
 
             // Fill textbox with information about current logged in user
-            TbxName.Text = user.FirstName;
-            TbxSurname.Text = user.Surname;
-            TbxEmail.Text = user.Email;
-            TbxPhone.Text = user.Phone;
+            TbxName.Text = loggedInUser.FirstName;
+            TbxSurname.Text = loggedInUser.LastName;
+            TbxEmail.Text = loggedInUser.Email;
+            TbxPhone.Text = loggedInUser.PhoneNumber;
 
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;

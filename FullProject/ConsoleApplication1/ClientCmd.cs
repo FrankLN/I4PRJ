@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -142,6 +143,16 @@ namespace ConsoleApplication1
         {
             client.SendToServer((ISerializable) msg);
             client.ReceiveMessage().Run(this);
+        }
+
+        public void receiveFromFileServer(long fileSize, string name )
+        {
+            client.ReceiveFile(fileSize,name);
+        }
+
+        public void sendFileToServer(long fileSize, string path)
+        {
+            client.SendFile(fileSize,path);
         }
     }
 }
