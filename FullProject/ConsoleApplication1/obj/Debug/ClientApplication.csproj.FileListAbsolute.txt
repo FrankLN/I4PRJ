@@ -1,8 +1,0 @@
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ConsoleApplication1\obj\Debug\ClientApplication.csprojResolveAssemblyReference.cache
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\MessageTypes.dll
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\MessageTypes.pdb
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

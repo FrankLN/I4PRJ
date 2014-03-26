@@ -1,5 +1,0 @@
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\MessageTypes\bin\Debug\MessageTypes.dll
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\MessageTypes\bin\Debug\MessageTypes.pdb
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\MessageTypes\obj\Debug\MessageTypes.dll
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\MessageTypes\obj\Debug\MessageTypes.pdb
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\MessageTypes\obj\Debug\MessageTypes.csprojResolveAssemblyReference.cache

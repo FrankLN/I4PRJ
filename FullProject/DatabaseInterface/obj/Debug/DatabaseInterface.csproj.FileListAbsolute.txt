@@ -1,7 +1,0 @@
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\DatabaseInterface\bin\Debug\DatabaseInterface.dll
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\DatabaseInterface\bin\Debug\DatabaseInterface.pdb
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\DatabaseInterface\obj\Debug\DatabaseInterface.csprojResolveAssemblyReference.cache
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\DatabaseInterface\obj\Debug\DatabaseInterface.dll
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\DatabaseInterface\obj\Debug\DatabaseInterface.pdb
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\DatabaseInterface\bin\Debug\MessageTypes.dll
-Z:\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\DatabaseInterface\bin\Debug\MessageTypes.pdb
