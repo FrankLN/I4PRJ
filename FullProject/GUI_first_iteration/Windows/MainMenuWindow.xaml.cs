@@ -54,7 +54,7 @@ namespace GUI_first_iteration
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-
+            loggedInUser = null;
             this.Hide();
             MainWindow mainWin = new MainWindow(this, clientCom);
             mainWin.Show();

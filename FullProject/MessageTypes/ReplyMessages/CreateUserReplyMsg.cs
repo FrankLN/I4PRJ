@@ -28,7 +28,7 @@ namespace MessageTypes.ReplyMessages
         public CreateUserReplyMsg(SerializationInfo info, StreamingContext context)
         {
             Created = (bool)info.GetValue("Created", typeof(bool));
-            ActivationCode = (string) info.GetValue("ActivationCode", typeof (bool));
+            ActivationCode = (string) info.GetValue("ActivationCode", typeof (string));
         }
 
         public void Run(IClientCmd clientCmd)

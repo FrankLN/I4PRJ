@@ -31,7 +31,7 @@ namespace GUI_first_iteration
         private IClientCmd clientCom;
         private CreateUserMsg createUserObj;
 
-        private bool ClosedInCode;
+        public bool ClosedInCode;
 
         // -----------------------------------
         // CONSTRUCTOR - CreateUserWindow ----
