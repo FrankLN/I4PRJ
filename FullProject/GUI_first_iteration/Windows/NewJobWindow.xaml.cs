@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,9 +33,11 @@ namespace GUI_first_iteration
         private MainMenuWindow mainMenuWin;
         private IClientCmd clientCom;
         private UserClass loggedInUser;
+        private ObservableCollection<MaterialClass> materialsObservableCollection = new ObservableCollection<MaterialClass>();
         private List<MaterialClass> materialList;  
         private CreateJobMsg createJobObj;
         private JobClass jobObj;
+        private MaterialClass selectedMaterial;
 
 
         private bool ClosedInCode;
@@ -167,6 +170,11 @@ namespace GUI_first_iteration
             }
 
             tbxFilePath.Text = ofd.FileName;
+        }
+
+        private void CbxMaterial_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedMaterial = (MaterialClass)cbxMaterial.SelectionBoxItem;
         }
     }
 }

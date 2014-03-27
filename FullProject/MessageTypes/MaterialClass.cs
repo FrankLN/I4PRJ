@@ -30,5 +30,10 @@ namespace DatabaseInterface
             info.AddValue("MaterialId", MaterialId);
             info.AddValue("MaterialType", MaterialType);
         }
+
+        public override string ToString()
+        {
+            return MaterialType;
+        }
     }
 }

@@ -22,10 +22,10 @@
                 <Label Content="File" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="127" Grid.Row="2"/>
                 <Label Content="Date" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="29" Width="127" Grid.Row="3"/>
                 <Label Content="Comments" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="29" Width="127" Grid.Row="4"/>
-                <ComboBox Name="cbxMaterial"  Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="298" Height="30" IsKeyboardFocusedChanged="cbxMaterial_IsKeyboardFocusedChanged">
-                    <ComboBoxItem  Content="Material 1" Name="cbxMaterialItem1" />
+                <ComboBox Name="cbxMaterial"  SelectedItem="{Binding selectedMaterial}" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" SelectionChanged="CbxMaterial_OnSelectionChanged" Width="298" Height="30" IsKeyboardFocusedChanged="cbxMaterial_IsKeyboardFocusedChanged">
+                    <!--<ComboBoxItem  Content="Material 1" Name="cbxMaterialItem1" />
                     <ComboBoxItem  Content="Material 2" Name="cbxMaterialItem2" />
-                    <ComboBoxItem  Content="Material 3" Name="cbxMaterialItem3" />
+                    <ComboBoxItem  Content="Material 3" Name="cbxMaterialItem3" />-->
                 </ComboBox>
                 <ComboBox Name="cbxHolSol"  Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="298" Height="30" Grid.Row="1" IsKeyboardFocusedChanged="cbxHolSol_IsKeyboardFocusedChanged">
                     <ComboBoxItem  Content="Hollow" Name="cbxHolSolItem1" />
