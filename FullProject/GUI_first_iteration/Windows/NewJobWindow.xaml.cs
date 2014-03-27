@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,8 @@ namespace GUI_first_iteration
             clientCom = ccom;
             loggedInUser = user;
             ClosedInCode = false;
+            selectedMaterial = new MaterialClass();
+            DataContext = this;
 
             createJobObj = new CreateJobMsg();
             jobObj = new JobClass();
@@ -83,11 +86,8 @@ namespace GUI_first_iteration
 
         private void btnCreateJob_Click(object sender, RoutedEventArgs e)
         {
-            MaterialClass MaterialObj = new MaterialClass();
-            MaterialObj.MaterialType = cbxMaterial.SelectedItem.ToString(); //"Material 1";
-            MaterialObj.MaterialId = cbxMaterial.SelectedIndex; //0;
 
-            jobObj.Material = MaterialObj;
+            jobObj.Material = selectedMaterial;
             jobObj.Deadline = dpDate.SelectedDate.ToString();
 
 
@@ -96,7 +96,7 @@ namespace GUI_first_iteration
             var clientCmd = new ClientCmd();
             clientCmd = (ClientCmd)clientCom;
             clientCmd.onCreateJobMsgReceived += new ClientCmd.CreateJobDelegate(createJobEvent);
-            
+
             clientCom.SendToServer(createJobObj);
             //clientCmd.sendFileToServer();
 
@@ -126,10 +126,6 @@ namespace GUI_first_iteration
             mainMenuWin.Show();
         }
 
-        private void cbxMaterial_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            //createJobObj. = cbxMaterial.SelectionBoxItem.ToString();
-        }
 
         private void cbxHolSol_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -170,11 +166,6 @@ namespace GUI_first_iteration
             }
 
             tbxFilePath.Text = ofd.FileName;
-        }
-
-        private void CbxMaterial_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            selectedMaterial = (MaterialClass)cbxMaterial.SelectionBoxItem;
         }
     }
 }
