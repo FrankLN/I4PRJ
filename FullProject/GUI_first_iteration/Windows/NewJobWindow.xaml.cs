@@ -55,6 +55,8 @@ namespace GUI_first_iteration
 
         public NewJobWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
         {
+            InitializeComponent();
+
             mainMenuWin = mWin;
             clientCom = ccom;
             loggedInUser = user;
@@ -62,22 +64,21 @@ namespace GUI_first_iteration
             // Material combobox
             selectedMaterial = new MaterialClass();
             // Hollow combobox - add elements to the box
-            cbxHolSol.ItemsSource = hollowList;
             hollowList.Add(new Hollow(){hollow = 0,name = "Fyldt"});
             hollowList.Add(new Hollow(){hollow = 1,name = "Hul"});
             selectedHollow = new Hollow();
-
             createJobObj = new CreateJobMsg();
             jobObj = new JobClass();
 
-            InitializeComponent();
             DataContext = this;
 
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             var clientCmd = new ClientCmd();
-            clientCmd = (ClientCmd) clientCom;
+            clientCmd = (ClientCmd)clientCom;
             clientCmd.onMaterialsMsgReceived += new ClientCmd.LoadMaterialsDelegate(loadMaterialsEvent);
             clientCom.SendToServer(new GetMaterialsMsg());
+
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            
         }
 
         // -----------------------------------------------------------
@@ -87,8 +88,9 @@ namespace GUI_first_iteration
         private void loadMaterialsEvent(IGetMaterialsReplyMsg msg)
         {
             materialList = msg.Materials;
+            MessageBox.Show("material");
             // The loaded materials should be shown!!!!!!!
-   
+
         }
 
         // -----------------------------------
@@ -175,6 +177,14 @@ namespace GUI_first_iteration
             }
 
             tbxFilePath.Text = ofd.FileName;
+        }
+
+        private void NewJobWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (cbxHolSol != null) cbxHolSol.ItemsSource = hollowList;
+            if (cbxMaterial != null) cbxMaterial.ItemsSource = materialsObservableCollection;
+
+
         }
     }
 }

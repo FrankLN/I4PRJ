@@ -38,7 +38,7 @@ namespace MessageTypes.ReplyMessages
 
         public void Run(IClientCmd clientCmd)
         {
-            throw new System.NotImplementedException();
+            clientCmd.LoadJobList(this);
         }
     }
 }

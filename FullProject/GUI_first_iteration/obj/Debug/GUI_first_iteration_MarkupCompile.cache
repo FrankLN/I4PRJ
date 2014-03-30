@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\PIRATE1\Git\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\
+\\vmware-host\Shared Folders\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\
 GUI_first_iteration
 none
 false
 DEBUG;TRACE
-C:\Users\PIRATE1\Git\I4PRJ\FullProject\GUI_first_iteration\App.xaml
+\\vmware-host\Shared Folders\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\GUI_first_iteration\App.xaml
 81609241794
 
-20-1528318798
-15-1022043323
+21-1763759497
+15-1488696942
 Windows\ActivateUserWindow.xaml;Windows\CreateUserWindow.xaml;Windows\EditUserWindow.xaml;Windows\JobDetailsWindow.xaml;Windows\JobHistoryWindow.xaml;Windows\MainMenuWindow.xaml;Windows\MainWindow.xaml;Windows\NewJobWindow.xaml;
 
 False
