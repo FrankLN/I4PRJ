@@ -82,6 +82,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Communication Classes\ActivateUserCom.cs" />
+    <Compile Include="Other Classes\Hollow.cs" />
     <Compile Include="Windows\ActivateUserWindow.xaml.cs">
       <DependentUpon>ActivateUserWindow.xaml</DependentUpon>
     </Compile>

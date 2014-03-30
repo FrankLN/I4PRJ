@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using ClientApplication;
 using ConsoleApplication1;
 using DatabaseInterface;
+using GUI_first_iteration.Other_Classes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
@@ -35,10 +36,15 @@ namespace GUI_first_iteration
         private IClientCmd clientCom;
         private UserClass loggedInUser;
         private ObservableCollection<MaterialClass> materialsObservableCollection = new ObservableCollection<MaterialClass>();
+        private ObservableCollection<Hollow> hollowList = new ObservableCollection<Hollow>();
+        
         private List<MaterialClass> materialList;  
         private CreateJobMsg createJobObj;
         private JobClass jobObj;
-        private MaterialClass selectedMaterial;
+        public MaterialClass selectedMaterial;
+        public Hollow selectedHollow;
+        public DateTime selectedDate;
+        public string comments;
 
 
         private bool ClosedInCode;
@@ -53,15 +59,20 @@ namespace GUI_first_iteration
             clientCom = ccom;
             loggedInUser = user;
             ClosedInCode = false;
+            // Material combobox
             selectedMaterial = new MaterialClass();
-            DataContext = this;
+            // Hollow combobox - add elements to the box
+            cbxHolSol.ItemsSource = hollowList;
+            hollowList.Add(new Hollow(){hollow = 0,name = "Fyldt"});
+            hollowList.Add(new Hollow(){hollow = 1,name = "Hul"});
+            selectedHollow = new Hollow();
 
             createJobObj = new CreateJobMsg();
             jobObj = new JobClass();
 
-
-
             InitializeComponent();
+            DataContext = this;
+
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             var clientCmd = new ClientCmd();
             clientCmd = (ClientCmd) clientCom;
@@ -89,8 +100,9 @@ namespace GUI_first_iteration
 
             jobObj.Material = selectedMaterial;
             jobObj.Deadline = dpDate.SelectedDate.ToString();
-
-
+            jobObj.Hollow = selectedHollow.hollow;
+            jobObj.Deadline = selectedDate.ToString(); // Maybe not correct
+            jobObj.Comment = comments;
             createJobObj.Job = jobObj;
 
             var clientCmd = new ClientCmd();
@@ -137,10 +149,7 @@ namespace GUI_first_iteration
             //createJobObj.Date = dpDate.SelectedDate.ToString();
         }
 
-        private void tbxComments_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            //createJobObj.Comments = tbxComments.Text;
-        }
+      
 
         // -----------------------------------
         // METHOD - Window closing -----------
