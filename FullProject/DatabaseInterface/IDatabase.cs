@@ -14,6 +14,9 @@ namespace DatabaseInterface
         void AddJob(JobClass job);
 
         List<JobClass> GetJobList();
+
+        MaterialClass GetMaterials(int materialId);
+
     }
 
 }
