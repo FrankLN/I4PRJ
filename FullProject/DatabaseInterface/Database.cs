@@ -245,5 +245,44 @@ namespace DatabaseInterface
                  }
              }
          }
+
+        public MaterialClass GetMaterials(int materialId)
+        // Returns an object of MaterialClass with ID matching from the database.
+        {
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // String with SQL statement
+                string materialInfo = @"SELECT * FROM [Material] WHERE Material.MaterialId = " + materialId + "";
+
+                using (SqlCommand cmd = new SqlCommand(materialInfo, conn))
+                {
+                    var locMaterial = new MaterialClass();
+
+                    SqlDataReader rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
+
+
+                    while (rdr.Read())
+                    {
+                        Console.WriteLine(rdr[0]);
+
+
+                        locMaterial.MaterialId = (int)rdr["MaterialId"];
+                        locMaterial.MaterialType = (string)rdr["MaterialType"];
+                    }
+                    return locMaterial;
+                }
+            }
+            finally
+            {
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }

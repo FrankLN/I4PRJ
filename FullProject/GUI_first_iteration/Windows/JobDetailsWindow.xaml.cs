@@ -44,6 +44,9 @@ namespace GUI_first_iteration
 
             InitializeComponent();
 
+            //Databinding
+            DataContext = currentJob;
+
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ConsoleApplication1;
 using MessageTypes.Messages;
@@ -27,6 +28,8 @@ namespace ClientApplication
 
             Console.WriteLine("Email is {0}", temp.Email);
             Console.WriteLine("Password is {0}", temp.Password);
+
+            Thread.Sleep(2000);
         }
     }
 }
