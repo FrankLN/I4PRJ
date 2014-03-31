@@ -3,8 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="JobDetailsWindow" Height="300" Width="300">
     <Grid>
-        <Button Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="106,126,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
-        <Button Name="btnDownloadJob" Content="Download job" HorizontalAlignment="Left" Margin="87,45,0,0" VerticalAlignment="Top" Width="117" Height="37" Click="btnDownloadJob_Click"/>
-
+        <ScrollViewer>
+            <Button Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="190,238,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
+            <Button Name="btnDownloadJob" Content="Download job" HorizontalAlignment="Left" Margin="24,223,0,0" VerticalAlignment="Top" Width="117" Height="37" Click="btnDownloadJob_Click"/>
+            <Label x:Name="OrderIdLabel" Content="OrderId:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="OwnerLabel" Content="Owner:" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="DeadlineLabel" Content="Deadline:" HorizontalAlignment="Left" Margin="139,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="CreationTimeLabel" Content="Creation Time:" HorizontalAlignment="Left" Margin="139,104,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="HollowLabel" Content="Hollow:" HorizontalAlignment="Left" Margin="139,57,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="CommentLabel" Content="Comment:" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="MyFileLabel" Content="MyFile:" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>
+            <TextBlock x:Name="OrderBlock" HorizontalAlignment="Left" Margin="69,15,0,0" TextWrapping="Wrap" Text="{Binding Path=OrderID}" VerticalAlignment="Top"/>
+            <TextBlock x:Name="OwnerBlock" HorizontalAlignment="Left" Margin="69,62,0,0" TextWrapping="Wrap" Text="{Binding Path=Owner}" VerticalAlignment="Top"/>
+            <TextBlock x:Name="DeadlineBlock" HorizontalAlignment="Left" Margin="230,15,0,0" TextWrapping="Wrap" Text="{Binding Path=Deadline}" VerticalAlignment="Top"/>
+            <TextBlock x:Name="CommentBlock" HorizontalAlignment="Left" Margin="80,157,0,0" TextWrapping="Wrap" Text="{Binding Path=Comment}" VerticalAlignment="Top"/>
+            <TextBlock x:Name="MyFileBlock" HorizontalAlignment="Left" Margin="69,109,0,0" TextWrapping="Wrap" Text="{Binding Path=MyFile}" VerticalAlignment="Top"/>
+            <TextBlock x:Name="CreationTimeBlock" HorizontalAlignment="Left" Margin="230,109,0,0" TextWrapping="Wrap" Text="{Binding Path=CreationTime}" VerticalAlignment="Top"/>
+            <TextBlock x:Name="HollowBlock" HorizontalAlignment="Left" Margin="230,62,0,0" TextWrapping="Wrap" Text="{Binding Path=Hollow}" VerticalAlignment="Top"/>
+        </ScrollViewer>
     </Grid>
 </Window>
