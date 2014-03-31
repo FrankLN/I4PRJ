@@ -25,6 +25,7 @@ namespace ClientApplication
         private NetworkStream outInStream;
         private BinaryFormatter bFormatter;
         private const int MaxPackageSize = 1000;
+        private int _port;
 
         //Constructor which take ip and port belonging to the targeting server
         public Client(int port)
@@ -36,7 +37,8 @@ namespace ClientApplication
         private void Init(int port)
         {
             clientSocket = new TcpClient();
-            clientSocket.Connect("10.0.0.1", port);
+            _port = port;
+            clientSocket.Connect("10.0.0.1", _port);
             outInStream = clientSocket.GetStream();
             bFormatter = new BinaryFormatter();
         }
@@ -44,6 +46,7 @@ namespace ClientApplication
         //Method for sending classobject
         public void SendToServer(ISerializable objekt)
         {
+
             bFormatter.Serialize(outInStream, objekt);
 
         }
@@ -51,6 +54,7 @@ namespace ClientApplication
         public IReplyMessage ReceiveMessage()
         {
             IReplyMessage reply = (IReplyMessage)bFormatter.Deserialize(outInStream);
+            
             return reply;
         }
 
@@ -59,7 +63,7 @@ namespace ClientApplication
         {
             int n;
             var rest = fileSize;
-            var name = fileName.Substring(fileName.LastIndexOf("/"));
+            var name = fileName.Substring(1+fileName.LastIndexOf(@"\"));
             var pathAndName = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "Downloads" + name;
                 
             var downloadFile = new FileStream(pathAndName,FileMode.Create,FileAccess.Write);
