@@ -27,6 +27,11 @@ namespace MessageTypes.Messages
             serverApp.RequestJobs(this);
         }
 
+        public void Run(IServerApp serverApp, IServer server)
+        {
+            serverApp.RequestJobs(this, server);
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             

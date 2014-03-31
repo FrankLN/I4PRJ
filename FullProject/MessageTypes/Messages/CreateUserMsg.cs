@@ -30,6 +30,11 @@ namespace MessageTypes.Messages
             serverApp.CreateUser(this);
         }
 
+        public void Run(IServerApp serverApp, IServer server)
+        {
+            serverApp.CreateUser(this, server);
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("User", User);

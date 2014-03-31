@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Nedenskov\Desktop\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\
+=======
+C:\Users\default.default-Pc\Desktop\IKT\Git\PRJ4\FullProject\GUI_first_iteration\obj\Debug\
+>>>>>>> 95ca40be5580c16f996d95d61c2939e77928062c
 GUI_first_iteration
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Nedenskov\Desktop\I4PRJ\FullProject\GUI_first_iteration\App.xaml
 81609241794
 
 21-1763759497
 15-1035338981
+=======
+C:\Users\default.default-Pc\Desktop\IKT\Git\PRJ4\FullProject\GUI_first_iteration\App.xaml
+81609241794
+
+21-1763759497
+151175693868
+>>>>>>> 95ca40be5580c16f996d95d61c2939e77928062c
 Windows\ActivateUserWindow.xaml;Windows\CreateUserWindow.xaml;Windows\EditUserWindow.xaml;Windows\JobDetailsWindow.xaml;Windows\JobHistoryWindow.xaml;Windows\MainMenuWindow.xaml;Windows\MainWindow.xaml;Windows\NewJobWindow.xaml;
 
 False

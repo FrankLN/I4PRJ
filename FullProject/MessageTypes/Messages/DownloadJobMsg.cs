@@ -28,6 +28,11 @@ namespace MessageTypes.Messages
             serverApp.DownloadJob(this);
         }
 
+        public void Run(IServerApp serverApp, IServer server)
+        {
+            serverApp.DownloadJob(this, server);
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("FileName", FileName);

@@ -1,17 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Sockets;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Xml;
 using DatabaseInterface;
+using MessageTypes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
+using Server;
 
-namespace Server
+namespace ServerApplication
 {
-    class ServerApp : IServerApp
+    public class ServerApp : IServerApp
     {
-        private IServer _server;
+        private int _port;
         private IDatabase _database;
 
         #region helpFunktions
@@ -40,19 +49,46 @@ namespace Server
 
         public ServerApp(int port)
         {
-            _server = new Server(port);
-
+            _port = port;
             _database = new Database();
+
+            RunServerApp();
+        }
+
+        private void RunServerApp()
+        {
+            TcpListener serverSocket = new TcpListener(IPAddress.Any, _port);
+            TcpClient clientSocket;
+
+            serverSocket.Start();
+
+            Console.WriteLine("Server started...");
 
             while (true)
             {
-                _server.ServerRun().Run(this);
+                clientSocket = serverSocket.AcceptTcpClient();
+
+                Console.WriteLine("Servicise a Thread...");
+
+                ThreadPool.QueueUserWorkItem(new WaitCallback(ReciveMessage), new object[] {serverSocket, clientSocket});
             }
-            
+        }
+
+        private void ReciveMessage(Object stateInfo)
+        {
+            object[] array = stateInfo as object[];
+            IServer server = new Server((TcpListener)array[0], (TcpClient)array[1]);
+
+            server.RecieveMessage().Run(this, server);
+
+            Thread.Sleep(5000);
+            Console.WriteLine("Closing Thread");
+
+            server = null;
         }
 
 
-        public void VerifyLogin(ILoginMsg loginMsg)
+        public void VerifyLogin(ILoginMsg loginMsg, IServer server)
         {
             LoginReplyMsg loginReplyMsg = new LoginReplyMsg();
             Console.WriteLine("VerifyLogin\n{0}\n{1}", loginMsg.Email, loginMsg.Password);
@@ -77,54 +113,54 @@ namespace Server
                 loginReplyMsg.Email = false;
                 loginReplyMsg.Password = false;
             }
-            
-            _server.SendToClient(loginReplyMsg).Run(this);
+
+            server.SendToClient(loginReplyMsg);
         }
 
-        public void CreateUser(ICreateUserMsg createUserMsg)
+        public void CreateUser(ICreateUserMsg createUserMsg, IServer server)
         {
             CreateUserReplyMsg createUserReplyMsg = new CreateUserReplyMsg();
-            
+
             _database.AddUser(createUserMsg.User);
             createUserReplyMsg.Created = true;
             createUserReplyMsg.ActivationCode = GenerateActivationCode();
 
             //send email
-            string emailText = "Hello " + createUserMsg.User.FirstName + 
+            string emailText = "Hello " + createUserMsg.User.FirstName +
                 "\n\nThanks for your reg. on 3D-Printer. To succesfully " +
                 "activate your account copy the activation code below and " +
                 "paste it in the application. \n\nApplication code: " +
                 createUserReplyMsg.ActivationCode + "\n\nThis email cannot be replied.";
 
-            SendEmail(createUserMsg.User.Email, "Activation code to 3D-Printer", 
+            SendEmail(createUserMsg.User.Email, "Activation code to 3D-Printer",
                                                     emailText);
 
             //reply
-            _server.SendToClient(createUserReplyMsg).Run(this);
+            server.SendToClient(createUserReplyMsg);
         }
 
-        public void CreateJob(ICreateJobMsg createJobMsg)
+        public void CreateJob(ICreateJobMsg createJobMsg, IServer server)
         {
             CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
 
-            _server.RecieveFile(@"C:\Jobs" + createJobMsg.Job.File, createJobMsg.Job.FileSize);
+            server.RecieveFile("C:/Jobs/" + createJobMsg.Job.File, createJobMsg.Job.FileSize);
 
             _database.AddJob(createJobMsg.Job);
             createJobReplyMsg.Created = true;
 
-            _server.SendToClient(createJobReplyMsg).Run(this);
+            server.SendToClient(createJobReplyMsg);
         }
 
-        public void RequestJobs(IRequestJobsMsg requestJobsMsg)
+        public void RequestJobs(IRequestJobsMsg requestJobsMsg, IServer server)
         {
             RequestJobsReplyMsg requestJobsReplyMsg = new RequestJobsReplyMsg();
 
             requestJobsReplyMsg.JobList = _database.GetJobList();
 
-            _server.SendToClient(requestJobsReplyMsg).Run(this);
+            server.SendToClient(requestJobsReplyMsg);
         }
 
-        public void DownloadJob(IDownloadJobMsg downloadJobMsg)
+        public void DownloadJob(IDownloadJobMsg downloadJobMsg, IServer server)
         {
             DownloadJobReplyMsg downloadJobReplyMsg = new DownloadJobReplyMsg();
 
@@ -132,31 +168,30 @@ namespace Server
             {
                 downloadJobReplyMsg.FileSize = File.ReadAllBytes("C:/Jobs/" + downloadJobMsg.FileName).Length;
 
-                _server.SendToClient(downloadJobReplyMsg);
+                server.SendToClient(downloadJobReplyMsg);
 
-                _server.SendFile(downloadJobMsg.FileName, downloadJobReplyMsg.FileSize); 
+                server.SendFile(downloadJobMsg.FileName, downloadJobReplyMsg.FileSize);
             }
             else
             {
                 downloadJobReplyMsg.FileSize = 0;
             }
-            
         }
 
-        public void GetMaterials(IGetMaterialsMsg getMaterialsMsg)
+        public void GetMaterials(IGetMaterialsMsg getMaterialsMsg, IServer server)
         {
             GetMaterialsReplyMsg getMaterialsReplyMsg = new GetMaterialsReplyMsg();
 
-            Console.WriteLine("Get materials called");
+            Console.WriteLine("Get meterials called");
 
-            getMaterialsReplyMsg.Materials = _database.GetMaterials();
+            //getMaterialsReplyMsg.Materials = _database.GetMaterials();
 
-            _server.SendToClient(getMaterialsReplyMsg).Run(this);
+            server.SendToClient(getMaterialsReplyMsg);
         }
 
-        public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg)
+        public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server)
         {
-            ActivationCodeRequestReplyMsg activationCodeRequestReplyMsg = new ActivationCodeRequestReplyMsg();
+             ActivationCodeRequestReplyMsg activationCodeRequestReplyMsg = new ActivationCodeRequestReplyMsg();
 
 
             if (_database.GetUserInfo(activationCodeRequestMsg.Email) != null)
@@ -181,44 +216,44 @@ namespace Server
 
             }
 
-            _server.SendToClient(activationCodeRequestReplyMsg).Run(this);
+            server.SendToClient(activationCodeRequestReplyMsg);
         }
 
-        #region New_Commands
-        public void VerifyLogin(ILoginMsg loginMsg, MessageTypes.IServer server)
+        #region Old_Commands
+        public void VerifyLogin(ILoginMsg loginMsg)
+        {
+            Console.WriteLine("Ikke implementeret");
+        }
+
+        public void CreateUser(ICreateUserMsg createUserMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateUser(ICreateUserMsg createUserMsg, MessageTypes.IServer server)
+        public void CreateJob(ICreateJobMsg createJobMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateJob(ICreateJobMsg createJobMsg, MessageTypes.IServer server)
+        public void RequestJobs(IRequestJobsMsg requestJobsMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void RequestJobs(IRequestJobsMsg requestJobsMsg, MessageTypes.IServer server)
+        public void DownloadJob(IDownloadJobMsg downloadJobMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void DownloadJob(IDownloadJobMsg downloadJobMsg, MessageTypes.IServer server)
+        public void GetMaterials(IGetMaterialsMsg getMaterialsMsg)
         {
             throw new NotImplementedException();
         }
 
-        public void GetMaterials(IGetMaterialsMsg getMaterialsMsg, MessageTypes.IServer server)
+        public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg)
         {
             throw new NotImplementedException();
         }
-
-        public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg, MessageTypes.IServer server)
-        {
-            throw new NotImplementedException();
-        }
-#endregion
+        #endregion
     }
 }

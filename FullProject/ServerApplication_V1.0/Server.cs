@@ -21,13 +21,13 @@ namespace Server
 	public class Server : IServer
 	{
 		//Memberdata
-		private TcpListener serverSocket;
-		private TcpClient clientSocket;
-		private NetworkStream inStream;
-		private BinaryFormatter bFormatter;
+		public TcpListener serverSocket { get; private set; }
+		public TcpClient clientSocket { get; private set; }
+		public NetworkStream inStream { get; private set; }
+		public BinaryFormatter bFormatter { get; private set; }
 	    private const int maxPacketSize = 1000;
 
-	    //Constructor which takes which ip-addres and port to listening on
+	    //Constructor which takes which port to listening on
 		public Server (int port)
 		{
 			Init (port);
