@@ -164,23 +164,23 @@ namespace DatabaseInterface
                  string jobInsert = @"INSERT INTO [My3DJob] (OrderId, MaterialFK, Owner, Deadline, MyFile, CreationTime, Hollow, Comment) VALUES ("+job.OrderId+", "+job.Material+", '"+job.Owner+"', '"+job.Deadline+"', '"+job.File+"', '"+job.CreationTime+"', "+job.Hollow+",'"+job.Comment+"')";
 
                  SqlCommand cmd = new SqlCommand(jobInsert, conn);
-                
-                     //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data1";
-                     //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data2";
-                     //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data3";
-                     //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data4";
-                     //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data5";
-                     //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data6";
-                     //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data7";
-                     //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data8";
-                     //cmd.Parameters["@Data1"].Value = job.OrderId;
-                     //cmd.Parameters["@Data2"].Value = job.MaterialFK;
-                     //cmd.Parameters["@Data3"].Value = job.Owner;
-                     //cmd.Parameters["@Data4"].Value = job.Deadline;
-                     //cmd.Parameters["@Data5"].Value = job.MyFile;
-                     //cmd.Parameters["@Data6"].Value = job.CreationTime;
-                     //cmd.Parameters["@Data7"].Value = job.Hollow;
-                     //cmd.Parameters["@Data8"].Value = job.Comment;
+
+                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data1";
+                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data2";
+                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data3";
+                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data4";
+                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data5";
+                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data6";
+                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data7";
+                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data8";
+                 cmd.Parameters["@Data1"].Value = job.OrderId;
+                 cmd.Parameters["@Data2"].Value = job.Material.MaterialId;
+                 cmd.Parameters["@Data3"].Value = job.Owner;
+                 cmd.Parameters["@Data4"].Value = job.Deadline;
+                 cmd.Parameters["@Data5"].Value = job.File;
+                 cmd.Parameters["@Data6"].Value = job.CreationTime;
+                 cmd.Parameters["@Data7"].Value = job.Hollow;
+                 cmd.Parameters["@Data8"].Value = job.Comment;
 
                  //job.OrderId = (int) 
                      cmd.ExecuteNonQuery();
@@ -246,7 +246,7 @@ namespace DatabaseInterface
              }
          }
 
-        public MaterialClass GetMaterials(int materialId)
+        public List<MaterialClass> GetMaterials()
         // Returns an object of MaterialClass with ID matching from the database.
         {
             try
@@ -255,24 +255,29 @@ namespace DatabaseInterface
                 conn.Open();
 
                 // String with SQL statement
-                string materialInfo = @"SELECT * FROM [Material] WHERE Material.MaterialId = " + materialId + "";
+                string materialInfo = @"SELECT * FROM [Material]";
 
                 using (SqlCommand cmd = new SqlCommand(materialInfo, conn))
                 {
-                    var locMaterial = new MaterialClass();
+                    List<MaterialClass> locMaterialList = new List<MaterialClass>();
 
                     SqlDataReader rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
 
+                    int j = 1;
 
                     while (rdr.Read())
                     {
+                        var locMaterial = new MaterialClass();
                         Console.WriteLine(rdr[0]);
 
-
-                        locMaterial.MaterialId = (int)rdr["MaterialId"];
+                        //locMaterial.MaterialId = (int)rdr["MaterialId"];
+                        locMaterial.MaterialId = j;
                         locMaterial.MaterialType = (string)rdr["MaterialType"];
+                        locMaterialList.Add(locMaterial);
+
+                        j++;
                     }
-                    return locMaterial;
+                    return locMaterialList;
                 }
             }
             finally

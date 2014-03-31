@@ -15,7 +15,7 @@ namespace DatabaseInterface
 
         List<JobClass> GetJobList();
 
-        MaterialClass GetMaterials(int materialId);
+        List<MaterialClass> GetMaterials();
 
     }
 

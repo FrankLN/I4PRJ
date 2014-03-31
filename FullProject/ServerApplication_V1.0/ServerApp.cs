@@ -107,7 +107,7 @@ namespace Server
         {
             CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
 
-            _server.RecieveFile("C:/Jobs/" + createJobMsg.Job.File, createJobMsg.Job.FileSize);
+            _server.RecieveFile(@"C:\Jobs" + createJobMsg.Job.File, createJobMsg.Job.FileSize);
 
             _database.AddJob(createJobMsg.Job);
             createJobReplyMsg.Created = true;
@@ -147,9 +147,9 @@ namespace Server
         {
             GetMaterialsReplyMsg getMaterialsReplyMsg = new GetMaterialsReplyMsg();
 
-            Console.WriteLine("Get meterials called");
+            Console.WriteLine("Get materials called");
 
-            //getMaterialsReplyMsg.Materials = _database.GetMaterials();
+            getMaterialsReplyMsg.Materials = _database.GetMaterials();
 
             _server.SendToClient(getMaterialsReplyMsg).Run(this);
         }

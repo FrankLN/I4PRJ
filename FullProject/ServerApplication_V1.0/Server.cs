@@ -114,7 +114,7 @@ namespace Server
 
 	    public void RecieveFile(string fileName, long fileSize)
 	    {
-            FileStream fs = File.Open("/Jobs/" + fileName, FileMode.Create);
+	        FileStream fs = new FileStream(fileName, FileMode.CreateNew, FileAccess.Write);
             byte[] buffer = new byte[maxPacketSize];
 	        while (fileSize > maxPacketSize)
 	        {
