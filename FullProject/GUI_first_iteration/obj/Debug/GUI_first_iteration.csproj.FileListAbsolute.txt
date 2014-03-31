@@ -140,3 +140,6 @@ C:\Users\default.default-Pc\Desktop\IKT\Git\PRJ4\FullProject\GUI_first_iteration
 C:\Users\default.default-Pc\Desktop\IKT\Git\PRJ4\FullProject\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
 C:\Users\default.default-Pc\Desktop\IKT\Git\PRJ4\FullProject\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
 >>>>>>> 95ca40be5580c16f996d95d61c2939e77928062c
+\\vmware-host\Shared Folders\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe.config
+\\vmware-host\Shared Folders\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\GUI_first_iteration.exe
+\\vmware-host\Shared Folders\lassebuesvendsen On My Mac\Google Drev\I4PRJ\FullProject\GUI_first_iteration\obj\Debug\GUI_first_iteration.pdb
