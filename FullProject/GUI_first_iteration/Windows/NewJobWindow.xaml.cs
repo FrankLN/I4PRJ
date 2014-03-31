@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Shapes;
 using ClientApplication;
 using ConsoleApplication1;
@@ -37,14 +39,15 @@ namespace GUI_first_iteration
         private UserClass loggedInUser;
         private ObservableCollection<MaterialClass> materialsObservableCollection = new ObservableCollection<MaterialClass>();
         private ObservableCollection<Hollow> hollowList = new ObservableCollection<Hollow>();
-        
-        private List<MaterialClass> materialList;  
+        private List<MaterialClass> materialList = new List<MaterialClass>();
         private CreateJobMsg createJobObj;
         private JobClass jobObj;
-        public MaterialClass selectedMaterial;
-        public Hollow selectedHollow;
-        public DateTime selectedDate;
-        public string comments;
+        public MaterialClass selectedMaterial { get; set; }
+        public Hollow selectedHollow{ get; set; }
+        public DateTime selectedDate { get; set; }
+    
+        public string comments { get; set; }
+        public string MyFile { get; set; }
 
 
         private bool ClosedInCode;
@@ -76,7 +79,9 @@ namespace GUI_first_iteration
             clientCmd = (ClientCmd)clientCom;
             clientCmd.onMaterialsMsgReceived += new ClientCmd.LoadMaterialsDelegate(loadMaterialsEvent);
             clientCom.SendToServer(new GetMaterialsMsg());
-
+           
+            if (cbxHolSol != null) cbxHolSol.ItemsSource = hollowList;
+            if (cbxMaterial != null) cbxMaterial.ItemsSource = materialsObservableCollection;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             
         }
@@ -87,9 +92,10 @@ namespace GUI_first_iteration
 
         private void loadMaterialsEvent(IGetMaterialsReplyMsg msg)
         {
-            materialList = msg.Materials;
-            MessageBox.Show("material");
-            // The loaded materials should be shown!!!!!!!
+            foreach (var e in msg.Materials)
+            {
+                materialsObservableCollection.Add(e);
+            }
 
         }
 
@@ -101,10 +107,13 @@ namespace GUI_first_iteration
         {
 
             jobObj.Material = selectedMaterial;
-            jobObj.Deadline = dpDate.SelectedDate.ToString();
+            //jobObj.Deadline = dpDate.SelectedDate.ToString();
             jobObj.Hollow = selectedHollow.hollow;
-            jobObj.Deadline = selectedDate.ToString(); // Maybe not correct
+            jobObj.Deadline = selectedDate.ToShortDateString(); // Maybe not correct
             jobObj.Comment = comments;
+            jobObj.File = MyFile.Substring(MyFile.LastIndexOf('\\'));
+            jobObj.Owner = loggedInUser;
+            
             createJobObj.Job = jobObj;
 
             var clientCmd = new ClientCmd();
@@ -176,15 +185,11 @@ namespace GUI_first_iteration
                 return;
             }
 
-            tbxFilePath.Text = ofd.FileName;
-        }
-
-        private void NewJobWindow_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            if (cbxHolSol != null) cbxHolSol.ItemsSource = hollowList;
-            if (cbxMaterial != null) cbxMaterial.ItemsSource = materialsObservableCollection;
-
+                        
+            MyFile = ofd.FileName;
+            tbxFilePath.Text = MyFile;
 
         }
+
     }
 }
