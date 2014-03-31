@@ -26,6 +26,11 @@ namespace MessageTypes.Messages
             serverApp.GetMaterials(this);
         }
 
+        public void Run(IServerApp serverApp, IServer server)
+        {
+            serverApp.GetMaterials(this, server);
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             

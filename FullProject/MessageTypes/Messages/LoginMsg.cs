@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.Serialization;
+using MessageTypes.ReplyMessages;
 using Server;
 
 namespace MessageTypes.Messages
@@ -30,7 +31,11 @@ namespace MessageTypes.Messages
         public void Run(IServerApp serverApp)
         {
             serverApp.VerifyLogin(this);
+        }
 
+        public void Run(IServerApp serverApp, IServer server)
+        {
+            serverApp.VerifyLogin(this, server);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

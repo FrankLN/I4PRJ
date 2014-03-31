@@ -183,5 +183,42 @@ namespace Server
 
             _server.SendToClient(activationCodeRequestReplyMsg).Run(this);
         }
+
+        #region New_Commands
+        public void VerifyLogin(ILoginMsg loginMsg, MessageTypes.IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateUser(ICreateUserMsg createUserMsg, MessageTypes.IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateJob(ICreateJobMsg createJobMsg, MessageTypes.IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RequestJobs(IRequestJobsMsg requestJobsMsg, MessageTypes.IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DownloadJob(IDownloadJobMsg downloadJobMsg, MessageTypes.IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetMaterials(IGetMaterialsMsg getMaterialsMsg, MessageTypes.IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg, MessageTypes.IServer server)
+        {
+            throw new NotImplementedException();
+        }
+#endregion
     }
 }

@@ -30,6 +30,11 @@ namespace MessageTypes.Messages
             serverApp.CreateJob(this);
         }
 
+        public void Run(IServerApp serverApp, IServer server)
+        {
+            serverApp.CreateJob(this, server);
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Job", Job);

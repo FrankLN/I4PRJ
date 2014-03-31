@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.Serialization;
+using MessageTypes.ReplyMessages;
 using Server;
 
 namespace MessageTypes.Messages
@@ -24,6 +25,11 @@ namespace MessageTypes.Messages
         }
 
         public void Run(IServerApp serverApp)
+        {
+            serverApp.ActivationCodeRequest(this);
+        }
+
+        public void Run(IServerApp serverApp, IServer server)
         {
             serverApp.ActivationCodeRequest(this);
         }

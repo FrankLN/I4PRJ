@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MessageTypes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 using Server;
@@ -70,6 +71,41 @@ namespace ClientApplication.Test
         }
 
         public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void VerifyLogin(ILoginMsg loginMsg, IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateUser(ICreateUserMsg createUserMsg, IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateJob(ICreateJobMsg createJobMsg, IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RequestJobs(IRequestJobsMsg requestJobsMsg, IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DownloadJob(IDownloadJobMsg downloadJobMsg, IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetMaterials(IGetMaterialsMsg getMaterialsMsg, IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server)
         {
             throw new NotImplementedException();
         }
