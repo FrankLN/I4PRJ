@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization;
@@ -15,6 +16,7 @@ namespace ServerApplication
         private TcpClient _clientSocket;
         private NetworkStream _inStream;
         private BinaryFormatter _bFormatter;
+        private const int maxPacketSize = 1000;
 
         public Server(TcpListener serverSocket, TcpClient clientSocket)
         {
@@ -41,12 +43,42 @@ namespace ServerApplication
 
         public void RecieveFile(string fileName, long fileSize)
         {
-            throw new System.NotImplementedException();
+            FileStream fs = File.Open("/Jobs/" + fileName, FileMode.Create);
+            byte[] buffer = new byte[maxPacketSize];
+            while (fileSize > maxPacketSize)
+            {
+                int i = 0;
+                while (i < maxPacketSize)
+                {
+                    i += _inStream.Read(buffer, i, 1000 - i);
+                }
+                fs.Write(buffer, 0, 1000);
+
+                fileSize -= maxPacketSize;
+            }
+
+            int j = 0;
+            while (j < fileSize)
+            {
+                j += _inStream.Read(buffer, j, (int)fileSize - j);
+            }
+            fs.Write(buffer, 0, (int)fileSize);
         }
 
         public void SendFile(string fileName, long fileSize)
         {
-            throw new System.NotImplementedException();
+            byte[] buffer = File.ReadAllBytes("/Jobs/" + fileName);
+
+            int i = 0;
+            while (fileSize < maxPacketSize)
+            {
+                _inStream.Write(buffer, i, maxPacketSize);
+
+                i += maxPacketSize;
+                fileSize -= maxPacketSize;
+            }
+            _inStream.Write(buffer, i, (int)fileSize);
+
         }
     }
 }

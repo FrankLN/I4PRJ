@@ -84,7 +84,7 @@ namespace ServerApplication
             Thread.Sleep(5000);
             Console.WriteLine("Closing Thread");
 
-            
+            server = null;
         }
 
 
@@ -148,7 +148,7 @@ namespace ServerApplication
             _database.AddJob(createJobMsg.Job);
             createJobReplyMsg.Created = true;
 
-            server.SendToClient(createJobReplyMsg)
+            server.SendToClient(createJobReplyMsg);
         }
 
         public void RequestJobs(IRequestJobsMsg requestJobsMsg, IServer server)
@@ -157,7 +157,7 @@ namespace ServerApplication
 
             requestJobsReplyMsg.JobList = _database.GetJobList();
 
-            server.SendToClient(requestJobsReplyMsg)
+            server.SendToClient(requestJobsReplyMsg);
         }
 
         public void DownloadJob(IDownloadJobMsg downloadJobMsg, IServer server)
