@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ClientApplication;
 using MessageTypes.Messages;
@@ -141,8 +142,14 @@ namespace ConsoleApplication1
 
         public void SendToServer(IMessage msg)
         {
-            client.SendToServer((ISerializable) msg);
-            client.ReceiveMessage().Run(this);
+            ThreadPool.QueueUserWorkItem(delegate(object state)
+            {
+                object[] array = state as object[];
+                client.SendToServer((ISerializable) array[0]);
+                client.ReceiveMessage().Run(this);
+            }
+                , new object[] {msg});
+
         }
 
         public void receiveFromFileServer(long fileSize, string name )
