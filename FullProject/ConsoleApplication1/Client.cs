@@ -7,6 +7,8 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using MessageTypes.ReplyMessages;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ClientApplication
 {
@@ -38,9 +40,10 @@ namespace ClientApplication
         {
             clientSocket = new TcpClient();
             _port = port;
-            clientSocket.Connect("10.0.0.1", _port);
+            clientSocket.Connect("10.20.32.233", _port);
             outInStream = clientSocket.GetStream();
             bFormatter = new BinaryFormatter();
+
         }
 
         //Method for sending classobject
