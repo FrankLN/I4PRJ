@@ -40,7 +40,7 @@ namespace Server
 		    try
 		    {
                 Console.WriteLine("test");
-                serverSocket = new TcpListener(IPAddress.Parse("10.0.0.1"), port);
+                serverSocket = new TcpListener(IPAddress.Any, port);
 		    }
 		    catch (SocketException e)
 		    {
