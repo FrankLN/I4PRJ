@@ -161,7 +161,9 @@ namespace DatabaseInterface
                  conn.Open();
 
                  // String with SQL statement
-                 string jobInsert = @"INSERT INTO [My3DJob] (OrderId, MaterialFK, Owner, Deadline, MyFile, CreationTime, Hollow, Comment) VALUES ("+job.OrderId+", "+job.Material+", '"+job.Owner+"', '"+job.Deadline+"', '"+job.File+"', '"+job.CreationTime+"', "+job.Hollow+",'"+job.Comment+"')";
+                 string jobInsert = @"INSERT INTO [My3DJob] (OrderId, MaterialFK, Owner, Deadline, MyFile, CreationTime, Hollow, Comment)
+                                    OUTPUT INSERTED.OrderId 
+                                    VALUES ("+job.OrderId+", "+job.Material+", '"+job.Owner+"', '"+job.Deadline+"', '"+job.File+"', '"+job.CreationTime+"', "+job.Hollow+",'"+job.Comment+"')";
 
                  SqlCommand cmd = new SqlCommand(jobInsert, conn);
 
