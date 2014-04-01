@@ -40,24 +40,25 @@ namespace ClientApplication
         {
             clientSocket = new TcpClient();
             _port = port;
-            clientSocket.Connect("10.20.32.233", _port);
-            outInStream = clientSocket.GetStream();
             bFormatter = new BinaryFormatter();
-
         }
 
         //Method for sending classobject
         public void SendToServer(ISerializable objekt)
         {
+            clientSocket.Connect("10.20.32.233", _port);
+            outInStream = clientSocket.GetStream();
 
             bFormatter.Serialize(outInStream, objekt);
-
         }
 
         public IReplyMessage ReceiveMessage()
         {
             IReplyMessage reply = (IReplyMessage)bFormatter.Deserialize(outInStream);
             
+            outInStream.Close();
+            clientSocket.Close();
+
             return reply;
         }
 
