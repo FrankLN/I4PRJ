@@ -112,7 +112,7 @@ namespace GUI_first_iteration
             jobObj.Hollow = selectedHollow.hollow;
             jobObj.Deadline = selectedDate.ToShortDateString(); // Maybe not correct
             jobObj.Comment = comments;
-            jobObj.File = MyFile.Substring(MyFile.LastIndexOf('\\')+1);
+            jobObj.File = MyFile;
             jobObj.Owner = loggedInUser;
             jobObj.FileSize = new FileInfo(MyFile).Length;
             

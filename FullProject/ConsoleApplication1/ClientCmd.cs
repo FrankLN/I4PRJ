@@ -151,6 +151,12 @@ namespace ConsoleApplication1
             //    , new object[] { msg });
 
             client.SendToServer((ISerializable)msg);
+
+            if (msg.GetType() == new CreateJobMsg().GetType())
+            {
+                client.SendFile(((CreateJobMsg)msg).Job.FileSize, ((CreateJobMsg)msg).Job.File) ;
+            }
+
             client.ReceiveMessage().Run(this);
         }
 

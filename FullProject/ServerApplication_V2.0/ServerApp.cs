@@ -143,6 +143,8 @@ namespace ServerApplication
         {
             CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
 
+            createJobMsg.Job.File = createJobMsg.Job.File.Substring(createJobMsg.Job.File.LastIndexOf("\\") + 1);
+
             server.RecieveFile(createJobMsg.Job.File, createJobMsg.Job.FileSize);
 
             _database.AddJob(createJobMsg.Job);
