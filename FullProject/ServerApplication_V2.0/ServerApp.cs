@@ -84,6 +84,9 @@ namespace ServerApplication
         }
 
         #region Message handling
+
+       
+
         public void VerifyLogin(ILoginMsg loginMsg, IServer server)
         {
             LoginReplyMsg loginReplyMsg = new LoginReplyMsg();
@@ -226,6 +229,12 @@ namespace ServerApplication
 
             server.SendToClient(activationCodeRequestReplyMsg);
         }
+
+        public void ActivateUser(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Old_Commands
@@ -260,6 +269,11 @@ namespace ServerApplication
         }
 
         public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ActivateUser(IActivationCodeRequestMsg activationCodeRequestMsg)
         {
             throw new NotImplementedException();
         }
