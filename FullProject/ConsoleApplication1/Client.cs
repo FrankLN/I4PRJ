@@ -68,7 +68,7 @@ namespace ClientApplication
         {
             int n;
             var rest = fileSize;
-            var name = fileName.Substring(1+fileName.LastIndexOf(@"\"));
+            var name = fileName.Substring(fileName.LastIndexOf("\\")+1);
             var pathAndName = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "Downloads" + name;
                 
             var downloadFile = new FileStream(pathAndName,FileMode.Create,FileAccess.Write);
