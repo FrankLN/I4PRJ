@@ -46,7 +46,7 @@ namespace ClientApplication
         //Method for sending classobject
         public void SendToServer(ISerializable objekt)
         {
-            clientSocket.Connect("10.20.32.233", _port);
+            clientSocket.Connect("10.20.33.18", _port);
             outInStream = clientSocket.GetStream();
 
             bFormatter.Serialize(outInStream, objekt);

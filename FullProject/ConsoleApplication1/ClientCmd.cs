@@ -142,14 +142,16 @@ namespace ConsoleApplication1
 
         public void SendToServer(IMessage msg)
         {
-            ThreadPool.QueueUserWorkItem(delegate(object state)
-            {
-                object[] array = state as object[];
-                client.SendToServer((ISerializable) array[0]);
-                client.ReceiveMessage().Run(this);
-            }
-                , new object[] {msg});
+            //ThreadPool.QueueUserWorkItem(delegate(object state)
+            //{
+            //    object[] array = state as object[];
+            //    client.SendToServer((ISerializable)array[0]);
+            //    client.ReceiveMessage().Run(this);
+            //}
+            //    , new object[] { msg });
 
+            client.SendToServer((ISerializable)msg);
+            client.ReceiveMessage().Run(this);
         }
 
         public void receiveFromFileServer(long fileSize, string name )
