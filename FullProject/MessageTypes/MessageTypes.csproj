@@ -45,6 +45,7 @@
     <Compile Include="JobClass.cs" />
     <Compile Include="MaterialClass.cs" />
     <Compile Include="Messages\ActivationCodeRequestMsg.cs" />
+    <Compile Include="Messages\ActivationMsg.cs" />
     <Compile Include="Messages\CreateJobMsg.cs" />
     <Compile Include="Messages\CreateUserMsg.cs" />
     <Compile Include="Messages\DownloadJobMsg.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Messages\RequestJobsMsg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplyMessages\ActivationCodeRequestReplyMsg.cs" />
+    <Compile Include="ReplyMessages\ActivationReplyMsg.cs" />
     <Compile Include="ReplyMessages\CreateJobReplyMsg.cs" />
     <Compile Include="ReplyMessages\CreateUserReplyMsg.cs" />
     <Compile Include="ReplyMessages\DownloadJobReplyMsg.cs" />
