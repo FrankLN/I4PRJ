@@ -28,6 +28,8 @@ namespace ConsoleApplication1
 
         public delegate void LoadMaterialsDelegate(IGetMaterialsReplyMsg msg);
 
+        public delegate void ValidateActivationDelegate(IActivationReplyMsg msg);
+
         public event LogiDelegate onLogiMsgReceived;
         public event ActivationDelegate onActivationReceived;
         public event CreateJobDelegate onCreateJobMsgReceived;
@@ -35,11 +37,19 @@ namespace ConsoleApplication1
         public event DownloadDelegate onDownloadMsgReceived;
         public event LoadJobListDelegate onJobListMsgReceived;
         public event LoadMaterialsDelegate onMaterialsMsgReceived;
+        public event ValidateActivationDelegate onValidateActivationMsgReceived;
 
 
         private IReplyMessage _replyMessage = null;
         private IClient client = new Client(9000);
 
+        private void FireValidateActivationReply()
+        {
+            if (onValidateActivationMsgReceived != null)
+            {
+                onValidateActivationMsgReceived(IActivationReplyMsg _replyMessage);
+            }
+        }
         private void FireLogiReply()
         {
             if (onLogiMsgReceived != null)
@@ -137,6 +147,12 @@ namespace ConsoleApplication1
         {
             _replyMessage = (IReplyMessage) msg;
             FireJobListReply();
+        }
+
+        public void ValidateActivation(IActivationReplyMsg msg)
+        {
+            _replyMessage = (IReplyMessage) msg;
+            FireValidateActivationReply();
         }
 
 

@@ -15,6 +15,7 @@ namespace ConsoleApplication1
         void DownloadCommencing(IDownloadJobReplyMsg msg);
         void LoadMaterials(IGetMaterialsReplyMsg msg);
         void LoadJobList(IRequestJobsReplyMsg msg);
+        void ValidateActivation(IActivationReplyMsg msg);
 
         void SendToServer(IMessage msg);
 
