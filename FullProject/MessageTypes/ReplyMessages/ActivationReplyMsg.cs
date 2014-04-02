@@ -32,7 +32,7 @@ namespace MessageTypes.ReplyMessages
 
         public void Run(IClientCmd clientCmd)
         {
-            throw new NotImplementedException();
+            clientCmd.ValidateActivation(this);
         }
     }
 }

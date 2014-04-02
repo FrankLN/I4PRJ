@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ConsoleApplication1;
+using DatabaseInterface;
+using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
 namespace GUI_first_iteration
@@ -24,25 +27,40 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------  
         // -----------------------------------
 
-        private ICreateUserReplyMsg userReplyMsg;
         private CreateUserWindow createUserWin;
         private MainWindow mainWin;
         private ActivateUserCom activateUserObj;
-
+        private ActivationMsg activationMsg;
+        private IClientCmd clientCom;
+        public string activationCode { get; set; }
         // -----------------------------------
         // CONSTRUCTOR - ActivateUserWindow --
         // -----------------------------------
 
-        public ActivateUserWindow(ICreateUserReplyMsg msg, CreateUserWindow uWin, MainWindow mWin)
+        public ActivateUserWindow(UserClass user,IClientCmd clientCom, CreateUserWindow uWin, MainWindow mWin)
         {
-            userReplyMsg = msg;
+            InitializeComponent();
             createUserWin = uWin;
             mainWin = mWin;
-            activateUserObj = new ActivateUserCom();
-            InitializeComponent();
+            activationMsg.User = user;
+            DataContext = activationMsg.User;
+            this.clientCom = clientCom;
+
 
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+
+        private void activateUserEvent(IActivationReplyMsg msg)
+        {
+            if (msg.UserActivated)
+            {
+                MessageBox.Show("Good activation code\n You can now log in!");
+                mainWin.Show();
+                createUserWin.ClosedInCode = true;
+                createUserWin.Close();
+                this.Close();
+            }
         }
 
         // -----------------------------------
@@ -51,16 +69,11 @@ namespace GUI_first_iteration
 
         private void btnActivateUser_Click(object sender, RoutedEventArgs e)
         {
-            activateUserObj.ActivationKey = tbxActivateUser.Text;
-            if (activateUserObj.ActivationKey == "")
-            {
-                MessageBox.Show("Good activation code\n You can now log in!");
-                mainWin.Show();
-                createUserWin.ClosedInCode = true;
-                createUserWin.Close();
-                this.Close();
-               
-            }
+            var clientCmd = new ClientCmd();
+            clientCmd = (ClientCmd)clientCom;
+            clientCmd.onValidateActivationMsgReceived += new ClientCmd.ValidateActivationDelegate(activateUserEvent);
+            clientCom.SendToServer(activationMsg);
+
 
 
         }

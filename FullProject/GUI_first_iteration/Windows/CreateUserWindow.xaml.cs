@@ -72,8 +72,7 @@ namespace GUI_first_iteration
         {
             if (msg.Created)
             {
-                
-                ActivateUserWindow activateUserWin = new ActivateUserWindow(msg, this, mainWin);
+                ActivateUserWindow activateUserWin = new ActivateUserWindow(createUserObj.User ,clientCom, this, mainWin);
                 activateUserWin.Show();
             }
             else
