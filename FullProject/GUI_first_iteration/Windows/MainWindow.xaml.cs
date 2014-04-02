@@ -116,17 +116,6 @@ namespace GUI_first_iteration
             }
         }
 
-/*
-        private void tbxPassword_GotFocus(object sender, RoutedEventArgs e)
-        {
-            tbxOnPSW.Visibility = Visibility.Hidden;
-        }
-
-        private void tbxEmail_GotFocus(object sender, RoutedEventArgs e)
-        {
-            tbxEmail.Text = string.Empty;
-        }
-*/
 
         private void tbxEmail_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -186,7 +175,6 @@ namespace GUI_first_iteration
             this.WindowState = WindowState.Minimized;
         }
 
-
         // This is here 'til future versions of WPF provide this functionality
         public static bool ValidateBindings(DependencyObject parent)
         {
@@ -227,36 +215,5 @@ namespace GUI_first_iteration
             return valid;
         }
     }
-
-    public class ValidEmail : ValidationRule
-        {
-
-            public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
-            {
-                if (!ValidEmailRegex.IsMatch((string)value))
-                {
-                    return new ValidationResult(false, " Indtast en rigtig email");
-
-                }
-
-                return new ValidationResult(true, null);
-            }
-
-            private static Regex ValidEmailRegex = CreateValidEmailRegex();
-
-            private static Regex CreateValidEmailRegex()
-            {
-                string validEmailPattern = "[a-zA-Z0-9]" + "@iha.dk$";
-
-                return new Regex(validEmailPattern, RegexOptions.IgnoreCase);
-            }
-
-            internal static bool EmailIsValid(string emailAddress)
-            {
-                bool isValid = ValidEmailRegex.IsMatch(emailAddress);
-
-                return isValid;
-            }
-        }
-    }
+}
 

@@ -107,35 +107,6 @@ namespace GUI_first_iteration
         }
 
 
-        public class ValidEmail : ValidationRule
-        {
-
-            public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
-            {
-                if (!ValidEmailRegex.IsMatch((string)value))
-                {
-                    return new ValidationResult(false, " Indtast en rigtig email");
-
-                }
-
-                return new ValidationResult(true, null);
-            }
-
-            private static Regex ValidEmailRegex = CreateValidEmailRegex();
-
-            private static Regex CreateValidEmailRegex()
-            {
-                string validEmailPattern = "[a-zA-Z0-9]" + "@iha.dk$";
-
-                return new Regex(validEmailPattern, RegexOptions.IgnoreCase);
-            }
-
-            internal static bool EmailIsValid(string emailAddress)
-            {
-                bool isValid = ValidEmailRegex.IsMatch(emailAddress);
-
-                return isValid;
-            }
-        }
+       
     }
 }

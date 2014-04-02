@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -142,6 +143,77 @@ namespace GUI_first_iteration
             }
             
         }
+         // This is here 'til future versions of WPF provide this functionality
+        public static bool ValidateBindings(DependencyObject parent)
+        {
+            // Validate all the bindings on the parent
+            bool valid = true;
+            LocalValueEnumerator localValues = parent.GetLocalValueEnumerator();
+            while (localValues.MoveNext())
+            {
+                LocalValueEntry entry = localValues.Current;
+                if (BindingOperations.IsDataBound(parent, entry.Property))
+                {
+                    Binding binding = BindingOperations.GetBinding(parent, entry.Property);
+                    foreach (ValidationRule rule in binding.ValidationRules)
+                    {
+                        // TODO: where to get correct culture info?
+                        ValidationResult result = rule.Validate(parent.GetValue(entry.Property), null);
+                        if (!result.IsValid)
+                        {
+                            BindingExpression expression = BindingOperations.GetBindingExpression(parent, entry.Property);
+                            Validation.MarkInvalid(expression,
+                                new ValidationError(rule, expression, result.ErrorContent, null));
+                            valid = false;
+                        }
+                    }
+                }
+            }
+
+            // Validate all the bindings on the children
+            for (int i = 0; i != VisualTreeHelper.GetChildrenCount(parent); ++i)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+                if (!ValidateBindings(child))
+                {
+                    valid = false;
+                }
+            }
+
+            return valid;
+        }
+    }
+
+    public class ValidEmail : ValidationRule
+        {
+
+            public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
+            {
+                if (!ValidEmailRegex.IsMatch((string)value))
+                {
+                    return new ValidationResult(false, " Indtast en rigtig email");
+
+                }
+
+                return new ValidationResult(true, null);
+            }
+
+            private static Regex ValidEmailRegex = CreateValidEmailRegex();
+
+            private static Regex CreateValidEmailRegex()
+            {
+                string validEmailPattern = "[a-zA-Z0-9]" + "@iha.dk$";
+
+                return new Regex(validEmailPattern, RegexOptions.IgnoreCase);
+            }
+
+            internal static bool EmailIsValid(string emailAddress)
+            {
+                bool isValid = ValidEmailRegex.IsMatch(emailAddress);
+
+                return isValid;
+            }
+        }
 
     }
-}
+
