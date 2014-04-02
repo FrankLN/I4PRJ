@@ -43,7 +43,12 @@ namespace ServerApplication
 
         public void RecieveFile(string fileName, long fileSize)
         {
-            FileStream fs = File.Open("C:\\Jobs\\" + fileName, FileMode.Create);
+            Directory.SetCurrentDirectory("C:\\Jobs\\");
+            Directory.CreateDirectory(fileName.Substring(0, fileName.LastIndexOf("\\")));
+
+
+
+            FileStream fs = File.Open(fileName, FileMode.Create);
             byte[] buffer = new byte[maxPacketSize];
             while (fileSize > maxPacketSize)
             {

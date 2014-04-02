@@ -142,7 +142,7 @@ namespace ServerApplication
             Console.WriteLine(createJobMsg.Job.File);
             Console.WriteLine(createJobMsg.Job.FileSize);
 
-            createJobMsg.Job.File = createJobMsg.Job.File.Substring(createJobMsg.Job.File.LastIndexOf("\\") + 1);
+            createJobMsg.Job.File = createJobMsg.Job.OrderId + "\\" + createJobMsg.Job.File.Substring(createJobMsg.Job.File.LastIndexOf("\\") + 1);
 
             Console.WriteLine(createJobMsg.Job.File);
 
@@ -151,6 +151,9 @@ namespace ServerApplication
             createJobMsg.Job.CreationTime = "Now";
 
             _database.AddJob(createJobMsg.Job);
+
+            Directory.Move("C:\\Jobs\\0", "C:\\Jobs\\" + createJobMsg.Job.OrderId);
+
             createJobReplyMsg.Created = true;
 
             server.SendToClient(createJobReplyMsg);
