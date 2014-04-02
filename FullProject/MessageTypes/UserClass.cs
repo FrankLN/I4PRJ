@@ -16,6 +16,7 @@ namespace DatabaseInterface
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
         public int AdminRights { get; set; }
+        public int Activated { get; set; }
 
         public UserClass()
         {
@@ -25,6 +26,7 @@ namespace DatabaseInterface
             PhoneNumber = "";
             Password = "";
             AdminRights = 0;
+            Activated = 0;
         }
 
         public UserClass(SerializationInfo info, StreamingContext context)
@@ -35,6 +37,7 @@ namespace DatabaseInterface
             FirstName = (string)info.GetValue("FirstName", typeof(string));
             LastName = (string)info.GetValue("LastName", typeof(string));
             AdminRights = (int) info.GetValue("AdminRights", typeof (int));
+            Activated = (int)info.GetValue("Activated", typeof(int));
         }
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -44,6 +47,7 @@ namespace DatabaseInterface
             info.AddValue("FirstName", FirstName);
             info.AddValue("LastName", LastName);
             info.AddValue("AdminRights", AdminRights);
+            info.AddValue("Activated", Activated);
         }
 
         

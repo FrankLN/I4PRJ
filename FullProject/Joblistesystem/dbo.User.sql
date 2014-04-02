@@ -5,5 +5,5 @@
 	[LastName] NVARCHAR(MAX) NOT NULL, 
     [PhoneNumber] NVARCHAR(8) NULL DEFAULT NULL, 
     [AdminRights] INT NULL DEFAULT NULL, 
-    [Password] NVARCHAR(50) NOT NULL
+    [Password] NVARCHAR(50) NOT NULL, 
 )

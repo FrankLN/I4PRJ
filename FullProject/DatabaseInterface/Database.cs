@@ -293,5 +293,31 @@ namespace DatabaseInterface
                 }
             }
         }
+
+
+        public void ActivateUser(UserClass user)
+        {
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // String with SQL statement
+                // UPDATED
+                string activateUser = @"UPDATE [Customer] SET Activated='"+user.Activated+"' WHERE Email='"+user.Email+"'";
+
+                SqlCommand cmd = new SqlCommand(activateUser, conn);
+
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }

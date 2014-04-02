@@ -17,6 +17,7 @@ namespace DatabaseInterface
 
         List<MaterialClass> GetMaterials();
 
+        void ActivateUser(UserClass user);
     }
 
 }
