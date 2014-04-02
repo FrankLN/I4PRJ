@@ -232,7 +232,9 @@ namespace ServerApplication
 
         public void ActivateUser(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server)
         {
-            throw new NotImplementedException();
+            ActivationReplyMsg activationReplyMsg = new ActivationReplyMsg();
+
+            activationReplyMsg.U
         }
 
         #endregion
