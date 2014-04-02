@@ -75,6 +75,11 @@ namespace ClientApplication.Test
             throw new NotImplementedException();
         }
 
+        public void ActivateUser(IActivationMsg activationMsg)
+        {
+            throw new NotImplementedException();
+        }
+
         public void VerifyLogin(ILoginMsg loginMsg, IServer server)
         {
             throw new NotImplementedException();
@@ -106,6 +111,11 @@ namespace ClientApplication.Test
         }
 
         public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ActivateUser(IActivationMsg activationMsg, IServer server)
         {
             throw new NotImplementedException();
         }

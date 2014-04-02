@@ -85,7 +85,7 @@ namespace ServerApplication
 
         #region Message handling
 
-       
+        
 
         public void VerifyLogin(ILoginMsg loginMsg, IServer server)
         {
@@ -284,7 +284,7 @@ namespace ServerApplication
             throw new NotImplementedException();
         }
 
-        public void ActivateUser(IActivationCodeRequestMsg activationCodeRequestMsg)
+        public void ActivateUser(IActivationMsg activationMsg)
         {
             throw new NotImplementedException();
         }
