@@ -37,6 +37,7 @@ namespace DatabaseInterface
         public JobClass(SerializationInfo info, StreamingContext context)
         {
             Material = (MaterialClass)info.GetValue("Material", typeof(MaterialClass));
+            OrderId = (int) info.GetValue("OrderId", typeof (int));
             Hollow = (int)info.GetValue("Hollow", typeof(int));
             FileSize = (long)info.GetValue("FileSize", typeof(long));
             Deadline = (string)info.GetValue("Deadline", typeof(string));
@@ -49,6 +50,7 @@ namespace DatabaseInterface
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Material", Material);
+            info.AddValue("OrderId", OrderId);
             info.AddValue("Hollow", Hollow);
             info.AddValue("Deadline", Deadline);
             info.AddValue("File", File);
