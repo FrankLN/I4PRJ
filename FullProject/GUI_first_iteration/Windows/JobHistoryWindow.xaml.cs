@@ -54,6 +54,8 @@ namespace GUI_first_iteration
             requestJobsObj = new RequestJobsMsg();
             clientCom.SendToServer(requestJobsObj);
 
+            this.DataContext = this;
+
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
@@ -63,6 +65,10 @@ namespace GUI_first_iteration
         private void LoadJobsEvent(IRequestJobsReplyMsg msg)
         {
             allJobs = msg.JobList;
+            foreach (JobClass job in allJobs)
+            {
+                MessageBox.Show(job.Status.ToString());
+            }
         }
 
         // -----------------------------------
@@ -100,5 +106,61 @@ namespace GUI_first_iteration
                 Application.Current.Shutdown();
             }
         }
+
+        // -----------------------------------
+        // Methods for databinding to listboxes 
+        // -----------------------------------
+
+        public List<JobClass> ItemsPlanned
+        {
+            get
+            {
+                List<JobClass> JobsPlanned = new List<JobClass>();
+
+                foreach (JobClass job in allJobs)
+                {
+                    if (job.Status == 0)
+                    {
+                        JobsPlanned.Add(job);
+                    }
+                }
+                return JobsPlanned;
+            }
+        }
+
+        public List<JobClass> ItemsInProgress
+        {
+            get
+            {
+                List<JobClass> JobsInProgress = new List<JobClass>();
+
+                foreach (JobClass job in allJobs)
+                {
+                    if (job.Status == 1)
+                    {
+                        JobsInProgress.Add(job);
+                    }
+                }
+                return JobsInProgress;
+            }
+        }
+
+        public List<JobClass> ItemsDone
+        {
+            get
+            {
+                List<JobClass> JobsDone = new List<JobClass>();
+
+                foreach (JobClass job in allJobs)
+                {
+                    if (job.Status == 2)
+                    {
+                        JobsDone.Add(job);
+                    }
+                }
+                return JobsDone;
+            }
+        }
+
     }
 }
