@@ -137,6 +137,7 @@ namespace DatabaseInterface
                         locUser.PhoneNumber = (string) rdr["Phonenumber"];
                         locUser.AdminRights = (int) rdr["AdminRights"];
                         locUser.Password = (string) rdr["Password"];
+                        locUser.ActivationCode = (string) rdr["ActivationCode"];
                     }
                     return locUser;
                 }
