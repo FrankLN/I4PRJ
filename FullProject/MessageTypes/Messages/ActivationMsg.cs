@@ -14,7 +14,7 @@ namespace MessageTypes.Messages
     {
         UserClass User { get; }
     }
-    class ActivationMsg : ISerializable, IMessage, IActivationMsg
+    public class ActivationMsg : ISerializable, IMessage, IActivationMsg
     {
         public UserClass User { get; set; }
 
