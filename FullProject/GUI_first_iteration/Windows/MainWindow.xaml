@@ -1,6 +1,10 @@
 ﻿<Window x:Class="GUI_first_iteration.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:Local="clr-namespace:GUI_first_iteration"
+        xmlns:guiFirstIteration="clr-namespace:GUI_first_iteration"
+       
+      
         Title="MainWindow" Height="400" Width="525" AllowsTransparency="True" MouseDown="Window_MouseDown" WindowStyle="None" Closing="Window_Closing" >
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" CornerRadius="2" Margin="0" >
@@ -33,11 +37,27 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <PasswordBox x:Name="tbxPassword" Grid.Column="0"  HorizontalAlignment="Center" Height="30" Margin="0,10,0,0" Grid.Row="1"   Width="300" PasswordChar="*"    MaxLength="32" GotFocus="tbxPassword_GotFocus" IsKeyboardFocusedChanged="tbxPassword_IsKeyboardFocusedChanged"/>
-                    <TextBox x:Name="tbxEmail" Grid.Column="0" Grid.Row="0" Text="Indtast din mail" HorizontalAlignment="Center" Height="30" Margin="112,10,113,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" GotFocus="tbxEmail_GotFocus" IsKeyboardFocusedChanged="tbxEmail_IsKeyboardFocusedChanged"/>
-                    <TextBox Name="tbxOnPSW" IsHitTestVisible="False" Grid.Column="0" Grid.Row="1" Text="Indtast dit password" Height="30" HorizontalAlignment="Center" TextWrapping="Wrap"  Margin="0,10,0,0" Width="300"  />
+                    <Label Content="Email" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Grid.Row="0" />
+                    <Label Content="Password" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top" Grid.Row="1" />
+                    <PasswordBox x:Name="tbxPassword" Grid.Column="0"  HorizontalAlignment="Center" Height="30" Margin="0,10,0,0" Grid.Row="1"   Width="300" PasswordChar="*"    MaxLength="32"  IsKeyboardFocusedChanged="tbxPassword_IsKeyboardFocusedChanged"/>
+                    <TextBox x:Name="tbxEmail" Grid.Column="0" Grid.Row="0" 
+                             HorizontalAlignment="Center" Height="30" Margin="112,10,113,0" 
+                             TextWrapping="Wrap" VerticalAlignment="Top" Width="300"  
+                             IsKeyboardFocusedChanged="tbxEmail_IsKeyboardFocusedChanged"
+                             ToolTip="{Binding RelativeSource={RelativeSource Self}, 
+                               Path=(Validation.Errors)[0].ErrorContent}">
+                        <TextBox.Text>
+                            <Binding Path="Email">
+                                <Binding.ValidationRules >
+                                    <Local:ValidEmail/>
+
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>   
+                        </TextBox>
                     <Button Name="btnLogin" Content="Log ind" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" Margin="0,10,0,0"  Width="300" Height="50" FontSize="18" Click="btnLogin_Click"/>
                     <Button Name="btnNewUser" Content="Opret bruger" Grid.Column="0" HorizontalAlignment="Center" Margin="0,10,0,0"  Width="100" Height="30"  Grid.Row="3" Click="Button_Click"/>
+                    
                 </Grid>
             </StackPanel>
 

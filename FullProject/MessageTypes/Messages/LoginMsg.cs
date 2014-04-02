@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using MessageTypes.ReplyMessages;
 using Server;
@@ -12,9 +13,19 @@ namespace MessageTypes.Messages
     }
 
     [Serializable]
-    public class LoginMsg : IMessage, ISerializable, ILoginMsg
+    public class LoginMsg : IMessage, ISerializable, ILoginMsg, INotifyPropertyChanged 
     {
-        public string Email { get; set; }
+        private string email;
+
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                Notify("Email");
+            }
+        }
         public string Password { get; set; }
 
         public LoginMsg()
@@ -43,5 +54,8 @@ namespace MessageTypes.Messages
             info.AddValue("email", Email);
             info.AddValue("password", Password);
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void Notify(string prop) { if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); } }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -103,6 +104,38 @@ namespace GUI_first_iteration
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+
+        public class ValidEmail : ValidationRule
+        {
+
+            public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
+            {
+                if (!ValidEmailRegex.IsMatch((string)value))
+                {
+                    return new ValidationResult(false, " Indtast en rigtig email");
+
+                }
+
+                return new ValidationResult(true, null);
+            }
+
+            private static Regex ValidEmailRegex = CreateValidEmailRegex();
+
+            private static Regex CreateValidEmailRegex()
+            {
+                string validEmailPattern = "[a-zA-Z0-9]" + "@iha.dk$";
+
+                return new Regex(validEmailPattern, RegexOptions.IgnoreCase);
+            }
+
+            internal static bool EmailIsValid(string emailAddress)
+            {
+                bool isValid = ValidEmailRegex.IsMatch(emailAddress);
+
+                return isValid;
+            }
         }
     }
 }
