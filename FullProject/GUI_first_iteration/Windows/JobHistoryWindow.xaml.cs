@@ -34,7 +34,8 @@ namespace GUI_first_iteration
         private UserClass loggedInUser;
         private bool ClosedInCode;
         private List<JobClass> allJobs;
-        private JobClass selectedJob;
+
+        public JobClass selectedJob { get; set; }
 
         // -----------------------------------
         // CONSTRUCTOR - JobHistoryWindow ----
@@ -65,21 +66,6 @@ namespace GUI_first_iteration
         private void LoadJobsEvent(IRequestJobsReplyMsg msg)
         {
             allJobs = msg.JobList;
-            foreach (JobClass job in allJobs)
-            {
-                MessageBox.Show(job.Status.ToString());
-            }
-        }
-
-        // -----------------------------------
-        // LISTBOX CLICK - Listbox item selected 
-        // -----------------------------------
-
-        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
-        {
-            JobDetailsWindow jobDetailsWin = new JobDetailsWindow(clientCom, loggedInUser, selectedJob);
-
-            jobDetailsWin.Show();
         }
 
         // -----------------------------------
@@ -94,6 +80,17 @@ namespace GUI_first_iteration
 
             mainMenuWin.Show();
         }
+
+        // -----------------------------------
+        // BUTTON - Details ------------------
+        // -----------------------------------
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+            JobDetailsWindow jobDetailsWin = new JobDetailsWindow(clientCom, loggedInUser, selectedJob);
+            jobDetailsWin.Show();
+        }
+
 
         // -----------------------------------
         // METHOD - Window closing -----------

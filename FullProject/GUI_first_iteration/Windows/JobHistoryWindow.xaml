@@ -8,8 +8,9 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Job " FontSize="18"/>
                 <TextBlock Text="{Binding Path=OrderId}" FontSize="18"/>
-                <!--<TextBlock Text=", by user " FontSize="18"/>
-                <TextBlock Text="{Binding Path=}" FontSize="18"/>-->
+                <Button Name="btnDetails" 
+                        Click="btnDetails_Click"
+                        Margin="10,0,0,0" Content="Details" />
             </StackPanel>
         </DataTemplate>
 
@@ -32,6 +33,7 @@
                 <Label Content="Finished" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="197" Grid.Column="2"/>
                 <ListBox ItemTemplate="{StaticResource JobTemplate}"
                          ItemsSource="{Binding ItemsPlanned}"
+                         SelectedItem="{Binding selectedJob, Mode=OneWayToSource}"
                          HorizontalAlignment="Left" Height="292" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="197"/>
                 <ListBox ItemTemplate="{StaticResource JobTemplate}" 
                          ItemsSource="{Binding ItemsInProgress}"

@@ -45,5 +45,7 @@ namespace DatabaseInterface
             info.AddValue("LastName", LastName);
             info.AddValue("AdminRights", AdminRights);
         }
+
+        
     }
 }
