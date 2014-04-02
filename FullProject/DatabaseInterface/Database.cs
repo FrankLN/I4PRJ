@@ -162,28 +162,28 @@ namespace DatabaseInterface
 
                  // String with SQL statement
                  // UPDATED
-                 string jobInsert = @"INSERT INTO [My3DJob] (OrderId, MaterialFK, Owner, Deadline, MyFile, CreationTime, Hollow, Comment)
+                 string jobInsert = @"INSERT INTO [My3DJob] (MaterialFK, Owner, Deadline, MyFile, CreationTime, Hollow, Comment)
                                     OUTPUT INSERTED.OrderId 
-                                    VALUES ("+job.OrderId+", "+job.Material+", '"+job.Owner+"', '"+job.Deadline+"', '"+job.File+"', '"+job.CreationTime+"', "+job.Hollow+",'"+job.Comment+"')";
+                                    VALUES ('"+job.Material+", '"+job.Owner+"', '"+job.Deadline+"', '"+job.File+"', '"+job.CreationTime+"', "+job.Hollow+",'"+job.Comment+"')";
 
                  SqlCommand cmd = new SqlCommand(jobInsert, conn);
 
-                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data1";
-                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data2";
-                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data3";
-                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data4";
-                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data5";
-                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data6";
-                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data7";
-                 cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data8";
-                 cmd.Parameters["@Data1"].Value = job.OrderId;
-                 cmd.Parameters["@Data2"].Value = job.Material.MaterialId;
-                 cmd.Parameters["@Data3"].Value = job.Owner;
-                 cmd.Parameters["@Data4"].Value = job.Deadline;
-                 cmd.Parameters["@Data5"].Value = job.File;
-                 cmd.Parameters["@Data6"].Value = job.CreationTime;
-                 cmd.Parameters["@Data7"].Value = job.Hollow;
-                 cmd.Parameters["@Data8"].Value = job.Comment;
+                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data1";
+                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data2";
+                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data3";
+                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data4";
+                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data5";
+                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data6";
+                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data7";
+                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data8";
+                 //cmd.Parameters["@Data1"].Value = job.OrderId;
+                 //cmd.Parameters["@Data2"].Value = job.Material.MaterialId;
+                 //cmd.Parameters["@Data3"].Value = job.Owner;
+                 //cmd.Parameters["@Data4"].Value = job.Deadline;
+                 //cmd.Parameters["@Data5"].Value = job.File;
+                 //cmd.Parameters["@Data6"].Value = job.CreationTime;
+                 //cmd.Parameters["@Data7"].Value = job.Hollow;
+                 //cmd.Parameters["@Data8"].Value = job.Comment;
 
                  //job.OrderId = (int) 
                  //cmd.ExecuteNonQuery();
