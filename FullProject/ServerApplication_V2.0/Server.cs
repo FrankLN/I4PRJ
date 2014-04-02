@@ -43,7 +43,7 @@ namespace ServerApplication
 
         public void RecieveFile(string fileName, long fileSize)
         {
-            FileStream fs = File.Open("/Jobs/" + fileName, FileMode.Create);
+            FileStream fs = File.Open(fileName, FileMode.Create);
             byte[] buffer = new byte[maxPacketSize];
             while (fileSize > maxPacketSize)
             {
@@ -67,7 +67,7 @@ namespace ServerApplication
 
         public void SendFile(string fileName, long fileSize)
         {
-            byte[] buffer = File.ReadAllBytes("/Jobs/" + fileName);
+            byte[] buffer = File.ReadAllBytes(fileName);
 
             int i = 0;
             while (fileSize < maxPacketSize)

@@ -87,7 +87,7 @@ namespace ServerApplication
             server = null;
         }
 
-
+        #region Message handling
         public void VerifyLogin(ILoginMsg loginMsg, IServer server)
         {
             LoginReplyMsg loginReplyMsg = new LoginReplyMsg();
@@ -143,7 +143,7 @@ namespace ServerApplication
         {
             CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
 
-            server.RecieveFile("C:/Jobs/" + createJobMsg.Job.File, createJobMsg.Job.FileSize);
+            server.RecieveFile(createJobMsg.Job.File, createJobMsg.Job.FileSize);
 
             _database.AddJob(createJobMsg.Job);
             createJobReplyMsg.Created = true;
@@ -164,9 +164,9 @@ namespace ServerApplication
         {
             DownloadJobReplyMsg downloadJobReplyMsg = new DownloadJobReplyMsg();
 
-            if (File.Exists("C:/Jobs/" + downloadJobMsg.FileName))
+            if (File.Exists("C:\\Jobs\\" + downloadJobMsg.FileName))
             {
-                downloadJobReplyMsg.FileSize = File.ReadAllBytes("C:/Jobs/" + downloadJobMsg.FileName).Length;
+                downloadJobReplyMsg.FileSize = File.ReadAllBytes("C:\\Jobs\\" + downloadJobMsg.FileName).Length;
 
                 server.SendToClient(downloadJobReplyMsg);
 
@@ -218,6 +218,7 @@ namespace ServerApplication
 
             server.SendToClient(activationCodeRequestReplyMsg);
         }
+        #endregion
 
         #region Old_Commands
         public void VerifyLogin(ILoginMsg loginMsg)
