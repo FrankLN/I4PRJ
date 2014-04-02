@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,8 +112,9 @@ namespace GUI_first_iteration
             jobObj.Hollow = selectedHollow.hollow;
             jobObj.Deadline = selectedDate.ToShortDateString(); // Maybe not correct
             jobObj.Comment = comments;
-            jobObj.File = MyFile.Substring(MyFile.LastIndexOf('\\'));
+            jobObj.File = MyFile.Substring(MyFile.LastIndexOf('\\')+1);
             jobObj.Owner = loggedInUser;
+            jobObj.FileSize = new FileInfo(MyFile).Length;
             
             createJobObj.Job = jobObj;
 
