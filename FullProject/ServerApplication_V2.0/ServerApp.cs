@@ -81,10 +81,6 @@ namespace ServerApplication
 
             server.RecieveMessage().Run(this, server);
 
-            Thread.Sleep(5000);
-            Console.WriteLine("Closing Thread");
-
-            server = null;
         }
 
         #region Message handling
@@ -143,9 +139,16 @@ namespace ServerApplication
         {
             CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
 
+            Console.WriteLine(createJobMsg.Job.File);
+            Console.WriteLine(createJobMsg.Job.FileSize);
+
             createJobMsg.Job.File = createJobMsg.Job.File.Substring(createJobMsg.Job.File.LastIndexOf("\\") + 1);
 
+            Console.WriteLine(createJobMsg.Job.File);
+
             server.RecieveFile(createJobMsg.Job.File, createJobMsg.Job.FileSize);
+
+            createJobMsg.Job.CreationTime = "Now";
 
             _database.AddJob(createJobMsg.Job);
             createJobReplyMsg.Created = true;

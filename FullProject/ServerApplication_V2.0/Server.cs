@@ -43,7 +43,7 @@ namespace ServerApplication
 
         public void RecieveFile(string fileName, long fileSize)
         {
-            FileStream fs = File.Open(fileName, FileMode.Create);
+            FileStream fs = File.Open("C:\\Jobs\\" + fileName, FileMode.Create);
             byte[] buffer = new byte[maxPacketSize];
             while (fileSize > maxPacketSize)
             {
@@ -63,6 +63,8 @@ namespace ServerApplication
                 j += _inStream.Read(buffer, j, (int)fileSize - j);
             }
             fs.Write(buffer, 0, (int)fileSize);
+
+            fs.Close();
         }
 
         public void SendFile(string fileName, long fileSize)
@@ -79,6 +81,7 @@ namespace ServerApplication
             }
             _inStream.Write(buffer, i, (int)fileSize);
 
+            
         }
     }
 }

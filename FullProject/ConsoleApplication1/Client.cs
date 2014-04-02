@@ -85,16 +85,17 @@ namespace ClientApplication
         // Methode that sends a file of a job
         public void SendFile(long fileSize ,string path)
         {
-            int n;
-            var rest = fileSize;
-            var sendBuffer = new byte[MaxPackageSize];
-            var uploadFile = new FileStream(path,FileMode.Open);
-            while (rest != 0)
+            byte[] buffer = File.ReadAllBytes(path);
+
+            int i = 0;
+            while (fileSize < MaxPackageSize)
             {
-                n = uploadFile.Read(sendBuffer, 0, MaxPackageSize);
-                outInStream.Write(sendBuffer, 0, n);
-                rest -= n;
+                outInStream.Write(buffer, i, MaxPackageSize);
+
+                i += MaxPackageSize;
+                fileSize -= MaxPackageSize;
             }
+            outInStream.Write(buffer, i, (int)fileSize);
         }
     }
 }

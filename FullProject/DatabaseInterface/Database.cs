@@ -164,7 +164,7 @@ namespace DatabaseInterface
                  // UPDATED
                  string jobInsert = @"INSERT INTO [My3DJob] (MaterialFK, Owner, Deadline, MyFile, CreationTime, Hollow, Comment)
                                     OUTPUT INSERTED.OrderId 
-                                    VALUES ('"+job.Material+", '"+job.Owner+"', '"+job.Deadline+"', '"+job.File+"', '"+job.CreationTime+"', "+job.Hollow+",'"+job.Comment+"')";
+                                    VALUES ('"+job.Material.MaterialId+"', '"+job.Owner.Email+"', '"+job.Deadline+"', '"+job.File+"', '"+job.CreationTime+"', "+job.Hollow+",'"+job.Comment+"')";
 
                  SqlCommand cmd = new SqlCommand(jobInsert, conn);
 
@@ -187,7 +187,7 @@ namespace DatabaseInterface
 
                  //job.OrderId = (int) 
                  //cmd.ExecuteNonQuery();
-                 job.OrderId = (int)cmd.ExecuteScalar(); // use if you need value returned (when using IDENTITY)
+                 job.OrderId = (int)((long)cmd.ExecuteScalar()); // use if you need value returned (when using IDENTITY)
                  
              }
              finally
