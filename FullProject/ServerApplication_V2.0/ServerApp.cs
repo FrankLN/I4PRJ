@@ -184,7 +184,7 @@ namespace ServerApplication
 
             Console.WriteLine("Get meterials called");
 
-            //getMaterialsReplyMsg.Materials = _database.GetMaterials();
+            getMaterialsReplyMsg.Materials = _database.GetMaterials();
 
             server.SendToClient(getMaterialsReplyMsg);
         }
