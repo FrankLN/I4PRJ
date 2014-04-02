@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -8,12 +9,53 @@ using System.Threading.Tasks;
 namespace DatabaseInterface
 {
     [Serializable()]
-    public class UserClass : ISerializable
+    public class UserClass : ISerializable, INotifyPropertyChanged
     {
-        public string Email { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
+        private string _fName;
+        private string _lName;
+        private string _email;
+        private string _phone;
+
+        public string FirstName
+        {
+            get { return _fName; }
+            set
+            {
+                _fName = value;
+                Notify("FirstName");
+            }
+        }
+
+        public string LastName
+        {
+            get { return _lName; }
+            set
+            {
+                _lName = value;
+                Notify("LastName");
+            }
+        }
+
+        public string Email
+        {
+            get { return _email; }
+            set
+            {
+                _email = value;
+                Notify("Email");
+            }
+        }
+
+        public string PhoneNumber
+        {
+            get { return _phone; }
+
+            set
+            {
+                _phone = value;
+                Notify("Phonenumber");
+            }
+        }
         public string Password { get; set; }
         public int AdminRights { get; set; }
         public int Activated { get; set; }
@@ -53,6 +95,9 @@ namespace DatabaseInterface
             info.AddValue("Activated", Activated);
             info.AddValue("ActivationCode", ActivationCode);
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void Notify(string prop) { if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); } }
 
         
     }

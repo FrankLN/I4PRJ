@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
 using ConsoleApplication1;
+using DatabaseInterface;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
@@ -31,6 +32,8 @@ namespace GUI_first_iteration
         private MainWindow mainWin;
         private IClientCmd clientCom;
         private CreateUserMsg createUserObj;
+        private UserClass userObj;
+ 
 
         public bool ClosedInCode;
 
@@ -42,11 +45,12 @@ namespace GUI_first_iteration
         {
             mainWin = mWin;
             clientCom = ccom;
+            userObj= new UserClass();
             ClosedInCode = false;
 
             createUserObj = new CreateUserMsg();
             InitializeComponent();
-
+            DataContext = userObj;
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
@@ -57,12 +61,42 @@ namespace GUI_first_iteration
 
         private void btnCreateUser_Click(object sender, RoutedEventArgs e)
         {
+
             var clientCmd = new ClientCmd();
             clientCmd = (ClientCmd)clientCom;
-            clientCmd.onCreateUserMsgReceived += new ClientCmd.CreateUserDelegate(createUserEvent);
-            clientCom.SendToServer(createUserObj);
-            //ActivateUserWindow activateUserWin = new ActivateUserWindow(this);
-            //activateUserWin.Show();
+            Color color;
+            color = Color.FromArgb(255, 227, 233, 239);
+
+            if (TbxPassword.Password != "" && TbxPasswordRepeat.Password != "" &&
+                TbxPassword.Password == TbxPasswordRepeat.Password)
+            {
+                // Validate all controls
+                if (ValidateBindings(this))
+                {
+
+                    clientCmd.onCreateUserMsgReceived += new ClientCmd.CreateUserDelegate(createUserEvent);
+                    clientCom.SendToServer(createUserObj);
+                }
+
+                TbxPassword.ToolTip = null;
+                TbxPasswordRepeat.ToolTip = null;
+                TbxPassword.BorderBrush = new SolidColorBrush(color);
+                TbxPasswordRepeat.BorderBrush = new SolidColorBrush(color);
+                //ActivateUserWindow activateUserWin = new ActivateUserWindow(this);
+                //activateUserWin.Show();
+            }
+            else
+            {
+                TbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                TbxPassword.BorderThickness = new Thickness(1.25);
+                TbxPasswordRepeat.BorderBrush = new SolidColorBrush(Colors.Red);
+                TbxPasswordRepeat.BorderThickness = new Thickness(1.25);
+                ValidateBindings(this);
+                TbxPassword.ToolTip = "Indtast din password";
+                TbxPasswordRepeat.ToolTip = "Indtast din password igen";
+
+            }
+
         }
         
         // -----------------------------------
@@ -120,11 +154,44 @@ namespace GUI_first_iteration
 
         private void TbxPassword_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            createUserObj.User.Password = TbxPassword.Password;
+            Color color;
+            color = Color.FromArgb(255, 227, 233, 239);
+            if (TbxPassword.Password != "")
+            {
+                createUserObj.User.Password = TbxPassword.Password;
+                TbxPassword.ToolTip = null;
+                TbxPassword.BorderBrush = new SolidColorBrush(color);
+                TbxPassword.UpdateLayout();
+            }
+
+            else
+            {
+                TbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                //TbxPassword.BorderThickness = new Thickness(1.25);
+                TbxPassword.ToolTip = "Indtast din password";
+
+            }
+
+          
         }
 
         private void TbxPasswordRepeat_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            Color color;
+            color = Color.FromArgb(255, 227, 233, 239);
+
+            if (TbxPasswordRepeat.Password != "")
+            {
+                TbxPasswordRepeat.ToolTip = null;
+                TbxPasswordRepeat.BorderBrush = new SolidColorBrush(color);
+
+            }
+            else
+            {
+                TbxPasswordRepeat.BorderBrush = new SolidColorBrush(Colors.Red);
+                TbxPasswordRepeat.BorderThickness = new Thickness(1.25);
+                TbxPasswordRepeat.ToolTip = "Indtast din password igen";
+            }
             // remember to add repeat password attribute in CreateUserMsg
             //createUserObj.User.RepeatPassword = TbxPasswordRepeat.Password;
         }
@@ -183,6 +250,71 @@ namespace GUI_first_iteration
         }
     }
 
+    public class ValidFName : ValidationRule
+    {
+
+        public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (!ValidFNameRegex.IsMatch((string)value))
+            {
+                return new ValidationResult(false, "Indtast din fornavn");
+
+            }
+
+            return new ValidationResult(true, null);
+        }
+
+        private static Regex ValidFNameRegex = CreateValidFNameRegex();
+
+        private static Regex CreateValidFNameRegex()
+        {
+            string validFNamePattern = @"^[\p{L}\p{M}' \.\-]+$";
+
+
+            return new Regex(validFNamePattern, RegexOptions.IgnoreCase);
+        }
+
+        internal static bool FnameIsValid(string Phone)
+        {
+            bool isValid = ValidFNameRegex.IsMatch(Phone);
+
+            return isValid;
+        }
+    }
+
+    public class ValidSName : ValidationRule
+    {
+
+        public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (!ValidSNameRegex.IsMatch((string)value))
+            {
+                return new ValidationResult(false, "Indtast din Efternavn");
+
+            }
+
+            return new ValidationResult(true, null);
+        }
+
+        private static Regex ValidSNameRegex = CreateValidSNameRegex();
+
+        private static Regex CreateValidSNameRegex()
+        {
+            string validSNamePattern = @"^[\p{L}\p{M}' \.\-]+$";
+
+
+            return new Regex(validSNamePattern, RegexOptions.IgnoreCase);
+        }
+
+        internal static bool SnameIsValid(string Phone)
+        {
+            bool isValid = ValidSNameRegex.IsMatch(Phone);
+
+            return isValid;
+        }
+    }
+
+
     public class ValidEmail : ValidationRule
         {
 
@@ -213,6 +345,37 @@ namespace GUI_first_iteration
                 return isValid;
             }
         }
+    public class ValidPhone : ValidationRule
+    {
+
+        public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (!ValidPhoneRegex.IsMatch((string)value))
+            {
+                return new ValidationResult(false, "Indtast din tlf nummer");
+
+            }
+
+            return new ValidationResult(true, null);
+        }
+
+        private static Regex ValidPhoneRegex = CreateValidPhoneRegex();
+
+        private static Regex CreateValidPhoneRegex()
+        {
+            string validPhonePattern = "^[0-9]{8}$";
+
+
+            return new Regex(validPhonePattern, RegexOptions.IgnoreCase);
+        }
+
+        internal static bool PhoneIsValid(string Phone)
+        {
+            bool isValid = ValidPhoneRegex.IsMatch(Phone);
+
+            return isValid;
+        }
+    }
 
     }
 

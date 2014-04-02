@@ -44,7 +44,7 @@ namespace GUI_first_iteration
             clientCom = ccom;
             loginObj = new LoginMsg();
             ClosedInCode = false;
-            InitializeComponent();
+            InitializeComponent();         
             DataContext = loginObj;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
@@ -71,17 +71,21 @@ namespace GUI_first_iteration
             // Send object
             var clientCmd = new ClientCmd();
             clientCmd = (ClientCmd) clientCom;
+            Color color;
+            color = Color.FromArgb(255, 227, 233, 239);
+
             if (tbxPassword.Password != "")
 
             {
                 // Validate all controls
                 if (ValidateBindings(this))
                 {
+                    loginObj.Email = tbxEmail.Text;
                     clientCmd.onLogiMsgReceived += new ClientCmd.LogiDelegate(loginEvent);
                     clientCom.SendToServer(loginObj);
                 }
                 tbxPassword.ToolTip = null;
-                tbxPassword.BorderBrush = new SolidColorBrush(Colors.Tan);
+                tbxPassword.BorderBrush = new SolidColorBrush(color);
             }
             else
             {
@@ -117,17 +121,11 @@ namespace GUI_first_iteration
         }
 
 
-        private void tbxEmail_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-
-
-            loginObj.Email = tbxEmail.Text;
-
-        }
 
         private void tbxPassword_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            Color color;
+            color = Color.FromArgb(255, 227, 233, 239);
             if (tbxPassword.Password == "")
             {
                 tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
@@ -139,9 +137,9 @@ namespace GUI_first_iteration
             {
                 loginObj.Password = tbxPassword.Password;
                 tbxPassword.ToolTip = null;
-                tbxPassword.BorderBrush = new SolidColorBrush(Colors.Tan);
+                tbxPassword.BorderBrush = new SolidColorBrush(color);
             }
-
+            
 
 
         }

@@ -166,6 +166,14 @@
       <Project>{7b5e762b-f442-4ffe-a5c4-f41a16699fcf}</Project>
       <Name>ClientApplication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DatabaseInterface\DatabaseInterface.csproj">
+      <Project>{1e63ce71-cb6d-4fb9-9d15-03af62821cd3}</Project>
+      <Name>DatabaseInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joblistesystem\Joblistesystem.sqlproj">
+      <Project>{a3c3e6d7-c12e-47af-974c-c4b429a09c68}</Project>
+      <Name>Joblistesystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MessageTypes\MessageTypes.csproj">
       <Project>{A8A6F0C4-5BFA-4EB7-B85D-6A02AAD99BE9}</Project>
       <Name>MessageTypes</Name>

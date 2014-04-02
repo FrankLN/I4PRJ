@@ -42,7 +42,7 @@
                     <TextBox x:Name="tbxEmail" Grid.Column="0" Grid.Row="0" 
                              HorizontalAlignment="Center" Height="30" Margin="112,10,113,0" 
                              TextWrapping="Wrap" VerticalAlignment="Top" Width="300"  
-                             IsKeyboardFocusedChanged="tbxEmail_IsKeyboardFocusedChanged"
+                             
                              ToolTip="{Binding RelativeSource={RelativeSource Self}, 
                                Path=(Validation.Errors)[0].ErrorContent}">
                         <TextBox.Text>
