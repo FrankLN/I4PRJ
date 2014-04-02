@@ -230,11 +230,20 @@ namespace ServerApplication
             server.SendToClient(activationCodeRequestReplyMsg);
         }
 
-        public void ActivateUser(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server)
+        public void ActivateUser(IActivationMsg activationMsg, IServer server)
         {
             ActivationReplyMsg activationReplyMsg = new ActivationReplyMsg();
 
-            activationReplyMsg.U
+            UserClass user = _database.GetUserInfo(activationMsg.User.Email);
+
+            if (user.ActivationCode == activationMsg.User.ActivationCode)
+            {
+                user.Activated = 1;
+                _database.ActivateUser(user);
+                activationReplyMsg.UserActivated = true;
+            }
+            
+            server.SendToClient(activationReplyMsg);
         }
 
         #endregion
