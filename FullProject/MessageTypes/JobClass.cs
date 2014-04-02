@@ -19,6 +19,7 @@ namespace DatabaseInterface
         public string CreationTime { get; set; }
         public int Hollow { get; set; }
         public string Comment { get; set; }
+        public int Status { get; set; }
 
         public JobClass()
         {
@@ -30,6 +31,7 @@ namespace DatabaseInterface
             CreationTime = "";
             Hollow = 0;             // Hollow is set to 0 as the 3DJob is full by default.
             Comment = "";
+            Status = 0;
         }
 
         public JobClass(SerializationInfo info, StreamingContext context)
@@ -42,6 +44,7 @@ namespace DatabaseInterface
             Owner = (UserClass)info.GetValue("Owner", typeof(UserClass));
             CreationTime = (string)info.GetValue("CreationTime", typeof(string));
             Comment = (string)info.GetValue("Comment", typeof(string));
+            Status = (int) info.GetValue("Status", typeof (int));
         }
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -53,6 +56,7 @@ namespace DatabaseInterface
             info.AddValue("Owner", Owner);
             info.AddValue("CreationTime", CreationTime);
             info.AddValue("Comment", Comment);
+            info.AddValue("Status", Status);
         }
     }
 }
