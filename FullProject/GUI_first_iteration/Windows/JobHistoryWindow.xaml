@@ -2,8 +2,20 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="JobHistoryWindow" Height="476.538" Width="680.192" Closing="Window_Closing">
-    <Grid>
+    <Window.Resources>
 
+        <DataTemplate x:Key="JobTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Job " FontSize="18"/>
+                <TextBlock Text="{Binding Path=OrderId}" FontSize="18"/>
+                <!--<TextBlock Text=", by user " FontSize="18"/>
+                <TextBlock Text="{Binding Path=}" FontSize="18"/>-->
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
+    
+    <Grid>
         <StackPanel HorizontalAlignment="Left" Height="351" Margin="10,10,0,0" VerticalAlignment="Top" Width="652">
             <Grid Height="362">
                 <Grid.RowDefinitions>
@@ -18,24 +30,15 @@
                 <Label Content="Planned" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="197"/>
                 <Label Content="In progress" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Height="30" Width="197" Grid.Column="1"/>
                 <Label Content="Finished" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="197" Grid.Column="2"/>
-                <ListBox HorizontalAlignment="Left" Height="292" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="197">
-                    <ListBoxItem Selected="ListBoxItem_Selected">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Pictures\printerSymbol.jpg"  Stretch="Fill" Height="30" />
-                            <TextBlock Text="Job 1" FontSize="30"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Pictures\printerSymbol.jpg"  Stretch="Fill" Height="30" />
-                            <TextBlock Text="Job 2" FontSize="30"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                </ListBox>
-                <ListBox HorizontalAlignment="Left" Height="292" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="197" Grid.Column="1">
-                </ListBox>
-                <ListBox HorizontalAlignment="Left" Height="292" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="197" Grid.Column="2">
-                </ListBox>
+                <ListBox ItemTemplate="{StaticResource JobTemplate}"
+                         ItemsSource="{Binding ItemsPlanned}"
+                         HorizontalAlignment="Left" Height="292" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="197"/>
+                <ListBox ItemTemplate="{StaticResource JobTemplate}" 
+                         ItemsSource="{Binding ItemsInProgress}"
+                         HorizontalAlignment="Left" Height="292" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="197" Grid.Column="1"/>
+                <ListBox ItemTemplate="{StaticResource JobTemplate}" 
+                         ItemsSource="{Binding ItemsDone}"
+                         HorizontalAlignment="Left" Height="292" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="197" Grid.Column="2"/>
             </Grid>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Height="60" Margin="10,10,0,0" VerticalAlignment="Bottom" Width="100">
