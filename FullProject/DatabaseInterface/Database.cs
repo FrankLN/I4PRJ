@@ -186,8 +186,8 @@ namespace DatabaseInterface
                  cmd.Parameters["@Data8"].Value = job.Comment;
 
                  //job.OrderId = (int) 
-                     cmd.ExecuteNonQuery();
-                         //ExecuteScalar(); // use if you need value returned (when using IDENTITY)
+                 //cmd.ExecuteNonQuery();
+                 job.OrderId = (int)cmd.ExecuteScalar(); // use if you need value returned (when using IDENTITY)
                  
              }
              finally
@@ -232,6 +232,7 @@ namespace DatabaseInterface
                          loc3DJob.CreationTime = (string)rdr["CreationTime"];
                          loc3DJob.Hollow = (int) rdr["Hollow"];
                          loc3DJob.Comment = (string)rdr["Comment"];
+                         loc3DJob.Status = (int) rdr["Status"];
                          loc3DJobList.Add(loc3DJob);
 
                          i++;
