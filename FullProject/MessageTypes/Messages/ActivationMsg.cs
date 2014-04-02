@@ -34,7 +34,7 @@ namespace MessageTypes.Messages
 
         public void Run(IServerApp serverApp, IServer server)
         {
-            serverApp.ActivateUser(this);
+            serverApp.ActivateUser(this,server);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

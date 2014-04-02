@@ -47,7 +47,7 @@ namespace ConsoleApplication1
         {
             if (onValidateActivationMsgReceived != null)
             {
-                onValidateActivationMsgReceived(IActivationReplyMsg _replyMessage);
+                onValidateActivationMsgReceived((IActivationReplyMsg) _replyMessage);
             }
         }
         private void FireLogiReply()
