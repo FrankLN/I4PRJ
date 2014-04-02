@@ -17,7 +17,7 @@ namespace Server
 	    void DownloadJob(IDownloadJobMsg downloadJobMsg);
 	    void GetMaterials(IGetMaterialsMsg getMaterialsMsg);
 	    void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg);
-        void ActivateUser(IActivationCodeRequestMsg activationCodeRequestMsg);
+        void ActivateUser(IActivationMsg activationMsg);
 
         void VerifyLogin(ILoginMsg loginMsg, IServer server);
         void CreateUser(ICreateUserMsg createUserMsg, IServer server);
@@ -26,7 +26,7 @@ namespace Server
         void DownloadJob(IDownloadJobMsg downloadJobMsg, IServer server);
         void GetMaterials(IGetMaterialsMsg getMaterialsMsg, IServer server);
 	    void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server);
-        void ActivateUser(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server);
+        void ActivateUser(IActivationMsg activationMsg, IServer server);
 	}
 }
 
