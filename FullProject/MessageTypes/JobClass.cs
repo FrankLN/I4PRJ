@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseInterface
 {
-    [Serializable]
+    [Serializable()]
     public class JobClass : ISerializable
     {
         public int OrderId { get; set; }

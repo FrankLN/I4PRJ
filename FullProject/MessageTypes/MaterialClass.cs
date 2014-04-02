@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseInterface
 {
-    [Serializable]
+    [Serializable()]
     public class MaterialClass : ISerializable
     {
         public int MaterialId { get; set; }

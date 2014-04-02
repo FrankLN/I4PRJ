@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseInterface
 {
-    [Serializable]
+    [Serializable()]
     public class UserClass : ISerializable
     {
         public string Email { get; set; }
