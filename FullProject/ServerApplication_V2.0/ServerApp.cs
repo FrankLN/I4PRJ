@@ -117,16 +117,16 @@ namespace ServerApplication
         {
             CreateUserReplyMsg createUserReplyMsg = new CreateUserReplyMsg();
 
+            createUserMsg.User.ActivationCode = GenerateActivationCode();
             _database.AddUser(createUserMsg.User);
             createUserReplyMsg.Created = true;
-            createUserReplyMsg.ActivationCode = GenerateActivationCode();
 
             //send email
             string emailText = "Hello " + createUserMsg.User.FirstName +
                 "\n\nThanks for your reg. on 3D-Printer. To succesfully " +
                 "activate your account copy the activation code below and " +
                 "paste it in the application. \n\nApplication code: " +
-                createUserReplyMsg.ActivationCode + "\n\nThis email cannot be replied.";
+                createUserMsg.User.ActivationCode + "\n\nThis email cannot be replied.";
 
             SendEmail(createUserMsg.User.Email, "Activation code to 3D-Printer",
                                                     emailText);

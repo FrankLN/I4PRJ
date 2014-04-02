@@ -52,7 +52,7 @@ namespace GUI_first_iteration
         private void btnActivateUser_Click(object sender, RoutedEventArgs e)
         {
             activateUserObj.ActivationKey = tbxActivateUser.Text;
-            if (activateUserObj.ActivationKey == userReplyMsg.ActivationCode)
+            if (activateUserObj.ActivationKey == "")
             {
                 MessageBox.Show("Good activation code\n You can now log in!");
                 mainWin.Show();
