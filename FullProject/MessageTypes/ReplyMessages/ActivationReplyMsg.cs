@@ -15,7 +15,7 @@ namespace MessageTypes.ReplyMessages
 
     public class ActivationReplyMsg: ISerializable, IReplyMessage,IActivationReplyMsg
     {
-        public bool UserAvctivated { set; get; }
+        public bool UserActivated { set; get; }
         public ActivationReplyMsg()
         {
             UserActivated = false;
@@ -34,7 +34,5 @@ namespace MessageTypes.ReplyMessages
         {
             throw new NotImplementedException();
         }
-
-        public bool UserActivated { get; private set; }
     }
 }
