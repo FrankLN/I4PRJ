@@ -11,6 +11,7 @@ namespace MessageTypes.ReplyMessages
     {
         bool Email { get; }
         bool Password { get; }
+        bool Activated { get; }
         UserClass User { get; }
 
     }
@@ -21,6 +22,7 @@ namespace MessageTypes.ReplyMessages
         public bool Email { get; set; }
         public bool Password { get; set; }
         public UserClass User { get; set; }
+        public bool Activated { get; set; }
 
         public LoginReplyMsg()
         {
@@ -31,8 +33,8 @@ namespace MessageTypes.ReplyMessages
         {
             Email = (bool)info.GetValue("email", typeof(bool));
             Password = (bool) info.GetValue("password", typeof (bool));
+            Activated = (bool) info.GetValue("Activated", typeof (bool));
             User = (UserClass)info.GetValue("User", typeof(UserClass));
-            
         }
 
 
@@ -40,8 +42,8 @@ namespace MessageTypes.ReplyMessages
         {
             info.AddValue("email", Email);
             info.AddValue("password", Password);
+            info.AddValue("Activated", Activated);
             info.AddValue("User", User);
-
         }
 
         public void Run(IClientCmd clientCmd)

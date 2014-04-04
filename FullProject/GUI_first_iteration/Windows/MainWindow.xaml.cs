@@ -99,15 +99,24 @@ namespace GUI_first_iteration
 
         public void loginEvent(ILoginReplyReplyMsg msg)
         {
-
             if (msg.Email)
             {
                 if (msg.Password)
                 {
-                    mainMenuWin.loggedInUser = msg.User;
-                    mainMenuWin.Show();
-                    ClosedInCode = true;
-                    this.Close();
+                    if (msg.Activated)
+                    {
+                        mainMenuWin.loggedInUser = msg.User;
+                        mainMenuWin.Show();
+                        ClosedInCode = true;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("User not activated\n Please activate now...");
+                        //Make Activation window show here
+                        ActivateUserWindow activateUserWin = new ActivateUserWindow(msg.User, clientCom, new CreateUserWindow(this, clientCom), this);
+                        activateUserWin.Show();
+                    }
                 }
                 else
                 {

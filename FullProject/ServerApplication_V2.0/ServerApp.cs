@@ -94,6 +94,8 @@ namespace ServerApplication
 
             UserClass user = _database.GetUserInfo(loginMsg.Email);
 
+            loginReplyMsg.Activated = (user.Activated > 0);
+
             if (user.Email == loginMsg.Email)
             {
                 loginReplyMsg.Email = true;
