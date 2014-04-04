@@ -42,6 +42,7 @@ namespace GUI_first_iteration
             InitializeComponent();
             createUserWin = uWin;
             mainWin = mWin;
+            activationMsg = new ActivationMsg();
             activationMsg.User = user;
             DataContext = activationMsg.User;
             this.clientCom = clientCom;

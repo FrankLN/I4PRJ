@@ -97,7 +97,13 @@ namespace DatabaseInterface
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        void Notify(string prop) { if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); } }
+        void Notify(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
 
         
     }

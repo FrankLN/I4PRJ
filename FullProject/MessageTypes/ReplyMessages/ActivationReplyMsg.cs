@@ -12,7 +12,7 @@ namespace MessageTypes.ReplyMessages
     {
         bool UserActivated { get; }
     }
-
+    [Serializable]
     public class ActivationReplyMsg: ISerializable, IReplyMessage,IActivationReplyMsg
     {
         public bool UserActivated { set; get; }

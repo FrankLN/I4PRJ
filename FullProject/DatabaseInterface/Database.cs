@@ -28,8 +28,8 @@ namespace DatabaseInterface
                conn.Open();
 
                // String with SQL statement
-               string userInsert = @"INSERT INTO [Customer] (Email, FirstName, LastName, PhoneNumber, AdminRights, Password) 
-                                        VALUES (@Data1,@Data2,@Data3,@Data4,@Data5, @Data6)";
+               string userInsert = @"INSERT INTO [Customer] (Email, FirstName, LastName, PhoneNumber, AdminRights, Password, ActivationCode) 
+                                        VALUES (@Data1,@Data2,@Data3,@Data4,@Data5, @Data6, @Data7)";
 
                using (SqlCommand cmd = new SqlCommand(userInsert, conn))
                {
@@ -40,12 +40,14 @@ namespace DatabaseInterface
                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data4";
                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data5";
                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data6";
+                   cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data7";
                    cmd.Parameters["@Data1"].Value = user.Email;
                    cmd.Parameters["@Data2"].Value = user.FirstName;
                    cmd.Parameters["@Data3"].Value = user.LastName;
                    cmd.Parameters["@Data4"].Value = user.PhoneNumber;
                    cmd.Parameters["@Data5"].Value = user.AdminRights;
                    cmd.Parameters["@Data6"].Value = user.Password;
+                   cmd.Parameters["@Data7"].Value = user.ActivationCode;
 
 
                    //var id 
