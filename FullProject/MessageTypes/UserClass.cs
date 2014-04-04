@@ -53,7 +53,7 @@ namespace DatabaseInterface
             set
             {
                 _phone = value;
-                Notify("Phonenumber");
+                Notify("PhoneNumber");
             }
         }
         public string Password { get; set; }
