@@ -178,6 +178,8 @@ namespace GUI_first_iteration
         {
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
+            TbxPassword.BorderBrush = new SolidColorBrush(color);
+          
 
         }
 
@@ -206,6 +208,7 @@ namespace GUI_first_iteration
         {
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
+            TbxPasswordRepeat.BorderBrush = new SolidColorBrush(color);
 
         }
 
