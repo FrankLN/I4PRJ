@@ -74,7 +74,7 @@ namespace GUI_first_iteration
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
 
-            if (tbxPassword.Password != "")
+            if (tbxPassword.Password.Count()>7)
 
             {
                 // Validate all controls
@@ -133,9 +133,9 @@ namespace GUI_first_iteration
 
         private void tbxPassword_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            Color color;
+           Color color;
             color = Color.FromArgb(255, 227, 233, 239);
-            if (tbxPassword.Password == "")
+            if (tbxPassword.Password.Count()<8)
             {
                 tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
                 tbxPassword.BorderThickness = new Thickness(1.25);
@@ -220,6 +220,14 @@ namespace GUI_first_iteration
             }
 
             return valid;
+        }
+
+        private void tbxPassword_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Color color;
+            color = Color.FromArgb(255, 227, 233, 239);
+         
+            tbxPassword.BorderBrush = new SolidColorBrush(color);
         }
     }
 }

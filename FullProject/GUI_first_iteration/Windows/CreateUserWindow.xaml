@@ -76,8 +76,10 @@
                         </Binding>
                     </TextBox.Text>
                     </TextBox>
-                    <PasswordBox Name="TbxPassword" Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="10,10,0,0" PasswordChar="*" VerticalAlignment="Top" Width="300" Grid.Row="4" IsKeyboardFocusedChanged="TbxPassword_IsKeyboardFocusedChanged"/>
-                <PasswordBox Name="TbxPasswordRepeat"  Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="10,10,0,0" PasswordChar="*" VerticalAlignment="Top" Width="300" Grid.Row="5" IsKeyboardFocusedChanged="TbxPasswordRepeat_IsKeyboardFocusedChanged"/>
+                    <PasswordBox Name="TbxPassword" Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="10,10,0,0" PasswordChar="*"
+                                 VerticalAlignment="Top" Width="300" Grid.Row="4" MaxLength="32" 
+                                 IsKeyboardFocusedChanged="TbxPassword_IsKeyboardFocusedChanged" GotFocus="TbxPassword_GotFocus"  />
+                <PasswordBox Name="TbxPasswordRepeat"  Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="10,10,0,0"  MaxLength ="32" PasswordChar="*" VerticalAlignment="Top" Width="300" Grid.Row="5" IsKeyboardFocusedChanged="TbxPasswordRepeat_IsKeyboardFocusedChanged" GotFocus="TbxPasswordRepeat_GotFocus"/>
                 <Label Name="LabelFirstname" Content="First name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Height="36"/>
                 <Label Name="LabelSurname" Content="Surname" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Height="36" Grid.Row="1"/>
                 <Label Name="LabelEmail" Content="Email" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Height="36" Grid.Row="2"/>

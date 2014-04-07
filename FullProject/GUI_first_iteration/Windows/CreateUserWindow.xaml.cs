@@ -156,7 +156,7 @@ namespace GUI_first_iteration
         {
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
-            if (TbxPassword.Password != "")
+            if (TbxPassword.Password.Count() >7)
             {
                 createUserObj.User.Password = TbxPassword.Password;
                 TbxPassword.ToolTip = null;
@@ -167,12 +167,18 @@ namespace GUI_first_iteration
             else
             {
                 TbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
-                //TbxPassword.BorderThickness = new Thickness(1.25);
+                TbxPassword.BorderThickness = new Thickness(1.25);
                 TbxPassword.ToolTip = "Indtast din password";
 
             }
 
           
+        }
+        private void TbxPassword_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Color color;
+            color = Color.FromArgb(255, 227, 233, 239);
+
         }
 
         private void TbxPasswordRepeat_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -180,7 +186,7 @@ namespace GUI_first_iteration
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
 
-            if (TbxPasswordRepeat.Password != "")
+            if (TbxPasswordRepeat.Password.Count() >7 && TbxPasswordRepeat.Password == TbxPassword.Password)
             {
                 TbxPasswordRepeat.ToolTip = null;
                 TbxPasswordRepeat.BorderBrush = new SolidColorBrush(color);
@@ -195,6 +201,14 @@ namespace GUI_first_iteration
             // remember to add repeat password attribute in CreateUserMsg
             //createUserObj.User.RepeatPassword = TbxPasswordRepeat.Password;
         }
+
+        private void TbxPasswordRepeat_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Color color;
+            color = Color.FromArgb(255, 227, 233, 239);
+
+        }
+
 
         // -----------------------------------
         // METHOD - Window closing -----------
@@ -248,6 +262,8 @@ namespace GUI_first_iteration
 
             return valid;
         }
+
+     
     }
 
     public class ValidFName : ValidationRule
@@ -287,9 +303,9 @@ namespace GUI_first_iteration
 
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
-            if (!ValidSNameRegex.IsMatch((string)value))
+            if (!ValidSNameRegex.IsMatch((string)value) )
             {
-                return new ValidationResult(false, "Indtast din Efternavn");
+                return new ValidationResult(false, "Indtast din efternavn");
 
             }
 
@@ -350,7 +366,7 @@ namespace GUI_first_iteration
 
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
-            if (!ValidPhoneRegex.IsMatch((string)value))
+            if (!(ValidPhoneRegex.IsMatch((string)value) || (string)value == ""))
             {
                 return new ValidationResult(false, "Indtast din tlf nummer");
 
