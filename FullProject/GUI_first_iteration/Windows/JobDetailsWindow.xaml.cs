@@ -85,7 +85,7 @@ namespace GUI_first_iteration
         {
             MessageBox.Show("Download started\n Find the file in your download folder!");
             
-            clientCom.receiveFromFileServer(msg.FileSize, currentJob.File);
+            clientCom.receiveFromFileServer(msg.Job.FileSize, currentJob.File);
 
         }
     }

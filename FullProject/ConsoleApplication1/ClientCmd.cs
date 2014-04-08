@@ -176,7 +176,7 @@ namespace ConsoleApplication1
             client.ReceiveMessage().Run(this);
         }
 
-        public void receiveFromFileServer(long fileSize, string name )
+        public void receiveFromFileServer(long fileSize, string name)
         {
             client.ReceiveFile(fileSize,name);
         }

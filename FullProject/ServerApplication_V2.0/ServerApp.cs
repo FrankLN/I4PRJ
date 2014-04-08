@@ -181,15 +181,15 @@ namespace ServerApplication
 
             if (File.Exists("C:\\Jobs\\" + downloadJobMsg.Job.OrderId + "\\" + downloadJobMsg.Job.File))
             {
-                downloadJobReplyMsg.FileSize = File.ReadAllBytes("C:\\Jobs\\" + downloadJobMsg.Job.OrderId + "\\" + downloadJobMsg.Job.File).Length;
-
+                downloadJobReplyMsg.Job.FileSize = File.ReadAllBytes("C:\\Jobs\\" + downloadJobMsg.Job.OrderId + "\\" + downloadJobMsg.Job.File).Length;
+                downloadJobReplyMsg.Job.File = downloadJobMsg.Job.File;
                 server.SendToClient(downloadJobReplyMsg);
 
-                server.SendFile("C:\\Jobs\\" + downloadJobMsg.Job.OrderId + "\\" + downloadJobMsg.Job.File, downloadJobReplyMsg.FileSize);
+                server.SendFile("C:\\Jobs\\" + downloadJobMsg.Job.OrderId + "\\" + downloadJobMsg.Job.File, downloadJobReplyMsg.Job.FileSize);
             }
             else
             {
-                downloadJobReplyMsg.FileSize = 0;
+                downloadJobReplyMsg.Job.FileSize = 0;
             }
         }
 

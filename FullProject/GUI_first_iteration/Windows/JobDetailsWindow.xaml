@@ -12,7 +12,7 @@
             <Label x:Name="HollowLabel" Content="Hollow:" HorizontalAlignment="Left" Margin="139,57,0,0" VerticalAlignment="Top"/>
             <Label x:Name="CommentLabel" Content="Comment:" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top"/>
             <Label x:Name="MyFileLabel" Content="MyFile:" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>
-            <TextBlock x:Name="OrderBlock" HorizontalAlignment="Left" Margin="69,15,0,0" TextWrapping="Wrap" Text="{Binding Path=OrderID}" VerticalAlignment="Top"/>
+            <TextBlock x:Name="OrderBlock" HorizontalAlignment="Left" Margin="69,15,0,0" TextWrapping="Wrap" Text="{Binding Path=OrderId}" VerticalAlignment="Top"/>
             <TextBlock x:Name="OwnerBlock" HorizontalAlignment="Left" Margin="69,62,0,0" TextWrapping="Wrap" Text="{Binding Path=Owner.Email}" VerticalAlignment="Top"/>
             <TextBlock x:Name="DeadlineBlock" HorizontalAlignment="Left" Margin="230,15,0,0" TextWrapping="Wrap" Text="{Binding Path=Deadline}" VerticalAlignment="Top"/>
             <TextBlock x:Name="CommentBlock" HorizontalAlignment="Left" Margin="80,157,0,0" TextWrapping="Wrap" Text="{Binding Path=Comment}" VerticalAlignment="Top"/>

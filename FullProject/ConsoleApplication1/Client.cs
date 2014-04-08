@@ -56,7 +56,13 @@ namespace ClientApplication
         public IReplyMessage ReceiveMessage()
         {
             IReplyMessage reply = (IReplyMessage)bFormatter.Deserialize(outInStream);
-            
+
+            if (reply.GetType() == new DownloadJobReplyMsg().GetType())
+            {
+
+                ReceiveFile(((DownloadJobReplyMsg)reply).Job.FileSize, ((DownloadJobReplyMsg)reply).Job.File);
+            }
+
             outInStream.Close();
             clientSocket.Close();
 
@@ -69,8 +75,25 @@ namespace ClientApplication
             int n;
             var rest = fileSize;
             var name = fileName.Substring(fileName.LastIndexOf("\\")+1);
-            var pathAndName = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "Downloads" + name;
-                
+            var pathAndName = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ "\\Downloads\\" + name;
+            
+            int i = 1;
+            while(File.Exists(pathAndName))
+            {
+                string fileType = pathAndName.Substring(pathAndName.LastIndexOf("."));
+                pathAndName = pathAndName.Substring(0, pathAndName.LastIndexOf("."));
+                if (i == 1)
+                {
+                    pathAndName += "-" + i++;
+                }
+                else
+                {
+                    pathAndName = pathAndName.Substring(0, pathAndName.LastIndexOf("-")+1);
+                    pathAndName += i++;
+                }
+                pathAndName += fileType;
+            }
+
             var downloadFile = new FileStream(pathAndName,FileMode.Create,FileAccess.Write);
 
             var receiveBuffer = new byte[MaxPackageSize];
@@ -81,6 +104,8 @@ namespace ClientApplication
 
                 rest -= n;
             }
+
+            downloadFile.Close();
         }
         // Methode that sends a file of a job
         public void SendFile(long fileSize ,string path)
