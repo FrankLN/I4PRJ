@@ -1,26 +1,27 @@
 using System;
 using System.Runtime.Serialization;
+using DatabaseInterface;
 using Server;
 
 namespace MessageTypes.Messages
 {
     public interface IDownloadJobMsg
     {
-        string FileName { get; }
+        JobClass Job { get; }
     }
     [Serializable()]
     public class DownloadJobMsg : IMessage, ISerializable, IDownloadJobMsg
     {
-        public string FileName { get; set; }
+        public JobClass Job { get; set; }
 
         public DownloadJobMsg()
         {
-
+            Job = new JobClass();
         }
 
         public DownloadJobMsg(SerializationInfo info, StreamingContext context)
         {
-            FileName = (string)info.GetValue("FileName", typeof(string));
+            Job = (JobClass)info.GetValue("Job", typeof(JobClass));
         }
 
         public void Run(IServerApp serverApp)
@@ -35,7 +36,7 @@ namespace MessageTypes.Messages
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("FileName", FileName);
+            info.AddValue("Job", Job);
         }
     }
 }

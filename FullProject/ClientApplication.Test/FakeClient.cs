@@ -62,7 +62,7 @@ namespace ClientApplication.Test
 
         public void DownloadJob(IDownloadJobMsg downloadJobMsg)
         {
-            MessageBox.Show("FakeClient: SendToServer called with parameters: " + downloadJobMsg.FileName);
+            MessageBox.Show("FakeClient: SendToServer called with parameters: " + downloadJobMsg.Job.File);
         }
 
         public void GetMaterials(IGetMaterialsMsg getMaterialsMsg)

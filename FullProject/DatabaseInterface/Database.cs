@@ -227,8 +227,8 @@ namespace DatabaseInterface
                      {
                          var loc3DJob = new JobClass();
 
-                         loc3DJob.OrderId = i;
-                         //loc3DJob.OrderId = (int) rdr["OrderId"];
+                         //loc3DJob.OrderId = i;
+                         loc3DJob.OrderId = (int)((long) rdr["OrderId"]);
                          loc3DJob.Material.MaterialId = (int)rdr["MaterialFK"];
                          loc3DJob.Owner.Email = (string)rdr["Owner"];
                          loc3DJob.Deadline = (string)rdr["Deadline"];

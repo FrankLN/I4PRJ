@@ -65,15 +65,16 @@ namespace GUI_first_iteration
 
             // Instead of putting FakeFileName into the downloadJobObj.FileName,
             // we should retreive a filename from the JobClass object we are viewing details for.
-            string FakeFileName = "myfile.txt";
 
             DownloadJobMsg downloadJobObj = new DownloadJobMsg();
-            downloadJobObj.FileName = FakeFileName;
+            
+            
+            downloadJobObj.Job = currentJob;
             var clientCmd = new ClientCmd();
             clientCmd.onDownloadMsgReceived += new ClientCmd.DownloadDelegate(downloadEvent);
             clientCmd = (ClientCmd) clientCom;
             clientCom.SendToServer(downloadJobObj);
-            
+
         }
 
         // -----------------------------------

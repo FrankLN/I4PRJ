@@ -18,6 +18,9 @@ using Server;
 
 namespace ServerApplication
 {
+    /// <summary>
+    /// ServerApp is the system controller on the server.
+    /// </summary>
     public class ServerApp : IServerApp
     {
         private int _port;
@@ -147,17 +150,14 @@ namespace ServerApplication
             Console.WriteLine(createJobMsg.Job.File);
             Console.WriteLine(createJobMsg.Job.FileSize);
 
-            createJobMsg.Job.File = createJobMsg.Job.OrderId + "\\" + createJobMsg.Job.File.Substring(createJobMsg.Job.File.LastIndexOf("\\") + 1);
-
-            Console.WriteLine(createJobMsg.Job.File);
-
-            server.RecieveFile(createJobMsg.Job.File, createJobMsg.Job.FileSize);
-
             createJobMsg.Job.CreationTime = "Now";
+            createJobMsg.Job.File = createJobMsg.Job.File.Substring(createJobMsg.Job.File.LastIndexOf("\\")+1);
 
             _database.AddJob(createJobMsg.Job);
 
-            Directory.Move("C:\\Jobs\\0", "C:\\Jobs\\" + createJobMsg.Job.OrderId);
+            Console.WriteLine(createJobMsg.Job.File);
+
+            server.RecieveFile(createJobMsg.Job.OrderId + "\\" + createJobMsg.Job.File, createJobMsg.Job.FileSize);
 
             createJobReplyMsg.Created = true;
 
@@ -177,13 +177,15 @@ namespace ServerApplication
         {
             DownloadJobReplyMsg downloadJobReplyMsg = new DownloadJobReplyMsg();
 
-            if (File.Exists("C:\\Jobs\\" + downloadJobMsg.FileName))
+            
+
+            if (File.Exists("C:\\Jobs\\" + downloadJobMsg.Job.OrderId + "\\" + downloadJobMsg.Job.File))
             {
-                downloadJobReplyMsg.FileSize = File.ReadAllBytes("C:\\Jobs\\" + downloadJobMsg.FileName).Length;
+                downloadJobReplyMsg.FileSize = File.ReadAllBytes("C:\\Jobs\\" + downloadJobMsg.Job.OrderId + "\\" + downloadJobMsg.Job.File).Length;
 
                 server.SendToClient(downloadJobReplyMsg);
 
-                server.SendFile(downloadJobMsg.FileName, downloadJobReplyMsg.FileSize);
+                server.SendFile("C:\\Jobs\\" + downloadJobMsg.Job.OrderId + "\\" + downloadJobMsg.Job.File, downloadJobReplyMsg.FileSize);
             }
             else
             {
