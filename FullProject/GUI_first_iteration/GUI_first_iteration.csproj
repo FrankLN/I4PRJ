@@ -81,7 +81,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Communication Classes\ActivateUserCom.cs" />
     <Compile Include="Other Classes\Hollow.cs" />
     <Compile Include="Windows\ActivateUserWindow.xaml.cs">
       <DependentUpon>ActivateUserWindow.xaml</DependentUpon>
@@ -90,11 +89,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Communication Classes\LoginCom.cs" />
-    <Compile Include="Communication Classes\CreateUserCom.cs" />
-    <Compile Include="Communication Classes\EditUserCom.cs" />
-    <Compile Include="Communication Classes\JobHistoryCom.cs" />
-    <Compile Include="Communication Classes\NewJobCom.cs" />
     <Compile Include="Windows\CreateUserWindow.xaml.cs">
       <DependentUpon>CreateUserWindow.xaml</DependentUpon>
     </Compile>

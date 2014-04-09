@@ -29,7 +29,6 @@ namespace GUI_first_iteration
 
         private CreateUserWindow createUserWin;
         private MainWindow mainWin;
-        private ActivateUserCom activateUserObj;
         private ActivationMsg activationMsg;
         private IClientCmd clientCom;
         public string activationCode { get; set; }
@@ -77,6 +76,12 @@ namespace GUI_first_iteration
 
 
 
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            createUserWin.ClosedInCode = true;
+            createUserWin.Close();
         }
     }
 }

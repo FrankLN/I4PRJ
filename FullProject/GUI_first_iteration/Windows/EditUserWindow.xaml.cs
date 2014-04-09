@@ -29,7 +29,6 @@ namespace GUI_first_iteration
         private MainMenuWindow mainMenuWin;
         private IClientCmd clientCom;
         private UserClass loggedInUser;
-        private EditUserCom editUserObj;
         private bool ClosedInCode;
 
         // -----------------------------------
@@ -44,8 +43,6 @@ namespace GUI_first_iteration
             loggedInUser = user;
             ClosedInCode = false;
 
-            // Create object to be sent to server
-            editUserObj = new EditUserCom();
 
             InitializeComponent();
 
@@ -65,7 +62,6 @@ namespace GUI_first_iteration
 
         private void btnSaveUser_Click(object sender, RoutedEventArgs e)
         {
-            editUserObj.Print();
             ClosedInCode = true;
             this.Close();
            mainMenuWin.Show();
