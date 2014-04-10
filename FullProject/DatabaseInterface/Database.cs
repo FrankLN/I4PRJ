@@ -50,8 +50,7 @@ namespace DatabaseInterface
                    cmd.Parameters["@Data7"].Value = user.ActivationCode;
 
 
-                   //var id 
-                   //user.Email = (string) cmd.ExecuteScalar(); //Returns the identity of the new tuple/record
+                   
                    cmd.ExecuteScalar();
                }
            }
@@ -69,7 +68,6 @@ namespace DatabaseInterface
         
         public int ValidateLogInInfo(string email, string password)
         {
-            //DataContext db = new DataContext(@"Data Source=(localdb)\Databases;Initial Catalog=Joblistesystem;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False");
             try
             {
                 // Open the connection
@@ -172,27 +170,8 @@ namespace DatabaseInterface
 
                  SqlCommand cmd = new SqlCommand(jobInsert, conn);
 
-                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data1";
-                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data2";
-                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data3";
-                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data4";
-                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data5";
-                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data6";
-                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data7";
-                 //cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@data8";
-                 //cmd.Parameters["@Data1"].Value = job.OrderId;
-                 //cmd.Parameters["@Data2"].Value = job.Material.MaterialId;
-                 //cmd.Parameters["@Data3"].Value = job.Owner;
-                 //cmd.Parameters["@Data4"].Value = job.Deadline;
-                 //cmd.Parameters["@Data5"].Value = job.File;
-                 //cmd.Parameters["@Data6"].Value = job.CreationTime;
-                 //cmd.Parameters["@Data7"].Value = job.Hollow;
-                 //cmd.Parameters["@Data8"].Value = job.Comment;
 
-                 //job.OrderId = (int) 
-                 //cmd.ExecuteNonQuery();
-                 job.OrderId = (int)((long)cmd.ExecuteScalar()); // use if you need value returned (when using IDENTITY)
-                 
+                 job.OrderId = (int)((long)cmd.ExecuteScalar()); // use if you need value returned (when using IDENTITY)   
              }
              finally
              {
@@ -203,6 +182,7 @@ namespace DatabaseInterface
                  }
              }
          }
+
 
         public List<JobClass> GetJobList()
          // Return a list of all jobs in the database.
@@ -221,13 +201,10 @@ namespace DatabaseInterface
 
                      SqlDataReader rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
 
-                     int i = 1;
-
                      while (rdr.Read())
                      {
                          var loc3DJob = new JobClass();
 
-                         //loc3DJob.OrderId = i;
                          loc3DJob.OrderId = (int)((long) rdr["OrderId"]);
                          loc3DJob.Material.MaterialId = (int)rdr["MaterialFK"];
                          loc3DJob.Owner.Email = (string)rdr["Owner"];
@@ -238,8 +215,6 @@ namespace DatabaseInterface
                          loc3DJob.Comment = (string)rdr["Comment"];
                          loc3DJob.Status = (int) rdr["Status"];
                          loc3DJobList.Add(loc3DJob);
-
-                         i++;
                      }
                      return loc3DJobList;
                  }
@@ -271,19 +246,19 @@ namespace DatabaseInterface
 
                     SqlDataReader rdr = cmd.ExecuteReader(); //Returns the identity of the new tuple/record
 
-                    int j = 1;
+                    //int j = 1;
 
                     while (rdr.Read())
                     {
                         var locMaterial = new MaterialClass();
                         Console.WriteLine(rdr[0]);
 
-                        //locMaterial.MaterialId = (int)rdr["MaterialId"];
-                        locMaterial.MaterialId = j;
+                        locMaterial.MaterialId = (int)(rdr["MaterialId"]);
+                        //locMaterial.MaterialId = j;
                         locMaterial.MaterialType = (string)rdr["MaterialType"];
                         locMaterialList.Add(locMaterial);
 
-                        j++;
+                        //j++;
                     }
                     return locMaterialList;
                 }
