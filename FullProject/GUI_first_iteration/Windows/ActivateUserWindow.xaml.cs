@@ -46,6 +46,8 @@ namespace GUI_first_iteration
             DataContext = activationMsg.User;
             this.clientCom = clientCom;
 
+            ((ClientCmd)clientCom).onValidateActivationMsgReceived += new ClientCmd.ValidateActivationDelegate(activateUserEvent);
+
 
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -69,9 +71,7 @@ namespace GUI_first_iteration
 
         private void btnActivateUser_Click(object sender, RoutedEventArgs e)
         {
-            var clientCmd = new ClientCmd();
-            clientCmd = (ClientCmd)clientCom;
-            clientCmd.onValidateActivationMsgReceived += new ClientCmd.ValidateActivationDelegate(activateUserEvent);
+            
             clientCom.SendToServer(activationMsg);
 
 
@@ -80,6 +80,10 @@ namespace GUI_first_iteration
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            ((ClientCmd)clientCom).onValidateActivationMsgReceived -= new ClientCmd.ValidateActivationDelegate(activateUserEvent);
+
+            mainWin.Show();
+
             createUserWin.ClosedInCode = true;
             createUserWin.Close();
         }

@@ -76,9 +76,9 @@ namespace GUI_first_iteration
 
             DataContext = this;
 
-            var clientCmd = new ClientCmd();
-            clientCmd = (ClientCmd)clientCom;
-            clientCmd.onMaterialsMsgReceived += new ClientCmd.LoadMaterialsDelegate(loadMaterialsEvent);
+            ((ClientCmd)clientCom).onMaterialsMsgReceived += new ClientCmd.LoadMaterialsDelegate(loadMaterialsEvent);
+            ((ClientCmd)clientCom).onCreateJobMsgReceived += new ClientCmd.CreateJobDelegate(createJobEvent);
+            
             clientCom.SendToServer(new GetMaterialsMsg());
            
             if (cbxHolSol != null) cbxHolSol.ItemsSource = hollowList;
@@ -120,7 +120,7 @@ namespace GUI_first_iteration
 
             var clientCmd = new ClientCmd();
             clientCmd = (ClientCmd)clientCom;
-            clientCmd.onCreateJobMsgReceived += new ClientCmd.CreateJobDelegate(createJobEvent);
+            
 
             clientCom.SendToServer(createJobObj);
             //clientCmd.sendFileToServer();
@@ -172,6 +172,8 @@ namespace GUI_first_iteration
         {
             if (!ClosedInCode)
             {
+                ((ClientCmd)clientCom).onMaterialsMsgReceived -= new ClientCmd.LoadMaterialsDelegate(loadMaterialsEvent);
+                ((ClientCmd)clientCom).onCreateJobMsgReceived -= new ClientCmd.CreateJobDelegate(createJobEvent);
                 Application.Current.Shutdown();
             }
         }

@@ -49,9 +49,8 @@ namespace GUI_first_iteration
             ClosedInCode = false;
 
             InitializeComponent();
-            var clientCmd = new ClientCmd();
-            clientCmd = (ClientCmd) clientCom;
-            clientCmd.onJobListMsgReceived += new ClientCmd.LoadJobListDelegate(LoadJobsEvent);
+            
+            ((ClientCmd)clientCom).onJobListMsgReceived += new ClientCmd.LoadJobListDelegate(LoadJobsEvent);
             requestJobsObj = new RequestJobsMsg();
             clientCom.SendToServer(requestJobsObj);
 
@@ -74,6 +73,8 @@ namespace GUI_first_iteration
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
+            ((ClientCmd)clientCom).onJobListMsgReceived -= new ClientCmd.LoadJobListDelegate(LoadJobsEvent);
+
             // Indicate that the window is closed in code
             ClosedInCode = true;
             this.Close();
@@ -100,6 +101,7 @@ namespace GUI_first_iteration
         {
             if (!ClosedInCode)
             {
+                ((ClientCmd)clientCom).onJobListMsgReceived -= new ClientCmd.LoadJobListDelegate(LoadJobsEvent);
                 Application.Current.Shutdown();
             }
         }

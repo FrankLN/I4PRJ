@@ -49,6 +49,8 @@ namespace GUI_first_iteration
 
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            ((ClientCmd)clientCom).onDownloadMsgReceived += new ClientCmd.DownloadDelegate(downloadEvent);
         }
 
         // -----------------------------------
@@ -57,6 +59,7 @@ namespace GUI_first_iteration
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
+            ((ClientCmd)clientCom).onDownloadMsgReceived -= new ClientCmd.DownloadDelegate(downloadEvent);
             this.Close();
         }
 
@@ -70,9 +73,6 @@ namespace GUI_first_iteration
             
             
             downloadJobObj.Job = currentJob;
-            var clientCmd = new ClientCmd();
-            clientCmd.onDownloadMsgReceived += new ClientCmd.DownloadDelegate(downloadEvent);
-            clientCmd = (ClientCmd) clientCom;
             clientCom.SendToServer(downloadJobObj);
 
         }

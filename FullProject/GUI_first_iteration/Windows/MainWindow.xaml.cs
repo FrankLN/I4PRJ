@@ -47,6 +47,8 @@ namespace GUI_first_iteration
             InitializeComponent();         
             DataContext = loginObj;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            ((ClientCmd)clientCom).onLogiMsgReceived += new ClientCmd.LogiDelegate(loginEvent);
         }
 
         // -----------------------------------
@@ -69,8 +71,8 @@ namespace GUI_first_iteration
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             // Send object
-            var clientCmd = new ClientCmd();
-            clientCmd = (ClientCmd) clientCom;
+            //var clientCmd = new ClientCmd();
+            //clientCmd = (ClientCmd) clientCom;
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
 
@@ -81,7 +83,6 @@ namespace GUI_first_iteration
                 if (ValidateBindings(this))
                 {
                     loginObj.Email = tbxEmail.Text;
-                    clientCmd.onLogiMsgReceived += new ClientCmd.LogiDelegate(loginEvent);
                     clientCom.SendToServer(loginObj);
                 }
                 tbxPassword.ToolTip = null;
@@ -127,6 +128,8 @@ namespace GUI_first_iteration
             {
                 MessageBox.Show("Wrong email\n Please reenter...");
             }
+            
+
         }
 
 
@@ -163,6 +166,7 @@ namespace GUI_first_iteration
         {
             if (!ClosedInCode)
             {
+                ((ClientCmd)clientCom).onLogiMsgReceived -= new ClientCmd.LogiDelegate(loginEvent);
                 Application.Current.Shutdown();
             }
 

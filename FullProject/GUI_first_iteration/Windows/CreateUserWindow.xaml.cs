@@ -53,6 +53,8 @@ namespace GUI_first_iteration
             DataContext = userObj;
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            ((ClientCmd)clientCom).onCreateUserMsgReceived += new ClientCmd.CreateUserDelegate(createUserEvent);
         }
 
         // -----------------------------------
@@ -61,9 +63,6 @@ namespace GUI_first_iteration
 
         private void btnCreateUser_Click(object sender, RoutedEventArgs e)
         {
-
-            var clientCmd = new ClientCmd();
-            clientCmd = (ClientCmd)clientCom;
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
 
@@ -74,7 +73,7 @@ namespace GUI_first_iteration
                 if (ValidateBindings(this))
                 {
 
-                    clientCmd.onCreateUserMsgReceived += new ClientCmd.CreateUserDelegate(createUserEvent);
+                    
                     clientCom.SendToServer(createUserObj);
                 }
 
@@ -123,9 +122,12 @@ namespace GUI_first_iteration
         {
             mainWin.Show();
 
+            ((ClientCmd)clientCom).onCreateUserMsgReceived -= new ClientCmd.CreateUserDelegate(createUserEvent);
+
             // Indicate that the window is closed in code
             ClosedInCode = true;
             this.Close();
+            
         }
 
         // ----------------------------------------------------------------------------
