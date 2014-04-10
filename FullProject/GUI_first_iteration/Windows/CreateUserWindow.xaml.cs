@@ -120,6 +120,7 @@ namespace GUI_first_iteration
 
         private void btnBack_Click_1(object sender, RoutedEventArgs e)
         {
+            
             mainWin.Show();
 
             ((ClientCmd)clientCom).onCreateUserMsgReceived -= new ClientCmd.CreateUserDelegate(createUserEvent);
@@ -221,10 +222,11 @@ namespace GUI_first_iteration
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            ((ClientCmd)clientCom).onCreateUserMsgReceived -= new ClientCmd.CreateUserDelegate(createUserEvent);
             // Application should only shut down if window was closed manually (alt f4  or  x-button)
             if (!ClosedInCode)
             {
-                Application.Current.Shutdown();
+                //Application.Current.Shutdown();
             }
             
         }
@@ -268,7 +270,6 @@ namespace GUI_first_iteration
             return valid;
         }
 
-     
     }
 
     public class ValidFName : ValidationRule

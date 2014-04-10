@@ -84,7 +84,6 @@ namespace GUI_first_iteration
 
             mainWin.Show();
 
-            createUserWin.ClosedInCode = true;
             createUserWin.Close();
         }
     }
