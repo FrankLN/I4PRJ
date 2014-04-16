@@ -21,11 +21,6 @@ namespace MessageTypes.Messages
             
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            serverApp.GetMaterials(this);
-        }
-
         public void Run(IServerApp serverApp, IServer server)
         {
             serverApp.GetMaterials(this, server);

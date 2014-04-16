@@ -19,7 +19,8 @@ using Server;
 namespace ServerApplication
 {
     /// <summary>
-    /// ServerApp is the system controller on the server.
+    /// ServerApp is the system controller on the server. 
+    /// Its primary task is to handle and reply incomming messages.
     /// </summary>
     public class ServerApp : IServerApp
     {
@@ -27,6 +28,11 @@ namespace ServerApplication
         private IDatabase _database;
 
         #region helpFunktions
+
+        /// <summary>
+        /// <c>GenerateActivationCode</c> is a methode that generate a random 8 numbers or letters long code.
+        /// </summary>
+        /// <returns>A string with 8 numbers and letters</returns>
         private string GenerateActivationCode()
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -39,6 +45,15 @@ namespace ServerApplication
             return result;
         }
 
+        /// <summary>
+        /// <c>SendEmail</c> is a methode that sends an email.
+        /// </summary>
+        /// <param name="email"></param>
+        /// The reciever email.
+        /// <param name="subject"></param>
+        /// The subject to the email.
+        /// <param name="text"></param>
+        /// The text of the email.
         private void SendEmail(string email, string subject, string text)
         {
             var client = new SmtpClient("smtp.gmail.com", 587)
@@ -50,6 +65,11 @@ namespace ServerApplication
         }
         #endregion
 
+        /// <summary>
+        /// The <c>ServerApp</c> constructor.
+        /// </summary>
+        /// <param name="port"></param>
+        /// The port which the ServerApp should listen to.
         public ServerApp(int port)
         {
             _port = port;
@@ -58,6 +78,11 @@ namespace ServerApplication
             RunServerApp();
         }
 
+        /// <summary>
+        /// <c>RunServerApp</c> is the methode where <c>Client</c>'s get connected to the server.
+        /// After connection the handling of the recieved message gets proceeded in a thread,
+        /// to allow more <c>Client</c> requests.
+        /// </summary>
         private void RunServerApp()
         {
             TcpListener serverSocket = new TcpListener(IPAddress.Any, _port);
@@ -77,19 +102,29 @@ namespace ServerApplication
             }
         }
 
+        /// <summary>
+        /// <c>RecieveMessage</c> is the methode for handling messages.
+        /// A new instance of <c>Server</c> is created
+        /// </summary>
+        /// <param name="stateInfo"></param>
+        /// Contains a TcpListener and a TcpClient
         private void ReciveMessage(Object stateInfo)
         {
             object[] array = stateInfo as object[];
             IServer server = new Server((TcpListener)array[0], (TcpClient)array[1]);
 
             server.RecieveMessage().Run(this, server);
-
         }
 
         #region Message handling
 
-        
-
+        /// <summary>
+        /// <c>VerifyLogin</c> is the methode for handling login requests.
+        /// </summary>
+        /// <param name="loginMsg"></param>
+        /// The message recieved from the <c>Client</c>.
+        /// <param name="server"></param>
+        /// The <c>Server</c> instance to reply with.
         public void VerifyLogin(ILoginMsg loginMsg, IServer server)
         {
             LoginReplyMsg loginReplyMsg = new LoginReplyMsg();
@@ -121,6 +156,13 @@ namespace ServerApplication
             server.SendToClient(loginReplyMsg);
         }
 
+        /// <summary>
+        /// <c>CreateUser</c> is the methode for handling new user requests.
+        /// </summary>
+        /// <param name="createUserMsg"></param>
+        /// The message recieved from the <c>Client</c>
+        /// <param name="server"></param>
+        /// The <c>Server</c> instance to reply with.
         public void CreateUser(ICreateUserMsg createUserMsg, IServer server)
         {
             CreateUserReplyMsg createUserReplyMsg = new CreateUserReplyMsg();
@@ -143,6 +185,13 @@ namespace ServerApplication
             server.SendToClient(createUserReplyMsg);
         }
 
+        /// <summary>
+        /// <c>CreateJob</c> is the methode for handling new job requests.
+        /// </summary>
+        /// <param name="createJobMsg"></param>
+        /// The message recieved from the <c>Client</c>
+        /// <param name="server"></param>
+        /// The <c>Server</c> instance to reply with.
         public void CreateJob(ICreateJobMsg createJobMsg, IServer server)
         {
             CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
@@ -157,13 +206,20 @@ namespace ServerApplication
 
             Console.WriteLine(createJobMsg.Job.File);
 
-            server.RecieveFile(createJobMsg.Job.OrderId + "\\" + createJobMsg.Job.File, createJobMsg.Job.FileSize);
+            server.RecieveFile("C:\\Jobs\\" + createJobMsg.Job.OrderId + "\\" + createJobMsg.Job.File, createJobMsg.Job.FileSize);
 
             createJobReplyMsg.Created = true;
 
             server.SendToClient(createJobReplyMsg);
         }
 
+        /// <summary>
+        /// <c>RequestJobs</c> is the methode for handling list of jobs requests.
+        /// </summary>
+        /// <param name="requestJobsMsg"></param>
+        /// The message recieved from the <c>Client</c>
+        /// <param name="server"></param>
+        /// The <c>Server</c> instance to reply with.
         public void RequestJobs(IRequestJobsMsg requestJobsMsg, IServer server)
         {
             RequestJobsReplyMsg requestJobsReplyMsg = new RequestJobsReplyMsg();
@@ -173,6 +229,13 @@ namespace ServerApplication
             server.SendToClient(requestJobsReplyMsg);
         }
 
+        /// <summary>
+        /// <c>DownloadJob</c> is the methode for handling download job requests.
+        /// </summary>
+        /// <param name="downloadJobMsg"></param>
+        /// The message recieved from the <c>Client</c>
+        /// <param name="server"></param>
+        /// The <c>Server</c> instance to reply with.
         public void DownloadJob(IDownloadJobMsg downloadJobMsg, IServer server)
         {
             DownloadJobReplyMsg downloadJobReplyMsg = new DownloadJobReplyMsg();
@@ -193,6 +256,13 @@ namespace ServerApplication
             }
         }
 
+        /// <summary>
+        /// <c>GetMaterials</c> is the methode for handling list of material requests.
+        /// </summary>
+        /// <param name="getMaterialsMsg"></param>
+        /// The message recieved from the <c>Client</c>
+        /// <param name="server"></param>
+        /// The <c>Server</c> instance to reply with.
         public void GetMaterials(IGetMaterialsMsg getMaterialsMsg, IServer server)
         {
             GetMaterialsReplyMsg getMaterialsReplyMsg = new GetMaterialsReplyMsg();
@@ -204,6 +274,13 @@ namespace ServerApplication
             server.SendToClient(getMaterialsReplyMsg);
         }
 
+        /// <summary>
+        /// <c>ActivationCodeRequest</c> is the methode for handling new activation code request.
+        /// </summary>
+        /// <param name="activationCodeRequestMsg"></param>
+        /// The message recieved from the <c>Client</c>
+        /// <param name="server"></param>
+        /// The <c>Server</c> instance to reply with.
         public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server)
         {
              ActivationCodeRequestReplyMsg activationCodeRequestReplyMsg = new ActivationCodeRequestReplyMsg();
@@ -234,6 +311,13 @@ namespace ServerApplication
             server.SendToClient(activationCodeRequestReplyMsg);
         }
 
+        /// <summary>
+        /// <c>ActivateUser</c> is the methode for handling user activation request.
+        /// </summary>
+        /// <param name="activationMsg"></param>
+        /// The message recieved from the <c>Client</c>
+        /// <param name="server"></param>
+        /// The <c>Server</c> instance to reply with.
         public void ActivateUser(IActivationMsg activationMsg, IServer server)
         {
             ActivationReplyMsg activationReplyMsg = new ActivationReplyMsg();
@@ -250,48 +334,6 @@ namespace ServerApplication
             server.SendToClient(activationReplyMsg);
         }
 
-        #endregion
-
-        #region Old_Commands
-        public void VerifyLogin(ILoginMsg loginMsg)
-        {
-            Console.WriteLine("Ikke implementeret");
-        }
-
-        public void CreateUser(ICreateUserMsg createUserMsg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateJob(ICreateJobMsg createJobMsg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RequestJobs(IRequestJobsMsg requestJobsMsg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DownloadJob(IDownloadJobMsg downloadJobMsg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetMaterials(IGetMaterialsMsg getMaterialsMsg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ActivateUser(IActivationMsg activationMsg)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
     }
 }

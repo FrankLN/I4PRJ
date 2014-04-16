@@ -10,15 +10,6 @@ namespace Server
 	//Interface which define which methodes we need to use on the server
 	public interface IServerApp
 	{
-        void VerifyLogin(ILoginMsg loginMsg);
-		void CreateUser(ICreateUserMsg createUserMsg);
-	    void CreateJob(ICreateJobMsg createJobMsg);
-	    void RequestJobs(IRequestJobsMsg requestJobsMsg);
-	    void DownloadJob(IDownloadJobMsg downloadJobMsg);
-	    void GetMaterials(IGetMaterialsMsg getMaterialsMsg);
-	    void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg);
-        void ActivateUser(IActivationMsg activationMsg);
-
         void VerifyLogin(ILoginMsg loginMsg, IServer server);
         void CreateUser(ICreateUserMsg createUserMsg, IServer server);
         void CreateJob(ICreateJobMsg createJobMsg, IServer server);

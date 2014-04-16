@@ -28,14 +28,9 @@ namespace MessageTypes.Messages
             User = (UserClass)info.GetValue("User", typeof(UserClass));
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            serverApp.ActivateUser(this);
-        }
-
         public void Run(IServerApp serverApp, IServer server)
         {
-            serverApp.ActivateUser(this,server);
+            serverApp.ActivateUser(this, server);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

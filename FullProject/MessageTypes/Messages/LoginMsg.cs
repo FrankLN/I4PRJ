@@ -39,11 +39,6 @@ namespace MessageTypes.Messages
             Password = (string) info.GetValue("password", typeof (string));
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            serverApp.VerifyLogin(this);
-        }
-
         public void Run(IServerApp serverApp, IServer server)
         {
             serverApp.VerifyLogin(this, server);

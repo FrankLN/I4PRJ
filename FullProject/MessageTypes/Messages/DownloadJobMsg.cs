@@ -24,11 +24,6 @@ namespace MessageTypes.Messages
             Job = (JobClass)info.GetValue("Job", typeof(JobClass));
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            serverApp.DownloadJob(this);
-        }
-
         public void Run(IServerApp serverApp, IServer server)
         {
             serverApp.DownloadJob(this, server);

@@ -25,11 +25,6 @@ namespace MessageTypes.Messages
        
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            serverApp.CreateJob(this);
-        }
-
         public void Run(IServerApp serverApp, IServer server)
         {
             serverApp.CreateJob(this, server);

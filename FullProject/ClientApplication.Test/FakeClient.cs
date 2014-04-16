@@ -21,7 +21,7 @@ namespace ClientApplication.Test
         public void SendToServer(ISerializable message)
         {
             IMessage tmpMsg = (IMessage) message;
-            tmpMsg.Run(this);
+            //tmpMsg.Run(this);
         }
 
         public IReplyMessage ReceiveMessage()

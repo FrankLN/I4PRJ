@@ -22,11 +22,6 @@ namespace MessageTypes.Messages
             
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            serverApp.RequestJobs(this);
-        }
-
         public void Run(IServerApp serverApp, IServer server)
         {
             serverApp.RequestJobs(this, server);

@@ -25,11 +25,6 @@ namespace MessageTypes.Messages
             User = (UserClass)info.GetValue("User", typeof(UserClass));
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            serverApp.CreateUser(this);
-        }
-
         public void Run(IServerApp serverApp, IServer server)
         {
             serverApp.CreateUser(this, server);

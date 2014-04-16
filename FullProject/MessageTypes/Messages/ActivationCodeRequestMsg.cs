@@ -9,6 +9,7 @@ namespace MessageTypes.Messages
     {
         string Email { get; }
     }
+
     [Serializable()]
     public class ActivationCodeRequestMsg : IMessage, ISerializable, IActivationCodeRequestMsg
     {
@@ -24,14 +25,9 @@ namespace MessageTypes.Messages
             Email = (string) info.GetValue("Email", typeof (string));
         }
 
-        public void Run(IServerApp serverApp)
-        {
-            serverApp.ActivationCodeRequest(this);
-        }
-
         public void Run(IServerApp serverApp, IServer server)
         {
-            serverApp.ActivationCodeRequest(this);
+            serverApp.ActivationCodeRequest(this, server);
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
