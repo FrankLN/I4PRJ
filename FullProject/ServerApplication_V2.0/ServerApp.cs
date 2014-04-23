@@ -24,7 +24,7 @@ namespace ServerApplication
     /// </summary>
     public class ServerApp : IServerApp
     {
-        private int _port;
+        protected int _port;
         private IDatabase _database;
 
         #region helpFunktions
