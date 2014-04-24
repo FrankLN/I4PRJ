@@ -8,7 +8,7 @@ namespace ConsoleApplication1
     {
         //Action metode for all reply messages
 
-        void LoginVerification(ILoginReplyReplyMsg msg);
+        void LoginVerification(ILoginReplyMsg msg);
         void ActivationVerification(IActivationCodeRequestReplyMsg msg);
         void CreateJobVerification(ICreateJobReplyMsg msg);
         void CreateUserVerification(ICreateUserReplyMsg msg);

@@ -25,7 +25,7 @@ namespace ServerApplication
     public class ServerApp : IServerApp
     {
         protected int _port;
-        private IDatabase _database;
+        protected IDatabase _database;
 
         #region helpFunktions
 
@@ -70,12 +70,12 @@ namespace ServerApplication
         /// </summary>
         /// <param name="port"></param>
         /// The port which the ServerApp should listen to.
-        public ServerApp(int port)
+        /// <param name="database"></param>
+        /// The database interface the ServerApp use to handle data.
+        public ServerApp(int port, IDatabase database)
         {
             _port = port;
-            _database = new Database();
-
-            RunServerApp();
+            _database = database;
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace ServerApplication
         /// After connection the handling of the recieved message gets proceeded in a thread,
         /// to allow more <c>Client</c> requests.
         /// </summary>
-        private void RunServerApp()
+        public void RunServerApp()
         {
             TcpListener serverSocket = new TcpListener(IPAddress.Any, _port);
             TcpClient clientSocket;

@@ -7,7 +7,7 @@ using Server;
 
 namespace MessageTypes.ReplyMessages
 {
-    public interface ILoginReplyReplyMsg
+    public interface ILoginReplyMsg
     {
         bool Email { get; }
         bool Password { get; }
@@ -17,7 +17,7 @@ namespace MessageTypes.ReplyMessages
     }
 
     [Serializable()]
-    public class LoginReplyMsg : IReplyMessage, ISerializable,ILoginReplyReplyMsg
+    public class LoginReplyMsg : IReplyMessage, ISerializable,ILoginReplyMsg
     {
         public bool Email { get; set; }
         public bool Password { get; set; }

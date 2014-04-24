@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DatabaseInterface;
 using ServerApplication;
 
-namespace ServerApplication_V2._0
+namespace ServerApplication
 {
     /// <summary>
     /// <c>Program</c> is the startup class, which starts up the serverApp.
@@ -14,7 +15,9 @@ namespace ServerApplication_V2._0
     {
         static void Main(string[] args)
         {
-            ServerApp serverApp = new ServerApp(9000);
+            ServerApp serverApp = new ServerApp(9000, new Database());
+
+            serverApp.RunServerApp();
         }
     }
 }

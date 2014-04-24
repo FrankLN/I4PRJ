@@ -98,7 +98,7 @@ namespace GUI_first_iteration
 
         }
 
-        public void loginEvent(ILoginReplyReplyMsg msg)
+        public void loginEvent(ILoginReplyMsg msg)
         {
             if (msg.Email)
             {

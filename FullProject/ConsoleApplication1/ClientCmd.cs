@@ -14,7 +14,7 @@ namespace ConsoleApplication1
 {
     public class ClientCmd : IClientCmd
     {
-        public delegate void LogiDelegate(ILoginReplyReplyMsg msg);
+        public delegate void LogiDelegate(ILoginReplyMsg msg);
 
         public delegate void ActivationDelegate(IActivationCodeRequestReplyMsg msg);
 
@@ -54,7 +54,7 @@ namespace ConsoleApplication1
         {
             if (onLogiMsgReceived != null)
             {
-                onLogiMsgReceived((ILoginReplyReplyMsg) _replyMessage);
+                onLogiMsgReceived((ILoginReplyMsg) _replyMessage);
             }
         }
 
@@ -106,7 +106,7 @@ namespace ConsoleApplication1
             }
         }
 
-        public void LoginVerification(ILoginReplyReplyMsg msg)
+        public void LoginVerification(ILoginReplyMsg msg)
         {
             _replyMessage = (IReplyMessage) msg;
             FireLogiReply();
