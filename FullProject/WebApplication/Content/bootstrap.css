@@ -276,6 +276,8 @@ table {
   }
   .navbar {
     display: none;
+
+     
   }
   .table td,
   .table th {
@@ -311,11 +313,12 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #eeeeee;
+
 }
 
 input,
@@ -473,7 +476,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Verdana, Helvetica, Arial;
   font-weight: 500;
   line-height: 1.1;
 }
@@ -498,8 +501,8 @@ h6 small,
 h1,
 h2,
 h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 h4,
@@ -761,6 +764,8 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  
+ 
 }
 
 .container:before,
@@ -4025,9 +4030,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   z-index: 1000;
-  min-height: 50px;
-  margin-bottom: 20px;
+   min-height: 50px;
+  background-color:#eeeeee;
+ 
+  /*margin-bottom: 20px;*/
   border: 1px solid transparent;
+  
 }
 
 .navbar:before,
@@ -4168,10 +4176,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  border-width: 0 0 1px;
+    margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -4182,7 +4187,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-fixed-top {
-  top: 0;
+  top: 0px;
   z-index: 1030;
 }
 
@@ -4503,6 +4508,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse {
   background-color: #222222;
   border-color: #080808;
+  margin-bottom: 20px;
 }
 
 .navbar-inverse .navbar-brand {
@@ -4926,6 +4932,23 @@ a.list-group-item.active > .badge,
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
+.Logo {
+    padding-top: 0px;
+}
+.Wrapper {
+    
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    background-color: #ffffff;
+    min-width: 700px;
+    min-height: 500px;
+    -webkit-box-shadow: 5px 5px 5px #828282;
+    -moz-box-shadow: 5px 5px 5px #828282;
+    box-shadow: 1px 1px 1px #828282;
+    
+}
+
 
 .jumbotron {
   padding: 30px;
@@ -4934,7 +4957,7 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #eeeeee;
+  /*background-color: #eeeeee;*/
 }
 
 .jumbotron h1 {
