@@ -3,8 +3,56 @@
 }
 
 @{
-    ViewBag.Title = "Upload Job";
+    ViewBag.Title = "Upload a 3D Job";
 }
 
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h3>@ViewBag.Message</h3> 
+
+<form>
+<h5><b>Select material:</b></h5>
+<select>
+    <option value="plastic #1">Plastic #1</option>
+    <option value="plastic #2">Plastic #2</option>
+    <option value="wood #1">Wood #1</option>
+    <option value="metal #1">Metal #1</option>
+</select>
+
+<h5><b>Describe the desired density of the print:</b></h5>
+
+    <textarea name="densityText" cols="50" rows="5"></textarea>
+
+    <h5><b>Select a file:</b></h5><br/>
+        
+          <input type="file" name="img">
+
+    <h5><b>Choose a deadline for the print (or leave the field blank):</b></h5>
+    
+
+    Deadline: <input type=date name="Dline">
+    @*<script>
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+        document.write(dagen);
+    </script>*@
+
+    <h5><b>Comments:</b></h5>
+
+        <textarea name="CommentText" cols="50" rows="5"></textarea>
+        <br /><br />
+        <input type="submit" />
+</form>
+
