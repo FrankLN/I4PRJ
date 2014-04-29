@@ -1,0 +1,5 @@
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\Joblistesystem\bin\Debug\Joblistesystem.dacpac
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\Joblistesystem\bin\Debug\Joblistesystem.dll
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\Joblistesystem\bin\Debug\Joblistesystem.pdb
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\Joblistesystem\obj\Debug\Joblistesystem.dll
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\Joblistesystem\obj\Debug\Joblistesystem.pdb

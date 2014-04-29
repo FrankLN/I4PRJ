@@ -1,0 +1,8 @@
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\MessageTypes.dll
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\MessageTypes.pdb
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ConsoleApplication1\obj\Debug\ClientApplication.csprojResolveAssemblyReference.cache
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

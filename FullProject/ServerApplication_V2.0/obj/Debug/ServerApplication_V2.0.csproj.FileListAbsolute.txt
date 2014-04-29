@@ -1,0 +1,11 @@
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.exe.config
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.XML
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.exe
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.pdb
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\DatabaseInterface.dll
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\MessageTypes.dll
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\DatabaseInterface.pdb
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\MessageTypes.pdb
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\obj\Debug\ServerApplication_V2.0.csprojResolveAssemblyReference.cache
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\obj\Debug\ServerApplication_V2.0.exe
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ServerApplication_V2.0\obj\Debug\ServerApplication_V2.0.pdb

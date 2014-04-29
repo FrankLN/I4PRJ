@@ -1,0 +1,9 @@
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\ClientApplication.Test.dll
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\ClientApplication.Test.pdb
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\ConsoleApplication1.exe
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\MessageTypes.dll
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\ConsoleApplication1.pdb
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ClientApplication.Test\bin\Debug\MessageTypes.pdb
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ClientApplication.Test\obj\Debug\ClientApplication.Test.csprojResolveAssemblyReference.cache
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ClientApplication.Test\obj\Debug\ClientApplication.Test.dll
+C:\Users\PIRATE1\Git\I4PRJ\FullProject\ClientApplication.Test\obj\Debug\ClientApplication.Test.pdb
