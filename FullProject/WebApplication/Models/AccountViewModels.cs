@@ -46,8 +46,9 @@ namespace WebApplication.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -59,5 +60,25 @@ namespace WebApplication.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First name")]
+        public string FName { get; set; }
+
+        [Required]
+        [Display(Name = "Last name")]
+        public string LName { get; set; }
+
+        [Required]
+        [Display(Name = "Phone number")]
+        public string Phone { get; set; }
+    }
+
+    public class ActivationViewModel
+    {
+        public string ActivationCode { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        
     }
 }

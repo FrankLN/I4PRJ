@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -18,6 +19,7 @@ namespace WebApplication.Controllers
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
+            UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager) { AllowOnlyAlphanumericUserNames = false };
         }
 
         public AccountController(UserManager<ApplicationUser> userManager)
@@ -48,8 +50,16 @@ namespace WebApplication.Controllers
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    if (user.Activated > -1)
+                    {
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else
+                    {
+                        //await SignInAsync(user, model.RememberMe);
+                        return RedirectToAction("Activation");
+                    }
                 }
                 else
                 {
@@ -78,12 +88,21 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser()
+                {
+                    UserName = model.Email,
+                    FName = model.FName,
+                    LName = model.LName,
+                    Phone = model.Phone,
+                    Activated = 0,
+                    AdminRights = 0,
+                    ActivationCode = ""
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    //await SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Activation", "Account");
                 }
                 else
                 {
@@ -93,6 +112,41 @@ namespace WebApplication.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        //
+        // GET: /Account/Activation
+        [AllowAnonymous]
+        public ActionResult Activation()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/Activation
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Activate(ActivationViewModel model)
+        {
+            var user = await UserManager.FindAsync(model.Email, model.Password);
+            if (user.ActivationCode == model.ActivationCode)
+            {
+                user.Activated = 1;
+                var result = await UserManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    AddErrors(result);
+                }
+                
+            }
+
+            // If we got this far, something failed, redisplay form
+            return RedirectToAction("Activation");
         }
 
         //
