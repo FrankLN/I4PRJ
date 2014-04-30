@@ -9,6 +9,9 @@ namespace WebApplication.Models
 {
     public class JobDBContext : DbContext
     {
-        DbSet<JobClass> Jobs { get; set; } 
+        public JobDBContext() : base("DefaultConnection")
+        {
+        }
+        public DbSet<JobClass> Jobs { get; set; } 
     }
 }

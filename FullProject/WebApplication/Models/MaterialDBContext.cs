@@ -9,6 +9,9 @@ namespace WebApplication.Models
 {
     public class MaterialDBContext : DbContext
     {
-        DbSet<MaterialClass> Materials { get; set; } 
+        public MaterialDBContext() : base("DefaultConnection")
+        {
+        }
+        public DbSet<MaterialClass> Materials { get; set; } 
     }
 }
