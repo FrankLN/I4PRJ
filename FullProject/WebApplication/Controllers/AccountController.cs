@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -102,6 +103,7 @@ namespace WebApplication.Controllers
                 if (result.Succeeded)
                 {
                     //await SignInAsync(user, isPersistent: false);
+                    Roles.AddUserToRole(user.UserName,"User");
                     return RedirectToAction("Activation", "Account");
                 }
                 else
