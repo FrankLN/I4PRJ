@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -20,7 +21,10 @@ namespace WebApplication.Controllers
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
-            UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager) { AllowOnlyAlphanumericUserNames = false };
+            UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager)
+            {
+                AllowOnlyAlphanumericUserNames = false
+            };
         }
 
         public AccountController(UserManager<ApplicationUser> userManager)
@@ -28,7 +32,9 @@ namespace WebApplication.Controllers
             UserManager = userManager;
         }
 
+
         public UserManager<ApplicationUser> UserManager { get; private set; }
+
 
         //
         // GET: /Account/Login
@@ -51,14 +57,14 @@ namespace WebApplication.Controllers
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
-                    if (user.Activated > -1)
+                    if (user.Activated > 0)
                     {
                         await SignInAsync(user, model.RememberMe);
                         return RedirectToLocal(returnUrl);
                     }
                     else
                     {
-                        //await SignInAsync(user, model.RememberMe);
+                        await SignInAsync(user, model.RememberMe);
                         return RedirectToAction("Activation");
                     }
                 }
@@ -97,13 +103,14 @@ namespace WebApplication.Controllers
                     Phone = model.Phone,
                     Activated = 0,
                     AdminRights = 0,
-                    ActivationCode = ""
+                    ActivationCode = "",
+                    
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //await SignInAsync(user, isPersistent: false);
                     Roles.AddUserToRole(user.UserName,"User");
+                    await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Activation", "Account");
                 }
                 else
@@ -129,22 +136,36 @@ namespace WebApplication.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Activate(ActivationViewModel model)
+        public async Task<ActionResult> Activation(ActivationViewModel model)
         {
-            var user = await UserManager.FindAsync(model.Email, model.Password);
-            if (user.ActivationCode == model.ActivationCode)
+            if (ModelState.IsValid)
             {
-                user.Activated = 1;
-                var result = await UserManager.UpdateAsync(user);
-                if (result.Succeeded)
+                var user = await UserManager.FindByNameAsync(User.Identity.GetUserName());
+                if (user.ActivationCode == model.ActivationCode)
                 {
-                    return RedirectToAction("Index", "Home");
+                    user.Activated = 1;
+                    var result = await UserManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
+
                 }
                 else
                 {
-                    AddErrors(result);
+                    var errors = new List<string>();
+                    errors.Add("Test");
+                    errors.Add("Test");
+                    errors.Add("Test");
+                    errors.Add("Test");
+                    errors.Add("Test");
+                    AddErrors(new IdentityResult(errors));
+                    return RedirectToAction("Activation");
                 }
-                
             }
 
             // If we got this far, something failed, redisplay form

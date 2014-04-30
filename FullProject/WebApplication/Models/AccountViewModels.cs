@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 
 namespace WebApplication.Models
 {
@@ -45,12 +46,13 @@ namespace WebApplication.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "The field Email must be filled in")]
         [DataType(DataType.EmailAddress)]
+        [RegexStringValidator("@iha.dk")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The field Password must be filled in")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -61,24 +63,26 @@ namespace WebApplication.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The field First name must be filled in")]
         [Display(Name = "First name")]
         public string FName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The field Last name must be filled in")]
         [Display(Name = "Last name")]
         public string LName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The field Phone number must be filled in")]
+        [StringLength(8, ErrorMessage = "Phone number must be exactly 8 digits long", MinimumLength = 8)]
+        [RegularExpression(@"^\d+$", ErrorMessage = "Phone number must be digits only")]
         [Display(Name = "Phone number")]
         public string Phone { get; set; }
     }
 
     public class ActivationViewModel
     {
+        [Required(ErrorMessage = "Activation code must not be empty")]
+        [StringLength(8, ErrorMessage = "Activation code must be exactly 8 chars long", MinimumLength = 8)]
+        [Display(Name = "Activation code")]
         public string ActivationCode { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        
     }
 }

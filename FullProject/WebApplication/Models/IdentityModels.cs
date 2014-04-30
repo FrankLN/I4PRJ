@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
