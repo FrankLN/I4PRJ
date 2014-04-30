@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -35,6 +37,33 @@ namespace WebApplication.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
+        private string GenerateActivationCode(int numberOfChars = 8)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            var result = new string(
+                Enumerable.Repeat(chars, numberOfChars)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+
+            return result;
+        }
+
+        private void SendEmail(ApplicationUser user)
+        {
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("3D.Cartesius@gmail.com", "I4PRJGruppe4"),
+                EnableSsl = true
+            };
+            string body = "Hello " + user.FName +
+                "\n\nThanks for your reg. on 3D-Printer. To succesfully " +
+                "activate your account copy the activation code below and " +
+                "paste it in the application. \n\nApplication code: " +
+                user.ActivationCode + "\n\nThis email cannot be replied.";
+            client.Send(user.UserName, user.UserName, "Activation code for your 3D Printer account", body);
+        }
+
 
         //
         // GET: /Account/Login
@@ -55,11 +84,13 @@ namespace WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
+
                 if (user != null)
                 {
                     if (user.Activated > 0)
                     {
                         await SignInAsync(user, model.RememberMe);
+                        
                         return RedirectToLocal(returnUrl);
                     }
                     else
@@ -103,15 +134,23 @@ namespace WebApplication.Controllers
                     Phone = model.Phone,
                     Activated = 0,
                     AdminRights = 0,
-                    ActivationCode = "",
-                    
+                    ActivationCode = GenerateActivationCode()
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await UserManager.AddToRoleAsync(user.Id, "User");
-                    await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Activation", "Account");
+                    result = await UserManager.AddToRoleAsync(user.Id, "User");
+                    if (result.Succeeded)
+                    {
+                        SendEmail(user);
+                        
+                        await SignInAsync(user, isPersistent: false);
+                        return RedirectToAction("Activation", "Account");
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
                 }
                 else
                 {
