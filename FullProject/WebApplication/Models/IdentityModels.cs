@@ -21,5 +21,7 @@ namespace WebApplication.Models
             : base("DefaultConnection")
         {
         }
+
+        public System.Data.Entity.DbSet<WebApplication.Models.Printer3DJob> Printer3DJob { get; set; }
     }
 }
