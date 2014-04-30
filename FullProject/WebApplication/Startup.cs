@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(WebApplication.Startup))]
@@ -10,5 +11,6 @@ namespace WebApplication
         {
             ConfigureAuth(app);
         }
+         
     }
 }

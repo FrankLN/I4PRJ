@@ -109,7 +109,7 @@ namespace WebApplication.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    Roles.AddUserToRole(user.UserName,"User");
+                    await UserManager.AddToRoleAsync(user.Id, "User");
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Activation", "Account");
                 }
