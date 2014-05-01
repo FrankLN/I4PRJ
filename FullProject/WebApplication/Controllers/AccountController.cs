@@ -253,10 +253,24 @@ namespace WebApplication.Controllers
         public async Task<ActionResult> Manage(ManageUserViewModel model)
         {
             bool hasPassword = HasPassword();
+            bool hasFName = HasFName();
             ViewBag.HasLocalPassword = hasPassword;
+           // ViewBag.FirstName = hasFName;
             ViewBag.ReturnUrl = Url.Action("Manage");
+
+            //if (hasFName)
+            //{
+
+            //    ViewBag.FirstName = UserManager.FindById(User.Identity.GetUserId()).FName;
+            //}
+            //else
+            //{
+            //    ViewBag.FirstName = "Error in retrieving firstname";
+            //}
+
             if (hasPassword)
             {
+        
                 if (ModelState.IsValid)
                 {
                     IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
@@ -550,15 +564,27 @@ namespace WebApplication.Controllers
             }
         }
 
+        private bool HasFName()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user != null)
+            {
+                return user.FName != null;
+            }
+            return false;
+        }
+
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
             if (user != null)
             {
                 return user.PasswordHash != null;
+                
             }
             return false;
         }
+
 
         public enum ManageMessageId
         {
