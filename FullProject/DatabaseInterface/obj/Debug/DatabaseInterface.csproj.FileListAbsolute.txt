@@ -1,7 +1,0 @@
-C:\Users\PIRATE1\Git\I4PRJ\FullProject\DatabaseInterface\bin\Debug\DatabaseInterface.dll
-C:\Users\PIRATE1\Git\I4PRJ\FullProject\DatabaseInterface\bin\Debug\DatabaseInterface.pdb
-C:\Users\PIRATE1\Git\I4PRJ\FullProject\DatabaseInterface\bin\Debug\MessageTypes.dll
-C:\Users\PIRATE1\Git\I4PRJ\FullProject\DatabaseInterface\bin\Debug\MessageTypes.pdb
-C:\Users\PIRATE1\Git\I4PRJ\FullProject\DatabaseInterface\obj\Debug\DatabaseInterface.csprojResolveAssemblyReference.cache
-C:\Users\PIRATE1\Git\I4PRJ\FullProject\DatabaseInterface\obj\Debug\DatabaseInterface.dll
-C:\Users\PIRATE1\Git\I4PRJ\FullProject\DatabaseInterface\obj\Debug\DatabaseInterface.pdb
