@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -33,7 +34,7 @@ namespace WebApplication.Controllers
         {
             UserManager = userManager;
         }
-
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
@@ -433,6 +434,93 @@ namespace WebApplication.Controllers
                 UserManager = null;
             }
             base.Dispose(disposing);
+        }
+
+        public async Task<ActionResult> Index()
+        {
+            return View(await db.Users.ToListAsync());
+        }
+
+        // GET: /PrintMaterial/Details/5
+        public async Task<ActionResult> Details(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await UserManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // GET: /PrintMaterial/Edit/5
+        public async Task<ActionResult> Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await UserManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: /PrintMaterial/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Roles")] ApplicationUser user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
+        // GET: /PrintMaterial/Delete/5
+        public async Task<ActionResult> Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await UserManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: /PrintMaterial/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(string id)
+        {
+            var user = await UserManager.FindByIdAsync(id);
+
+            var entry = db.Entry(user);
+            user.Activated = 2;
+
+            db.SaveChangesAsync();
+            //if (entry.State == EntityState.Detached)
+            //db.Users.AsNoTracking();
+            //db.Users.Attach(user);
+
+            //db.Users.Add(user);
+            //db.Entry(user).State = EntityState.Deleted;
+
+            return RedirectToAction("Index");
         }
 
         #region Helpers
