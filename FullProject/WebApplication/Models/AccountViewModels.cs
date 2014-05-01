@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Configuration;
+using System.Text.RegularExpressions;
+using System.Web.UI.WebControls;
 
 namespace WebApplication.Models
 {
@@ -46,13 +48,12 @@ namespace WebApplication.Models
 
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "The field Email must be filled in")]
+        [Required(ErrorMessage = "The field Email must be filled in.")]
         [DataType(DataType.EmailAddress)]
-        [RegexStringValidator("@iha.dk")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "The field Password must be filled in")]
+        [Required(ErrorMessage = "The field Password must be filled in.")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -63,17 +64,19 @@ namespace WebApplication.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = "The field First name must be filled in")]
+        [Required(ErrorMessage = "The field First name must be filled in.")]
+        [RegularExpression("^((?!^First Name$)[a-zA-Z- '])+$", ErrorMessage = "First name must only contain letters and dash(-).")]
         [Display(Name = "First name")]
         public string FName { get; set; }
 
-        [Required(ErrorMessage = "The field Last name must be filled in")]
+        [Required(ErrorMessage = "The field Last name must be filled in.")]
+        [RegularExpression("^((?!^First Name$)[a-zA-Z- '])+$", ErrorMessage = "Last name must only contain letters and dash(-).")]
         [Display(Name = "Last name")]
         public string LName { get; set; }
 
-        [Required(ErrorMessage = "The field Phone number must be filled in")]
-        [StringLength(8, ErrorMessage = "Phone number must be exactly 8 digits long", MinimumLength = 8)]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Phone number must be digits only")]
+        [Required(ErrorMessage = "The field Phone number must be filled in.")]
+        //[StringLength(8, ErrorMessage = "Phone number must be exactly 8 digits long.", MinimumLength = 8)]
+        [RegularExpression("\\d{8}", ErrorMessage = "Phone number must be digits only and must be 8 digits long.")]
         [Display(Name = "Phone number")]
         public string Phone { get; set; }
     }
