@@ -1,6 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using WebApplication.Models
 @if (Request.IsAuthenticated)
 {
+    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+    var currentUser = manager.FindById(User.Identity.GetUserId());
+    
     if (Roles.IsUserInRole("Admin"))
     {
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
@@ -9,7 +14,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    @Html.ActionLink("Hello Admin" + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new {title = "Manage"})
+                    @Html.ActionLink("Hello Admin" + currentUser.FName + " " + currentUser.LName +  "!", "Manage", "Account", routeValues: null, htmlAttributes: new {title = "Manage"})
                 </li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>
@@ -35,7 +40,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new {title = "Manage"})
+                    @Html.ActionLink("Hello " + currentUser.FName + " " + currentUser.LName + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
                 </li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>
