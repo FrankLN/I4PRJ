@@ -24,5 +24,7 @@ namespace WebApplication.Models
         }
 
         public System.Data.Entity.DbSet<WebApplication.Models.Printer3DJob> Printer3DJob { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication.Models.PrintMaterial> PrintMaterials { get; set; }
     }
 }

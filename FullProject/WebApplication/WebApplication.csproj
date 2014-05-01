@@ -190,13 +190,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainMenuController.cs" />
     <Compile Include="Controllers\Printer3DJobController.cs" />
+    <Compile Include="Controllers\PrintMaterialController.cs" />
     <Compile Include="Controllers\UploadJobController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Printer3DJob.cs" />
+    <Compile Include="Models\PrintMaterial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -255,6 +258,11 @@
     <Content Include="Views\Printer3DJob\Details.cshtml" />
     <Content Include="Views\Printer3DJob\Edit.cshtml" />
     <Content Include="Views\Printer3DJob\Index.cshtml" />
+    <Content Include="Views\PrintMaterial\Create.cshtml" />
+    <Content Include="Views\PrintMaterial\Delete.cshtml" />
+    <Content Include="Views\PrintMaterial\Details.cshtml" />
+    <Content Include="Views\PrintMaterial\Edit.cshtml" />
+    <Content Include="Views\PrintMaterial\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
