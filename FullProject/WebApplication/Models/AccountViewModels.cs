@@ -50,6 +50,7 @@ namespace WebApplication.Models
     {
         [Required(ErrorMessage = "The field Email must be filled in.")]
         [DataType(DataType.EmailAddress)]
+        [RegularExpression(@"(\w+@iha.dk)|(\w+@post.au.dk)", ErrorMessage = "Email must be with domain @iha.dk or @post.au.dk")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
