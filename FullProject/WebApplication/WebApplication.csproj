@@ -258,18 +258,18 @@
     <Content Include="Views\Printer3DJob\Details.cshtml" />
     <Content Include="Views\Printer3DJob\Edit.cshtml" />
     <Content Include="Views\Printer3DJob\Index.cshtml" />
-<<<<<<< 6cb2d3fb23eee24ce0274be8add094ca91cab264
+
     <Content Include="Views\PrintMaterial\Create.cshtml" />
     <Content Include="Views\PrintMaterial\Delete.cshtml" />
     <Content Include="Views\PrintMaterial\Details.cshtml" />
     <Content Include="Views\PrintMaterial\Edit.cshtml" />
     <Content Include="Views\PrintMaterial\Index.cshtml" />
-=======
+
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
->>>>>>> 832c815e8ab379c84d23f9c03c6f44391fa3143b
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
