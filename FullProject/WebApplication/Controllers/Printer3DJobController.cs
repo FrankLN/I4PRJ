@@ -38,7 +38,10 @@ namespace WebApplication.Controllers
         // GET: /Printer3DJob/Create
         public ActionResult Create()
         {
-            return View();
+            Printer3DJob model = new Printer3DJob();
+
+            model.MyFile = "Select a file";
+            return View(model);
         }
 
         // POST: /Printer3DJob/Create
