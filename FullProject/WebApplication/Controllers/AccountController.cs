@@ -243,6 +243,9 @@ namespace WebApplication.Controllers
                 : "";
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
+
+            ManageUserViewModel model = new ManageUserViewModel();
+            model.FirstName = "test";
             return View();
         }
 
