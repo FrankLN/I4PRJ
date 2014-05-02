@@ -14,33 +14,36 @@ namespace WebApplication.Models
 
     public class ManageUserViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "The field First name must be filled in.")]
+        [RegularExpression("^((?!^First Name$)[a-zA-Z- '])+$", ErrorMessage = "First name must only contain letters and dash(-).")]
         [Display(Name = "First name")]
         public string FirstName { get; set; }
 
-        [Required]
-        [Display(Name = "Surname")]
+        [Required(ErrorMessage = "The field Last name must be filled in.")]
+        [RegularExpression("^((?!^Surname$)[a-zA-Z- '])+$", ErrorMessage = "Last name must only contain letters and dash(-).")]
         public string SurName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The field Phone number must be filled in.")]
+        //[StringLength(8, ErrorMessage = "Phone number must be exactly 8 digits long.", MinimumLength = 8)]
+        [RegularExpression("\\d{8}", ErrorMessage = "Phone number must be digits only and must be 8 digits long.")]
         [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
 
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
-        public string OldPassword { get; set; }
+        //[Required]
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Current password")]
+        //public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "New password")]
-        public string NewPassword { get; set; }
+        ////[Required]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        //[DataType(DataType.Password)]
+        //[Display(Name = "New password")]
+        //public string NewPassword { get; set; }
 
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Confirm new password")]
+        //[Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        //public string ConfirmPassword { get; set; }
     }
 
     public class LoginViewModel
@@ -83,7 +86,7 @@ namespace WebApplication.Models
         public string FName { get; set; }
 
         [Required(ErrorMessage = "The field Last name must be filled in.")]
-        [RegularExpression("^((?!^First Name$)[a-zA-Z- '])+$", ErrorMessage = "Last name must only contain letters and dash(-).")]
+        [RegularExpression("^((?!^Surname$)[a-zA-Z- '])+$", ErrorMessage = "Last name must only contain letters and dash(-).")]
         [Display(Name = "Last name")]
         public string LName { get; set; }
 

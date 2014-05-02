@@ -244,9 +244,14 @@ namespace WebApplication.Controllers
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
 
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
             ManageUserViewModel model = new ManageUserViewModel();
-            model.FirstName = "test";
-            return View();
+            model.FirstName = currentUser.FName;
+            model.SurName = currentUser.LName;
+            model.PhoneNumber = currentUser.Phone;
+
+            return View(model);
         }
 
         //
@@ -258,57 +263,69 @@ namespace WebApplication.Controllers
             bool hasPassword = HasPassword();
             bool hasFName = HasFName();
             ViewBag.HasLocalPassword = hasPassword;
-           // ViewBag.FirstName = hasFName;
+            ViewBag.FirstName = hasFName;
             ViewBag.ReturnUrl = Url.Action("Manage");
 
-            //if (hasFName)
-            //{
+            if (hasFName)
+            {
+                if (ModelState.IsValid)
+                {
+                    var user = await UserManager.FindByNameAsync(User.Identity.GetUserName());
+                    user.FName = model.FirstName;
+                    user.LName = model.SurName;
+                    user.Phone = model.PhoneNumber;
 
-            //    ViewBag.FirstName = UserManager.FindById(User.Identity.GetUserId()).FName;
+                    IdentityResult result = await UserManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Manage");
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
+                }
+                
+            }
+            
+            //if (hasPassword)
+            //{
+        
+            //    if (ModelState.IsValid)
+            //    {
+            //        IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+            //        if (result.Succeeded)
+            //        {
+            //            return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+            //        }
+            //        else
+            //        {
+            //            AddErrors(result);
+            //        }
+            //    }
             //}
             //else
             //{
-            //    ViewBag.FirstName = "Error in retrieving firstname";
+            //    // User does not have a password so remove any validation errors caused by a missing OldPassword field
+            //    ModelState state = ModelState["OldPassword"];
+            //    if (state != null)
+            //    {
+            //        state.Errors.Clear();
+            //    }
+
+            //    if (ModelState.IsValid)
+            //    {
+            //        IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+            //        if (result.Succeeded)
+            //        {
+            //            return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
+            //        }
+            //        else
+            //        {
+            //            AddErrors(result);
+            //        }
+            //    }
             //}
-
-            if (hasPassword)
-            {
-        
-                if (ModelState.IsValid)
-                {
-                    IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-                    if (result.Succeeded)
-                    {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
-                    }
-                    else
-                    {
-                        AddErrors(result);
-                    }
-                }
-            }
-            else
-            {
-                // User does not have a password so remove any validation errors caused by a missing OldPassword field
-                ModelState state = ModelState["OldPassword"];
-                if (state != null)
-                {
-                    state.Errors.Clear();
-                }
-
-                if (ModelState.IsValid)
-                {
-                    IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
-                    if (result.Succeeded)
-                    {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
-                    }
-                    else
-                    {
-                        AddErrors(result);
-                    }
-                }
-            }
 
             // If we got this far, something failed, redisplay form
             return View(model);
