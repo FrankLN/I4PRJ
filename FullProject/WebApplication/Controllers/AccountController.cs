@@ -526,7 +526,7 @@ namespace WebApplication.Controllers
             var entry = db.Entry(user);
             user.Activated = 2;
 
-            db.SaveChangesAsync();
+            await db.SaveChangesAsync();
             //if (entry.State == EntityState.Detached)
             //db.Users.AsNoTracking();
             //db.Users.Attach(user);
