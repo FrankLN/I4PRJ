@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using System.Web.Services.Description;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -239,8 +240,10 @@ namespace WebApplication.Controllers
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == ManageMessageId.EditProfileSuccess ? "Your profile has been updated."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : message == ManageMessageId.Error ? "An error has occurred."
+
                 : "";
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -261,6 +264,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Manage(ManageUserViewModel model)
         {
+            
             bool hasPassword = HasPassword();
             bool hasFName = HasFName();
             ViewBag.HasLocalPassword = hasPassword;
@@ -271,15 +275,17 @@ namespace WebApplication.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var user = await UserManager.FindByNameAsync(User.Identity.GetUserName());
+                    var user = await UserManager.FindAsync(User.Identity.GetUserName(), model.OldPassword);
+                    if (user == null)
+                        return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
                     user.FName = model.FirstName;
                     user.LName = model.SurName;
-                    user.Phone = model.PhoneNumber;
-
+                    user.Phone = model.PhoneNumber;   
+        
                     IdentityResult result = await UserManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Manage");
+                        //return RedirectToAction("Manage",new { Message = ManageMessageId.EditProfileSuccess });
                     }
                     else
                     {
@@ -288,45 +294,53 @@ namespace WebApplication.Controllers
                 }
                 
             }
-            
-            //if (hasPassword)
-            //{
-        
-            //    if (ModelState.IsValid)
-            //    {
-            //        IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-            //        if (result.Succeeded)
-            //        {
-            //            return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
-            //        }
-            //        else
-            //        {
-            //            AddErrors(result);
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    // User does not have a password so remove any validation errors caused by a missing OldPassword field
-            //    ModelState state = ModelState["OldPassword"];
-            //    if (state != null)
-            //    {
-            //        state.Errors.Clear();
-            //    }
 
-            //    if (ModelState.IsValid)
-            //    {
-            //        IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
-            //        if (result.Succeeded)
-            //        {
-            //            return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
-            //        }
-            //        else
-            //        {
-            //            AddErrors(result);
-            //        }
-            //    }
-            //}
+            if (model.NewPassword != null)
+            {
+                if (hasPassword)
+                {
+
+                    if (ModelState.IsValid)
+                    {
+                        IdentityResult result =
+                            await
+                                UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
+                                    model.NewPassword);
+                        if (result.Succeeded)
+                        {
+                            
+                        }
+                        else
+                        {
+                            AddErrors(result);
+                        }
+                    }
+                }
+                else
+                {
+                    // User does not have a password so remove any validation errors caused by a missing OldPassword field
+                    ModelState state = ModelState["OldPassword"];
+                    if (state != null)
+                    {
+                        state.Errors.Clear();
+                    }
+
+                    if (ModelState.IsValid)
+                    {
+                        IdentityResult result =
+                            await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+                        if (result.Succeeded)
+                        {
+                            //return RedirectToAction("Manage", new {Message = ManageMessageId.SetPasswordSuccess});
+                        }
+                        else
+                        {
+                            AddErrors(result);
+                        }
+                    }
+                }
+                return RedirectToAction("Manage", new { Message = ManageMessageId.EditProfileSuccess });
+            }
 
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -611,6 +625,7 @@ namespace WebApplication.Controllers
         {
             ChangePasswordSuccess,
             SetPasswordSuccess,
+            EditProfileSuccess,
             RemoveLoginSuccess,
             Error
         }
