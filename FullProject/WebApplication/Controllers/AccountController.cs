@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -243,8 +244,8 @@ namespace WebApplication.Controllers
                 : message == ManageMessageId.EditProfileSuccess ? "Your profile has been updated."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : message == ManageMessageId.Error ? "An error has occurred."
-
                 : "";
+            
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");
 
@@ -277,7 +278,7 @@ namespace WebApplication.Controllers
                 {
                     var user = await UserManager.FindAsync(User.Identity.GetUserName(), model.OldPassword);
                     if (user == null)
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
+                        return RedirectToAction("Manage" , new { Message = ManageMessageId.Error} );
                     user.FName = model.FirstName;
                     user.LName = model.SurName;
                     user.Phone = model.PhoneNumber;   
@@ -293,7 +294,6 @@ namespace WebApplication.Controllers
                     }
                 }
                 
-            }
 
             if (model.NewPassword != null)
             {
@@ -339,8 +339,10 @@ namespace WebApplication.Controllers
                         }
                     }
                 }
-                return RedirectToAction("Manage", new { Message = ManageMessageId.EditProfileSuccess });
+               
             }
+            return RedirectToAction("Manage", new { Message = ManageMessageId.EditProfileSuccess });
+          }
 
             // If we got this far, something failed, redisplay form
             return View(model);
