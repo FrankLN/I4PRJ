@@ -63,7 +63,7 @@ namespace WebApplication.Controllers
                 "\n\nThanks for your reg. on 3D-Printer. To succesfully " +
                 "activate your account copy the activation code below and " +
                 "paste it in the application. \n\nApplication code: " +
-                user.ActivationCode + "\n\nThis email cannot be replied.";
+                user.ActivationCode + "\n\nReplies to this email will not be replied.";
             client.Send(user.UserName, user.UserName, "Activation code for your 3D Printer account", body);
         }
 
