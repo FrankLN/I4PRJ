@@ -471,7 +471,15 @@ namespace WebApplication.Controllers
 
         public async Task<ActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+            {
+                if (Roles.IsUserInRole(User.Identity.GetUserName(), "Admin"))
+                {
+                    return View(await db.Users.ToListAsync());
+
+                }
+                return RedirectToAction("Index", "Home");
+            }
+           
         }
 
         // GET: /PrintMaterial/Details/5

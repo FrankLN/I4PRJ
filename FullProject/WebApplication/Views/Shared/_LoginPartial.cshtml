@@ -14,7 +14,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    @Html.ActionLink("Hello Admin" + currentUser.FName + " " + currentUser.LName +  "!", "Manage", "Account", routeValues: null, htmlAttributes: new {title = "Manage"})
+                    @Html.ActionLink("Hello Admin " + currentUser.FName + " " + currentUser.LName +  "!", "Manage", "Account", routeValues: null, htmlAttributes: new {title = "Manage"})
                 </li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>
@@ -42,8 +42,18 @@
                 <li>
                     @Html.ActionLink("Hello " + currentUser.FName + " " + currentUser.LName + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
                 </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+                <li>
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                </li>
+
             </ul>
+     <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("Upload Job", "UploadJob", "UploadJob")
+
+                </li>
+         </ul>
         }
 
     }
