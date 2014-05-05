@@ -243,11 +243,12 @@ namespace WebApplication.Controllers
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.EditProfileSuccess ? "Your profile has been updated."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                : "";
+                ViewBag.Failed = message == ManageMessageId.Error ? "An error has occurred." 
                 : "";
             
-            ViewBag.HasLocalPassword = HasPassword();
-            ViewBag.ReturnUrl = Url.Action("Manage");
+                ViewBag.HasLocalPassword = HasPassword();
+                ViewBag.ReturnUrl = Url.Action("Manage");
 
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var currentUser = manager.FindById(User.Identity.GetUserId());
@@ -271,6 +272,8 @@ namespace WebApplication.Controllers
             ViewBag.HasLocalPassword = hasPassword;
             ViewBag.FirstName = hasFName;
             ViewBag.ReturnUrl = Url.Action("Manage");
+            IdentityResult result = new IdentityResult();
+            IdentityResult result2= new IdentityResult();
 
             if (hasFName)
             {
@@ -283,15 +286,7 @@ namespace WebApplication.Controllers
                     user.LName = model.SurName;
                     user.Phone = model.PhoneNumber;   
         
-                    IdentityResult result = await UserManager.UpdateAsync(user);
-                    if (result.Succeeded)
-                    {
-                        //return RedirectToAction("Manage",new { Message = ManageMessageId.EditProfileSuccess });
-                    }
-                    else
-                    {
-                        AddErrors(result);
-                    }
+                    result = await UserManager.UpdateAsync(user);
                 }
                 
 
@@ -302,46 +297,33 @@ namespace WebApplication.Controllers
 
                     if (ModelState.IsValid)
                     {
-                        IdentityResult result =
+                        result2 =
                             await
                                 UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                                     model.NewPassword);
-                        if (result.Succeeded)
-                        {
-                            
-                        }
-                        else
-                        {
-                            AddErrors(result);
-                        }
+                        
                     }
                 }
-                else
-                {
-                    // User does not have a password so remove any validation errors caused by a missing OldPassword field
-                    ModelState state = ModelState["OldPassword"];
-                    if (state != null)
-                    {
-                        state.Errors.Clear();
-                    }
-
-                    if (ModelState.IsValid)
-                    {
-                        IdentityResult result =
-                            await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
-                        if (result.Succeeded)
-                        {
-                            //return RedirectToAction("Manage", new {Message = ManageMessageId.SetPasswordSuccess});
-                        }
-                        else
-                        {
-                            AddErrors(result);
-                        }
-                    }
-                }
+                
                
             }
-            return RedirectToAction("Manage", new { Message = ManageMessageId.EditProfileSuccess });
+
+            if (result.Succeeded || result2.Succeeded)
+            {
+                if (result.Succeeded)
+                    AddErrors(result2);
+
+                if (result2.Succeeded)
+                    AddErrors(result);
+
+                return RedirectToAction("Manage", new { Message = ManageMessageId.EditProfileSuccess });
+            }
+            else
+            {
+                AddErrors(result);
+                AddErrors(result2);
+            }
+            
           }
 
             // If we got this far, something failed, redisplay form
