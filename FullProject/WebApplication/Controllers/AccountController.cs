@@ -168,7 +168,6 @@ namespace WebApplication.Controllers
 
         //
         // GET: /Account/Activation
-        [AllowAnonymous]
         public ActionResult Activation()
         {
             return View();
@@ -177,7 +176,6 @@ namespace WebApplication.Controllers
         //
         // POST: /Account/Activation
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Activation(ActivationViewModel model)
         {
