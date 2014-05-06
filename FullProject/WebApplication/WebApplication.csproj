@@ -203,6 +203,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Printer3DJob.cs" />
+    <Compile Include="Models\Printer3DJobsViewModels.cs" />
     <Compile Include="Models\PrintMaterial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
