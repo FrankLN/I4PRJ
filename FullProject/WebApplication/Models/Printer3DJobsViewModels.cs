@@ -52,8 +52,4 @@ namespace WebApplication.Models
         public int Status { get; set; }
     }
 
-    //public class DetailsViewModel
-    //{
-    //    public long Printer3DJobId { get; set; }
-    //}
 }
