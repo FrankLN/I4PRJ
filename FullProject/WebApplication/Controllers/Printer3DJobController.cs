@@ -8,6 +8,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using WebApplication.Models;
 
 namespace WebApplication.Controllers
@@ -56,11 +57,13 @@ namespace WebApplication.Controllers
             return View(printer3djob);
         }
 
-        public FileResult DownloadFile (Printer3DJob fileName)
+        public FileResult DownloadFile (long? id)
         {
+            Printer3DJob fileName = db.Printer3DJob.Find(id);
+
             string fName = fileName.MyFile;
             string path = Environment.CurrentDirectory;
-            return File("C:\\"  + fName, System.Net.Mime.MediaTypeNames.Application.Octet,fName);
+            return File("~/App_Data/" + fName, System.Net.Mime.MediaTypeNames.Application.Octet,fName);
         }
 
         // GET: /Printer3DJob/Create
