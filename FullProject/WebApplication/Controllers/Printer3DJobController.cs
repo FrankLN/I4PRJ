@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication.Models;
@@ -52,6 +53,12 @@ namespace WebApplication.Controllers
                 return HttpNotFound();
             }
             return View(printer3djob);
+        }
+
+        public FileResult DownloadFile (Printer3DJob fileName)
+        {
+            string fName = fileName.MyFile;
+            return File("C:\\"  + fName, System.Net.Mime.MediaTypeNames.Application.Octet,fName);
         }
 
         // GET: /Printer3DJob/Create

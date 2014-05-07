@@ -1,4 +1,5 @@
-﻿@model WebApplication.Models.Printer3DJob
+﻿@using System.Data.Entity.ModelConfiguration.Conventions
+@model WebApplication.Models.Printer3DJob
 
 @{
     ViewBag.Title = "Details";
@@ -70,5 +71,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Printer3DJobId }) |
+    @Html.ActionLink("Download", "DownloadFile", new {id= Model.Printer3DJobId}) |
     @Html.ActionLink("Back to List", "Index")
 </p>
