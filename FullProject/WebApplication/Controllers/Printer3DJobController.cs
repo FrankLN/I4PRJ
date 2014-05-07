@@ -84,12 +84,16 @@ namespace WebApplication.Controllers
         {
             //if (ModelState.IsValid)
             //{
-            
+
+            string fName = (string)file.FileName;
+            printer3djob.MyFile = fName;
+
             db.Printer3DJob.Add(printer3djob);
             db.SaveChanges();
             //return RedirectToAction("Index");
             //return View(printer3djob);
 
+            
             try
             {
                 if (file.ContentLength > 0)
