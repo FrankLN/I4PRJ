@@ -271,10 +271,11 @@
     <Content Include="Views\PrintMaterial\Edit.cshtml" />
     <Content Include="Views\PrintMaterial\Index.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
-    <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Printer3DJob\DownloadJob.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
