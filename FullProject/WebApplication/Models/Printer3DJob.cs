@@ -11,8 +11,7 @@ namespace WebApplication.Models
         public long Printer3DJobId { get; set; }
         public string Owner { get; set; }
         public string Deadline { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase MyFile { get; set; }
+        public string MyFile { get; set; }
         public string CreationTime { get; set; }
         public int Hollow { get; set; }
         public string Comment { get; set; }

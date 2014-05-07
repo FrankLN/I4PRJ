@@ -59,6 +59,7 @@ namespace WebApplication.Controllers
         public FileResult DownloadFile (Printer3DJob fileName)
         {
             string fName = fileName.MyFile;
+            string path = Environment.CurrentDirectory;
             return File("C:\\"  + fName, System.Net.Mime.MediaTypeNames.Application.Octet,fName);
         }
 
