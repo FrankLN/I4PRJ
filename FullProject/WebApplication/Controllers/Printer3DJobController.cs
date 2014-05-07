@@ -17,7 +17,26 @@ namespace WebApplication.Controllers
         // GET: /Printer3DJob/
         public ActionResult Index()
         {
-            return View(db.Printer3DJob.ToList());
+            HistoryViewModel jobTables = new HistoryViewModel();
+
+            for(int i = 0; i < db.Printer3DJob.Count(); i++)
+            {
+                if (db.Printer3DJob.ToList()[i].Status == 0)
+                {
+                    jobTables.JobsInQueue.Add(db.Printer3DJob.ToList()[i]);
+                }
+                else if (db.Printer3DJob.ToList()[i].Status == 1)
+                {
+                    jobTables.JobsInProgress.Add(db.Printer3DJob.ToList()[i]);
+                }
+                else
+                {
+                    jobTables.JobsDone.Add(db.Printer3DJob.ToList()[i]);
+                }
+            }
+
+            return View(jobTables);
+            //return View(db.Printer3DJob.ToList());
         }
 
         // GET: /Printer3DJob/Details/5
