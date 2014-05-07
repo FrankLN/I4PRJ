@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -66,9 +67,7 @@ namespace WebApplication.Controllers
         {
             Printer3DJob model = new Printer3DJob();
 
-            //model.MyFile = "Select a file";
-
-            return View(model);
+            return View();
         }
 
         // POST: /Printer3DJob/Create
@@ -76,16 +75,34 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status")] Printer3DJob printer3djob)
+        public ActionResult Create(HttpPostedFileBase file)
+        //public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status")] Printer3DJob printer3djob, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
-            {
-                db.Printer3DJob.Add(printer3djob);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    db.Printer3DJob.Add(printer3djob);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
-            return View(printer3djob);
+            //return View(printer3djob);
+
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                    file.SaveAs(path);
+                }
+                ViewBag.Message = "Upload successful";
+                return View();
+            }
+            catch
+            {
+                ViewBag.Message = "Upload failed";
+                return View();
+            } 
         }
 
         // GET: /Printer3DJob/Edit/5
