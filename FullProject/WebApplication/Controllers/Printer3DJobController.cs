@@ -76,16 +76,15 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(HttpPostedFileBase file)
-        //public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status")] Printer3DJob printer3djob, HttpPostedFileBase file)
+        //public ActionResult Create(HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status")] Printer3DJob printer3djob, HttpPostedFileBase file)
         {
             //if (ModelState.IsValid)
             //{
-            //    db.Printer3DJob.Add(printer3djob);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
+            
+            db.Printer3DJob.Add(printer3djob);
+            db.SaveChanges();
+            //return RedirectToAction("Index");
             //return View(printer3djob);
 
             try
@@ -97,13 +96,13 @@ namespace WebApplication.Controllers
                     file.SaveAs(path);
                 }
                 ViewBag.Message = "Upload successful";
-                return View();
+                return View(printer3djob);
             }
             catch
             {
                 ViewBag.Message = "Upload failed";
-                return View();
-            } 
+                return View(printer3djob);
+            }
         }
 
         // GET: /Printer3DJob/Edit/5
