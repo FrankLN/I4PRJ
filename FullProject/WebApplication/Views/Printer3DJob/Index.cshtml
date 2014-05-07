@@ -9,91 +9,104 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.JobsInQueue[0].Owner)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.JobsInQueue[0].Deadline)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model.JobsInQueue) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Deadline)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Printer3DJobId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Printer3DJobId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Printer3DJobId })
-            </td>
-        </tr>
-    }
+<div class="row">
+    <div class="col-md-4">
 
-</table>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.JobsInProgress[0].Owner)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.JobsInProgress[0].Deadline)
-        </th>
-        <th></th>
-    </tr>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobsInQueue[0].Owner)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobsInQueue[0].Deadline)
+                </th>
+                <th></th>
+            </tr>
 
-    @foreach (var item in Model.JobsInProgress)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Deadline)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
-            </td>
-        </tr>
-    }
+            @foreach (var item in Model.JobsInQueue)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deadline)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobsInProgress[0].Owner)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobsInProgress[0].Deadline)
+                </th>
+                <th></th>
+            </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.JobsDone[0].Owner)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.JobsDone[0].Deadline)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model.JobsInProgress)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deadline)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
+                    </td>
+                </tr>
+            }
 
-    @foreach (var item in Model.JobsDone)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Deadline)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
-            </td>
-        </tr>
-    }
+        </table>
+    </div>
 
-</table>
+    <div class="col-md-4">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobsDone[0].Owner)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobsDone[0].Deadline)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.JobsDone)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deadline)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
