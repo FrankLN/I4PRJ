@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201405070915091_AddMyFileCategory.Designer.cs">
       <DependentUpon>201405070915091_AddMyFileCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405071050000_AddMyFileCategory1.cs" />
+    <Compile Include="Migrations\201405071050000_AddMyFileCategory1.Designer.cs">
+      <DependentUpon>201405071050000_AddMyFileCategory1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -289,6 +293,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201405070915091_AddMyFileCategory.resx">
       <DependentUpon>201405070915091_AddMyFileCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405071050000_AddMyFileCategory1.resx">
+      <DependentUpon>201405071050000_AddMyFileCategory1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
