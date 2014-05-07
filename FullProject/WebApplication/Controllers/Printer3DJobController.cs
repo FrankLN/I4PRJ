@@ -59,7 +59,8 @@ namespace WebApplication.Controllers
         {
             Printer3DJob model = new Printer3DJob();
 
-            model.MyFile = "Select a file";
+            //model.MyFile = "Select a file";
+
             return View(model);
         }
 
