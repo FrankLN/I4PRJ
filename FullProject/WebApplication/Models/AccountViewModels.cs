@@ -15,12 +15,12 @@ namespace WebApplication.Models
     public class ManageUserViewModel
     {
         [Required(ErrorMessage = "The field First name must be filled in.")]
-        [RegularExpression("^((?!^First Name$)[a-zA-Z- '])+$", ErrorMessage = "First name must only contain letters and dash(-).")]
+        [RegularExpression("^[A-ZÆØÅ]+([a-zæøå]|([-][A-ZÆØÅ]))+$", ErrorMessage = "First name must only contain letters and dash(-).")]
         [Display(Name = "First name")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "The field Last name must be filled in.")]
-        [RegularExpression("^((?!^Surname$)[a-zA-Z- '])+$", ErrorMessage = "Last name must only contain letters and dash(-).")]
+        [RegularExpression("^[A-ZÆØÅ]+([a-zæøå]|([-][A-ZÆØÅ]))+$", ErrorMessage = "Last name must only contain letters and dash(-).")]
         public string SurName { get; set; }
 
         [Required(ErrorMessage = "The field Phone number must be filled in.")]
@@ -81,12 +81,12 @@ namespace WebApplication.Models
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "The field First name must be filled in.")]
-        [RegularExpression("^((?!^First Name$)[a-zA-Z- '])+$", ErrorMessage = "First name must only contain letters and dash(-).")]
+        [RegularExpression("^[A-ZÆØÅ]+([a-zæøå]|([-][A-ZÆØÅ]))+$", ErrorMessage = "First name must only contain letters and dash(-).")]
         [Display(Name = "First name")]
         public string FName { get; set; }
 
         [Required(ErrorMessage = "The field Last name must be filled in.")]
-        [RegularExpression("^((?!^Surname$)[a-zA-Z- '])+$", ErrorMessage = "Last name must only contain letters and dash(-).")]
+        [RegularExpression("^[A-ZÆØÅ]+([a-zæøå]|([-][A-ZÆØÅ]))+$$", ErrorMessage = "Last name must only contain letters and dash(-).")]
         [Display(Name = "Last name")]
         public string LName { get; set; }
 
