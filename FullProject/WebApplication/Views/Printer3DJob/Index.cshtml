@@ -13,7 +13,11 @@
 <div class="row">
     <div class="col-md-4">
 
-
+        <h4 align="center">
+            In queue
+            <br/>
+            <br/>
+        </h4>
         <table class="table">
             <tr>
                 <th>
@@ -45,6 +49,11 @@
         </table>
     </div>
     <div class="col-md-4">
+        <h4 align="center">
+            In progress
+            <br />
+            <br />
+        </h4>
         <table class="table">
             <tr>
                 <th>
@@ -77,6 +86,11 @@
     </div>
 
     <div class="col-md-4">
+        <h4 align="center">
+            Done
+            <br />
+            <br />
+        </h4>
         <table class="table">
             <tr>
                 <th>
@@ -97,10 +111,18 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Deadline)
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
+                    <td class="dropdown">
+                        <button id="dLabel" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId })
+                            <br/>
+                            @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId })
+                            <br/>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
+                        </ul>
+                        
                     </td>
                 </tr>
             }
