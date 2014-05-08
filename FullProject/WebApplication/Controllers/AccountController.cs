@@ -71,11 +71,14 @@ namespace WebApplication.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login(string returnUrl, string message = null)
         {
+            if (message != null)
+                ViewBag.Message = message;
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+
 
         //
         // POST: /Account/Login
@@ -90,7 +93,7 @@ namespace WebApplication.Controllers
 
                 if (user != null)
                 {
-                    if (user.Activated > 0)
+                    if (user.Activated == 1)
                     {
                         await SignInAsync(user, model.RememberMe);
                         
@@ -98,6 +101,10 @@ namespace WebApplication.Controllers
                     }
                     else
                     {
+                        if (user.Activated == 2)
+                        {
+                            RedirectToAction("Login", new {message = "User has been deleted. Contact an admin."});
+                        }
                         await SignInAsync(user, model.RememberMe);
                         return RedirectToAction("Activation");
                     }

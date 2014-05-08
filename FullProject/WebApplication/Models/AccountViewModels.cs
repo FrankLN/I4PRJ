@@ -91,7 +91,6 @@ namespace WebApplication.Models
         public string LName { get; set; }
 
         [Required(ErrorMessage = "The field Phone number must be filled in.")]
-        //[StringLength(8, ErrorMessage = "Phone number must be exactly 8 digits long.", MinimumLength = 8)]
         [RegularExpression("\\d{8}", ErrorMessage = "Phone number must be digits only and must be 8 digits long.")]
         [Display(Name = "Phone number")]
         public string Phone { get; set; }
