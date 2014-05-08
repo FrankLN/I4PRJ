@@ -103,7 +103,7 @@ namespace WebApplication.Controllers
                     {
                         if (user.Activated == 2)
                         {
-                            RedirectToAction("Login", new {message = "User has been deleted. Contact an admin."});
+                            return RedirectToAction("Login", new {message = "User has been deleted. Contact an admin."});
                         }
                         await SignInAsync(user, model.RememberMe);
                         return RedirectToAction("Activation");
