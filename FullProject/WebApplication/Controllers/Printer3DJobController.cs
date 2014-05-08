@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Data.Entity;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.AspNet.Identity.EntityFramework;
 using WebApplication.Models;
 
 namespace WebApplication.Controllers
@@ -82,11 +84,23 @@ namespace WebApplication.Controllers
         //public ActionResult Create(HttpPostedFileBase file)
         public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status")] Printer3DJob printer3djob, HttpPostedFileBase file)
         {
-            //if (ModelState.IsValid)
-            //{
-
+            // Setting filename to name of chosen file and saving the name to database
             string fName = (string)file.FileName;
             printer3djob.MyFile = fName;
+
+            // Setting CreationTime to current date and time
+            string CreateTime = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            printer3djob.CreationTime = CreateTime;
+
+            // Setting the initial status to 0 (= job in queque)
+            int initialStatus = 0;
+            printer3djob.Status = initialStatus;
+
+            // Owner is set to person logged in
+            //ApplicationUser fUser = new ApplicationUser();
+            //string fN = fUser.FName;
+            //printer3djob.Owner = (string)fN;
+
 
             db.Printer3DJob.Add(printer3djob);
             db.SaveChanges();
