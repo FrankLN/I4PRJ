@@ -6,7 +6,7 @@
 @{
     ViewBag.Title = "Manage Account";
 }
-<h2>@ViewBag.Title.</h2>
+<br />
 <p>You're logged in as <strong>@User.Identity.GetUserName()</strong>.</p>
 
 @using (Html.BeginForm("Manage", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))

@@ -320,7 +320,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
 
 }
 
@@ -4153,6 +4153,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 
+ul.nav.navbar-nav {
+    
+
+}
+
 .container > .navbar-header,
 .container > .navbar-collapse {
   margin-right: -15px;
@@ -4940,17 +4945,24 @@ a.list-group-item.active > .badge,
       
 }
 .Wrapper {
-    
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    background-color:#f7f7f7;
+    min-width: 700px;
+    min-height: 270px;
+    -moz-box-shadow: 0 5px 3px 3px #888;
+    -webkit-box-shadow: 0 5px 3px 3px #888;
+    box-shadow: 0 5px 3px 3px #888;
+}
+
+.WrapperTwo {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
     background-color: #ffffff;
     min-width: 700px;
-    min-height: 500px;
-    -webkit-box-shadow: 5px 5px 5px #828282;
-    -moz-box-shadow: 5px 5px 5px #828282;
-    box-shadow: 1px 1px 1px #828282;
-    
+    min-height: 270px;
 }
 
 

@@ -11,16 +11,10 @@
     @Styles.Render("~/Content/themes/base/css", "~/Content/css")*@
 </head>
     <body>
-        <div class="Wrapper">
-            <ul class="Logo">
-                <a href="/">
-                    <img src="/Content/Images/Logo.png" />
-                    
-                </a>
-            </ul> 
-                  
+        
+        <div class="WrapperTwo" style="margin:0px;min-width:100%;min-height:0px;height:55px;position:fixed;top:0px;left:0px;">
             <div class="navbar navbar-inverse navbar-fixed-top">
-               
+
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -33,13 +27,70 @@
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>                        
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
                         @Html.Partial("_LoginPartial")
                     </div>
                 </div>
             </div>
-            <div class="container body-content">
+        </div>
+
+        <div class="WrapperTwo" style="min-height:180px;width:100%;position:absolute;left:0px;top:55px">
+            <li style ="float:left;display:inline; width: 49%;">
+                <ul class=" logo" style="margin-left:16%;margin-top:2%;">
+                    <a href="/">
+                        <img src="/Content/Images/Logo.png" />
+                    </a>
+                </ul>
+            </li>
+             
+            <li style ="float:left;display:inline;width:49%;">
+                 <div class=" navbar navbar-default" role="navigation" style="background: transparent; border: none; ">
+                     <div class="container" style="position:relative;top:70px;">
+                         <div class="navbar-header">
+                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                 <span class="icon-bar"></span>
+                                 <span class="icon-bar"></span>
+                                 <span class="icon-bar"></span>
+                             </button>
+                         </div>
+
+                         <div class="navbar-collapse collapse">
+                             <ul class="nav navbar-nav" style="font-size:22px;">
+                                 
+                                @if (Roles.IsUserInRole("Admin"))
+                                {
+                                    <li>@Html.ActionLink("Upload Job", "Create", "Printer3DJob")</li>
+                                    <li>@Html.ActionLink("All users", "Index", "Account")</li>
+                                    <li>@Html.ActionLink("Job History", "Index", "Printer3DJob")</li>
+                                }
+                                else if (Roles.IsUserInRole("User"))
+                                {
+                                    <li>@Html.ActionLink("Upload Job", "Create", "Printer3DJob")</li>
+                                }
+                                else
+                                {
+
+                                }
+                             </ul>
+                         </div>
+                         
+                         
+                             
+
+                     </div>
+                 </div>
+            </li>
+         </div>  
+        
+        <div class="WrapperTwo" style="background-color:#3b5998;min-height:0px;height:80px;width:100%;position:absolute;top:235px">
+            <div class="container" style="position: relative; position: relative; top: calc(50% - 10px); left: 0px; width: 78%;">
+                <h1 style="font-size:25px;;color:#ffffff;">@ViewBag.Title</h1>
+            </div>
+        </div>
+
+        <div class="Wrapper" style="width:76%;height: 4000px;position:relative;top:315px;">
+            <div class=" container body-content">
                 @RenderBody()
                 <hr />
                 <footer>
