@@ -18,6 +18,22 @@
                 </li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>
+
+            <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("Upload Job", "Create", "Printer3DJob")
+
+                </li>
+
+                <li>
+                    @Html.ActionLink("All Users", "Index", "Account")
+                </li>
+
+                <li>
+                    @Html.ActionLink("Job History", "Index", "Printer3DJob")
+                </li>
+            </ul>
+
         }
     }
     else
@@ -30,11 +46,20 @@
                 <li>
                     @Html.ActionLink("Hello " + currentUser.FName + " " + currentUser.LName + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
                 </li>
+
                 <li>
                     <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
                 </li>
+
             </ul>
+     <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("Upload Job", "Create", "Printer3DJob")
+
+                </li>
+         </ul>
         }
+
     }
 }
 else
@@ -43,4 +68,5 @@ else
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new {id = "registerLink"})</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new {id = "loginLink"})</li>
     </ul>
+ 
 }
