@@ -16,6 +16,23 @@ namespace WebApplication.Models
         public string ActivationCode { get; set; }
     }
 
+    public class Printer3DJob
+    {
+        public long Printer3DJobId { get; set; }
+        public string Owner { get; set; }
+        public string Deadline { get; set; }
+        public string MyFile { get; set; }
+        public string CreationTime { get; set; }
+        public int Hollow { get; set; }
+        public string Comment { get; set; }
+        public int Status { get; set; }
+    }
+    public class PrintMaterial
+    {
+        public int PrintMaterialId { get; set; }
+        public string MaterialType { get; set; }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -26,5 +43,7 @@ namespace WebApplication.Models
         public System.Data.Entity.DbSet<WebApplication.Models.Printer3DJob> Printer3DJob { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication.Models.PrintMaterial> PrintMaterials { get; set; }
+
     }
+
 }
