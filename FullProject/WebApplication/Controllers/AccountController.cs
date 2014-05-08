@@ -175,8 +175,14 @@ namespace WebApplication.Controllers
 
         //
         // GET: /Account/Activation
-        public ActionResult Activation()
+        public ActionResult Activation(MessageId? message)
         {
+            ViewBag.ActivationStatus =
+                message == MessageId.ActivationWrong ? "Activation is wrong, try again!"
+                 : "";
+                ViewBag.ResendStatus = message == MessageId.ActivationResendSuccess ? "New Activation code has been resend."
+            : "";
+       
             return View();
         }
 
@@ -205,14 +211,7 @@ namespace WebApplication.Controllers
                 }
                 else
                 {
-                    var errors = new List<string>();
-                    errors.Add("Test");
-                    errors.Add("Test");
-                    errors.Add("Test");
-                    errors.Add("Test");
-                    errors.Add("Test");
-                    AddErrors(new IdentityResult(errors));
-                    return RedirectToAction("Activation");
+                    return RedirectToAction("Activation", new { Message = MessageId.ActivationWrong });
                 }
             }
 
@@ -220,36 +219,51 @@ namespace WebApplication.Controllers
             return RedirectToAction("Activation");
         }
 
+        public async Task<ActionResult> ResendActivationCode()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            user.ActivationCode = GenerateActivationCode();
+
+            await UserManager.UpdateAsync(user);
+
+            SendEmail(user);
+
+
+            return RedirectToAction("Activation", new   { Message = MessageId.ActivationResendSuccess} );
+        }
+        
+
         //
         // POST: /Account/Disassociate
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
         {
-            ManageMessageId? message = null;
+            MessageId? message = null;
             IdentityResult result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)
             {
-                message = ManageMessageId.RemoveLoginSuccess;
+                message = MessageId.RemoveLoginSuccess;
             }
             else
             {
-                message = ManageMessageId.Error;
+                message = MessageId.Error;
             }
             return RedirectToAction("Manage", new { Message = message });
         }
 
         //
         // GET: /Account/Manage
-        public ActionResult Manage(ManageMessageId? message)
+        public ActionResult Manage(MessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.EditProfileSuccess ? "Your profile has been updated."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+                message == MessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == MessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == MessageId.EditProfileSuccess ? "Your profile has been updated."
+                : message == MessageId.RemoveLoginSuccess ? "The external login was removed."
                 : "";
-                ViewBag.Failed = message == ManageMessageId.Error ? "An error has occurred." 
+                ViewBag.Failed = message == MessageId.Error ? "An error has occurred." 
                 : "";
             
                 ViewBag.HasLocalPassword = HasPassword();
@@ -286,7 +300,7 @@ namespace WebApplication.Controllers
                 {
                     var user = await UserManager.FindAsync(User.Identity.GetUserName(), model.OldPassword);
                     if (user == null)
-                        return RedirectToAction("Manage" , new { Message = ManageMessageId.Error} );
+                        return RedirectToAction("Manage" , new { Message = MessageId.Error} );
                     user.FName = model.FirstName;
                     user.LName = model.SurName;
                     user.Phone = model.PhoneNumber;   
@@ -321,7 +335,7 @@ namespace WebApplication.Controllers
                 if (result2.Succeeded)
                     AddErrors(result);
 
-                return RedirectToAction("Manage", new { Message = ManageMessageId.EditProfileSuccess });
+                return RedirectToAction("Manage", new { Message = MessageId.EditProfileSuccess });
             }
             else
             {
@@ -390,14 +404,14 @@ namespace WebApplication.Controllers
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
             if (loginInfo == null)
             {
-                return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
+                return RedirectToAction("Manage", new { Message = MessageId.Error });
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             if (result.Succeeded)
             {
                 return RedirectToAction("Manage");
             }
-            return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
+            return RedirectToAction("Manage", new { Message = MessageId.Error });
         }
 
         //
@@ -618,13 +632,15 @@ namespace WebApplication.Controllers
         }
 
 
-        public enum ManageMessageId
+        public enum MessageId
         {
             ChangePasswordSuccess,
             SetPasswordSuccess,
             EditProfileSuccess,
             RemoveLoginSuccess,
-            Error
+            Error,
+            ActivationWrong,
+            ActivationResendSuccess
         }
 
         private ActionResult RedirectToLocal(string returnUrl)

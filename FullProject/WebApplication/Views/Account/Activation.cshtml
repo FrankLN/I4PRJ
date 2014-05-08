@@ -12,7 +12,7 @@
     <h4>Please Enter the activation code from the activation mail below...</h4>
     <hr />
     @Html.ValidationSummary()
-
+    <p class="text-danger">@ViewBag.ActivationStatus</p>
     <div class="form-group">
         @Html.LabelFor(m => m.ActivationCode, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -24,7 +24,11 @@
             <input type="submit" class="btn btn-default" value="Activate" />
         </div>
     </div>
+    <hr />
+    <p class="text-success">@ViewBag.ResendStatus</p>
+    <h5>If you haven't received your activation code after few minutes, please click on the <b> @Html.ActionLink("Resend", "ResendActivationCode") </b> button to send it to you again</h5>
 
+   
 }
 
 @section Scripts {

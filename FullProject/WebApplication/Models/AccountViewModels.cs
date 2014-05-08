@@ -100,7 +100,7 @@ namespace WebApplication.Models
     {
         [Required(ErrorMessage = "Activation code must not be empty")]
         [StringLength(8, ErrorMessage = "Activation code must be exactly 8 chars long", MinimumLength = 8)]
-        [Display(Name = "Activation code")]
+        [Display(Name = "Activationcode")]
         public string ActivationCode { get; set; }
     }
 }
