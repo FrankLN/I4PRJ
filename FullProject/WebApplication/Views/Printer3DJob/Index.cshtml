@@ -26,7 +26,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.JobsInQueue[0].Deadline)
                 </th>
-                <th></th>
+                <th>Options</th>
             </tr>
 
             @foreach (var item in Model.JobsInQueue)
@@ -38,10 +38,18 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Deadline)
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
+                    <td class="dropdown">
+                        <button id="dLabel" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId })
+                            <br />
+                            @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId })
+                            <br />
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
+                        </ul>
+
                     </td>
                 </tr>
             }
@@ -62,7 +70,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.JobsInProgress[0].Deadline)
                 </th>
-                <th></th>
+                <th>Options</th>
             </tr>
 
             @foreach (var item in Model.JobsInProgress)
@@ -74,11 +82,19 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Deadline)
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
-                    </td>
+                    <td class="dropdown">
+    <button id="dLabel" data-toggle="dropdown">
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        @Html.ActionLink("Edit", "Edit", new { id = item.Printer3DJobId })
+        <br />
+        @Html.ActionLink("Details", "Details", new { id = item.Printer3DJobId })
+        <br />
+        @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
+    </ul>
+
+</td>
                 </tr>
             }
 
@@ -99,7 +115,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.JobsDone[0].Deadline)
                 </th>
-                <th></th>
+                <th>Options</th>
             </tr>
 
             @foreach (var item in Model.JobsDone)
