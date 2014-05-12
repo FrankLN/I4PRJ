@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WebApplication.Models;
 
@@ -99,7 +100,7 @@ namespace WebApplication.Controllers
             // Owner is set to person logged in
             //ApplicationUser fUser = new ApplicationUser();
             //string fN = fUser.FName;
-            //printer3djob.Owner = (string)fN;
+            printer3djob.Owner = (string) User.Identity.GetUserName();
 
 
             db.Printer3DJob.Add(printer3djob);

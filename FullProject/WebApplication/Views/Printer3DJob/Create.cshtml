@@ -16,19 +16,11 @@
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            <label class="control-label col-md-2">Enter your name:</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Owner)
-                @Html.ValidationMessageFor(model => model.Owner)
-            </div>
-        </div>
-        
 
         <div class="form-group">
             <label class="control-label col-md-2">Choose a deadline for your order (or leave this field blank):</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Deadline)
+                @Html.DisplayTextFor(model => model.Deadline)
                 @Html.ValidationMessageFor(model => model.Deadline)
             </div>
         </div>
