@@ -98,9 +98,9 @@ namespace WebApplication.Models
 
     public class ActivationViewModel
     {
-        [Required(ErrorMessage = "Activation code must not be empty")]
-        [StringLength(8, ErrorMessage = "Activation code must be exactly 8 chars long", MinimumLength = 8)]
-        [Display(Name = "Activationcode")]
+
+        [Display(Name = "Activation code")]
         public string ActivationCode { get; set; }
+
     }
 }

@@ -194,25 +194,26 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(User.Identity.GetUserName());
-                if (user.ActivationCode == model.ActivationCode)
-                {
-                    user.Activated = 1;
-                    var result = await UserManager.UpdateAsync(user);
-                    if (result.Succeeded)
+                    var user = await UserManager.FindByNameAsync(User.Identity.GetUserName());
+                    if (user.ActivationCode == model.ActivationCode)
                     {
-                        return RedirectToAction("Index", "Home");
+                        user.Activated = 1;
+                        var result = await UserManager.UpdateAsync(user);
+                        if (result.Succeeded)
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            AddErrors(result);
+                        }
+
                     }
                     else
                     {
-                        AddErrors(result);
+                        return RedirectToAction("Activation", new {message = MessageId.ActivationWrong});
                     }
-
-                }
-                else
-                {
-                    return RedirectToAction("Activation", new { Message = MessageId.ActivationWrong });
-                }
+                
             }
 
             // If we got this far, something failed, redisplay form
