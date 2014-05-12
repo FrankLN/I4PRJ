@@ -31,6 +31,7 @@ namespace WebApplication.Models
         public string Owner { get; set; }
 
         [Display(Name = "Deadline")]
+        [DataType(DataType.Date)]
         public string Deadline { get; set; }
 
         [Required(ErrorMessage = "The field File must be filled in.")]

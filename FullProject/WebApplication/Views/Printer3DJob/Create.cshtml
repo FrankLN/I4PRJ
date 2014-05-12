@@ -20,13 +20,14 @@
         <div class="form-group">
             <label class="control-label col-md-2">Choose a deadline for your order (or leave this field blank):</label>
             <div class="col-md-10">
-                @Html.DisplayTextFor(model => model.Deadline)
+                @Html.EditorFor(model => model.Deadline)
                 @Html.ValidationMessageFor(model => model.Deadline)
+               
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">Choose a File:</label>
+            <label class="control-label col-md-2">Choose a design File:</label>
             <div class="col-md-10">   
                 @Html.TextBox("file", "", new { type = "file" })
             </div>
