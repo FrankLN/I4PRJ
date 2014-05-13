@@ -72,6 +72,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /Printer3DJob/Details/5
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public ActionResult Details(long? id)
         {
