@@ -21,7 +21,6 @@ using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         public AccountController()
@@ -151,18 +150,10 @@ namespace WebApplication.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddToRoleAsync(user.Id, "User");
-                    if (result.Succeeded)
-                    {
-                        SendEmail(user);
+                    SendEmail(user);
                         
-                        await SignInAsync(user, isPersistent: false);
-                        return RedirectToAction("Activation", "Account");
-                    }
-                    else
-                    {
-                        AddErrors(result);
-                    }
+                    await SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Activation", "Account");
                 }
                 else
                 {
@@ -202,7 +193,15 @@ namespace WebApplication.Controllers
                         var result = await UserManager.UpdateAsync(user);
                         if (result.Succeeded)
                         {
-                            return RedirectToAction("Index", "Home");
+                            result = await UserManager.AddToRoleAsync(user.Id, "User");
+                            if (result.Succeeded)
+                            {
+                                return RedirectToAction("Index", "Home");
+                            }
+                            else
+                            {
+                                AddErrors(result);
+                            }
                         }
                         else
                         {
@@ -257,6 +256,7 @@ namespace WebApplication.Controllers
 
         //
         // GET: /Account/Manage
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "Activation")]
         public ActionResult Manage(MessageId? message)
         {
             ViewBag.StatusMessage =
@@ -285,6 +285,7 @@ namespace WebApplication.Controllers
         // POST: /Account/Manage
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "Activation")]
         public async Task<ActionResult> Manage(ManageUserViewModel model)
         {
             
@@ -490,7 +491,7 @@ namespace WebApplication.Controllers
             base.Dispose(disposing);
         }
 
-        [NewAuthorize(Roles = "Admin", NotifyUrl = "Index")]
+        [NewAuthorize(Roles = "Admin", NotifyUrl = "../Home/Index")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Users.ToListAsync());

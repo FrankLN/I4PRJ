@@ -22,7 +22,7 @@ namespace WebApplication.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Printer3DJob/
-        [NewAuthorize(Roles = "Admin", NotifyUrl = "../Home/Index")]
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         public ActionResult Index()
         {
             HistoryViewModel jobTables = new HistoryViewModel();
@@ -98,7 +98,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /Printer3DJob/Create
-        [Authorize]
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         public ActionResult Create()
         {
             Printer3DJob model = new Printer3DJob();
@@ -111,7 +111,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         //public ActionResult Create(HttpPostedFileBase file)
         public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status")] Printer3DJob printer3djob, HttpPostedFileBase file)
         {
