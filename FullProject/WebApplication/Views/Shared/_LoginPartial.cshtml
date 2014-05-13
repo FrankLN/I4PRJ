@@ -36,7 +36,7 @@
 
         }
     }
-    else
+    else if (Roles.IsUserInRole("User"))
     {
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
         {

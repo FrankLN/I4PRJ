@@ -22,7 +22,7 @@ namespace WebApplication.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Printer3DJob/
-        [NewAuthorize(Roles = "Admin")]
+        [NewAuthorize(Roles = "Admin", NotifyUrl = "../Home/Index")]
         public ActionResult Index()
         {
             HistoryViewModel jobTables = new HistoryViewModel();
