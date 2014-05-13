@@ -87,7 +87,6 @@ namespace WebApplication.Controllers
             }
             return View(printer3djob);
         }
-
         [NewAuthorize(Roles = "Admin")]
         public FileResult DownloadFile (long? id)
         {
@@ -160,6 +159,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /Printer3DJob/Edit/5
+       [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public ActionResult Edit(long? id)
         {
@@ -180,6 +180,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include="Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status")] Printer3DJob printer3djob)
         {
@@ -193,6 +194,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /Printer3DJob/Delete/5
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public ActionResult Delete(long? id)
         {
@@ -211,6 +213,7 @@ namespace WebApplication.Controllers
         // POST: /Printer3DJob/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(long id)
         {

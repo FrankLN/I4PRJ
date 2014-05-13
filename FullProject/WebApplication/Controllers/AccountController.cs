@@ -492,7 +492,7 @@ namespace WebApplication.Controllers
             }
             base.Dispose(disposing);
         }
-
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin", NotifyUrl = "../Home/Index")]
         public async Task<ActionResult> Index()
         {
