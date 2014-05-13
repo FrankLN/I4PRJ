@@ -196,6 +196,8 @@ namespace WebApplication.Controllers
                             result = await UserManager.AddToRoleAsync(user.Id, "User");
                             if (result.Succeeded)
                             {
+                                LogOff();
+                                await SignInAsync(user, false);
                                 return RedirectToAction("Index", "Home");
                             }
                             else
