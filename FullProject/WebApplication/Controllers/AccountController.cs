@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Web;
@@ -489,20 +490,14 @@ namespace WebApplication.Controllers
             base.Dispose(disposing);
         }
 
+        [NewAuthorize(Roles = "Admin", NotifyUrl = "Index")]
         public async Task<ActionResult> Index()
         {
-            {
-                if (Roles.IsUserInRole(User.Identity.GetUserName(), "Admin"))
-                {
-                    return View(await db.Users.ToListAsync());
-
-                }
-                return RedirectToAction("Index", "Home");
-            }
-           
+            return View(await db.Users.ToListAsync());
         }
 
         // GET: /PrintMaterial/Details/5
+        [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> Details(string id)
         {
             if (id == null)
@@ -518,6 +513,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /PrintMaterial/Edit/5
+        [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
@@ -537,6 +533,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> Edit([Bind(Include = "Roles")] ApplicationUser user)
         {
             if (ModelState.IsValid)
@@ -549,6 +546,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /PrintMaterial/Delete/5
+        [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
@@ -566,6 +564,7 @@ namespace WebApplication.Controllers
         // POST: /PrintMaterial/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
             var user = await UserManager.FindByIdAsync(id);
@@ -685,4 +684,48 @@ namespace WebApplication.Controllers
         }
         #endregion
     }
+    #region NewAuthorize
+    public class NewAuthorize : AuthorizeAttribute
+    {
+        // Set default Unauthorized Page Url here
+        private string _notifyUrl = "../Home/Index";
+
+        public string NotifyUrl
+        {
+            get { return _notifyUrl; }
+            set { _notifyUrl = value; }
+        }
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            if (filterContext == null)
+            {
+                throw new ArgumentNullException("filterContext");
+            }
+
+            if (AuthorizeCore(filterContext.HttpContext))
+            {
+                HttpCachePolicyBase cachePolicy =
+                    filterContext.HttpContext.Response.Cache;
+                cachePolicy.SetProxyMaxAge(new TimeSpan(0));
+                //cachePolicy.AddValidationCallback(CacheValidateHandler, null);
+            }
+
+            // This code added to support custom Unauthorized pages.
+            else if (filterContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                if (NotifyUrl != null)
+                    filterContext.Result = new RedirectResult(NotifyUrl);
+                else
+                    // Redirect to Login page.
+                    HandleUnauthorizedRequest(filterContext);
+            }
+            // End of additional code
+            else
+            {
+                // Redirect to Login page.
+                HandleUnauthorizedRequest(filterContext);
+            }
+        }
+    }
+#endregion
 }

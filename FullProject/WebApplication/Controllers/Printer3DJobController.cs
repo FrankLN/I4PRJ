@@ -22,6 +22,7 @@ namespace WebApplication.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Printer3DJob/
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Index()
         {
             HistoryViewModel jobTables = new HistoryViewModel();
@@ -71,6 +72,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /Printer3DJob/Details/5
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -85,6 +87,7 @@ namespace WebApplication.Controllers
             return View(printer3djob);
         }
 
+        [NewAuthorize(Roles = "Admin")]
         public FileResult DownloadFile (long? id)
         {
             Printer3DJob fileName = db.Printer3DJob.Find(id);
@@ -95,6 +98,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /Printer3DJob/Create
+        [Authorize]
         public ActionResult Create()
         {
             Printer3DJob model = new Printer3DJob();
@@ -107,6 +111,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         //public ActionResult Create(HttpPostedFileBase file)
         public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status")] Printer3DJob printer3djob, HttpPostedFileBase file)
         {
@@ -154,6 +159,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /Printer3DJob/Edit/5
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -173,6 +179,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include="Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status")] Printer3DJob printer3djob)
         {
             if (ModelState.IsValid)
@@ -185,6 +192,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /Printer3DJob/Delete/5
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Delete(long? id)
         {
             if (id == null)
@@ -202,6 +210,7 @@ namespace WebApplication.Controllers
         // POST: /Printer3DJob/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(long id)
         {
             Printer3DJob printer3djob = db.Printer3DJob.Find(id);
