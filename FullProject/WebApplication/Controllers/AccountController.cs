@@ -533,7 +533,8 @@ namespace WebApplication.Controllers
            
         }
 
-        // GET: /PrintMaterial/Details/5
+        // GET: /account/Details/5
+         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> Details(string id)
         {
@@ -559,7 +560,8 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
-        // GET: /PrintMaterial/Edit/5
+        // GET: /Account/Edit/5
+         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string id)
         {
@@ -579,11 +581,12 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
-        // POST: /PrintMaterial/Edit/5
+        // POST: /Account/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
 
         public async Task<ActionResult> Edit(EditUsersViewModel model)
@@ -605,7 +608,8 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
-        // GET: /PrintMaterial/Delete/5
+        // GET: /Account/Delete/5
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string id)
         {
@@ -621,9 +625,10 @@ namespace WebApplication.Controllers
             return View(user);
         }
 
-        // POST: /PrintMaterial/Delete/5
+        // POST: /Account/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
