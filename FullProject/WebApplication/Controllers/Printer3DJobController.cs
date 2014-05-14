@@ -146,10 +146,11 @@ namespace WebApplication.Controllers
                 {
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/App_Data"), fileName);
-                    file.SaveAs(path);
+                    file.SaveAs(path);   
                 }
                 ViewBag.Message = "Upload successful";
-                return View(printer3djob);
+                //return View(printer3djob);
+                return RedirectToAction("Index");
             }
             catch
             {
