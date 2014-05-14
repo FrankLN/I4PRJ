@@ -15,12 +15,14 @@ namespace WebApplication.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /PrintMaterial/
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.PrintMaterials.ToList());
         }
 
         // GET: /PrintMaterial/Details/5
+         [NewAuthorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /PrintMaterial/Create
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +49,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include="PrintMaterialId,MaterialType")] PrintMaterial printmaterial)
         {
             if (ModelState.IsValid)
@@ -59,6 +63,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /PrintMaterial/Edit/5
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +95,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: /PrintMaterial/Delete/5
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +113,7 @@ namespace WebApplication.Controllers
         // POST: /PrintMaterial/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             PrintMaterial printmaterial = db.PrintMaterials.Find(id);
