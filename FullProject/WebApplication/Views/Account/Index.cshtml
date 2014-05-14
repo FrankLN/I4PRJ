@@ -1,32 +1,44 @@
-﻿@model IEnumerable<WebApplication.Models.ApplicationUser>
+﻿@model WebApplication.Models.IndexUsersViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Users";
 }
 
-<h2>Index</h2>
+<h2>Users</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
+            <th>
+                Status
+            </th>
+        </tr>
 
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+    @foreach (var item in Model.UserTuples)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
+            <td class="-md-2">
+                @Html.DisplayFor(modelItem => item.Item1.FName )
+                @Html.DisplayFor(modelItem => item.Item1.LName)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            <td class="col-md-2">
+                @Html.DisplayFor(modelItem => item.Item1.UserName)
+            </td>
+            <td class="-md-2">
+                @Html.DisplayFor(modelItem => item.Item2)
+            </td>
+            <td class="col-md-6">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Item1.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Item1.Id }) |
+                @Html.ActionLink("Ban", "Delete", new { id = item.Item1.Id })
             </td>
         </tr>
     }
 
 </table>
+

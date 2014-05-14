@@ -1,4 +1,4 @@
-﻿@model WebApplication.Models.ApplicationUser
+﻿@model WebApplication.Models.DetailsUserViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
@@ -23,11 +23,11 @@
         </dd>
         
         <dd>
-            @Html.DisplayFor(model => model.Phone)
+            @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
         
         <dd>
-            @Html.DisplayFor(model => model.Roles)
+            @Html.DisplayFor(model => model.UserRole)
         </dd>
         
         <dd>

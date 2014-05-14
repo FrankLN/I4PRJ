@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Web.UI.WebControls;
@@ -16,11 +18,13 @@ namespace WebApplication.Models
     {
         [Required(ErrorMessage = "The field First name must be filled in.")]
         [RegularExpression("^[A-ZÆØÅ]+([a-zæøå]|([-][A-ZÆØÅ]))+$", ErrorMessage = "First name must only contain letters and dash(-).")]
+
         [Display(Name = "First name")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "The field Last name must be filled in.")]
         [RegularExpression("^[A-ZÆØÅ]+([a-zæøå]|([-][A-ZÆØÅ]))+$", ErrorMessage = "Last name must only contain letters and dash(-).")]
+
         public string SurName { get; set; }
 
         [Required(ErrorMessage = "The field Phone number must be filled in.")]
@@ -34,7 +38,7 @@ namespace WebApplication.Models
         [Display(Name = "Current password")]
         public string OldPassword { get; set; }
 
-       // [Required]
+        // [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
@@ -65,7 +69,8 @@ namespace WebApplication.Models
     {
         [Required(ErrorMessage = "The field Email must be filled in.")]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"(\w+@iha.dk)|(\w+@post.au.dk)", ErrorMessage = "Email must be with domain @iha.dk or @post.au.dk")]
+        [RegularExpression(@"(\w+@iha.dk)|(\w+@post.au.dk)",
+            ErrorMessage = "Email must be with domain @iha.dk or @post.au.dk")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -82,11 +87,13 @@ namespace WebApplication.Models
 
         [Required(ErrorMessage = "The field First name must be filled in.")]
         [RegularExpression("^[A-ZÆØÅ]+([a-zæøå]|([-][A-ZÆØÅ]))+$", ErrorMessage = "First name must only contain letters and dash(-).")]
+
         [Display(Name = "First name")]
         public string FName { get; set; }
 
         [Required(ErrorMessage = "The field Last name must be filled in.")]
         [RegularExpression("^[A-ZÆØÅ]+([a-zæøå]|([-][A-ZÆØÅ]))+$$", ErrorMessage = "Last name must only contain letters and dash(-).")]
+
         [Display(Name = "Last name")]
         public string LName { get; set; }
 
@@ -102,5 +109,32 @@ namespace WebApplication.Models
         [Display(Name = "Activation code")]
         public string ActivationCode { get; set; }
 
+    }
+
+    public class EditUsersViewModel
+    {
+        [Display(Name = "Role")]
+        [Required(ErrorMessage = "User role must be filled!")]
+        [RegularExpression("^[A][d][m][i][n]$|^[U][s][e][r]$")]
+        public string UserRole { get; set; }
+
+        public string UserId { get; set; }
+    }
+
+    public class IndexUsersViewModel
+    {
+        public List<Tuple<ApplicationUser, string>> UserTuples { get; set; }
+
+
+    }
+    public class DetailsUserViewModel
+    {
+        public string UserRole;
+        public string PhoneNumber;
+        public string Email;
+        public string FName;
+        public string LName;
+        public string Activated;
+        public string Id;
     }
 }

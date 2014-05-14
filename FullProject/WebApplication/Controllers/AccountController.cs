@@ -492,11 +492,45 @@ namespace WebApplication.Controllers
             }
             base.Dispose(disposing);
         }
+        
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin", NotifyUrl = "../Home/Index")]
         public async Task<ActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+
+                    var model = new IndexUsersViewModel();
+                    model.UserTuples = new List<Tuple<ApplicationUser, string>>();
+                    
+                    var banned = new List<Tuple<ApplicationUser, string>>();
+                    var active = new List<Tuple<ApplicationUser, string>>();
+                    var inactive = new List<Tuple<ApplicationUser, string>>();
+
+                    string status = "";
+         		   List<ApplicationUser> tmpUsers = await db.Users.ToListAsync();
+                    foreach (ApplicationUser u in tmpUsers)
+                    {
+                        status = ActivationToString(u.Activated);
+                        var tmpTuple = new Tuple<ApplicationUser, string>(u, status);
+                        switch (u.Activated)
+                        {
+                            case 0:
+                                inactive.Add(new Tuple<ApplicationUser, string>(u, status));
+                                break;
+                            case 1:
+                                active.Add(new Tuple<ApplicationUser, string>(u, status));
+                                break;
+                            case 2:
+                                banned.Add(new Tuple<ApplicationUser, string>(u, status));
+                                break;
+                        }
+
+                    }
+                    model.UserTuples.AddRange(active);
+                    model.UserTuples.AddRange(banned);
+                    model.UserTuples.AddRange(inactive);
+                    return View(model);
+
+           
         }
 
         // GET: /PrintMaterial/Details/5
@@ -508,17 +542,31 @@ namespace WebApplication.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var user = await UserManager.FindByIdAsync(id);
+            var model = new DetailsUserViewModel();
+            var activeStatus = "";
+            model.Email = user.UserName;
+            model.PhoneNumber = user.Phone;
+            model.UserRole = db.Users.Find(id).Roles.Last().Role.Name;
+            model.FName = user.FName;
+            model.LName = user.LName;
+            model.Id = user.Id;
+            model.Activated = ActivationToString(user.Activated);
+
             if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(model);
         }
 
         // GET: /PrintMaterial/Edit/5
         [NewAuthorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string id)
         {
+
+            EditUsersViewModel model = new EditUsersViewModel();
+            model.UserRole = db.Users.Find(id).Roles.Last().Role.Name;
+            model.UserId = id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -528,7 +576,7 @@ namespace WebApplication.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(model);
         }
 
         // POST: /PrintMaterial/Edit/5
@@ -537,15 +585,24 @@ namespace WebApplication.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [NewAuthorize(Roles = "Admin")]
-        public async Task<ActionResult> Edit([Bind(Include = "Roles")] ApplicationUser user)
+
+        public async Task<ActionResult> Edit(EditUsersViewModel model)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                List<string> rolesList = (List<string>)await UserManager.GetRolesAsync(model.UserId);
+
+
+                await UserManager.RemoveFromRoleAsync(model.UserId, rolesList.Last());
+                var result = await UserManager.AddToRoleAsync(model.UserId, model.UserRole);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");   
+                }
+                else AddErrors(result);
             }
-            return View(user);
+           
+            return View(model);
         }
 
         // GET: /PrintMaterial/Delete/5
@@ -572,18 +629,18 @@ namespace WebApplication.Controllers
         {
             var user = await UserManager.FindByIdAsync(id);
 
-            var entry = db.Entry(user);
             user.Activated = 2;
+            var result = await UserManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                AddErrors(result);
+                return RedirectToAction("Delete");
+            }
 
-            await db.SaveChangesAsync();
-            //if (entry.State == EntityState.Detached)
-            //db.Users.AsNoTracking();
-            //db.Users.Attach(user);
-
-            //db.Users.Add(user);
-            //db.Entry(user).State = EntityState.Deleted;
-
-            return RedirectToAction("Index");
         }
 
         #region Helpers
@@ -645,7 +702,23 @@ namespace WebApplication.Controllers
             ActivationWrong,
             ActivationResendSuccess
         }
-
+        public string ActivationToString(int activated)
+        {
+            string activeStatus = "-";
+            switch (activated)
+            {
+                case 0:
+                    activeStatus = "Inactive";
+                    break;
+                case 1:
+                    activeStatus = "Activated";
+                    break;
+                case 2:
+                    activeStatus = "Banned";
+                    break;
+            }
+            return activeStatus;
+        }
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))

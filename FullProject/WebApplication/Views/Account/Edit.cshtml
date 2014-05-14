@@ -1,4 +1,4 @@
-﻿@model WebApplication.Models.ApplicationUser
+﻿@model WebApplication.Models.EditUsersViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -12,18 +12,20 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>ApplicationUser</h4>
+        <h4>Edit User</h4>
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.UserName)
+        @Html.HiddenFor(model => model.UserId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Roles, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.UserRole, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Roles)
-                @Html.ValidationMessageFor(model => model.Roles)
+                @Html.EditorFor(model => model.UserRole)
+                @Html.ValidationMessageFor(model => model.UserRole)
             </div>
         </div>
+        
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
