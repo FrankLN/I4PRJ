@@ -40,6 +40,14 @@
                 @Html.ValidationMessageFor(model => model.Hollow)
             </div>
         </div>
+        
+        <div class="form-group">
+            <label class="control-label col-md-2">Choose material:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Material.MaterialType)
+                @Html.ValidationMessageFor(model => model.Material.MaterialType)
+            </div>
+        </div>
 
         <div class="form-group">
             <label class="control-label col-md-2">Comments:</label>

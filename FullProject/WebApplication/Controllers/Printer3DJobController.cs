@@ -113,7 +113,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         //public ActionResult Create(HttpPostedFileBase file)
-        public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status, MaterialType")] Printer3DJob printer3djob, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status, Material")] Printer3DJob printer3djob, HttpPostedFileBase file)
         {
             // Setting filename to name of chosen file and saving the name to database
             string fName = (string)file.FileName;
