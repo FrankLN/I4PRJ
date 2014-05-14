@@ -51,6 +51,9 @@ namespace WebApplication.Models
 
         [Display(Name = "Print status")]
         public int Status { get; set; }
+
+        [Display(Name = "Print material")]
+        public PrintMaterial Material { get; set; }
     }
 
 }

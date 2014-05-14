@@ -26,6 +26,7 @@ namespace WebApplication.Models
         public int Hollow { get; set; }
         public string Comment { get; set; }
         public int Status { get; set; }
+        public PrintMaterial Material { get; set; }
     }
     public class PrintMaterial
     {
