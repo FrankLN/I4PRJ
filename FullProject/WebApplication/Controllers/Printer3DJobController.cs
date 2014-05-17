@@ -74,19 +74,34 @@ namespace WebApplication.Controllers
         // GET: /Printer3DJob/Details/5
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
-        public ActionResult Details(long? id)
+        public async Task<ActionResult> Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            var model = new DetailsPrinterViewModel();
             Printer3DJob printer3djob = db.Printer3DJob.Find(id);
+            PrintMaterial printmaterial = db.PrintMaterials.Find(4); //4 er kun i test øjemed (platic)
+
+            model.Comment = printer3djob.Comment;
+            model.CreationTime = printer3djob.CreationTime;
+            model.Deadline = printer3djob.Deadline;
+            model.Hollow = printer3djob.Hollow;
+            model.Material = printmaterial;
+            model.MyFile = printer3djob.MyFile;
+            model.Owner = printer3djob.Owner;
+            model.Printer3DJobId = printer3djob.Printer3DJobId;
+            model.Status = printer3djob.Status;
+
             if (printer3djob == null)
             {
                 return HttpNotFound();
             }
-            return View(printer3djob);
+            return View(model);
         }
+
         [NewAuthorize(Roles = "Admin")]
         public FileResult DownloadFile (long? id)
         {
@@ -96,6 +111,8 @@ namespace WebApplication.Controllers
             string path = Environment.CurrentDirectory;
             return File("~/App_Data/" + fName, System.Net.Mime.MediaTypeNames.Application.Octet,fName);
         }
+
+
 
         // GET: /Printer3DJob/Create
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]

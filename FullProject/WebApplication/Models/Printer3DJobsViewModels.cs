@@ -20,7 +20,7 @@ namespace WebApplication.Models
             JobsDone = new List<Printer3DJob>();
         }
     }
-    public class CreateViewModel
+    public class CreateJobViewModel
     {
 
         [Display(Name = "Printer 3D Job Id")]
@@ -56,4 +56,24 @@ namespace WebApplication.Models
         public PrintMaterial Material { get; set; }
     }
 
+    public class DetailsPrinterViewModel
+    {
+        [Display(Name = "Printer 3D Job Id")] public long Printer3DJobId;
+
+        [Display(Name = "Owner")] public string Owner;
+
+        [Display(Name = "Deadline")] public string Deadline;
+
+        [Display(Name = "MyFile")] public string MyFile;
+
+        [Display(Name = "Time of creation")] public string CreationTime;
+
+        [Display(Name = "Hollow")] public int Hollow;
+
+        [Display(Name = "Comment")] public string Comment;
+
+        [Display(Name = "Print status")] public int Status;
+
+        [Display(Name = "Print material")] public PrintMaterial Material;
+    }
 }

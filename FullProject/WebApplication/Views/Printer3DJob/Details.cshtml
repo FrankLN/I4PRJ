@@ -1,5 +1,5 @@
-﻿@using System.Data.Entity.ModelConfiguration.Conventions
-@model WebApplication.Models.Printer3DJob
+﻿@*@using System.Data.Entity.ModelConfiguration.Conventions*@
+@model WebApplication.Models.DetailsPrinterViewModel
 
 
 @{
@@ -57,7 +57,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Material)
+            @Html.DisplayFor(model => model.Material.MaterialType)
         </dd>
 
         <dt>
