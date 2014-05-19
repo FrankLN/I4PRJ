@@ -195,7 +195,6 @@
     <Compile Include="Controllers\MainMenuController.cs" />
     <Compile Include="Controllers\Printer3DJobController.cs" />
     <Compile Include="Controllers\PrintMaterialController.cs" />
-    <Compile Include="Controllers\UploadJobController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,7 +251,6 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\UploadJob\UploadJob.cshtml" />
     <Content Include="Views\Account\Activation.cshtml" />
     <Content Include="Views\Printer3DJob\Create.cshtml" />
     <Content Include="Views\Printer3DJob\Delete.cshtml" />
