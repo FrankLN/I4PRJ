@@ -6,4 +6,6 @@
     [PhoneNumber] NVARCHAR(8) NULL DEFAULT NULL, 
     [AdminRights] INT NULL DEFAULT NULL, 
     [Password] NVARCHAR(50) NOT NULL, 
+    [Activated] INT NOT NULL, 
+    [ActivationCode] NCHAR(8) NOT NULL, 
 )
