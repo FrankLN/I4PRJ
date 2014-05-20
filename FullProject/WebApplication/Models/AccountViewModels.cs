@@ -115,7 +115,7 @@ namespace WebApplication.Models
     {
         [Display(Name = "Role")]
         [Required(ErrorMessage = "User role must be filled!")]
-        [RegularExpression("^[A][d][m][i][n]$|^[U][s][e][r]$")]
+        [RegularExpression("^[A][d][m][i][n]$|^[U][s][e][r]$", ErrorMessage = "You can choose either 'Admin' or 'User'")]
         public string UserRole { get; set; }
 
         public string UserId { get; set; }
