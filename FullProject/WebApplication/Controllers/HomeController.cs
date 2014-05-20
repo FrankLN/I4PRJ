@@ -10,14 +10,14 @@ namespace WebApplication.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Description";
 
-            return View();
+            return View("About");
         }
 
         public ActionResult Contact()
@@ -25,7 +25,7 @@ namespace WebApplication.Controllers
             ViewBag.Message = "Visit our help pages for support and answers to commonly asked questions. Use the email link below to contact us" +
                               "for related enquiries.";
 
-            return View();
+            return View("Contact");
         }
     }
 }
