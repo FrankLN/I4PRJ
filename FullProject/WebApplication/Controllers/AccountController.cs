@@ -647,6 +647,45 @@ namespace WebApplication.Controllers
             }
 
         }
+        // GET: /Account/Reinsert/5
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
+        [NewAuthorize(Roles = "Admin")]
+        public async Task<ActionResult> Reinsert(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await UserManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: /Account/Reinsert/5
+        [HttpPost, ActionName("Reinsert")]
+        [ValidateAntiForgeryToken]
+        [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
+        [NewAuthorize(Roles = "Admin")]
+        public async Task<ActionResult> ReinsertConfirmed(string id)
+        {
+            var user = await UserManager.FindByIdAsync(id);
+
+            user.Activated = 1;
+            var result = await UserManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                AddErrors(result);
+                return RedirectToAction("Reinsert");
+            }
+
+        }
 
         #region Helpers
         // Used for XSRF protection when adding external logins
