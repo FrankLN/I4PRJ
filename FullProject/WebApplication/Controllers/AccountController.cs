@@ -145,7 +145,7 @@ namespace WebApplication.Controllers
                     Activated = 0,
                     AdminRights = 0,
                     ActivationCode = GenerateActivationCode()
-
+                    
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

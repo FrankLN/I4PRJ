@@ -192,7 +192,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MainMenuController.cs" />
     <Compile Include="Controllers\Printer3DJobController.cs" />
     <Compile Include="Controllers\PrintMaterialController.cs" />
     <Compile Include="Global.asax.cs">
