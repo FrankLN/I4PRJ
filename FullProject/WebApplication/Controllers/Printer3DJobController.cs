@@ -133,8 +133,11 @@ namespace WebApplication.Controllers
         public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status, Material")] Printer3DJob printer3djob, HttpPostedFileBase file)
         {
             // Setting filename to name of chosen file and saving the name to database
-            string fName = (string)file.FileName;
-            printer3djob.MyFile = fName;
+            if (file != null)
+            {
+                string fName = (string)file.FileName;
+                printer3djob.MyFile = fName;
+            }
 
             // Setting CreationTime to current date and time
             string CreateTime = DateTime.Now.ToString(CultureInfo.InvariantCulture);
@@ -148,6 +151,7 @@ namespace WebApplication.Controllers
             //ApplicationUser fUser = new ApplicationUser();
             //string fN = fUser.FName;
             printer3djob.Owner = (string) User.Identity.GetUserName();
+
 
 
             db.Printer3DJob.Add(printer3djob);

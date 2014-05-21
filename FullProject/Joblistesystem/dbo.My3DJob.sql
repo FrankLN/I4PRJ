@@ -8,6 +8,7 @@
     [CreationTime] NVARCHAR(50) NOT NULL, 
     [Hollow] INT NOT NULL, 
     [Comment] NVARCHAR(MAX) NULL, 
+    [Status] INT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_3DJob_Material] FOREIGN KEY ([MaterialFK]) REFERENCES [Material]([MaterialId]), 
     CONSTRAINT [FK_3DJob_User] FOREIGN KEY ([Owner]) REFERENCES [Customer]([Email])
 )
