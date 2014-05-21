@@ -118,7 +118,7 @@ namespace WebApplication.Controllers
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         public ActionResult Create()
         {
-            Printer3DJob model = new Printer3DJob();
+            CreateJobViewModel model = new CreateJobViewModel();
 
             return View();
         }
@@ -130,48 +130,53 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         //public ActionResult Create(HttpPostedFileBase file)
-        public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status, Material")] Printer3DJob printer3djob, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Printer3DJobId,Owner,Deadline,MyFile,CreationTime,Hollow,Comment,Status, Material")] CreateJobViewModel printer3djob, HttpPostedFileBase file)
         {
-            // Setting filename to name of chosen file and saving the name to database
-            if (file != null)
-            {
-                string fName = (string)file.FileName;
-                printer3djob.MyFile = fName;
-            }
-
+            Printer3DJob p3Djob = new Printer3DJob();
+            
             // Setting CreationTime to current date and time
             string CreateTime = DateTime.Now.ToString(CultureInfo.InvariantCulture);
-            printer3djob.CreationTime = CreateTime;
+            p3Djob.CreationTime = CreateTime;
 
             // Setting the initial status to 0 (= job in queque)
             int initialStatus = 0;
-            printer3djob.Status = initialStatus;
+            p3Djob.Status = initialStatus;
 
             // Owner is set to person logged in
             //ApplicationUser fUser = new ApplicationUser();
             //string fN = fUser.FName;
-            printer3djob.Owner = (string) User.Identity.GetUserName();
+            p3Djob.Owner = (string) User.Identity.GetUserName();
 
+            p3Djob.Comment = printer3djob.Comment;
+            p3Djob.Deadline = printer3djob.Deadline;
+            p3Djob.Hollow = printer3djob.Hollow;
+            p3Djob.Material = printer3djob.Material;
+            p3Djob.Printer3DJobId = printer3djob.Printer3DJobId;
 
-
-            db.Printer3DJob.Add(printer3djob);
-            db.SaveChanges();
-            //return RedirectToAction("Index");
-            //return View(printer3djob);
-
-
-            
             try
             {
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+
+                    // Setting filename to name of chosen file and saving the name to database
+                    string fName = (string)file.FileName;
+                    p3Djob.MyFile = fName;
+
                     file.SaveAs(path);   
                 }
                 ViewBag.Message = "Upload successful";
                 //return View(printer3djob);
+
+                db.Printer3DJob.Add(p3Djob);
+                db.SaveChanges();
+                //return RedirectToAction("Index");
+                //return View(printer3djob);
+
                 return RedirectToAction("Index");
+
+               
             }
             catch
             {
