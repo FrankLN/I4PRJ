@@ -41,14 +41,21 @@ namespace WebApplicationTest
         }
 
         [Test]
-        public void HomeController_Contact_ViewbagContainsALongText()
+        public void HomeController_Contact_ViewbagMessageP1ContainsALongText()
         {
-            string actual =
-                "Visit our help pages for support and answers to commonly asked questions. Use the email link below to contact us" +
-                "for related enquiries.";
+            string actual = "Visit our help pages for support and answers to commonly asked questions.";
             var result = new HomeController();
             var r = result.Contact() as ViewResult;
-            Assert.AreEqual(actual, r.ViewData["Message"]);
+            Assert.AreEqual(actual, r.ViewData["MessageP1"]);
+        }
+
+        [Test]
+        public void HomeController_Contact_ViewbagMessageP2ContainsALongText()
+        {
+            string actual = "Use the email link below to contact us for related enquiries.";
+            var result = new HomeController();
+            var r = result.Contact() as ViewResult;
+            Assert.AreEqual(actual, r.ViewData["MessageP2"]);
         }
        
     }
