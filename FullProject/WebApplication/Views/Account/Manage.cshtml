@@ -6,58 +6,70 @@
 @{
     ViewBag.Title = "Manage Account";
 }
-<h2>@ViewBag.Title.</h2>
-<p>You're logged in as <strong>@User.Identity.GetUserName()</strong>.</p>
 
-@using (Html.BeginForm("Manage", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
-{
 
-    <h4>You can edit your profile here</h4>
-    <hr />
-    @Html.ValidationSummary()
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control"})
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.SurName, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.SurName, new {@class = "form-control"})
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.PhoneNumber, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.PhoneNumber, new {@class = "form-control"})
-        </div>
-    </div>
-   
-    <hr />
-    
-    <p class="text-success">@ViewBag.StatusMessage</p>
-    <p class="text-danger">@ViewBag.Failed</p>
+<div class="jumbotron" style="background-color: #f7f7f7; border: 1px silver; border-radius: 5px; padding-top: 2%; padding-bottom: 2%; margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 5%; padding-left: 3%; padding-right: 3%;">
     <div class="row">
         <div class="col-md-12">
-            @if (ViewBag.HasLocalPassword)
+
+            <h2>@ViewBag.Title.</h2>
+            <p>You're logged in as <strong>@User.Identity.GetUserName()</strong>.</p>
+
+            @using (Html.BeginForm("Manage", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                @Html.Partial("_ChangePasswordPartial")
+
+                <h4>You can edit your profile here</h4>
+                <hr />
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstName, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SurName, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.SurName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <hr />
+
+                <p class="text-success">@ViewBag.StatusMessage</p>
+                <p class="text-danger">@ViewBag.Failed</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        @if (ViewBag.HasLocalPassword)
+                        {
+                            @Html.Partial("_ChangePasswordPartial")
+                        }
+                        else
+                        {
+                            @Html.Partial("_SetPasswordPartial")
+                        }
+                    </div>
+                </div>
+
+
+                @*<section id="externalLogins">
+                        @Html.Action("RemoveAccountList")
+                        @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+                    </section>*@
+                @*</div>*@
+
+
             }
-            else
-            {
-                @Html.Partial("_SetPasswordPartial")
-            }
+
         </div>
     </div>
-
-            @*<section id="externalLogins">
-                    @Html.Action("RemoveAccountList")
-                    @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
-                </section>*@
-        @*</div>*@
-
-}
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

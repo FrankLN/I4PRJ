@@ -5,72 +5,80 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+
+<div class="jumbotron" style="background-color: #f7f7f7; border: 1px silver; border-radius: 5px; padding-top: 2%; padding-bottom: 2%; margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 5%; padding-left: 3%; padding-right: 3%;">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Create</h2>
 
 
-@using (Html.BeginForm(actionName: "Create", controllerName: "Printer3DJob", method: FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" })) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Printer3DJob</h4>
-        <hr />
-        @Html.ValidationSummary(true)
+            @using (Html.BeginForm(actionName: "Create", controllerName: "Printer3DJob", method: FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Printer3DJob</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
 
 
-        <div class="form-group">
-            <label class="control-label col-md-2">Choose a deadline for your order (or leave this field blank):</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Deadline)
-                @Html.ValidationMessageFor(model => model.Deadline)
-               
-            </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Choose a deadline for your order (or leave this field blank):</label>
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Deadline)
+                            @Html.ValidationMessageFor(model => model.Deadline)
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Choose a design File:</label>
+                        <div class="col-md-9">
+                            @Html.TextBox("file", "", new { type = "file" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Choose the desired density for your print (1% to 100%):</label>
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Hollow)
+                            @Html.ValidationMessageFor(model => model.Hollow)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Choose material:</label>
+                        <div class="col-md-9">
+                            @* @Html.DropDownListFor(model => model.Material, new SelectList(ViewBag.DropDData))*@
+                            @Html.EditorFor(model => model.Material.MaterialType)
+                            @Html.ValidationMessageFor(model => model.Material.MaterialType)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Comments:</label>
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(model => model.Comment)
+                            @Html.ValidationMessageFor(model => model.Comment)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Choose a design File:</label>
-            <div class="col-md-10">   
-                @Html.TextBox( "file", "", new { type = "file"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Choose the desired density for your print (1% to 100%):</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Hollow)
-                @Html.ValidationMessageFor(model => model.Hollow)
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label class="control-label col-md-2">Choose material:</label>
-            <div class="col-md-10">
-                @* @Html.DropDownListFor(model => model.Material, new SelectList(ViewBag.DropDData))*@
-                @Html.EditorFor(model => model.Material.MaterialType)
-                @Html.ValidationMessageFor(model => model.Material.MaterialType)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Comments:</label>
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Comment)
-                @Html.ValidationMessageFor(model => model.Comment)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
