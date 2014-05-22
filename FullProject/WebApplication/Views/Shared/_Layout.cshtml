@@ -1,55 +1,108 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.UI.WebControls
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 3D Printer Joblistesystem</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @*@Scripts.Render("~/bundles/jqueryui")
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Cartesius 3D Printer - @ViewBag.Title</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @*@Scripts.Render("~/bundles/jqueryui")
     @Styles.Render("~/Content/themes/base/css", "~/Content/css")*@
-</head>
-    <body>
-        <div class="Wrapper">
-            <ul class="Logo">
-                <a href="/">
-                    <img src="/Content/Images/Logo.png" />
-                    
-                </a>
-            </ul> 
-                  
-            <div class="navbar navbar-inverse navbar-fixed-top">
-               
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>                        
-                        </ul>
-                        @Html.Partial("_LoginPartial")
-                    </div>
-                </div>
+    </head>
+<body>
+    
+    @* Navigation bar top *@
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container" style="width:auto;margin-left:0px;margin-right:0px;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
-            <div class="container body-content">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @* Set the navbar menu button for the page you're on, as "active"*@
+                    @{
+                        if (ViewBag.Title == "Home") {
+                            <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                        }
+                        else{
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        }
+                        
+                        if (ViewBag.Title == "About the Cartesius 3D Printer") {
+                            <li class="active">@Html.ActionLink("About", "About", "Home")</li>
+                        }
+                        else{
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                        }
+                        
+                        if (ViewBag.Title == "Contact") {
+                            <li class="active">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        }
+                        else{
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        }
+                    }                                                                                              
+                    
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    
+     
+    @* Banner with logo *@
+    <div class="row" style="margin-left:0; margin-right:0;">
+        <div class="col-md-12" style="padding: 0 0 0 0;">
+            <div class="jumbotron" style="padding-top: 3px; padding-bottom: 3px; margin-top: 50px; margin-bottom: 0px; background-color: #F8F8FF; ">
+                <a href="/">
+                    <img style="margin-left: calc(50% - 152px);" src="/Content/Images/C3DP.png" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    @* Header bottom thin blue line *@
+   
+    <div class="row" style="margin-left:0; margin-right:0;height:5px; background-color: #3b5998;">
+    </div>
+    
+    
+    @* Wrapper with body from loaded view *@
+    <div class="row" style="margin-left:0; margin-right:0;">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            <div class="container, round" style="min-height:500px; border: 1px solid silver; border-radius: 2px; background-color: #F8F8FF; margin-top: 2.5%; margin-bottom: 2.5%; padding-top: 30px; padding-left: 20px; padding-right: 20px;">
                 @RenderBody()
-                <hr />
-                <footer>
-                    <p>&copy; @DateTime.Now.Year - Cartesius 3D Printer Jobliste System</p>
-                </footer>
             </div>
 
             @Scripts.Render("~/bundles/jquery")
             @Scripts.Render("~/bundles/bootstrap")
             @RenderSection("scripts", required: false)
         </div>
-    </body>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+
+    <div class="row" style="margin-left:0; margin-right:0;">
+        <div class="col-md-12">
+            <div class="row" style="height:5px;background-color: #3b5998;">
+
+            </div>
+            <div class="row" style="background-color: #F8F8FF;">
+                <p style="text-align:center; margin-bottom: 1%; margin-top:1%;">&copy; @DateTime.Now.Year - Cartesius 3D Printer Jobliste System</p>
+            </div>
+        </div>
+    </div>
+       
+</body>
 </html>

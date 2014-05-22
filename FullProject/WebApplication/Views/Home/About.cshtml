@@ -1,17 +1,35 @@
 ﻿@{
     ViewBag.Title = "About the Cartesius 3D Printer";
 }
-<h2>@ViewBag.Title</h2>
-<br />
-<p>@ViewBag.Message</p>
 
-<img src="/Content/Images/printer3d.jpg" width="560" height="350" />
+<div class="jumbotron, round" style="background-color: #f7f7f7; border: 1px silver; border-radius: 5px; padding-top: 2%; padding-bottom: 2%; margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 5%; padding-left: 3%; padding-right: 3%;">
+    <div class="row">
+        <div class="col-md-5">
+            <h2 style="text-align:center;">@ViewBag.Title</h2>
+            <hr />
+            <p class="lead">@ViewBag.Message</p>
+        </div>
+        <div class="col-md-7">
+            <img src="/Content/Images/printer3d.jpg" class="img-responsive" style="border: 2px solid silver; border-radius: 2px; margin: 5% 5% 5% 5%; width: 90%;" />
+        </div>
+    </div>
+    
+    
+</div>
+
+<br />
+
 
 <br />
 <br />
-<p>Watch a video about the printer project here:</p>
+<p style="margin-left:5%;">Watch a video about the printer project here:</p>
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/fLjkrVSlMhI" frameborder="0" allowfullscreen></iframe>
+
+<div class="responsive-container">
+    <iframe style="margin-left:5%;" width="560" height="315" src="//www.youtube.com/embed/fLjkrVSlMhI" frameborder="0" allowfullscreen>
+    
+    </iframe>
+</div>
 
 <br />
 <br />
@@ -22,3 +40,4 @@
        name="live stream"
        autoplay="yes" loop="yes" width="400" height="300"
        target="http://stream.cartesius.dk" />
+
