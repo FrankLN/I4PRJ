@@ -165,7 +165,7 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
-        //
+        //Parsa
         // GET: /Account/Activation
         public ActionResult Activation(MessageId? message)
         {
@@ -256,7 +256,7 @@ namespace WebApplication.Controllers
             return RedirectToAction("Manage", new { Message = message });
         }
 
-        //
+        //Parsa
         // GET: /Account/Manage
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "Activation")]
         public ActionResult Manage(MessageId? message)
@@ -273,14 +273,14 @@ namespace WebApplication.Controllers
                 ViewBag.HasLocalPassword = HasPassword();
                 ViewBag.ReturnUrl = Url.Action("Manage");
 
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var currentUser = manager.FindById(User.Identity.GetUserId());
-            ManageUserViewModel model = new ManageUserViewModel();
-            model.FirstName = currentUser.FName;
-            model.SurName = currentUser.LName;
-            model.PhoneNumber = currentUser.Phone;
+             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+             var currentUser = manager.FindById(User.Identity.GetUserId());
+             ManageUserViewModel model = new ManageUserViewModel();
+                model.FirstName = currentUser.FName;
+                model.SurName = currentUser.LName;
+                model.PhoneNumber = currentUser.Phone;
 
-            return View(model);
+              return View(model);
         }
 
         //

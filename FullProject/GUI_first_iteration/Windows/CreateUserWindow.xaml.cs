@@ -81,8 +81,6 @@ namespace GUI_first_iteration
                 TbxPasswordRepeat.ToolTip = null;
                 TbxPassword.BorderBrush = new SolidColorBrush(color);
                 TbxPasswordRepeat.BorderBrush = new SolidColorBrush(color);
-                //ActivateUserWindow activateUserWin = new ActivateUserWindow(this);
-                //activateUserWin.Show();
             }
             else
             {
@@ -372,7 +370,7 @@ namespace GUI_first_iteration
 
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
-            if (!(ValidPhoneRegex.IsMatch((string)value) || (string)value == ""))
+            if (!ValidPhoneRegex.IsMatch((string)value))
             {
                 return new ValidationResult(false, "Indtast din tlf nummer");
 

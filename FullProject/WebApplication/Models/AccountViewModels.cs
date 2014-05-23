@@ -13,7 +13,7 @@ namespace WebApplication.Models
         [Display(Name = "User name")]
         public string UserName { get; set; }
     }
-
+    //Parsa
     public class ManageUserViewModel
     {
         [Required(ErrorMessage = "The field First name must be filled in.")]
@@ -28,7 +28,6 @@ namespace WebApplication.Models
         public string SurName { get; set; }
 
         [Required(ErrorMessage = "The field Phone number must be filled in.")]
-        //[StringLength(8, ErrorMessage = "Phone number must be exactly 8 digits long.", MinimumLength = 8)]
         [RegularExpression("\\d{8}", ErrorMessage = "Phone number must be digits only and must be 8 digits long.")]
         [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
@@ -102,6 +101,7 @@ namespace WebApplication.Models
         [Display(Name = "Phone number")]
         public string Phone { get; set; }
     }
+
 
     public class ActivationViewModel
     {

@@ -101,14 +101,13 @@ namespace WebApplication.Controllers
             }
             return View(model);
         }
-
+        //Parsa
         [NewAuthorize(Roles = "Admin")]
         public FileResult DownloadFile (long? id)
         {
             Printer3DJob fileName = db.Printer3DJob.Find(id);
 
             string fName = fileName.MyFile;
-            string path = Environment.CurrentDirectory;
             return File("~/App_Data/" + fName, System.Net.Mime.MediaTypeNames.Application.Octet,fName);
         }
 

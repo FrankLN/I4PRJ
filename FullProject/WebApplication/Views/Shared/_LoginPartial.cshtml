@@ -3,6 +3,7 @@
 @using WebApplication.Models
 @if (Request.IsAuthenticated)
 {
+    //Parsa
     var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
     var currentUser = manager.FindById(User.Identity.GetUserId());
 
