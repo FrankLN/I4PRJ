@@ -76,7 +76,7 @@ namespace GUI_first_iteration
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
 
-            if (tbxPassword.Password.Count()>7)
+            if (tbxPassword.Password.Count()>5)
 
             {
                 // Validate all controls
@@ -138,7 +138,7 @@ namespace GUI_first_iteration
         {
            Color color;
             color = Color.FromArgb(255, 227, 233, 239);
-            if (tbxPassword.Password.Count()<8)
+            if (tbxPassword.Password.Count()<6)
             {
                 tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
                 tbxPassword.BorderThickness = new Thickness(1.25);

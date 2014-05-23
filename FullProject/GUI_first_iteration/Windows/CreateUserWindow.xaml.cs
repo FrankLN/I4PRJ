@@ -157,7 +157,7 @@ namespace GUI_first_iteration
         {
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
-            if (TbxPassword.Password.Count() >7)
+            if (TbxPassword.Password.Count() >5)
             {
                 createUserObj.User.Password = TbxPassword.Password;
                 TbxPassword.ToolTip = null;
@@ -189,7 +189,7 @@ namespace GUI_first_iteration
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
 
-            if (TbxPasswordRepeat.Password.Count() >7 && TbxPasswordRepeat.Password == TbxPassword.Password)
+            if (TbxPasswordRepeat.Password.Count() >5 && TbxPasswordRepeat.Password == TbxPassword.Password)
             {
                 TbxPasswordRepeat.ToolTip = null;
                 TbxPasswordRepeat.BorderBrush = new SolidColorBrush(color);

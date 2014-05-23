@@ -109,12 +109,12 @@ namespace GUI_first_iteration
 
             jobObj.Material = selectedMaterial;
             //jobObj.Deadline = dpDate.SelectedDate.ToString();
-            jobObj.Hollow = selectedHollow.hollow;
+            jobObj.Hollow = selectedHollow != null ? selectedHollow.hollow : 0;
             jobObj.Deadline = selectedDate.ToShortDateString(); // Maybe not correct
             jobObj.Comment = comments;
             jobObj.File = MyFile;
             jobObj.Owner = loggedInUser;
-            jobObj.FileSize = new FileInfo(MyFile).Length;
+            jobObj.FileSize = MyFile != null ? new FileInfo(MyFile).Length : 0;
             
             createJobObj.Job = jobObj;
 
