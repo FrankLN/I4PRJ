@@ -43,7 +43,10 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            @Html.ActionLink("Status change", "Edit", new { id = item.Printer3DJobId })
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Status change", "Edit", new { id = item.Printer3DJobId })
+                            }
                             <br />
                             @Html.ActionLink("Details & Download", "Details", new { id = item.Printer3DJobId })
                             <br />
@@ -87,7 +90,10 @@
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        @Html.ActionLink("Status change", "Edit", new { id = item.Printer3DJobId })
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Status change", "Edit", new { id = item.Printer3DJobId })
+        }
         <br />
         @Html.ActionLink("Details & Download", "Details", new { id = item.Printer3DJobId })
         <br />
@@ -132,7 +138,10 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            @Html.ActionLink("Status change", "Edit", new { id = item.Printer3DJobId })
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Status change", "Edit", new { id = item.Printer3DJobId })
+                            }
                             <br/>
                             @Html.ActionLink("Details & Download", "Details", new { id = item.Printer3DJobId })
                             <br/>
