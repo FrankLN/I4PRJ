@@ -108,7 +108,6 @@ namespace GUI_first_iteration
         {
 
             jobObj.Material = selectedMaterial;
-            //jobObj.Deadline = dpDate.SelectedDate.ToString();
             jobObj.Hollow = selectedHollow != null ? selectedHollow.hollow : 0;
             jobObj.Deadline = selectedDate.ToShortDateString(); // Maybe not correct
             jobObj.Comment = selectedComment;
