@@ -20,7 +20,6 @@ using System.Windows.Shapes;
 using ClientApplication;
 using ConsoleApplication1;
 using DatabaseInterface;
-using GUI_first_iteration.Other_Classes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
@@ -68,8 +67,8 @@ namespace GUI_first_iteration
             // Material combobox
             selectedMaterial = new MaterialClass();
             // Hollow combobox - add elements to the box
-            hollowList.Add(new Hollow(){hollow = 0,name = "Fyldt"});
-            hollowList.Add(new Hollow(){hollow = 1,name = "Hul"});
+            hollowList.Add(new Hollow(){hollow = 100,name = "Fyldt"});
+            hollowList.Add(new Hollow(){hollow = 0,name = "Hul"});
             selectedHollow = new Hollow();
             createJobObj = new CreateJobMsg();
             jobObj = new JobClass();

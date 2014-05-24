@@ -258,6 +258,11 @@ namespace WebApplication.Controllers
 
         //Parsa
         // GET: /Account/Manage
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "Activation")]
         public ActionResult Manage(MessageId? message)
         {

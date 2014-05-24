@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GUI_first_iteration.Other_Classes
+namespace GUI_first_iteration
 {
     public class Hollow
     {

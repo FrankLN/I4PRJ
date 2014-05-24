@@ -40,7 +40,12 @@ namespace GUI_first_iteration
         // -----------------------------------
         // CONSTRUCTOR - JobHistoryWindow ----
         // -----------------------------------
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mWin"></param>
+        /// <param name="ccom"></param>
+        /// <param name="user"></param>
         public JobHistoryWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
         {
             mainMenuWin = mWin;

@@ -95,14 +95,12 @@
     <Compile Include="Windows\EditUserWindow.xaml.cs">
       <DependentUpon>EditUserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Other Classes\ILoggedInUser.cs" />
     <Compile Include="Windows\JobDetailsWindow.xaml.cs">
       <DependentUpon>JobDetailsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\JobHistoryWindow.xaml.cs">
       <DependentUpon>JobHistoryWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Other Classes\LoggedInUser.cs" />
     <Compile Include="Windows\MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
     </Compile>
