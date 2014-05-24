@@ -135,6 +135,11 @@ namespace GUI_first_iteration
             {
                 MessageBox.Show("Your job has been created!");
             }
+            else
+            {
+                MessageBox.Show("Something went wrong when trying to create the job. Please try again.");
+                
+            }
         }
 
 
@@ -189,7 +194,6 @@ namespace GUI_first_iteration
                 return;
             }
 
-                        
             MyFile = ofd.FileName;
             tbxFilePath.Text = MyFile;
 
