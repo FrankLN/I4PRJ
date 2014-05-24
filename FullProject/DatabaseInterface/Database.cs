@@ -17,7 +17,7 @@ namespace DatabaseInterface
     {
         private SqlConnection conn;
         /// <summary>
-        /// The <c>Database</c>'s constructer that makes an SqlConnection string "conn".
+        /// The <c>Database</c>'s constructor that makes an SqlConnection string "conn".
         /// </summary>
         public Database()
         {
@@ -25,11 +25,10 @@ namespace DatabaseInterface
         }
 
         /// <summary>
-        /// 
+        /// The method <c>AddUser</c> Adds an object in the Customer table on the Database
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="user"> The Userclass object</param>
         public void AddUser(UserClass user)
-       // AddUser adds an object in the User tabel on the database.
         {          
            try
            {
@@ -75,10 +74,11 @@ namespace DatabaseInterface
 
         
         /// <summary>
-        /// 
+        /// The method <c>ValidateLogInInfo</c> Compares email and password with the database. 
+        /// If a customer is found with matching email and password, the customers ID is returned. Otherwise a -1 is returned.
         /// </summary>
-        /// <param name="email"></param>
-        /// <param name="password"></param>
+        /// <param name="email"> The email</param>
+        /// <param name="password"> The password</param>
         /// <returns></returns>
         public int ValidateLogInInfo(string email, string password)
         {
@@ -86,10 +86,7 @@ namespace DatabaseInterface
             {
                 // Open the connection
                 conn.Open();
-
-                 // Sammenligner email og password med databasen. Hvis der findes en bruger 
-                 // med matchende email og password returneres dennes bruger ID. Ellers returneres -1.
-
+                
                 // String with SQL statement
                 string validate = @"SELECT Password FROM Customer WHERE Customer.Email = '" + email + "'";
 
@@ -122,12 +119,11 @@ namespace DatabaseInterface
  
         
         /// <summary>
-        /// 
+        /// The method <c>GetUserInfo</c> Returns an object of UserClass with ID matching from the database.
         /// </summary>
-        /// <param name="userId"></param>
+        /// <param name="userId">the ID</param>
         /// <returns></returns>
         public UserClass GetUserInfo(string userId)
-         // Returns an object of UserClass with ID matching from the database.
          {
             try
             {
@@ -172,12 +168,11 @@ namespace DatabaseInterface
          }
 
         /// <summary>
-        /// 
+        /// The method <c>AddJob</c> Add a Jobclass object in the My3DJob table on the database.
         /// </summary>
-        /// <param name="job"></param>
+        /// <param name="job"> the Jobclass object</param>
         public void AddJob(JobClass job)
 
-         // Add a Jobclass object in the Job tabel on the database.
          {
              try
              {
@@ -206,11 +201,10 @@ namespace DatabaseInterface
          }
 
         /// <summary>
-        /// 
+        /// The method <c>GetJobList</c> Return a list of all jobs in the database.
         /// </summary>
         /// <returns></returns>
         public List<JobClass> GetJobList()
-         // Return a list of all jobs in the database.
          {
              try
              { 
@@ -255,11 +249,10 @@ namespace DatabaseInterface
          }
 
         /// <summary>
-        /// 
+        /// The method <c>GetMaterials</c> Returns an object of MaterialClass with ID matching from the database.
         /// </summary>
         /// <returns></returns>
         public List<MaterialClass> GetMaterials()
-        // Returns an object of MaterialClass with ID matching from the database.
         {
             try
             {
@@ -303,9 +296,10 @@ namespace DatabaseInterface
         }
 
         /// <summary>
-        /// 
+        /// The method <c>AddUser</c> Activates a UserClass object by changing the attribute "Activated" in the database to 1.
+        /// If the attribute "Activated" = 0, then the UserClass object has not been activated.
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="user">The UserClass object that is to be activated</param>
         public void ActivateUser(UserClass user)
         {
             try
