@@ -7,7 +7,7 @@
     <ProjectGuid>{7B5E762B-F442-4FFE-A5C4-F41A16699FCF}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleApplication1</RootNamespace>
+    <RootNamespace>ClientApplication</RootNamespace>
     <AssemblyName>ConsoleApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

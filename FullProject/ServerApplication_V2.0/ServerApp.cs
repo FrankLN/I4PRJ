@@ -5,16 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Sockets;
-using System.Runtime.Serialization;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Xml;
 using DatabaseInterface;
 using MessageTypes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
-using Server;
 
 namespace ServerApplication
 {

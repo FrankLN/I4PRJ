@@ -1,9 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
-using ConsoleApplication1;
 using DatabaseInterface;
-using Server;
 
 namespace MessageTypes.ReplyMessages
 {

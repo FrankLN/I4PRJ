@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.Serialization;
-using Server;
 
 namespace MessageTypes.Messages
 {

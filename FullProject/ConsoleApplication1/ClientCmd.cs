@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using ClientApplication;
+﻿using System.Runtime.Serialization;
+using MessageTypes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
-namespace ConsoleApplication1
+namespace ClientApplication
 {
     public class ClientCmd : IClientCmd
     {

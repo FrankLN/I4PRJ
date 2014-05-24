@@ -1,8 +1,6 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
-using MessageTypes.ReplyMessages;
-using Server;
 
 namespace MessageTypes.Messages
 {

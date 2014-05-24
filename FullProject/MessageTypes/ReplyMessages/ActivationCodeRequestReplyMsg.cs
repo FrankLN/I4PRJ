@@ -1,7 +1,5 @@
 using System;
 using System.Runtime.Serialization;
-using ConsoleApplication1;
-using Server;
 
 namespace MessageTypes.ReplyMessages
 {

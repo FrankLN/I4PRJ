@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.Serialization;
 using DatabaseInterface;
-using Server;
 
 namespace MessageTypes.Messages
 {

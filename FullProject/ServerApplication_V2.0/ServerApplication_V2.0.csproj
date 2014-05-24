@@ -7,7 +7,7 @@
     <ProjectGuid>{1758070C-954A-4173-B2D9-917FC7AE4F96}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServerApplication_V2._0</RootNamespace>
+    <RootNamespace>ServerApplication</RootNamespace>
     <AssemblyName>ServerApplication_V2.0</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -1,8 +1,6 @@
 using System;
 using System.Runtime.Serialization;
-using ConsoleApplication1;
 using DatabaseInterface;
-using Server;
 using System.Collections.Generic;
 
 namespace MessageTypes.ReplyMessages
