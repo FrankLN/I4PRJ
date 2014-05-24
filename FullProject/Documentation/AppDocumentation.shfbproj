@@ -29,9 +29,18 @@
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <MissingTags>Parameter, Returns, AutoDocumentCtors, Namespace, TypeParameter, AutoDocumentDispose</MissingTags>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe" xmlns="" />
-      <DocumentationSource sourceFile="..\ConsoleApplication1\bin\Debug\MessageTypes.dll" xmlns="" />
+      <DocumentationSource sourceFile="..\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe" />
+      <DocumentationSource sourceFile="..\ConsoleApplication1\bin\Debug\ConsoleApplication1.xml" />
+      <DocumentationSource sourceFile="..\DatabaseInterface\bin\Debug\DatabaseInterface.dll" />
+      <DocumentationSource sourceFile="..\DatabaseInterface\bin\Debug\DatabaseInterface.xml" />
+      <DocumentationSource sourceFile="..\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe" />
+      <DocumentationSource sourceFile="..\GUI_first_iteration\bin\Debug\GUI_first_iteration.xml" />
+      <DocumentationSource sourceFile="..\MessageTypes\bin\Debug\MessageTypes.dll" />
+      <DocumentationSource sourceFile="..\MessageTypes\bin\Debug\MessageTypes.xml" />
+      <DocumentationSource sourceFile="..\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.exe" />
+      <DocumentationSource sourceFile="..\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.xml" />
     </DocumentationSources>
+    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Privates, Protected, ProtectedInternalAsProtected</VisibleItems>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
