@@ -10,15 +10,24 @@ using Microsoft.Win32;
 
 namespace DatabaseInterface
 {
+    /// <summary>
+    /// <c>Database</c>Is the class containing functions that handles the acces to the database
+    /// </summary>
     public class Database : IDatabase
     {
         private SqlConnection conn;
+        /// <summary>
+        /// The <c>Database</c>'s constructer that makes an SqlConnection string "conn".
+        /// </summary>
         public Database()
         {
             conn = new SqlConnection(@"Data Source=10.29.0.29;Initial Catalog=F14I4SemProj4Gr4;Integrated Security=False;User ID=F14I4SemProj4Gr4;Password=F14I4SemProj4Gr4;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;");
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
         public void AddUser(UserClass user)
        // AddUser adds an object in the User tabel on the database.
         {          
@@ -65,7 +74,12 @@ namespace DatabaseInterface
         }
 
         
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public int ValidateLogInInfo(string email, string password)
         {
             try
@@ -107,7 +121,11 @@ namespace DatabaseInterface
         }
  
         
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public UserClass GetUserInfo(string userId)
          // Returns an object of UserClass with ID matching from the database.
          {
@@ -153,6 +171,10 @@ namespace DatabaseInterface
             }
          }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="job"></param>
         public void AddJob(JobClass job)
 
          // Add a Jobclass object in the Job tabel on the database.
@@ -183,7 +205,10 @@ namespace DatabaseInterface
              }
          }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<JobClass> GetJobList()
          // Return a list of all jobs in the database.
          {
@@ -229,6 +254,10 @@ namespace DatabaseInterface
              }
          }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<MaterialClass> GetMaterials()
         // Returns an object of MaterialClass with ID matching from the database.
         {
@@ -273,7 +302,10 @@ namespace DatabaseInterface
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
         public void ActivateUser(UserClass user)
         {
             try
