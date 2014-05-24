@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder" version="2014.4.22.0" projectFile="C:\Users\Frank\git\I4PRJ\FullProject\Documentation\AppDocumentation.shfbproj" started="24-05-2014 16:00:22">
+<buildStep step="Initializing">
+Finding tools...
+The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
+Searching for HTML Help 1 compiler...
+Found HTML Help 1 compiler in &#39;C:\Program Files (x86)\HTML Help Workshop\&#39;
+Locating components in the following folder(s):
+   C:\Users\Frank\git\I4PRJ\FullProject\Documentation
+Using presentation style &#39;VS2013&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013&#39;
+</buildStep>
+<buildStep step="ValidatingDocumentationSources">
+Validating and copying documentation source information
+Source: C:\Users\Frank\git\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+    Found assembly &#39;C:\Users\Frank\git\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe&#39;
+Source: C:\Users\Frank\git\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.xml
+SHFB: Warning BE0006: Unable to locate any documentation sources for &#39;C:\Users\Frank\git\I4PRJ\FullProject\ConsoleApplication1\bin\Debug\ConsoleApplication1.xml&#39; (Configuration: Debug Platform: AnyCPU)
+Source: C:\Users\Frank\git\I4PRJ\FullProject\DatabaseInterface\bin\Debug\DatabaseInterface.dll
+    Found assembly &#39;C:\Users\Frank\git\I4PRJ\FullProject\DatabaseInterface\bin\Debug\DatabaseInterface.dll&#39;
+Source: C:\Users\Frank\git\I4PRJ\FullProject\DatabaseInterface\bin\Debug\DatabaseInterface.xml
+SHFB: Warning BE0006: Unable to locate any documentation sources for &#39;C:\Users\Frank\git\I4PRJ\FullProject\DatabaseInterface\bin\Debug\DatabaseInterface.xml&#39; (Configuration: Debug Platform: AnyCPU)
+Source: C:\Users\Frank\git\I4PRJ\FullProject\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe
+    Found assembly &#39;C:\Users\Frank\git\I4PRJ\FullProject\GUI_first_iteration\bin\Debug\GUI_first_iteration.exe&#39;
+Source: C:\Users\Frank\git\I4PRJ\FullProject\GUI_first_iteration\bin\Debug\GUI_first_iteration.xml
+SHFB: Warning BE0006: Unable to locate any documentation sources for &#39;C:\Users\Frank\git\I4PRJ\FullProject\GUI_first_iteration\bin\Debug\GUI_first_iteration.xml&#39; (Configuration: Debug Platform: AnyCPU)
+Source: C:\Users\Frank\git\I4PRJ\FullProject\MessageTypes\bin\Debug\MessageTypes.dll
+    Found assembly &#39;C:\Users\Frank\git\I4PRJ\FullProject\MessageTypes\bin\Debug\MessageTypes.dll&#39;
+Source: C:\Users\Frank\git\I4PRJ\FullProject\MessageTypes\bin\Debug\MessageTypes.xml
+SHFB: Warning BE0006: Unable to locate any documentation sources for &#39;C:\Users\Frank\git\I4PRJ\FullProject\MessageTypes\bin\Debug\MessageTypes.xml&#39; (Configuration: Debug Platform: AnyCPU)
+Source: C:\Users\Frank\git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.exe
+    Found assembly &#39;C:\Users\Frank\git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.exe&#39;
+Source: C:\Users\Frank\git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.xml
+
+Copying XML comments files
+    C:\Users\Frank\git\I4PRJ\FullProject\ServerApplication_V2.0\bin\Debug\ServerApplication_V2.0.XML -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\ServerApplication_V2.0.XML
+</buildStep>
+<buildStep step="GenerateSharedContent">
+Generating shared content files (en-US, English (United States))...
+    Last step completed in 00:00:00.0100
+</buildStep>
+<buildStep step="GenerateApiFilter">
+Generating API filter for MRefBuilder...
+    Last step completed in 00:00:00.0020
+</buildStep>
+<buildStep step="GenerateReflectionInfo">
+Generating reflection information...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Build started 24-05-2014 16:00:25.
+Project &quot;C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\GenerateRefInfo.proj&quot; on node 1 (default targets).
+PrepareForBuild:
+  Creating directory &quot;obj\Debug\&quot;.
+GenerateRefInfo:
+  MRefBuilder (v2014.1.26.0)
+  Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
+  Loaded 5 assemblies for reflection and 1 dependency assemblies.
+  Wrote information on 9 namespaces, 69 types, and 267 members
+  Copying file from &quot;reflection.org&quot; to &quot;reflection.all&quot;.
+  XslTransform (v2014.1.26.0)
+  Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
+Done Building Project &quot;C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\GenerateRefInfo.proj&quot; (default targets).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.39
+    Last step completed in 00:00:01.6251
+</buildStep>
+<buildStep step="TransformReflectionInfo">
+Transforming reflection output...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Build started 24-05-2014 16:00:26.
+Project &quot;C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\TransformManifest.proj&quot; on node 1 (default targets).
+TransformManifest:
+  XslTransform (v2014.1.26.0)
+  Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\ApplyVSDocModel.xsl&#39;.
+  Copying file from &quot;reflection.xml&quot; to &quot;reflection.nofilenames&quot;.
+  XslTransform (v2014.1.26.0)
+  Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\AddFilenames.xsl&#39;.
+  XslTransform (v2014.1.26.0)
+  Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
+Done Building Project &quot;C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\TransformManifest.proj&quot; (default targets).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.89
+    Last step completed in 00:00:05.7508
+</buildStep>
+<buildStep step="GenerateNamespaceSummaries">
+Generating namespace summary information...
+    Last step completed in 00:00:01.5510
+</buildStep>
+<buildStep step="CopyAdditionalContent">
+Copying additional content files...
+No additional content to copy
+    Last step completed in 00:00:00.0010
+</buildStep>
+<buildStep step="MergeTablesOfContents">
+Merging conceptual and additional tables of contents...
+    Last step completed in 00:00:00.0010
+</buildStep>
+<buildStep step="GenerateIntermediateTableOfContents">
+Generating intermediate table of contents file...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Build started 24-05-2014 16:00:34.
+Project &quot;C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\GenerateIntermediateTOC.proj&quot; on node 1 (default targets).
+GenerateIntermediateTOC:
+  XslTransform (v2014.1.26.0)
+  Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
+  Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
+Done Building Project &quot;C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\GenerateIntermediateTOC.proj&quot; (default targets).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.34
+Generating conceptual content intermediate TOC file...
+    Last step completed in 00:00:00.5654
+</buildStep>
+<buildStep step="CreateBuildAssemblerConfigs">
+Creating Sandcastle configuration files...
+    sandcastle.config
+    Last step completed in 00:00:01.0097
+</buildStep>
+<buildStep step="MergeCustomConfigs">
+Merging custom build component configurations
+C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\sandcastle.config
+    Last step completed in 00:00:01.3959
+</buildStep>
+<buildStep step="BuildReferenceTopics">
+Building reference help topics...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Build started 24-05-2014 16:00:37.
+Project &quot;C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj&quot; on node 1 (default targets).
+BuildReferenceTopics:
+  BuildAssembler (v2014.1.26.0)
+  Copyright &#184; 2006-2014, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved.
+  Loading configuration...
+  Processing topics...
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.Client.#ctor(System.Int32)] Missing &lt;param name=&quot;port&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.Client.ReceiveFile(System.Int64,System.String)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.Client.ReceiveFile(System.Int64,System.String)] Missing &lt;param name=&quot;fileName&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.Client.ReceiveMessage] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.Client.SendFile(System.Int64,System.String)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.Client.SendFile(System.Int64,System.String)] Missing &lt;param name=&quot;path&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.Client.SendToServer(System.Runtime.Serialization.ISerializable)] Missing &lt;param name=&quot;objekt&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.IClient.ReceiveFile(System.Int64,System.String)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.IClient.ReceiveFile(System.Int64,System.String)] Missing &lt;param name=&quot;fileName&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.IClient.ReceiveMessage] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.IClient.SendFile(System.Int64,System.String)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.IClient.SendFile(System.Int64,System.String)] Missing &lt;param name=&quot;path&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ClientApplication.IClient.SendToServer(System.Runtime.Serialization.ISerializable)] Missing &lt;param name=&quot;message&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.ActivationVerification(MessageTypes.ReplyMessages.IActivationCodeRequestReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.CreateJobVerification(MessageTypes.ReplyMessages.ICreateJobReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.CreateUserVerification(MessageTypes.ReplyMessages.ICreateUserReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.DownloadCommencing(MessageTypes.ReplyMessages.IDownloadJobReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.LoadJobList(MessageTypes.ReplyMessages.IRequestJobsReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.LoadMaterials(MessageTypes.ReplyMessages.IGetMaterialsReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.LoginVerification(MessageTypes.ReplyMessages.ILoginReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.receiveFromFileServer(System.Int64,System.String)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.receiveFromFileServer(System.Int64,System.String)] Missing &lt;param name=&quot;name&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.sendFileToServer(System.Int64,System.String)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.sendFileToServer(System.Int64,System.String)] Missing &lt;param name=&quot;path&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.SendToServer(MessageTypes.Messages.IMessage)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.ClientCmd.ValidateActivation(MessageTypes.ReplyMessages.IActivationReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.ActivationVerification(MessageTypes.ReplyMessages.IActivationCodeRequestReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.CreateJobVerification(MessageTypes.ReplyMessages.ICreateJobReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.CreateUserVerification(MessageTypes.ReplyMessages.ICreateUserReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.DownloadCommencing(MessageTypes.ReplyMessages.IDownloadJobReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.LoadJobList(MessageTypes.ReplyMessages.IRequestJobsReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.LoadMaterials(MessageTypes.ReplyMessages.IGetMaterialsReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.LoginVerification(MessageTypes.ReplyMessages.ILoginReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.receiveFromFileServer(System.Int64,System.String)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.receiveFromFileServer(System.Int64,System.String)] Missing &lt;param name=&quot;name&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.sendFileToServer(System.Int64,System.String)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.sendFileToServer(System.Int64,System.String)] Missing &lt;param name=&quot;path&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.SendToServer(MessageTypes.Messages.IMessage)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ConsoleApplication1.IClientCmd.ValidateActivation(MessageTypes.ReplyMessages.IActivationReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.ActivateUser(DatabaseInterface.UserClass)] Missing &lt;param name=&quot;user&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.AddJob(DatabaseInterface.JobClass)] Missing &lt;param name=&quot;job&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.AddUser(DatabaseInterface.UserClass)] Missing &lt;param name=&quot;user&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.GetJobList] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.GetMaterials] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.GetUserInfo(System.String)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.GetUserInfo(System.String)] Missing &lt;param name=&quot;userId&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.ValidateLogInInfo(System.String,System.String)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.ValidateLogInInfo(System.String,System.String)] Missing &lt;param name=&quot;email&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.Database.ValidateLogInInfo(System.String,System.String)] Missing &lt;param name=&quot;password&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.ActivateUser(DatabaseInterface.UserClass)] Missing &lt;param name=&quot;user&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.AddJob(DatabaseInterface.JobClass)] Missing &lt;param name=&quot;job&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.AddUser(DatabaseInterface.UserClass)] Missing &lt;param name=&quot;user&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.GetJobList] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.GetMaterials] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.GetUserInfo(System.String)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.GetUserInfo(System.String)] Missing &lt;param name=&quot;userId&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.ValidateLogInInfo(System.String,System.String)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.ValidateLogInInfo(System.String,System.String)] Missing &lt;param name=&quot;email&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.IDatabase.ValidateLogInInfo(System.String,System.String)] Missing &lt;param name=&quot;password&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.JobClass.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.JobClass.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.JobClass.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.JobClass.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.MaterialClass.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.MaterialClass.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.MaterialClass.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.MaterialClass.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.MaterialClass.ToString] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.UserClass.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.UserClass.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.UserClass.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:DatabaseInterface.UserClass.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ActivateUserWindow.#ctor(DatabaseInterface.UserClass,ConsoleApplication1.IClientCmd,GUI_first_iteration.CreateUserWindow,GUI_first_iteration.MainWindow)] Missing &lt;param name=&quot;user&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ActivateUserWindow.#ctor(DatabaseInterface.UserClass,ConsoleApplication1.IClientCmd,GUI_first_iteration.CreateUserWindow,GUI_first_iteration.MainWindow)] Missing &lt;param name=&quot;clientCom&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ActivateUserWindow.#ctor(DatabaseInterface.UserClass,ConsoleApplication1.IClientCmd,GUI_first_iteration.CreateUserWindow,GUI_first_iteration.MainWindow)] Missing &lt;param name=&quot;uWin&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ActivateUserWindow.#ctor(DatabaseInterface.UserClass,ConsoleApplication1.IClientCmd,GUI_first_iteration.CreateUserWindow,GUI_first_iteration.MainWindow)] Missing &lt;param name=&quot;mWin&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.CreateUserWindow.#ctor(GUI_first_iteration.MainWindow,ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;mWin&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.CreateUserWindow.#ctor(GUI_first_iteration.MainWindow,ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;ccom&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.CreateUserWindow.ValidateBindings(System.Windows.DependencyObject)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.CreateUserWindow.ValidateBindings(System.Windows.DependencyObject)] Missing &lt;param name=&quot;parent&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.EditUserWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass)] Missing &lt;param name=&quot;mWin&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.EditUserWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass)] Missing &lt;param name=&quot;ccom&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.EditUserWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass)] Missing &lt;param name=&quot;user&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.Hollow.ToString] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.JobDetailsWindow.#ctor(ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass,DatabaseInterface.JobClass)] Missing &lt;param name=&quot;ccom&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.JobDetailsWindow.#ctor(ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass,DatabaseInterface.JobClass)] Missing &lt;param name=&quot;user&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.JobDetailsWindow.#ctor(ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass,DatabaseInterface.JobClass)] Missing &lt;param name=&quot;job&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.JobHistoryWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass)] Missing &lt;param name=&quot;mWin&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.JobHistoryWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass)] Missing &lt;param name=&quot;ccom&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.JobHistoryWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass)] Missing &lt;param name=&quot;user&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.MainWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;parent&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.MainWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;ccom&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.MainWindow.loginEvent(MessageTypes.ReplyMessages.ILoginReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.MainWindow.ValidateBindings(System.Windows.DependencyObject)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.MainWindow.ValidateBindings(System.Windows.DependencyObject)] Missing &lt;param name=&quot;parent&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.NewJobWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass)] Missing &lt;param name=&quot;mWin&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.NewJobWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass)] Missing &lt;param name=&quot;ccom&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.NewJobWindow.#ctor(GUI_first_iteration.MainMenuWindow,ConsoleApplication1.IClientCmd,DatabaseInterface.UserClass)] Missing &lt;param name=&quot;user&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.NewJobWindow.createJobEvent(MessageTypes.ReplyMessages.ICreateJobReplyMsg)] Missing &lt;param name=&quot;msg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidEmail.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidEmail.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;param name=&quot;value&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidEmail.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;param name=&quot;cultureInfo&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidFName.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidFName.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;param name=&quot;value&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidFName.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;param name=&quot;cultureInfo&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidPhone.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidPhone.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;param name=&quot;value&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidPhone.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;param name=&quot;cultureInfo&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidSName.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidSName.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;param name=&quot;value&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:GUI_first_iteration.ValidSName.Validate(System.Object,System.Globalization.CultureInfo)] Missing &lt;param name=&quot;cultureInfo&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.IServer.RecieveFile(System.String,System.Int64)] Missing &lt;param name=&quot;fileName&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.IServer.RecieveFile(System.String,System.Int64)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.IServer.RecieveMessage] Missing &lt;returns&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.IServer.SendFile(System.String,System.Int64)] Missing &lt;param name=&quot;fileName&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.IServer.SendFile(System.String,System.Int64)] Missing &lt;param name=&quot;fileSize&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.IServer.SendToClient(System.Runtime.Serialization.ISerializable)] Missing &lt;param name=&quot;message&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationCodeRequestMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationCodeRequestMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationCodeRequestMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationCodeRequestMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationCodeRequestMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;serverApp&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationCodeRequestMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;serverApp&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.ActivationMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateJobMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateJobMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateJobMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateJobMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateJobMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;serverApp&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateJobMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateUserMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateUserMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateUserMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateUserMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateUserMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;serverApp&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.CreateUserMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.DownloadJobMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.DownloadJobMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.DownloadJobMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.DownloadJobMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.DownloadJobMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;serverApp&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.DownloadJobMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.GetMaterialsMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.GetMaterialsMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.GetMaterialsMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.GetMaterialsMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.GetMaterialsMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;serverApp&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.GetMaterialsMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.IMessage.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;serverApp&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.IMessage.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.LoginMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.LoginMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.LoginMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.LoginMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.LoginMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;serverApp&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.LoginMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.RequestJobsMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.RequestJobsMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.RequestJobsMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.RequestJobsMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.RequestJobsMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;serverApp&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.Messages.RequestJobsMsg.Run(Server.IServerApp,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationCodeRequestReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationCodeRequestReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationCodeRequestReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationCodeRequestReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationCodeRequestReplyMsg.Run(ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;clientCmd&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.ActivationReplyMsg.Run(ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;clientCmd&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateJobReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateJobReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateJobReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateJobReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateJobReplyMsg.Run(ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;clientCmd&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateUserReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateUserReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateUserReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateUserReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.CreateUserReplyMsg.Run(ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;clientCmd&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.DownloadJobReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.DownloadJobReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.DownloadJobReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.DownloadJobReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.DownloadJobReplyMsg.Run(ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;clientCmd&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.GetMaterialsReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.GetMaterialsReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.GetMaterialsReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.GetMaterialsReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.GetMaterialsReplyMsg.Run(ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;clientCmd&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.IReplyMessage.Run(ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;clientCmd&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.LoginReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.LoginReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.LoginReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.LoginReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.LoginReplyMsg.Run(ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;clientCmd&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.RequestJobsReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.RequestJobsReplyMsg.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.RequestJobsReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;info&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.RequestJobsReplyMsg.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)] Missing &lt;param name=&quot;context&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:MessageTypes.ReplyMessages.RequestJobsReplyMsg.Run(ConsoleApplication1.IClientCmd)] Missing &lt;param name=&quot;clientCmd&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.ActivateUser(MessageTypes.Messages.IActivationMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;activationMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.ActivateUser(MessageTypes.Messages.IActivationMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.ActivationCodeRequest(MessageTypes.Messages.IActivationCodeRequestMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;activationCodeRequestMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.ActivationCodeRequest(MessageTypes.Messages.IActivationCodeRequestMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.CreateJob(MessageTypes.Messages.ICreateJobMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;createJobMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.CreateJob(MessageTypes.Messages.ICreateJobMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.CreateUser(MessageTypes.Messages.ICreateUserMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;createUserMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.CreateUser(MessageTypes.Messages.ICreateUserMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.DownloadJob(MessageTypes.Messages.IDownloadJobMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;downloadJobMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.DownloadJob(MessageTypes.Messages.IDownloadJobMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.GetMaterials(MessageTypes.Messages.IGetMaterialsMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;getMaterialsMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.GetMaterials(MessageTypes.Messages.IGetMaterialsMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.RequestJobs(MessageTypes.Messages.IRequestJobsMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;requestJobsMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.RequestJobs(MessageTypes.Messages.IRequestJobsMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.VerifyLogin(MessageTypes.Messages.ILoginMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;loginMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Server.IServerApp.VerifyLogin(MessageTypes.Messages.ILoginMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.#ctor(System.Int32,DatabaseInterface.IDatabase)] Missing &lt;param name=&quot;port&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.#ctor(System.Int32,DatabaseInterface.IDatabase)] Missing &lt;param name=&quot;database&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.ActivateUser(MessageTypes.Messages.IActivationMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;activationMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.ActivateUser(MessageTypes.Messages.IActivationMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.ActivationCodeRequest(MessageTypes.Messages.IActivationCodeRequestMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;activationCodeRequestMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.ActivationCodeRequest(MessageTypes.Messages.IActivationCodeRequestMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.CreateJob(MessageTypes.Messages.ICreateJobMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;createJobMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.CreateJob(MessageTypes.Messages.ICreateJobMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.CreateUser(MessageTypes.Messages.ICreateUserMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;createUserMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.CreateUser(MessageTypes.Messages.ICreateUserMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.DownloadJob(MessageTypes.Messages.IDownloadJobMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;downloadJobMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.DownloadJob(MessageTypes.Messages.IDownloadJobMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.GetMaterials(MessageTypes.Messages.IGetMaterialsMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;getMaterialsMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.GetMaterials(MessageTypes.Messages.IGetMaterialsMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.RequestJobs(MessageTypes.Messages.IRequestJobsMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;requestJobsMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.RequestJobs(MessageTypes.Messages.IRequestJobsMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.VerifyLogin(MessageTypes.Messages.ILoginMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;loginMsg&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:ServerApplication.ServerApp.VerifyLogin(MessageTypes.Messages.ILoginMsg,MessageTypes.IServer)] Missing &lt;param name=&quot;server&quot;/&gt; documentation [C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj]
+  Processed 468 topic(s)
+  242 warning(s)
+  CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 10 of 15.
+  CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 5 of 30.
+Done Building Project &quot;C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\BuildReferenceTopics.proj&quot; (default targets).
+
+Build succeeded.
+
+Time Elapsed 00:00:39.88
+    Last step completed in 00:00:40.1502
+</buildStep>
+<buildStep step="CombiningIntermediateTocFiles">
+Combining conceptual and API intermediate TOC files...
+    Last step completed in 00:00:00.0050
+</buildStep>
+<buildStep step="ExtractingHtmlInfo">
+Extracting HTML info for HTML Help 1 and/or website...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+Sandcastle Help File Builder, version 2014.4.22.0
+Copyright &#184; 2006-2014, Eric Woodruff, All Rights Reserved
+E-Mail: Eric@EWoodruff.us
+
+Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
+
+Processing Help 1 files in C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1
+Processed 468 HTML files
+Sorting keywords and generating See Also indices
+Saving HTML Help 1 keyword index to C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Documentation for 3D Printer App.hhk
+Saving HTML Help 1 table of contents to C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Documentation for 3D Printer App.hhc
+    Last step completed in 00:00:02.1204
+</buildStep>
+<buildStep step="CopyStandardHelpContent">
+Copying standard help content...
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\alert_caution.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\alert_caution.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\alert_note.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\alert_note.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\alert_security.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\alert_security.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CFW.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\CFW.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\Collapsed.png -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\Collapsed.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\Expanded.png -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\Expanded.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\favicon.ico -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\favicon.ico
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privclass.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privclass.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privdelegate.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privdelegate.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privenumeration.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privenumeration.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privevent.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privevent.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privextension.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privextension.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privfield.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privfield.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privinterface.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privinterface.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privmethod.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privmethod.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privproperty.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privproperty.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privstructure.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\privstructure.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protclass.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protclass.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protdelegate.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protdelegate.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protenumeration.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protenumeration.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protevent.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protevent.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protextension.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protextension.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protfield.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protfield.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protinterface.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protinterface.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protmethod.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protmethod.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protoperator.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protoperator.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protproperty.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protproperty.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protstructure.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\protstructure.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubclass.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubclass.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubdelegate.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubdelegate.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubenumeration.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubenumeration.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubevent.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubevent.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubextension.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubextension.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubfield.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubfield.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubinterface.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubinterface.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubmethod.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubmethod.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\puboperator.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\puboperator.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubproperty.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubproperty.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubstructure.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\pubstructure.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\slMobile.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\slMobile.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\static.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\static.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\xna.gif -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\icons\xna.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\scripts\branding.js -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\scripts\branding.js
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-cs-CZ.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-cs-CZ.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-de-DE.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-de-DE.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-en-US.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-en-US.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-es-ES.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-es-ES.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-fr-FR.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-fr-FR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-it-IT.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-it-IT.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ja-JP.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-ja-JP.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ko-KR.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-ko-KR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pl-PL.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-pl-PL.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pt-BR.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-pt-BR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ru-RU.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-ru-RU.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-tr-TR.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-tr-TR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-zh-CN.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding-zh-TW.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\styles\branding.css
+    Last step completed in 00:00:01.0577
+</buildStep>
+<buildStep step="GenerateHelpFormatTableOfContents">
+Generating HTML Help 1 table of contents file...
+    Last step completed in 00:00:00.0010
+</buildStep>
+<buildStep step="GenerateHelpFileIndex">
+Generating HTML Help 1 index file...
+    Last step completed in 00:00:00.0010
+</buildStep>
+<buildStep step="GenerateHelpProject">
+Generating HTML Help 1 project file...
+    Last step completed in 00:00:00.0120
+</buildStep>
+<buildStep step="CompilingHelpFile">
+Compiling HTML Help 1 file...
+[C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe]
+  Microsoft HTML Help Compiler 4.74.8702
+  
+  
+  
+  Compiling c:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\Documentation for 3D Printer App.chm
+  
+  
+  
+  
+  
+  Compile time: 0 minutes, 13 seconds
+  
+  470	Topics
+  
+  4,783	Local links
+  
+  21,266	Internet links
+  
+  0	Graphics
+  
+  
+  
+  
+  
+  Created c:\Users\Frank\git\I4PRJ\FullProject\Documentation\Help\Working\Output\HtmlHelp1\Documentation for 3D Printer App.chm, 1,065,719 bytes
+  
+  Compression decreased file by 7,126,349 bytes.
+  
+    Last step completed in 00:00:14.9981
+</buildStep>
+<buildStep step="CleanIntermediates">
+Removing intermediate files...
+    Last step completed in 00:00:00.6604
+</buildStep>
+<buildStep step="Completed">
+
+Build completed successfully at 05-24-2014 04:01 .  Total time: 00:01:13,0362
+
+</buildStep>
+</shfbBuild>
