@@ -19,7 +19,14 @@ namespace ServerApplication
     /// </summary>
     public class ServerApp : IServerApp
     {
+        /// <summary>
+        /// The port number to listen on. It is protected for test purposes.
+        /// </summary>
         protected int _port;
+
+        /// <summary>
+        /// The database interface. It is protected for test purposes.
+        /// </summary>
         protected IDatabase _database;
 
         #region helpFunktions
