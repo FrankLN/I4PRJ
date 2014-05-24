@@ -47,7 +47,7 @@ namespace GUI_first_iteration
 
             //Databinding
             DataContext = currentJob;
-
+         
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 

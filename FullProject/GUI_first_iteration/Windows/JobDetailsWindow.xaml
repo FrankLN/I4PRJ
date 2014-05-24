@@ -20,7 +20,7 @@
         <TextBlock x:Name="MyFileBlock" HorizontalAlignment="Left" Margin="69,109,0,0" TextWrapping="Wrap" Text="{Binding Path=File}" VerticalAlignment="Top"/>
         <TextBlock x:Name="CreationTimeBlock" HorizontalAlignment="Left" Margin="311,109,0,0" TextWrapping="Wrap" Text="{Binding Path=CreationTime}" VerticalAlignment="Top"/>
         <TextBlock x:Name="HollowBlock" HorizontalAlignment="Left" Margin="311,62,0,0" TextWrapping="Wrap" Text="{Binding Path=Hollow}" VerticalAlignment="Top"/>
-        <TextBlock x:Name="MaterialBlock" HorizontalAlignment="Left" Margin="311,152,0,0" TextWrapping="Wrap" Text="{Binding Path=Material}" VerticalAlignment="Top"/>
+        <TextBlock x:Name="MaterialBlock" HorizontalAlignment="Left" Margin="311,152,0,0" TextWrapping="Wrap" Text="{Binding Path=Material.MaterialId}" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
