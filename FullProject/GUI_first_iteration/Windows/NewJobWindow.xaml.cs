@@ -47,8 +47,8 @@ namespace GUI_first_iteration
         public Hollow selectedHollow{ get; set; }
         public DateTime selectedDate { get; set; }
     
-        public string comments { get; set; }
-        public string MyFile { get; set; }
+        public string selectedComment { get; set; }
+        public string selectedFile { get; set; }
 
 
         private bool ClosedInCode;
@@ -111,10 +111,10 @@ namespace GUI_first_iteration
             //jobObj.Deadline = dpDate.SelectedDate.ToString();
             jobObj.Hollow = selectedHollow != null ? selectedHollow.hollow : 0;
             jobObj.Deadline = selectedDate.ToShortDateString(); // Maybe not correct
-            jobObj.Comment = comments;
-            jobObj.File = MyFile;
+            jobObj.Comment = selectedComment;
+            jobObj.File = selectedFile;
             jobObj.Owner = loggedInUser;
-            jobObj.FileSize = MyFile != null ? new FileInfo(MyFile).Length : 0;
+            jobObj.FileSize = selectedFile != null ? new FileInfo(selectedFile).Length : 0;
             
             createJobObj.Job = jobObj;
 
@@ -194,8 +194,8 @@ namespace GUI_first_iteration
                 return;
             }
 
-            MyFile = ofd.FileName;
-            tbxFilePath.Text = MyFile;
+            selectedFile = ofd.FileName;
+            tbxFilePath.Text = selectedFile;
 
         }
 

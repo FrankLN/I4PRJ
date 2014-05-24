@@ -32,8 +32,8 @@
                     <ComboBoxItem  Content="Solid" Name="cbxHolwSoltem2" />-->
                 </ComboBox>
                 <DatePicker DisplayDateStart="{x:Static System:DateTime.Today}" SelectedDate="{Binding Path=selectedDate, Mode=OneWayToSource }" Name="dpDate" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="29" Width="298" IsKeyboardFocusedChanged="dpDate_IsKeyboardFocusedChanged"/>
-                <TextBox Name="tbxComments" Text="{Binding Path=comments, Mode=OneWayToSource}"  Grid.Column="1" HorizontalAlignment="Left" Height="125" Margin="10,13,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="298"/>
-                <TextBox Name="tbxFilePath" MaxLines="1" Text="{Binding Path=MyFile, Mode=TwoWay }" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="14,10,0,0" Grid.Row="2" TextWrapping="NoWrap" VerticalAlignment="Top" Width="207"/>
+                <TextBox Name="tbxComments" Text="{Binding Path=selectedComment, Mode=OneWayToSource}"  Grid.Column="1" HorizontalAlignment="Left" Height="125" Margin="10,13,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="298"/>
+                <TextBox Name="tbxFilePath" MaxLines="1" Text="{Binding Path=selectedFile, Mode=TwoWay }" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="14,10,0,0" Grid.Row="2" TextWrapping="NoWrap" VerticalAlignment="Top" Width="207"/>
                 <Button Name="btnBrowse" Content="Browse" Grid.Column="1" HorizontalAlignment="Left" Margin="222,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="86" Height="20" Click="btnBrowse_Click"/>
             </Grid>
         </StackPanel>

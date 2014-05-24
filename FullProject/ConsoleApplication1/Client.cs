@@ -42,7 +42,7 @@ namespace ClientApplication
         public void SendToServer(ISerializable objekt)
         {
             clientSocket = new TcpClient();
-            clientSocket.Connect("10.20.33.4", _port);
+            clientSocket.Connect("10.20.32.85", _port);
             outInStream = clientSocket.GetStream();
 
             bFormatter.Serialize(outInStream, objekt);
