@@ -11,8 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ConsoleApplication1;
+using ClientApplication;
 using DatabaseInterface;
+using MessageTypes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 

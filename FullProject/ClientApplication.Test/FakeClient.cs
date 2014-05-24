@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using MessageTypes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
-using Server;
 
 namespace ClientApplication.Test
 {

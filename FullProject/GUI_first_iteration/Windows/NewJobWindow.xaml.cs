@@ -18,8 +18,9 @@ using System.Windows.Media.Media3D;
 using System.Windows.Media.TextFormatting;
 using System.Windows.Shapes;
 using ClientApplication;
-using ConsoleApplication1;
+using ClientApplication;
 using DatabaseInterface;
+using MessageTypes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 

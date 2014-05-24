@@ -14,8 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClientApplication;
 using ClientApplication.Test;
-using ConsoleApplication1;
+using ClientApplication;
 using DatabaseInterface;
+using MessageTypes;
 
 namespace GUI_first_iteration
 {

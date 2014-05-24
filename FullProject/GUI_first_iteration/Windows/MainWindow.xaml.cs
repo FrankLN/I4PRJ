@@ -14,7 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClientApplication;
-using ConsoleApplication1;
+using ClientApplication;
+using MessageTypes;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
