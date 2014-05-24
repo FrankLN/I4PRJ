@@ -83,7 +83,6 @@ namespace GUI_first_iteration
                 // Validate all controls
                 if (ValidateBindings(this))
                 {
-                    loginObj.Email = tbxEmail.Text;
                     clientCom.SendToServer(loginObj);
                 }
                 tbxPassword.ToolTip = null;
