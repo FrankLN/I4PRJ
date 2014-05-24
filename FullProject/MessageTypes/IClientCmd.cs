@@ -1,8 +1,7 @@
-using System.Xml.Serialization;
 using MessageTypes.Messages;
 using MessageTypes.ReplyMessages;
 
-namespace ConsoleApplication1
+namespace MessageTypes
 {
     public interface IClientCmd
     {

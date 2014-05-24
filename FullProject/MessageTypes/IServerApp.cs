@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
-using MessageTypes;
-using MessageTypes.Messages;
-using MessageTypes.ReplyMessages;
+﻿using MessageTypes.Messages;
 
-namespace Server
+namespace MessageTypes
 {
 	//Interface which define which methodes we need to use on the server
 	public interface IServerApp
