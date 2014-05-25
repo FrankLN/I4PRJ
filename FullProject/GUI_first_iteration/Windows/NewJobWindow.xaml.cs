@@ -92,7 +92,6 @@ namespace GUI_first_iteration
             if (cbxHolSol != null) cbxHolSol.ItemsSource = hollowList;
             if (cbxMaterial != null) cbxMaterial.ItemsSource = materialsObservableCollection;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            
         }
 
         // -----------------------------------------------------------
@@ -125,24 +124,18 @@ namespace GUI_first_iteration
         /// <param name="e"></param>
         private void btnCreateJob_Click(object sender, RoutedEventArgs e)
         {
-
             jobObj.Material = selectedMaterial;
             jobObj.Hollow = selectedHollow != null ? selectedHollow.hollow : 0;
             jobObj.Deadline = selectedDate.ToShortDateString(); // Maybe not correct
             jobObj.Comment = selectedComment;
             jobObj.File = selectedFile;
             jobObj.Owner = loggedInUser;
-            jobObj.FileSize = selectedFile != null ? new FileInfo(selectedFile).Length : 0;
-            
+            jobObj.FileSize = selectedFile != null ? new FileInfo(selectedFile).Length : 0;           
             createJobObj.Job = jobObj;
-
             var clientCmd = new ClientCmd();
             clientCmd = (ClientCmd)clientCom;
             
-
             clientCom.SendToServer(createJobObj);
-            //clientCmd.sendFileToServer();
-
         }
         
         // -----------------------------------------------------------
@@ -163,10 +156,8 @@ namespace GUI_first_iteration
             else
             {
                 MessageBox.Show("Something went wrong when trying to create the job. Please try again.");
-                
             }
         }
-
 
         // -----------------------------------
         // BUTTON - Back to main menu --------
@@ -204,6 +195,7 @@ namespace GUI_first_iteration
                 Application.Current.Shutdown();
             }
         }
+
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at uploade et job. Her bestemmes hvilken type filer kan uploades og den valgte 
         /// </summary>
