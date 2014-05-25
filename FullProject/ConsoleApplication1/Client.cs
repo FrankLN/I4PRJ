@@ -7,6 +7,9 @@ using MessageTypes.ReplyMessages;
 
 namespace ClientApplication
 {
+    /// <summary>
+    /// <c>IClient</c> is the interface that holdes the connection functions ´to communicate with the <c>Server</c>
+    /// </summary>
     public interface IClient
     {
         void SendToServer(ISerializable message);
@@ -15,6 +18,10 @@ namespace ClientApplication
         void SendFile(long fileSize, string path);
 
     }
+    /// <summary>
+    /// <c>Client</c> is the class, which is responsible for the tcp connection to the <c>Server</c>.
+    /// The <c>Client</c> sends messages to the <c>Server</c> to make different requests.
+    /// </summary>
     public class Client : IClient
     {
         //Memberdata...
@@ -25,28 +32,46 @@ namespace ClientApplication
         private int _port;
 
         //Constructor which take ip and port belonging to the targeting server
+        /// <summary>
+        /// The <c>Client</c>'s constructor. The constructor calls the methode <c>Init</c>
+        /// </summary>
+        /// <param name="port">The <c>port</c> of the server side</param>
         public Client(int port)
         {
             Init(port);
         }
 
-        //Init method setting the up the client 
+        //Init method for setting up the client 
+        /// <summary>
+        /// <c>Init</c> is the methode that initilize the <c>Client</c>'s memberdata.
+        /// </summary>
+        /// <param name="port">The <c>Server</c>'s <c>port</c> number</param>
         private void Init(int port)
         {
-            clientSocket = new TcpClient();
             _port = port;
+            clientSocket = new TcpClient();
             bFormatter = new BinaryFormatter();
         }
 
         //Method for sending classobject
+        /// <summary>
+        /// <c>SendToServer</c> is the methode that sends serializable objects to the <c>Server</c>.
+        /// This is done via the <c>clientSocket</c>.
+        /// </summary>
+        /// <param name="objekt"> The objekt that is to be send to the <c>Server</c></param>
+
         public void SendToServer(ISerializable objekt)
         {
             clientSocket = new TcpClient();
             clientSocket.Connect("10.20.32.215", _port);
             outInStream = clientSocket.GetStream();
-
             bFormatter.Serialize(outInStream, objekt);
         }
+        /// <summary>
+        /// <c>ReceiveMessage</c> is the methode that receives serializable objects from the <c>Server</c>.
+        /// <c>ReceiveMessage</c> formattes the incomming stream to an <c>IReplyMessage</c>.
+        /// </summary>
+        /// <returns>The message recieved from the <c>Server</c></returns>
 
         public IReplyMessage ReceiveMessage()
         {
@@ -65,6 +90,13 @@ namespace ClientApplication
         }
 
         // Methode that receives files
+        /// <summary>
+        /// <c>ReceiveFile</c> is the methode that receives the file from the <c>Server</c>.
+        /// The file is saved in the Download folder.
+        /// <c>ReceiveMessage</c> formattes the incomming stream to an <c>IReplyMessage</c>.
+        /// </summary>
+        /// <param name="fileSize">The size of the file that is to be received from the <c>Server</c></param>
+        /// <param name="fileName">The name of the file that is to be received from the <c>Server</c></param>
         public void ReceiveFile(long fileSize, string fileName)
         {
             int n;
@@ -103,6 +135,12 @@ namespace ClientApplication
             downloadFile.Close();
         }
         // Methode that sends a file of a job
+        /// <summary>
+        /// <c>SendFile</c> is the methode that sendes the file to the <c>Server</c>.
+        /// <c>SendFile</c> sendes the file via the <c>NetworkStream</c>.
+        /// </summary>
+        /// <param name="fileSize">The size of the file that is to be send to the <c>Server</c></param>
+        /// <param name="path">The name of the file that is to be send to the <c>Server</c></param>
         public void SendFile(long fileSize ,string path)
         {
             byte[] buffer = File.ReadAllBytes(path);
