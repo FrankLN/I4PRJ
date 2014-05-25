@@ -54,6 +54,10 @@ namespace GUI_first_iteration
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
+        /// <summary>
+        /// bla bla
+        /// </summary>
+        /// <param name="msg"> bla bla</param>
         private void activateUserEvent(IActivationReplyMsg msg)
         {
             if (msg.UserActivated)
@@ -63,6 +67,10 @@ namespace GUI_first_iteration
                 createUserWin.ClosedInCode = true;
                 createUserWin.Close();
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Could not confirm activation code. Please try again.");
             }
         }
 
