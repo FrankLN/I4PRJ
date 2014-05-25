@@ -249,7 +249,7 @@ namespace DatabaseInterface
          }
 
         /// <summary>
-        /// The method <c>GetMaterials</c> Returns an object of MaterialClass with ID matching from the database.
+        /// The method <c>GetMaterials</c> Returns a list List of MaterialClass object with ID matching from the database.
         /// </summary>
         /// <returns></returns>
         public List<MaterialClass> GetMaterials()

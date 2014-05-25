@@ -2,7 +2,7 @@
 
 
 namespace DatabaseInterface
-{
+{ 
     public interface IDatabase
     {
         void AddUser(UserClass user);
