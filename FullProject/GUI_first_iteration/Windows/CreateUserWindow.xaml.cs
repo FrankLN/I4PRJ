@@ -157,7 +157,6 @@ namespace GUI_first_iteration
         // Methods for updating class with content of textbox, upon leaving the textbox
         // ----------------------------------------------------------------------------
 
-
         /// <summary>
         /// Funktion der generer et event ved FocusedChange. Data lægges i objektet
         /// </summary>

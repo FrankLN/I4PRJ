@@ -36,6 +36,13 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - EditUserWindow ------
         // -----------------------------------
 
+        /// <summary>
+        /// Constructor for EditUserWindow. Referencer til instanserne af de pågældende parametre gemmes som private datamembers. 
+        /// Derudover oprettes lægges brugerinformationer om den indloggede bruger ind i de respektive TextBoxes.
+        /// </summary>
+        /// <param name="mWin">Reference til instansen af MainMenuWindow, der EditUserWindow oprettes fra</param>
+        /// <param name="ccom">Reference til instansen af klassen ClienCmd, der står for kommunikation til serveren</param>
+        /// <param name="user">Reference til instansen af klassen UserClass, der repræsenterer den indloggede bruger</param>
         public EditUserWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
         {
             // Set private data members
@@ -61,6 +68,12 @@ namespace GUI_first_iteration
         // BUTTON - Save user ----------------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at gemme brugeroplysninger. Funktionalitet for at gemme ændringer er ikke implementeret.
+        /// Denne funktion lukker EditUserWindow og viser MainMenuWindow.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveUser_Click(object sender, RoutedEventArgs e)
         {
             ClosedInCode = true;
@@ -72,6 +85,11 @@ namespace GUI_first_iteration
         // BUTTON - Back ---------------------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenuen. Denne funktion lukker EditUserWindow og viser MainMenuWindow.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             // Indicate that the window is closed in code
@@ -85,6 +103,11 @@ namespace GUI_first_iteration
         // METHOD - Window closing -----------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes når vinduet lukkes manuelt. Denne funktion afslutter applikationen. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!ClosedInCode)

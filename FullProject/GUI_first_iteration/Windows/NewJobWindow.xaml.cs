@@ -182,7 +182,7 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         /// <summary>
-        /// Funktion der kaldes når vinduet lukkes. 
+        /// Funktion der kaldes når vinduet lukkes manuelt. Denne funktion afslutter applikationen. 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
