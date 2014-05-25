@@ -33,6 +33,7 @@ namespace GUI_first_iteration
         private ActivationMsg activationMsg;
         private IClientCmd clientCom;
         public string activationCode { get; set; }
+
         // -----------------------------------
         // CONSTRUCTOR - ActivateUserWindow --
         // -----------------------------------
@@ -48,7 +49,6 @@ namespace GUI_first_iteration
             this.clientCom = clientCom;
 
             ((ClientCmd)clientCom).onValidateActivationMsgReceived += new ClientCmd.ValidateActivationDelegate(activateUserEvent);
-
 
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -72,11 +72,7 @@ namespace GUI_first_iteration
 
         private void btnActivateUser_Click(object sender, RoutedEventArgs e)
         {
-            
             clientCom.SendToServer(activationMsg);
-
-
-
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
