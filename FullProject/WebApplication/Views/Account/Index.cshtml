@@ -4,42 +4,53 @@
     ViewBag.Title = "All Users";
 }
 
-<h2>Users</h2>
-    <table class="table table-striped">
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Email
-            </th>
+<div class="jumbotron" style="background-color: #f7f7f7; border: 1px silver; border-radius: 5px; padding-top: 2%; padding-bottom: 2%; margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 5%; padding-left: 3%; padding-right: 3%;">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@ViewBag.Title</h2>
+            <br />
+            <table class="table table-striped">
+                <tr>
+                    <th class="col-md-3">
+                        Name
+                    </th>
+                    <th class="col-md-3">
+                        Email
+                    </th>
+                    <th class="col-md-3">
+                        Status
+                    </th>
+                    <th class="col-md-3">
+                        Options
+                    </th>
+                </tr>
 
-            <th>
-                Status
-            </th>
-        </tr>
+                @foreach (var item in Model.UserTuples)
+                {
+                    <tr>
+                        <td class="col-md-3">
+                            @Html.DisplayFor(modelItem => item.Item1.FName)
+                            @Html.DisplayFor(modelItem => item.Item1.LName)
+                        </td>
+                        <td class="col-md-3">
+                            @Html.DisplayFor(modelItem => item.Item1.UserName)
+                        </td>
+                        <td class="col-md-3">
+                            @Html.DisplayFor(modelItem => item.Item2)
+                        </td>
+                        <td class="col-md-3">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Item1.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Item1.Id }) |
+                            @Html.ActionLink("Ban", "Delete", new { id = item.Item1.Id }) |
+                            @Html.ActionLink("Reinsert", "Reinsert", new { id = item.Item1.Id })
+                        </td>
+                    </tr>
+                }
 
-    @foreach (var item in Model.UserTuples)
-    {
-        <tr>
-            <td class="-md-2">
-                @Html.DisplayFor(modelItem => item.Item1.FName )
-                @Html.DisplayFor(modelItem => item.Item1.LName)
-            </td>
-            <td class="col-md-2">
-                @Html.DisplayFor(modelItem => item.Item1.UserName)
-            </td>
-            <td class="-md-2">
-                @Html.DisplayFor(modelItem => item.Item2)
-            </td>
-            <td class="col-md-6">
-                @Html.ActionLink("Edit", "Edit", new { id = item.Item1.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Item1.Id }) |
-                @Html.ActionLink("Ban", "Delete", new { id = item.Item1.Id }) |
-                @Html.ActionLink("Reinsert", "Reinsert", new { id = item.Item1.Id })
-            </td>
-        </tr>
-    }
+            </table>
+        </div>
+    </div>
+</div>
 
-</table>
+    
 

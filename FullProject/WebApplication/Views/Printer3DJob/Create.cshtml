@@ -9,15 +9,15 @@
 <div class="jumbotron" style="background-color: #F8F8FF; border: 1px silver; border-radius: 5px; padding-top: 2%; padding-bottom: 2%; margin-left: 5%; margin-right: 5%; margin-top: 2%; margin-bottom: 5%; padding-left: 3%; padding-right: 3%;">
     <div class="row">
         <div class="col-md-12">
-            <h2>Create</h2>
-
+            <h2>Create Job</h2>
+            <br />
 
             @using (Html.BeginForm(actionName: "Create", controllerName: "Printer3DJob", method: FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h4>Printer3DJob</h4>
+                    
                     <hr />
                     @Html.ValidationSummary(true)
 

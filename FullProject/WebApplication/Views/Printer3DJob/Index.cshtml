@@ -1,22 +1,24 @@
 ﻿@model WebApplication.Models.HistoryViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Job History";
 }
 
-<h2>Index</h2>
 
+<h2>@ViewBag.Title</h2>
+<br />
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
+
 <div class="row">
     <div class="col-md-4">
 
-        <h4 align="center">
+        <h4 style="text-align: center;">
             In queue
-            <br/>
-            <br/>
+            <br />
+            <br />
         </h4>
         <table class="table">
             <tr>
@@ -60,7 +62,7 @@
         </table>
     </div>
     <div class="col-md-4">
-        <h4 align="center">
+        <h4 style="text-align: center;">
             In progress
             <br />
             <br />
@@ -86,21 +88,21 @@
                         @Html.DisplayFor(modelItem => item.Deadline)
                     </td>
                     <td class="dropdown">
-    <button id="dLabel" data-toggle="dropdown">
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        @if (User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Status change", "Edit", new { id = item.Printer3DJobId })
-        }
-        <br />
-        @Html.ActionLink("Details & Download", "Details", new { id = item.Printer3DJobId })
-        <br />
-        @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
-    </ul>
+                        <button id="dLabel" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Status change", "Edit", new { id = item.Printer3DJobId })
+                            }
+                            <br />
+                            @Html.ActionLink("Details & Download", "Details", new { id = item.Printer3DJobId })
+                            <br />
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
+                        </ul>
 
-</td>
+                    </td>
                 </tr>
             }
 
@@ -108,7 +110,7 @@
     </div>
 
     <div class="col-md-4">
-        <h4 align="center">
+        <h4 style="text-align: center;">
             Done
             <br />
             <br />
@@ -142,12 +144,12 @@
                             {
                                 @Html.ActionLink("Status change", "Edit", new { id = item.Printer3DJobId })
                             }
-                            <br/>
+                            <br />
                             @Html.ActionLink("Details & Download", "Details", new { id = item.Printer3DJobId })
-                            <br/>
+                            <br />
                             @Html.ActionLink("Delete", "Delete", new { id = item.Printer3DJobId })
                         </ul>
-                        
+
                     </td>
                 </tr>
             }
