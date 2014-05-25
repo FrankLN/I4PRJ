@@ -50,13 +50,20 @@ namespace GUI_first_iteration
         public string selectedComment { get; set; }
         public string selectedFile { get; set; }
 
-
         private bool ClosedInCode;
 
-        // -----------------------------------
-        // CONSTRUCTOR - NewJobWindow --------
-        // -----------------------------------
+        // -----------------------------------------------------------
+        // Constructor - New Job Window ------------------------------
+        // -----------------------------------------------------------
 
+        /// <summary>
+        /// Constructor for NewJobWindow. Referencer til instanserne af de pågældende parametre gemmes som private datamembers. 
+        /// Derudover oprettes en instans af klassen CreateJobMsg, samt en instans af JobClass, der skal sendes til server. Datacontexten sættes til at pege på vinduets egen instans.
+        /// Der sendes et request til server for at modtage de tilgængelige materialer. Videre lægges de tilgængelige alternaativer for "hollow" ind i ListBox controlleren.
+        /// </summary>
+        /// <param name="mWin">Reference til instansen af MainMenuWindow, der NewJobWindow oprettes fra</param>
+        /// <param name="ccom">Reference til instansen af klassen ClienCmd, der står for kommunikation til serveren</param>
+        /// <param name="user">Reference til instansen af klassen UserClass, der repræsenterer den indloggede bruger</param>
         public NewJobWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
         {
             InitializeComponent();
@@ -64,6 +71,7 @@ namespace GUI_first_iteration
             mainMenuWin = mWin;
             clientCom = ccom;
             loggedInUser = user;
+
             ClosedInCode = false;
             // Material combobox
             selectedMaterial = new MaterialClass();
@@ -91,6 +99,11 @@ namespace GUI_first_iteration
         // Event - Load Materials to the window ----------------------
         // -----------------------------------------------------------
 
+        /// <summary>
+        /// Event der kaldes når serveren svarer på GUIs request om at få tilgængelige materialer. Når materialer modtages, lægges disse ind
+        /// i en liste som er gemt i vinduets egen instans
+        /// </summary>
+        /// <param name="msg">Besked modtaget fra serveren</param>
         private void loadMaterialsEvent(IGetMaterialsReplyMsg msg)
         {
             foreach (var e in msg.Materials)
@@ -104,6 +117,12 @@ namespace GUI_first_iteration
         // BUTTON - Create job ---------------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at oprette job. De alternativer der er valgt for en job lægges ind i isntansen af klassen JobClass
+        /// Derudover lægges denne instansen ind i instansen af klassen CreateJobMsg, før denne så sendes til server
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCreateJob_Click(object sender, RoutedEventArgs e)
         {
 
@@ -125,9 +144,16 @@ namespace GUI_first_iteration
             //clientCmd.sendFileToServer();
 
         }
+        
         // -----------------------------------------------------------
         // Event - confirm that the server have created the job ------
         // -----------------------------------------------------------
+
+        /// <summary>
+        /// Event der kaldes når serveren svarer på GUIs request om at oprette en job. Der oprettes en MessageBox der informerer om oprettelsen var vellykket eller ikke
+        /// i en liste som er gemt i vinduets egen instans
+        /// </summary>
+        /// <param name="msg">Besked modtaget fra serveren</param>
         public void createJobEvent(ICreateJobReplyMsg msg)
         {
             if (msg.Created)
@@ -146,6 +172,11 @@ namespace GUI_first_iteration
         // BUTTON - Back to main menu --------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenu. Her lukkes vinduet og MainMenuWindow vises
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBackToMain_Click(object sender, RoutedEventArgs e)
         {
             // Indicate that the window is closed in code
@@ -155,23 +186,15 @@ namespace GUI_first_iteration
             mainMenuWin.Show();
         }
 
-
-        private void cbxHolSol_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            //createJobObj.Jo = cbxHolSol.SelectionBoxItem.ToString();
-        }
-
-        private void dpDate_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            //createJobObj.Date = dpDate.SelectedDate.ToString();
-        }
-
-      
-
         // -----------------------------------
         // METHOD - Window closing -----------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes når vinduet lukkes. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!ClosedInCode)
