@@ -8,20 +8,65 @@ using MessageTypes.Messages;
 
 namespace DatabaseInterface
 {
+    /// <summary>
+    /// <c>JobClass</c> is the class version of the table My3DJob.
+    /// </summary>
     [Serializable()]
     public class JobClass : ISerializable
     {
+        /// <summary>
+        /// The property <c>OrderId</c>
+        /// </summary>
         public int OrderId { get; set; }
+
+        /// <summary>
+        /// The property <c>Material</c>
+        /// </summary>
         public MaterialClass Material { get; set; }
+
+        /// <summary>
+        /// The property <c>Deadline</c>
+        /// </summary>
         public string Deadline { get; set; }
+
+        /// <summary>
+        /// The property <c>Owner</c>
+        /// </summary>
         public UserClass Owner { get; set; }
+
+        /// <summary>
+        /// The property <c>File</c>
+        /// </summary>
         public string File { get; set; }
+
+        /// <summary>
+        /// The property <c>FileSize</c>
+        /// </summary>
         public long FileSize { get; set; }
+
+        /// <summary>
+        /// The proporty <c>CreationTime</c>
+        /// </summary>
         public string CreationTime { get; set; }
+
+        /// <summary>
+        /// The property <c>Hollow</c>
+        /// </summary>
         public int Hollow { get; set; }
+
+        /// <summary>
+        /// The property <c>Comment</c>
+        /// </summary>
         public string Comment { get; set; }
+
+        /// <summary>
+        /// The property <c>Status</c>
+        /// </summary>
         public int Status { get; set; }
 
+        /// <summary>
+        /// The default <c>JobClass</c> constructor.
+        /// </summary>
         public JobClass()
         {
             OrderId = 0;
@@ -35,6 +80,11 @@ namespace DatabaseInterface
             Status = 0;
         }
 
+        /// <summary>
+        /// The explicit <c>JobClass</c> constructor.
+        /// </summary>
+        /// <param name="info">The job's data</param>
+        /// <param name="context">The context</param>
         public JobClass(SerializationInfo info, StreamingContext context)
         {
             Material = (MaterialClass)info.GetValue("Material", typeof(MaterialClass));
@@ -48,6 +98,12 @@ namespace DatabaseInterface
             Comment = (string)info.GetValue("Comment", typeof(string));
             Status = (int) info.GetValue("Status", typeof (int));
         }
+
+        /// <summary>
+        /// <c>GetObjectData</c> gets the job's data.
+        /// </summary>
+        /// <param name="info">A container for the job's data</param>
+        /// <param name="context">The context</param>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Material", Material);

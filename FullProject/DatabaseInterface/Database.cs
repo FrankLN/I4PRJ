@@ -11,7 +11,7 @@ using Microsoft.Win32;
 namespace DatabaseInterface
 {
     /// <summary>
-    /// <c>Database</c>Is the class containing functions that handles the acces to the database
+    /// <c>Database</c>is the class containing functions that handles the acces to the database.
     /// </summary>
     public class Database : IDatabase
     {
@@ -25,7 +25,7 @@ namespace DatabaseInterface
         }
 
         /// <summary>
-        /// The method <c>AddUser</c> Adds an object in the Customer table on the Database
+        /// The method <c>AddUser</c> adds an object in the Customer table on the Database
         /// </summary>
         /// <param name="user"> The Userclass object</param>
         public void AddUser(UserClass user)
@@ -74,12 +74,12 @@ namespace DatabaseInterface
 
         
         /// <summary>
-        /// The method <c>ValidateLogInInfo</c> Compares email and password with the database. 
+        /// The method <c>ValidateLogInInfo</c> compares email and password with the database. 
         /// If a customer is found with matching email and password, the customers ID is returned. Otherwise a -1 is returned.
         /// </summary>
         /// <param name="email"> The email</param>
         /// <param name="password"> The password</param>
-        /// <returns></returns>
+        /// <returns>The matching customers ID</returns>
         public int ValidateLogInInfo(string email, string password)
         {
             try
@@ -119,10 +119,10 @@ namespace DatabaseInterface
  
         
         /// <summary>
-        /// The method <c>GetUserInfo</c> Returns an object of UserClass with ID matching from the database.
+        /// The method <c>GetUserInfo</c> returns an object of UserClass with ID matching from the database.
         /// </summary>
-        /// <param name="userId">the ID</param>
-        /// <returns></returns>
+        /// <param name="userId">The ID</param>
+        /// <returns>The customer that has the ID</returns>
         public UserClass GetUserInfo(string userId)
          {
             try
@@ -168,9 +168,9 @@ namespace DatabaseInterface
          }
 
         /// <summary>
-        /// The method <c>AddJob</c> Add a Jobclass object in the My3DJob table on the database.
+        /// The method <c>AddJob</c> adds a Jobclass object in the My3DJob table on the database.
         /// </summary>
-        /// <param name="job"> the Jobclass object</param>
+        /// <param name="job"> The Jobclass object</param>
         public void AddJob(JobClass job)
 
          {
@@ -201,9 +201,9 @@ namespace DatabaseInterface
          }
 
         /// <summary>
-        /// The method <c>GetJobList</c> Return a list of all jobs in the database.
+        /// The method <c>GetJobList</c> returns a list of all jobs in the database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of all jobs in the database</returns>
         public List<JobClass> GetJobList()
          {
              try
@@ -249,9 +249,9 @@ namespace DatabaseInterface
          }
 
         /// <summary>
-        /// The method <c>GetMaterials</c> Returns a list List of MaterialClass object with ID matching from the database.
+        /// The method <c>GetMaterials</c> returns a list List of MaterialClass object with ID matching from the database.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of all materials in the database</returns>
         public List<MaterialClass> GetMaterials()
         {
             try
@@ -296,7 +296,7 @@ namespace DatabaseInterface
         }
 
         /// <summary>
-        /// The method <c>AddUser</c> Activates a UserClass object by changing the attribute "Activated" in the database to 1.
+        /// The method <c>ActivateUser</c> activates a UserClass object by changing the attribute "Activated" in the database to 1.
         /// If the attribute "Activated" = 0, then the UserClass object has not been activated.
         /// </summary>
         /// <param name="user">The UserClass object that is to be activated</param>
@@ -310,9 +310,7 @@ namespace DatabaseInterface
                 // String with SQL statement
                 // UPDATED
                 string activateUser = @"UPDATE [Customer] SET Activated='"+user.Activated+"' WHERE Email='"+user.Email+"'";
-
                 SqlCommand cmd = new SqlCommand(activateUser, conn);
-
                 cmd.ExecuteNonQuery();
             }
             finally

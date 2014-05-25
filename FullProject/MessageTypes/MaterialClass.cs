@@ -11,7 +11,14 @@ namespace DatabaseInterface
     [Serializable()]
     public class MaterialClass : ISerializable
     {
+        /// <summary>
+        /// The property <c>MaterialId</c>
+        /// </summary>
         public int MaterialId { get; set; }
+
+        /// <summary>
+        /// The property <c>MaterialType</c>
+        /// </summary>
         public string MaterialType { get; set; }
 
         public MaterialClass()
