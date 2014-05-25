@@ -204,6 +204,11 @@ namespace GUI_first_iteration
                 Application.Current.Shutdown();
             }
         }
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at uploade et job. Her bestemmes hvilken type filer kan uploades og den valgte 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnBrowse_Click(object sender, RoutedEventArgs e)
         {
@@ -217,7 +222,7 @@ namespace GUI_first_iteration
             }
 
             selectedFile = ofd.FileName;
-            tbxFilePath.Text = selectedFile;
+           // tbxFilePath.Text = selectedFile;
 
         }
 

@@ -55,7 +55,7 @@ namespace GUI_first_iteration
         }
 
         /// <summary>
-        /// bla bla
+        /// bla b
         /// </summary>
         /// <param name="msg"> bla bla</param>
         private void activateUserEvent(IActivationReplyMsg msg)
