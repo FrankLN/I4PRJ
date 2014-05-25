@@ -44,7 +44,7 @@
                     <ColumnDefinition Width="49*"/>
                     <ColumnDefinition Width="106*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="btnCreateJob"  Content="Create job" Grid.Column="1" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top" Width="100" Height="35" Click="btnCreateJob_Click"/>
+                <Button Name="btnCreateJob"  Content="Create job" Grid.Column="1" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top" Width="100" Height="35" Click="btnCreateJob_Click" IsDefault="True"/>
                 <Button Name="btnBackToMain" Content="Main menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Height="35" Click="btnBackToMain_Click"/>
             </Grid>
         </StackPanel>
