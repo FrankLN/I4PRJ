@@ -197,7 +197,7 @@ namespace GUI_first_iteration
         }
 
         /// <summary>
-        /// Funktion der kaldes ved tryk på knap for at uploade et job. Her bestemmes hvilken type filer kan uploades og den valgte 
+        /// Funktion der kaldes ved tryk på knap for at uploade et job. Her bestemmes hvilken type filer kan uploades og den valgte job's navn vises i textbox. 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -207,15 +207,13 @@ namespace GUI_first_iteration
             var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "STL Files (*.stl)|*.stl|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif" };
 
             var result = ofd.ShowDialog();
-
+            
             if (result == false)
             {
                 return;
             }
-
             selectedFile = ofd.FileName;
-           // tbxFilePath.Text = selectedFile;
-
+            tbxFilePath.Text = selectedFile;
         }
 
     }

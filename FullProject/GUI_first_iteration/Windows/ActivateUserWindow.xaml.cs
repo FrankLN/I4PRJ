@@ -38,6 +38,14 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - ActivateUserWindow --
         // -----------------------------------
 
+        /// <summary>
+        /// Constructor for ActivateUserWindow. Referencer til instanserne af de pågældende parametre gemmes som private datamembers. 
+        /// Derudover oprettes en instans af klassen activationMsgMsg, der skal sendes til server. Datacontexten sættes til at pege på User property af klassen activationMsg.
+        /// </summary>
+        /// <param name="user"> Reference til instansen af klassen UserClass, der repræsenterer den oprettede bruger</param>
+        /// <param name="clientCom">Reference til instansen af klassen ClienCmd, der står for kommunikation til serveren</param>
+        /// <param name="uWin">Reference til instansen af CreateUserWindiw, som ActivationUserWindow oprettes fra</param>
+        /// <param name="mWin">Reference til instansen af MainWindow, som oprettes efter aktivering</param>
         public ActivateUserWindow(UserClass user,IClientCmd clientCom, CreateUserWindow uWin, MainWindow mWin)
         {
             InitializeComponent();
@@ -54,10 +62,15 @@ namespace GUI_first_iteration
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
+        // -----------------------------------------------------------
+        // Event - Besked til Bruger om han er aktiveret -----------------------
+        // -----------------------------------------------------------
+
         /// <summary>
-        /// bla b
+        /// Event der kaldes når serveren svarer på GUIs request om at Bruger er aktiveret. 
+        /// Bruger får besked om han er aktiveret eller nej.
         /// </summary>
-        /// <param name="msg"> bla bla</param>
+        /// <param name="msg"> Besked modtaget fra serveren</param>
         private void activateUserEvent(IActivationReplyMsg msg)
         {
             if (msg.UserActivated)
@@ -78,11 +91,25 @@ namespace GUI_first_iteration
         // BUTTON - Activate user ------------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at aktivere Bruger. Det som er indtastet af bruger bliver sendt til server.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnActivateUser_Click(object sender, RoutedEventArgs e)
         {
             clientCom.SendToServer(activationMsg);
         }
 
+        // -----------------------------------
+        // METHOD - Window closing -----------
+        // -----------------------------------
+
+        /// <summary>
+        /// Funktion der kaldes når vinduet lukkes. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ((ClientCmd)clientCom).onValidateActivationMsgReceived -= new ClientCmd.ValidateActivationDelegate(activateUserEvent);
