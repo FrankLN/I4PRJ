@@ -140,8 +140,16 @@ namespace DatabaseInterface
             info.AddValue("Activated", Activated);
             info.AddValue("ActivationCode", ActivationCode);
         }
+
+        /// <summary>
+        /// <c>PropertyChanged</c> is a public attribute used by the Notify method.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// <c>Notify</c> is used for databinding.
+        /// </summary>
+        /// <param name="prop">The changed property</param>
         void Notify(string prop)
         {
             if (PropertyChanged != null)
