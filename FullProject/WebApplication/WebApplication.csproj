@@ -216,12 +216,7 @@
     <Content Include="Content\Images\Del2.jpg" />
     <Content Include="Content\Images\Del3.jpg" />
     <Content Include="Content\Images\Del4.jpg" />
-    <Content Include="Content\Images\home_icon&amp;48.png" />
-    <Content Include="Content\Images\home_icon.png" />
-    <Content Include="Content\Images\Logo.png" />
-    <Content Include="Content\Images\logo_au.png" />
     <Content Include="Content\Images\log_in.jpg" />
-    <Content Include="Content\Images\plant_wall.png" />
     <Content Include="Content\Images\printer3d.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

@@ -7,7 +7,7 @@
 }
 
 .my-jumbotron-style {
-    background-color: red;
+    background-color: #f7f7f7;
     border-radius: 5px;
     padding: 2% 3% 2% 3%;
     margin: 2% 5% 5% 5%;
@@ -28,57 +28,3 @@
     width: 100%; 
     height: 100%;
 }
-
-a.imageActionLink
-{
-    background: url() no-repeat top left;
-     display: block;
-     width: 150px;
-     height: 150px;
-     text-indent: -9999px; /* hides the link text */
-}
-#myCircle {
-    
-}
-
-/*.myJumboStyle .jumbotron
-{
-    background-color: #b9d7ea !important; 
-    border: 1px silver !important; 
-    border-radius: 5px !important; 
-    padding-top: 2% !important; 
-    padding-bottom: 2% !important; 
-    margin-left: 7.5% !important; 
-    margin-right: 2% !important; 
-    margin-top: 2% !important; 
-    margin-bottom: 5% !important; 
-    padding-left: 3% !important; 
-    padding-right: 3% !important;
-} 
-
-.jumbotron {
-    }
-
-@media screen and (min-width: 992px) {
-    
-}*/
-
-
-.index-bootstrap-right {
-    
-}
-
-
-
-/*<div class="jumbotron, ju round">
-    <h2 style="text-align:center;">Welcome to the portal of the Cartesius 3D Printer</h2>
-    <hr />
-    <p>
-        Book 3D orders and keep track of your existings orders here
-    </p>
-
-</div>
-   
-   
-<img src="/Content/Images/printer3d.jpg" class="img-responsive" style="margin-left:5%; margin-bottom:30px; width:90%;"/>*/
-
