@@ -20,10 +20,8 @@ namespace GUI_first_iteration
         private MainMenuWindow mainMenuWin;
         private IClientCmd clientCom;
         private RequestJobsMsg requestJobsObj;
-        private UserClass loggedInUser;
         private bool ClosedInCode;
         private List<JobClass> allJobs;
-
         public JobClass selectedJob { get; set; }
 
         // -----------------------------------
@@ -37,16 +35,15 @@ namespace GUI_first_iteration
         /// <param name="mWin">Reference til instansen af MainMenuWindow, der JobHistoryWindow oprettes fra</param>
         /// <param name="ccom">Reference til instansen af klassen ClienCmd, der står for kommunikation til serveren</param>
         /// <param name="user">Reference til instansen af klassen UserClass, der repræsenterer den indloggede bruger</param>
-        public JobHistoryWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
+        public JobHistoryWindow(MainMenuWindow mWin, IClientCmd ccom)
         {
             mainMenuWin = mWin;
             clientCom = ccom;
-            loggedInUser = user;
             ClosedInCode = false;
 
             InitializeComponent();
             
-            ((ClientCmd)clientCom).onJobListMsgReceived += new ClientCmd.LoadJobListDelegate(LoadJobsEvent);
+            ((ClientCmd)clientCom).onJobListMsgReceived += LoadJobsEvent;
             requestJobsObj = new RequestJobsMsg();
             clientCom.SendToServer(requestJobsObj);
 
@@ -64,7 +61,7 @@ namespace GUI_first_iteration
         /// Event der kaldes når serveren svarer på GUIs request om at load jobs. 
         /// Jobs der modtages fra server gemmes som private datamembers, organiseret i en List.
         /// </summary>
-        /// <param name="msg">Besked modtaget fra server</param>
+        /// <param name="msg">Besked modtaget fra server.</param>
         private void LoadJobsEvent(IRequestJobsReplyMsg msg)
         {
             allJobs = msg.JobList;
@@ -75,13 +72,13 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         /// <summary>
-        /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenu. Her lukkes JobHistoryWindow og MainMenuWindow vises
+        /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenu. Her lukkes JobHistoryWindow og MainMenuWindow vises.
         /// </summary>
         /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            ((ClientCmd)clientCom).onJobListMsgReceived -= new ClientCmd.LoadJobListDelegate(LoadJobsEvent);
+            ((ClientCmd)clientCom).onJobListMsgReceived -= LoadJobsEvent;
 
             // Indicate that the window is closed in code
             ClosedInCode = true;
@@ -95,13 +92,13 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         /// <summary>
-        /// Funktion der kaldes ved tryk på knap for at tilgå detaljer for en bestemt jobu. Funktionen opretter og viser JobDetailsWindow
+        /// Funktion der kaldes ved tryk på knap for at tilgå detaljer for en bestemt jobu. Funktionen opretter og viser JobDetailsWindow.
         /// </summary>
         /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            JobDetailsWindow jobDetailsWin = new JobDetailsWindow(clientCom, loggedInUser, selectedJob);
+            JobDetailsWindow jobDetailsWin = new JobDetailsWindow(clientCom, selectedJob);
             jobDetailsWin.Show();
         }
 
@@ -119,7 +116,7 @@ namespace GUI_first_iteration
         {
             if (!ClosedInCode)
             {
-                ((ClientCmd)clientCom).onJobListMsgReceived -= new ClientCmd.LoadJobListDelegate(LoadJobsEvent);
+                ((ClientCmd)clientCom).onJobListMsgReceived -= LoadJobsEvent;
                 Application.Current.Shutdown();
             }
         }
@@ -187,6 +184,5 @@ namespace GUI_first_iteration
                 return JobsDone;
             }
         }
-
     }
 }

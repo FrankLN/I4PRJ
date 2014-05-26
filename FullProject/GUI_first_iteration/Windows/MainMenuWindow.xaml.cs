@@ -86,7 +86,7 @@ namespace GUI_first_iteration
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnJobHistory_Click(object sender, RoutedEventArgs e)
         {
-            JobHistoryWindow jobHistoryWin = new JobHistoryWindow(this, clientCom, loggedInUser);
+            JobHistoryWindow jobHistoryWin = new JobHistoryWindow(this, clientCom);
             jobHistoryWin.Show();
 
             this.Hide();
@@ -103,7 +103,7 @@ namespace GUI_first_iteration
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnEditProfile_Click(object sender, RoutedEventArgs e)
         {
-            EditUserWindow newJobWin = new EditUserWindow(this, clientCom, loggedInUser);
+            EditUserWindow newJobWin = new EditUserWindow(this, loggedInUser);
             newJobWin.Show();
 
             this.Hide();

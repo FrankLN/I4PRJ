@@ -14,7 +14,6 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         private MainMenuWindow mainMenuWin;
-        private IClientCmd clientCom;
         private UserClass loggedInUser;
         private bool ClosedInCode;
 
@@ -26,17 +25,14 @@ namespace GUI_first_iteration
         /// Constructor for EditUserWindow. Referencer til instanserne af de pågældende parametre gemmes som private datamembers. 
         /// Derudover oprettes lægges brugerinformationer om den indloggede bruger ind i de respektive TextBoxes.
         /// </summary>
-        /// <param name="mWin">Reference til instansen af MainMenuWindow, der EditUserWindow oprettes fra</param>
-        /// <param name="ccom">Reference til instansen af klassen ClienCmd, der står for kommunikation til serveren</param>
-        /// <param name="user">Reference til instansen af klassen UserClass, der repræsenterer den indloggede bruger</param>
-        public EditUserWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
+        /// <param name="mWin">Reference til instansen af MainMenuWindow, der EditUserWindow oprettes fra.</param>
+        /// <param name="user">Reference til instansen af klassen UserClass, der repræsenterer den indloggede bruger.</param>
+        public EditUserWindow(MainMenuWindow mWin, UserClass user)
         {
             // Set private data members
             mainMenuWin = mWin;
-            clientCom = ccom;
             loggedInUser = user;
             ClosedInCode = false;
-
 
             InitializeComponent();
 

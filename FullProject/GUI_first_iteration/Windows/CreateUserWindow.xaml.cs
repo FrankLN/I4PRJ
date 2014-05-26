@@ -44,13 +44,16 @@ namespace GUI_first_iteration
             userObj= new UserClass();
             ClosedInCode = false;
 
-            createUserObj = new CreateUserMsg();
             InitializeComponent();
+
+            createUserObj = new CreateUserMsg();
+
             DataContext = userObj;
+
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            ((ClientCmd)clientCom).onCreateUserMsgReceived += new ClientCmd.CreateUserDelegate(createUserEvent);
+            ((ClientCmd)clientCom).onCreateUserMsgReceived += createUserEvent;
         }
 
         // -----------------------------------
@@ -128,7 +131,7 @@ namespace GUI_first_iteration
         {
             
             mainWin.Show();
-            ((ClientCmd)clientCom).onCreateUserMsgReceived -= new ClientCmd.CreateUserDelegate(createUserEvent);
+            ((ClientCmd)clientCom).onCreateUserMsgReceived -= createUserEvent;
 
             // Indicate that the window is closed in code
             ClosedInCode = true;
@@ -195,20 +198,16 @@ namespace GUI_first_iteration
                 TbxPassword.BorderBrush = new SolidColorBrush(color);
                 TbxPassword.UpdateLayout();
             }
-
             else
             {
                 TbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
                 TbxPassword.BorderThickness = new Thickness(1.25);
                 TbxPassword.ToolTip = "Indtast din password";
-
             }
-
-          
         }
 
         /// <summary>
-        /// Funktion der generer et event ved GotFocus.Datavalidering af feltet
+        /// Funktion der generer et event ved GotFocus. Datavalidering af feltet.
         /// </summary>
         /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
@@ -217,12 +216,10 @@ namespace GUI_first_iteration
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
             TbxPassword.BorderBrush = new SolidColorBrush(color);
-          
-
         }
 
         /// <summary>
-        /// Funktion der generer et event ved FocusedChange. Datavalidering af objektet 
+        /// Funktion der generer et event ved FocusedChange. Datavalidering af objektet.
         /// </summary>
         /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
@@ -235,7 +232,6 @@ namespace GUI_first_iteration
             {
                 TbxPasswordRepeat.ToolTip = null;
                 TbxPasswordRepeat.BorderBrush = new SolidColorBrush(color);
-
             }
             else
             {
@@ -245,7 +241,7 @@ namespace GUI_first_iteration
             }
         }
         /// <summary>
-        /// Funktion der generer et event ved GotFocus.Datavalidering af feltet
+        /// Funktion der generer et event ved GotFocus.Datavalidering af feltet.
         /// </summary>
         /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
@@ -255,7 +251,6 @@ namespace GUI_first_iteration
             color = Color.FromArgb(255, 227, 233, 239);
             TbxPasswordRepeat.BorderBrush = new SolidColorBrush(color);
         }
-
 
         // -----------------------------------
         // METHOD - Window closing -----------
@@ -268,7 +263,7 @@ namespace GUI_first_iteration
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ((ClientCmd)clientCom).onCreateUserMsgReceived -= new ClientCmd.CreateUserDelegate(createUserEvent);
+            ((ClientCmd)clientCom).onCreateUserMsgReceived -= createUserEvent;
         }
 
         // -----------------------------------
@@ -316,10 +311,8 @@ namespace GUI_first_iteration
                     valid = false;
                 }
             }
-
             return valid;
         }
-
     }
 
     /// <summary>
@@ -327,35 +320,30 @@ namespace GUI_first_iteration
     /// </summary>
     public class ValidFName : ValidationRule
     {
-
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             if (!ValidFNameRegex.IsMatch((string)value))
             {
                 return new ValidationResult(false, "Indtast din fornavn");
-
             }
-
             return new ValidationResult(true, null);
         }
 
         /// <summary>
-        /// Hjælpefunktion for at sammenlige indtastet data med valid format
+        /// Hjælpefunktion for at sammenlige indtastet data med valid format.
         /// </summary>
         private static Regex ValidFNameRegex = CreateValidFNameRegex();
 
-
         /// <summary>
-        /// Funktion der opretter valid format  
+        /// Funktion der opretter valid format. 
         /// </summary>
         /// <returns>Kun bogstaver</returns>
         private static Regex CreateValidFNameRegex()
         {
             string validFNamePattern = @"^[\p{L}\p{M}' \.\-]+$";
-
-
             return new Regex(validFNamePattern, RegexOptions.IgnoreCase);
         }
+
         /// <summary>
         /// Funktion der tjekker om indtastet data er valid
         /// </summary>
@@ -364,30 +352,26 @@ namespace GUI_first_iteration
         internal static bool FnameIsValid(string FName)
         {
             bool isValid = ValidFNameRegex.IsMatch(FName);
-
             return isValid;
         }
     }
+
     /// <summary>
-    /// Funktion der Håndterer validerings resultat
+    /// Funktion der Håndterer validerings resultat.
     /// </summary>
     public class ValidSName : ValidationRule
     {
-
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             if (!ValidSNameRegex.IsMatch((string)value) )
             {
                 return new ValidationResult(false, "Indtast din efternavn");
-
             }
-
             return new ValidationResult(true, null);
         }
 
-
         /// <summary>
-        /// Hjælpefunktion for at sammenlige indtastet data med valid format
+        /// Hjælpefunktion for at sammenlige indtastet data med valid format.
         /// </summary>
         private static Regex ValidSNameRegex = CreateValidSNameRegex();
 
@@ -399,11 +383,8 @@ namespace GUI_first_iteration
         private static Regex CreateValidSNameRegex()
         {
             string validSNamePattern = @"^[\p{L}\p{M}' \.\-]+$";
-
-
             return new Regex(validSNamePattern, RegexOptions.IgnoreCase);
         }
-
 
         /// <summary>
         ///  Funktion der tjekker om indtastet data er valid
@@ -413,99 +394,89 @@ namespace GUI_first_iteration
         internal static bool SnameIsValid(string Phone)
         {
             bool isValid = ValidSNameRegex.IsMatch(Phone);
+            return isValid;
+        }
+    }
+
+    /// <summary>
+    /// Funktion der Håndterer validerings resultat.
+    /// </summary>
+    public class ValidEmail : ValidationRule
+    {
+        public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (!ValidEmailRegex.IsMatch((string)value))
+            {
+                return new ValidationResult(false, " Indtast en rigtig email");
+            }
+            return new ValidationResult(true, null);
+        }
+
+        /// <summary>
+        /// Hjælpefunktion for at sammenlige indtastet data med valid format.
+        /// </summary>
+        private static Regex ValidEmailRegex = CreateValidEmailRegex();
+
+        /// <summary>
+        /// Funktion der opretter valid format.
+        /// </summary>
+        /// <returns>Store og små bogstaver samt Iha.dk domæne</returns>
+        private static Regex CreateValidEmailRegex()
+        {
+            string validEmailPattern = "[a-zA-Z0-9]" + "@iha.dk$";
+            return new Regex(validEmailPattern, RegexOptions.IgnoreCase);
+        }      
+     
+       /// <summary>
+       /// Funktion der tjekker om indtastet data er valid.
+       /// </summary>
+       /// <param name="emailAddress">Email der skal valideres</param>
+       /// <returns>True hvis valid/False hvis ikke valid</returns>
+       internal static bool EmailIsValid(string emailAddress)
+        {
+            bool isValid = ValidEmailRegex.IsMatch(emailAddress);
 
             return isValid;
         }
     }
 
     /// <summary>
-    /// Funktion der Håndterer validerings resultat
-    /// </summary>
-    public class ValidEmail : ValidationRule
-        {
-
-            public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
-            {
-                if (!ValidEmailRegex.IsMatch((string)value))
-                {
-                    return new ValidationResult(false, " Indtast en rigtig email");
-
-                }
-
-                return new ValidationResult(true, null);
-            }
-
-    /// <summary>
-    /// Hjælpefunktion for at sammenlige indtastet data med valid format
-    /// </summary>
-    private static Regex ValidEmailRegex = CreateValidEmailRegex();
-
-
-    /// <summary>
-    /// Funktion der opretter valid format
-    /// </summary>
-    /// <returns>Store og små bogstaver samt Iha.dk domæne</returns>
-    private static Regex CreateValidEmailRegex()
-                     {
-                        string validEmailPattern = "[a-zA-Z0-9]" + "@iha.dk$";
-
-                        return new Regex(validEmailPattern, RegexOptions.IgnoreCase);
-                    }           
-    /// <summary>
-    /// Funktion der tjekker om indtastet data er valid
-   /// </summary>
-   /// <param name="emailAddress">Email der skal valideres</param>
-   /// <returns>True hvis valid/False hvis ikke valid</returns>
-   internal static bool EmailIsValid(string emailAddress)
-                {
-                    bool isValid = ValidEmailRegex.IsMatch(emailAddress);
-
-                    return isValid;
-                }
-            }
-    /// <summary>
-    /// Funktion der Håndterer validerings resultat
+    /// Funktion der Håndterer validerings resultat.
     /// </summary>
     public class ValidPhone : ValidationRule
     {
-
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             if (!ValidPhoneRegex.IsMatch((string)value))
             {
                 return new ValidationResult(false, "Indtast din tlf nummer");
-
             }
-
             return new ValidationResult(true, null);
         }
 
         /// <summary>
-        /// Hjælpefunktion for at sammenlige indtastet data med valid format
+        /// Hjælpefunktion for at sammenlige indtastet data med valid format.
         /// </summary>
         private static Regex ValidPhoneRegex = CreateValidPhoneRegex();
 
-
         /// <summary>
-        /// Funktion der opretter valid format
+        /// Funktion der opretter valid format.
         /// </summary>
         /// <returns>Kun 8 cifre</returns>
         private static Regex CreateValidPhoneRegex()
         {
             string validPhonePattern = "^[0-9]{8}$";
-
-
             return new Regex(validPhonePattern, RegexOptions.IgnoreCase);
         }
+
         /// <summary>
-        /// Funktion der tjekker om indtastet data er valid
+        /// Funktion der tjekker om indtastet data er valid.
         /// </summary>
         /// <param name="Phone">Phone number der skal valideres</param>
         /// <returns>True hvis valid/False hvis ikke valid</returns>
         internal static bool PhoneIsValid(string Phone)
         {
             bool isValid = ValidPhoneRegex.IsMatch(Phone);
-
             return isValid;
         }
     }

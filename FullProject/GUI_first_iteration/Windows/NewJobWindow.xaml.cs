@@ -25,16 +25,13 @@ namespace GUI_first_iteration
         private UserClass loggedInUser;
         private ObservableCollection<MaterialClass> materialsObservableCollection = new ObservableCollection<MaterialClass>();
         private ObservableCollection<Hollow> hollowList = new ObservableCollection<Hollow>();
-        private List<MaterialClass> materialList = new List<MaterialClass>();
         private CreateJobMsg createJobObj;
         private JobClass jobObj;
         public MaterialClass selectedMaterial { get; set; }
         public Hollow selectedHollow{ get; set; }
         public DateTime selectedDate { get; set; }
-    
         public string selectedComment { get; set; }
         public string selectedFile { get; set; }
-
         private bool ClosedInCode;
 
         // -----------------------------------------------------------
@@ -69,8 +66,8 @@ namespace GUI_first_iteration
 
             DataContext = this;
 
-            ((ClientCmd)clientCom).onMaterialsMsgReceived += new ClientCmd.LoadMaterialsDelegate(loadMaterialsEvent);
-            ((ClientCmd)clientCom).onCreateJobMsgReceived += new ClientCmd.CreateJobDelegate(createJobEvent);
+            ((ClientCmd)clientCom).onMaterialsMsgReceived += loadMaterialsEvent;
+            ((ClientCmd)clientCom).onCreateJobMsgReceived += createJobEvent;
             
             clientCom.SendToServer(new GetMaterialsMsg());
            
@@ -85,7 +82,7 @@ namespace GUI_first_iteration
 
         /// <summary>
         /// Event der kaldes når serveren svarer på GUIs request om at få tilgængelige materialer. Når materialer modtages, lægges disse ind
-        /// i en liste som er gemt i vinduets egen instans
+        /// i en liste som er gemt i vinduets egen instans.
         /// </summary>
         /// <param name="msg">Besked modtaget fra serveren</param>
         private void loadMaterialsEvent(IGetMaterialsReplyMsg msg)
@@ -94,7 +91,6 @@ namespace GUI_first_iteration
             {
                 materialsObservableCollection.Add(e);
             }
-
         }
 
         // -----------------------------------
@@ -102,8 +98,8 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         /// <summary>
-        /// Funktion der kaldes ved tryk på knap for at oprette job. De alternativer der er valgt for en job lægges ind i isntansen af klassen JobClass
-        /// Derudover lægges denne instansen ind i instansen af klassen CreateJobMsg, før denne så sendes til server
+        /// Funktion der kaldes ved tryk på knap for at oprette job. De alternativer der er valgt for en job lægges ind i isntansen af klassen JobClass.
+        /// Derudover lægges denne instansen ind i instansen af klassen CreateJobMsg, før denne så sendes til server.
         /// </summary>
         /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
@@ -116,10 +112,8 @@ namespace GUI_first_iteration
             jobObj.File = selectedFile;
             jobObj.Owner = loggedInUser;
             jobObj.FileSize = selectedFile != null ? new FileInfo(selectedFile).Length : 0;           
-            createJobObj.Job = jobObj;
-            var clientCmd = new ClientCmd();
-            clientCmd = (ClientCmd)clientCom;
             
+            createJobObj.Job = jobObj;
             clientCom.SendToServer(createJobObj);
         }
         
@@ -129,9 +123,9 @@ namespace GUI_first_iteration
 
         /// <summary>
         /// Event der kaldes når serveren svarer på GUIs request om at oprette en job. Der oprettes en MessageBox der informerer om oprettelsen var vellykket eller ikke
-        /// i en liste som er gemt i vinduets egen instans
+        /// i en liste som er gemt i vinduets egen instans.
         /// </summary>
-        /// <param name="msg">Besked modtaget fra serveren</param>
+        /// <param name="msg">Besked modtaget fra serveren.</param>
         public void createJobEvent(ICreateJobReplyMsg msg)
         {
             if (msg.Created)
@@ -149,7 +143,7 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         /// <summary>
-        /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenu. Her lukkes NewJobWindow og MainMenuWindow vises
+        /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenu. Her lukkes NewJobWindow og MainMenuWindow vises.
         /// </summary>
         /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
@@ -175,8 +169,8 @@ namespace GUI_first_iteration
         {
             if (!ClosedInCode)
             {
-                ((ClientCmd)clientCom).onMaterialsMsgReceived -= new ClientCmd.LoadMaterialsDelegate(loadMaterialsEvent);
-                ((ClientCmd)clientCom).onCreateJobMsgReceived -= new ClientCmd.CreateJobDelegate(createJobEvent);
+                ((ClientCmd)clientCom).onMaterialsMsgReceived -= loadMaterialsEvent;
+                ((ClientCmd)clientCom).onCreateJobMsgReceived -= createJobEvent;
                 Application.Current.Shutdown();
             }
         }
@@ -199,6 +193,5 @@ namespace GUI_first_iteration
             selectedFile = ofd.FileName;
             tbxFilePath.Text = selectedFile;
         }
-
     }
 }

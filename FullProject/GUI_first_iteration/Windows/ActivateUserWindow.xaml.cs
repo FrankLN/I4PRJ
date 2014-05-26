@@ -44,7 +44,7 @@ namespace GUI_first_iteration
             DataContext = activationMsg.User;
             this.clientCom = clientCom;
 
-            ((ClientCmd)clientCom).onValidateActivationMsgReceived += new ClientCmd.ValidateActivationDelegate(activateUserEvent);
+            ((ClientCmd)clientCom).onValidateActivationMsgReceived += activateUserEvent;
 
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -80,7 +80,7 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         /// <summary>
-        /// Funktion der kaldes ved tryk på knap for at aktivere Bruger. Det som er indtastet af bruger bliver sendt til server.
+        /// Funktion der kaldes ved tryk på knap for at aktivere Bruger. En eventuelt indtastet aktiveringsnøgle bliver sendt til server.
         /// </summary>
         /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
         /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
@@ -103,7 +103,6 @@ namespace GUI_first_iteration
             ((ClientCmd)clientCom).onValidateActivationMsgReceived -= new ClientCmd.ValidateActivationDelegate(activateUserEvent);
 
             mainWin.Show();
-
             createUserWin.Close();
         }
     }
