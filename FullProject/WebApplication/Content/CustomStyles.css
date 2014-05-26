@@ -1,5 +1,10 @@
 ﻿/*For rounded corners on body content*/
 
+html, body {
+  width: auto !important;
+  overflow-x: hidden !important;
+}
+
 .thin-blue-line {
     margin-left:0; 
     margin-right:0;
