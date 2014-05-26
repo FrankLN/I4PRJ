@@ -7,10 +7,28 @@
 }
 
 .my-jumbotron-style {
-    background-color: #f7f7f7;
     border-radius: 5px;
     padding: 2% 3% 2% 3%;
     margin: 2% 5% 5% 5%;
+}
+
+.my-image-style {
+    border: 2px solid silver; 
+    border-radius: 2px; 
+    margin: 5% 5% 5% 5%; 
+    width: 90%;
+}
+
+.my-bodycontainer-style {
+    min-height:500px; 
+    border: 1px solid silver; 
+    border-radius: 2px; 
+    background-color: #F8F8FF; 
+    margin-top: 2.5%; 
+    margin-bottom: 2.5%; 
+    padding-top: 30px; 
+    padding-left: 20px; 
+    padding-right: 20px;
 }
 
 .responsive-container {
