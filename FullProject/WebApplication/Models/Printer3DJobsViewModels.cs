@@ -7,12 +7,29 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication.Models
 {
+    /// <summary>
+    /// <c>HistoryViewModel</c> contains three lists of Printer3DJobs.
+    /// </summary>
     public class HistoryViewModel
     {
+        /// <summary>
+        /// The property <c>JobsInQueue</c> is a list containing all the jobs in queue.
+        /// </summary>
         public List<Printer3DJob> JobsInQueue { get; set; }
+
+        /// <summary>
+        /// The property <c>JobsInProgress</c> is a list containing all the jobs in progress.
+        /// </summary>
         public List<Printer3DJob> JobsInProgress { get; set; }
+
+        /// <summary>
+        /// The property <c>JobsDone</c> is a list containing all the jobs which are done.
+        /// </summary>
         public List<Printer3DJob> JobsDone { get; set; }
 
+        /// <summary>
+        /// The default <c>HistoryViewModel</c> constructor.
+        /// </summary>
         public HistoryViewModel()
         {
             JobsInQueue = new List<Printer3DJob>();
