@@ -15,6 +15,10 @@ namespace WebApplication.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /PrintMaterial/
+        /// <summary>
+        /// Index which show a list of print materials
+        /// </summary>
+        /// <returns>A list of print materials</returns>
         [NewAuthorize(Roles = "Admin")]
         public ActionResult Index()
         {
@@ -22,6 +26,11 @@ namespace WebApplication.Controllers
         }
 
         // GET: /PrintMaterial/Details/5
+        /// <summary>
+        /// Show details about a print material
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>A printmaterial</returns>
          [NewAuthorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
@@ -37,7 +46,6 @@ namespace WebApplication.Controllers
             return View(printmaterial);
         }
 
-        // GET: /PrintMaterial/Create
         [NewAuthorize(Roles = "Admin")]
         public ActionResult Create()
         {
@@ -47,6 +55,12 @@ namespace WebApplication.Controllers
         // POST: /PrintMaterial/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Create new material method
+        /// POST: /PrintMaterial/Create
+        /// </summary>
+        /// <param name="printmaterial"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [NewAuthorize(Roles = "Admin")]
@@ -81,6 +95,12 @@ namespace WebApplication.Controllers
         // POST: /PrintMaterial/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edit method
+        ///  POST: /PrintMaterial/Edit/5
+        /// </summary>
+        /// <param name="printmaterial"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="PrintMaterialId,MaterialType")] PrintMaterial printmaterial)
@@ -95,6 +115,12 @@ namespace WebApplication.Controllers
         }
 
         // GET: /PrintMaterial/Delete/5
+        /// <summary>
+        /// Delete material method
+        /// GET: /PrintMaterial/Delete/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [NewAuthorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
@@ -111,6 +137,12 @@ namespace WebApplication.Controllers
         }
 
         // POST: /PrintMaterial/Delete/5
+        /// <summary>
+        /// Delete confiremd method
+        /// POST: /PrintMaterial/Delete/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [NewAuthorize(Roles = "Admin")]

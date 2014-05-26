@@ -121,8 +121,7 @@ namespace WebApplication.Controllers
         }
 
 
-
-        // GET: /Printer3DJob/Create
+       // GET: /Printer3DJob/Create
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         public ActionResult Create()
         {
@@ -131,9 +130,15 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        // POST: /Printer3DJob/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
+        /// <summary>
+        /// POST: /Printer3DJob/Create
+        ///  To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        /// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// </summary>
+        /// <param name="printer3djob">The ViewModel</param>
+        /// <param name="file">The file</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
@@ -210,9 +215,14 @@ namespace WebApplication.Controllers
             return View(printer3djob);
         }
 
-        // POST: /Printer3DJob/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
+        /// <summary>
+        /// POST: /Printer3DJob/Edit/5
+        /// o protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        /// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// </summary>
+        /// <param name="printer3djob"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
