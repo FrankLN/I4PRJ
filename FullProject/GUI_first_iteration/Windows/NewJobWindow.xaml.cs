@@ -120,8 +120,8 @@ namespace GUI_first_iteration
         /// Funktion der kaldes ved tryk på knap for at oprette job. De alternativer der er valgt for en job lægges ind i isntansen af klassen JobClass
         /// Derudover lægges denne instansen ind i instansen af klassen CreateJobMsg, før denne så sendes til server
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnCreateJob_Click(object sender, RoutedEventArgs e)
         {
             jobObj.Material = selectedMaterial;
@@ -166,8 +166,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenu. Her lukkes NewJobWindow og MainMenuWindow vises
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnBackToMain_Click(object sender, RoutedEventArgs e)
         {
             // Indicate that the window is closed in code
@@ -184,8 +184,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes når vinduet lukkes manuelt. Denne funktion afslutter applikationen. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!ClosedInCode)
@@ -199,9 +199,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at uploade et job. Her bestemmes hvilken type filer kan uploades og den valgte job's navn vises i textbox. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnBrowse_Click(object sender, RoutedEventArgs e)
         {
             var ofd = new Microsoft.Win32.OpenFileDialog() { Filter = "STL Files (*.stl)|*.stl|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif" };

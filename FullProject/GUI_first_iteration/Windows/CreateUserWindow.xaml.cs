@@ -30,7 +30,6 @@ namespace GUI_first_iteration
         // DATA MEMBERS ----------------------  
         // -----------------------------------
 
-
         private MainWindow mainWin;
         private IClientCmd clientCom;
         private CreateUserMsg createUserObj;
@@ -40,7 +39,6 @@ namespace GUI_first_iteration
         // -----------------------------------
         // CONSTRUCTOR - CreateUserWindow ----
         // -----------------------------------
-
 
         /// <summary>
         /// Constructor for CreateUserWindow. Referencer til instanserne af de pågældende parametre gemmes som private datamembers. 
@@ -72,8 +70,8 @@ namespace GUI_first_iteration
         /// Funktion der kaldes ved tryk på knap for at oprette en Bruger. Det som er indtastet af Bruger bliver sendt til server.
         /// Der er validering på felterne, således at der ikke sendes besked til server hvis indtastet data ikke er valide.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnCreateUser_Click(object sender, RoutedEventArgs e)
         {
             Color color;
@@ -85,11 +83,8 @@ namespace GUI_first_iteration
                 // Validate all controls
                 if (ValidateBindings(this))
                 {
-
-                    
                     clientCom.SendToServer(createUserObj);
                 }
-
                 TbxPassword.ToolTip = null;
                 TbxPasswordRepeat.ToolTip = null;
                 TbxPassword.BorderBrush = new SolidColorBrush(color);
@@ -104,9 +99,7 @@ namespace GUI_first_iteration
                 ValidateBindings(this);
                 TbxPassword.ToolTip = "Indtast din password";
                 TbxPasswordRepeat.ToolTip = "Indtast din password igen";
-
             }
-
         }
         
         // -----------------------------------
@@ -138,9 +131,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at gå tilbage til MainWindow.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnBack_Click_1(object sender, RoutedEventArgs e)
         {
             
@@ -160,8 +152,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der generer et event ved FocusedChange. Data lægges i objektet
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void TbxName_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             createUserObj.User.FirstName = TbxName.Text;
@@ -170,8 +162,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der generer et event ved FocusedChange. Data lægges i objektet
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void TbxSurname_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             createUserObj.User.LastName = TbxSurname.Text;
@@ -179,8 +171,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der generer et event ved FocusedChange. Data lægges i objektet
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void TbxEmail_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             createUserObj.User.Email = TbxEmail.Text;
@@ -189,8 +181,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der generer et event ved FocusedChange. Data lægges i objektet
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void TbxPhone_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             createUserObj.User.PhoneNumber = TbxPhone.Text;
@@ -199,8 +191,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der generer et event ved FocusedChange.Data lægges i objektet ved valid indtastning af password
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void TbxPassword_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             Color color;
@@ -227,8 +219,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der generer et event ved GotFocus.Datavalidering af feltet
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void TbxPassword_GotFocus(object sender, RoutedEventArgs e)
         {
             Color color;
@@ -241,8 +233,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der generer et event ved FocusedChange. Datavalidering af objektet 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void TbxPasswordRepeat_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             Color color;
@@ -264,14 +256,13 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der generer et event ved GotFocus.Datavalidering af feltet
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void TbxPasswordRepeat_GotFocus(object sender, RoutedEventArgs e)
         {
             Color color;
             color = Color.FromArgb(255, 227, 233, 239);
             TbxPasswordRepeat.BorderBrush = new SolidColorBrush(color);
-
         }
 
 
@@ -282,12 +273,11 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes når vinduet lukkes.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ((ClientCmd)clientCom).onCreateUserMsgReceived -= new ClientCmd.CreateUserDelegate(createUserEvent);
-            
         }
 
         // -----------------------------------
@@ -528,6 +518,5 @@ namespace GUI_first_iteration
             return isValid;
         }
     }
-
-    }
+}
 

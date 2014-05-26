@@ -72,8 +72,8 @@ namespace GUI_first_iteration
         /// Funktion der kaldes ved tryk på knap for at gemme brugeroplysninger. Funktionalitet for at gemme ændringer er ikke implementeret.
         /// Denne funktion lukker EditUserWindow og viser MainMenuWindow.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnSaveUser_Click(object sender, RoutedEventArgs e)
         {
             ClosedInCode = true;
@@ -88,8 +88,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenuen. Denne funktion lukker EditUserWindow og viser MainMenuWindow.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             // Indicate that the window is closed in code
@@ -106,8 +106,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes når vinduet lukkes manuelt. Denne funktion afslutter applikationen. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!ClosedInCode)

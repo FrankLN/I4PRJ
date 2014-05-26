@@ -94,8 +94,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at aktivere Bruger. Det som er indtastet af bruger bliver sendt til server.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnActivateUser_Click(object sender, RoutedEventArgs e)
         {
             clientCom.SendToServer(activationMsg);
@@ -108,8 +108,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes når vinduet lukkes. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ((ClientCmd)clientCom).onValidateActivationMsgReceived -= new ClientCmd.ValidateActivationDelegate(activateUserEvent);

@@ -68,8 +68,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at gå tilbage JobHistoryWindow. Denne funktion lukker JobDetailsWindow.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             ((ClientCmd)clientCom).onDownloadMsgReceived -= new ClientCmd.DownloadDelegate(downloadEvent);
@@ -84,8 +84,8 @@ namespace GUI_first_iteration
         /// Funktion der kaldes ved tryk på knap for at downloade job. Denne funktionen lægger en JobClass instans for den job der skal downloades,
         /// ind i DownloadJobMsg, før denne sendes til server.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnDownloadJob_Click(object sender, RoutedEventArgs e)
         {
 

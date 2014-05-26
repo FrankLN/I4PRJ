@@ -63,8 +63,8 @@ namespace GUI_first_iteration
         /// Funktion der kaldes ved tryk på knap for at logge ud. Instansen af klassen UserClass, der repæsenterer den indloggede bruger, nulstilles.
         /// Derudover skjules MainMenuWindow og MainWindow (login) oprettes og vises.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             loggedInUser = null;
@@ -80,8 +80,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at oprette en ny job. MainMenuWindow skjules, NewJobWindow oprettes og vises.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnNewJob_Click(object sender, RoutedEventArgs e)
         {
             NewJobWindow newJobWin = new NewJobWindow(this, clientCom, loggedInUser);
@@ -97,8 +97,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at tilgå jobhistorikken. MainMenuWindow skjules, JobHistoryWindow oprettes og vises.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnJobHistory_Click(object sender, RoutedEventArgs e)
         {
             JobHistoryWindow jobHistoryWin = new JobHistoryWindow(this, clientCom, loggedInUser);
@@ -114,8 +114,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes ved tryk på knap for at oprette redigere brugerprofilen. MainMenuWindow skjules, EditUserWindow oprettes og vises.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void btnEditProfile_Click(object sender, RoutedEventArgs e)
         {
             EditUserWindow newJobWin = new EditUserWindow(this, clientCom, loggedInUser);
@@ -131,8 +131,8 @@ namespace GUI_first_iteration
         /// <summary>
         /// Funktion der kaldes når vinduet lukkes manuelt. Denne funktion afslutter applikationen. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Indeholder information om hvor funktionen kaldes fra.</param>
+        /// <param name="e">Indeholder information om eventet der sætter i gang funktionen.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
