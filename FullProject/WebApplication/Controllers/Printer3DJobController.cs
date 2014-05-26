@@ -17,11 +17,20 @@ using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
+    /// <summary>
+    /// The controller for all the sites about jobs.
+    /// </summary>
     public class Printer3DJobController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Printer3DJob/
+        /// <summary>
+        /// The <c>Index</c> method gathers all the information
+        /// to make the Job History site. This means getting data
+        /// from the database and adding them to the HistoryViewModel.
+        /// </summary>
+        /// <returns>A HistoryViewModel for the Job History view</returns>
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         public ActionResult Index()
         {
@@ -220,6 +229,11 @@ namespace WebApplication.Controllers
         }
 
         // GET: /Printer3DJob/Delete/5
+        /// <summary>
+        /// Returns the view from where the job can be deleted.
+        /// </summary>
+        /// <param name="id">The ID</param>
+        /// <returns>The delete job view</returns>
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
         [NewAuthorize(Roles = "Admin")]
         public ActionResult Delete(long? id)
@@ -237,6 +251,11 @@ namespace WebApplication.Controllers
         }
 
         // POST: /Printer3DJob/Delete/5
+        /// <summary>
+        /// Deletes the job with the given ID.
+        /// </summary>
+        /// <param name="id">The ID of the job to be deleted</param>
+        /// <returns>A view with the updated Job History</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "../Account/Activation")]
