@@ -29,6 +29,13 @@ namespace GUI_first_iteration
         // CONSTRUCTOR - MainWindow ----------
         // -----------------------------------
 
+
+        /// <summary>
+        /// Constructor for CreateUserWindow. Referencer til instanserne af de pågældende parametre gemmes som private datamembers.
+        /// Derudover oprettes en instans af klassen LoginMsg, der skal sendes til server. Datacontexten sættes til instansen af LoginMsg.
+        /// </summary>
+        /// <param name="parent">Reference til instansen af MainMenuWindow, der MainWindow oprettes fra.</param>
+        /// <param name="ccom">Reference til instansen af klassen ClienCmd, der står for kommunikation til serveren.</param>
         public MainWindow(MainMenuWindow parent, IClientCmd ccom)
         {
             mainMenuWin = parent;
@@ -46,6 +53,12 @@ namespace GUI_first_iteration
         // BUTTON - New user -----------------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at oprette CreateUserWindow.
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             CreateUserWindow createUserWin = new CreateUserWindow(this, clientCom);
@@ -59,6 +72,12 @@ namespace GUI_first_iteration
         // BUTTON - Login --------------------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at Log in. Det som er indtastet af Bruger bliver sendt til server.
+        /// Der er validering på felterne, således at der ikke sendes besked til server hvis indtastet data ikke er valide.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             // Send object
@@ -88,6 +107,12 @@ namespace GUI_first_iteration
 
         }
 
+
+        /// <summary>
+        /// Event der kaldes når serveren svarer på GUIs request om at Bruger er logged in. 
+        /// MainMenuWindow vises hvis Bruger er logged in.
+        /// </summary>
+        /// <param name="msg">Besked modtaget fra serveren</param>
         public void loginEvent(ILoginReplyMsg msg)
         {
             if (msg.Email)
@@ -123,7 +148,12 @@ namespace GUI_first_iteration
         }
 
 
-
+        /// <summary>
+        /// Funktion der generer et event ved FocusedChange. Data lægges i objektet.
+        /// Datavalidering på feltet.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbxPassword_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
            Color color;
@@ -145,13 +175,23 @@ namespace GUI_first_iteration
 
 
         }
-
+        /// <summary>
+        /// Funktion der generer et event ved MouseButtonLeft down.
+        /// Window kan flyttes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
+        /// <summary>
+        /// Funktion der kaldes når vinduet lukkes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!ClosedInCode)
@@ -170,13 +210,23 @@ namespace GUI_first_iteration
             }
 
         }
-
+        /// <summary>
+        /// Funktion der generer et event ved MouseButtonLeft down
+        /// Window minimeres
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LbMin_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
 
-        // This is here 'til future versions of WPF provide this functionality
+        /// <summary>
+        /// Funktionen der kaldes ved validering af Textbox of Passwordbox.
+        /// Funktionen er taget fra GUI undervisning. 
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <returns></returns>
         public static bool ValidateBindings(DependencyObject parent)
         {
             // Validate all the bindings on the parent
@@ -216,6 +266,11 @@ namespace GUI_first_iteration
             return valid;
         }
 
+        /// <summary>
+        /// Funktion der generer et event ved FocusedChange.Datavalidering på feltet.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbxPassword_GotFocus(object sender, RoutedEventArgs e)
         {
             Color color;

@@ -4,7 +4,7 @@
 @using Microsoft.AspNet.Identity.EntityFramework
 @using WebApplication.Models
 @{
-    //Parsa
+    
     ViewBag.Title = "Manage Account";
 }
 
@@ -45,23 +45,12 @@
                 <p class="text-danger">@ViewBag.Failed</p>
                 <div class="row">
                     <div class="col-md-12">
-                        @if (ViewBag.HasLocalPassword)
-                        {
+                       
                             @Html.Partial("_ChangePasswordPartial")
-                        }
-                        else
-                        {
-                            @Html.Partial("_SetPasswordPartial")
-                        }
+                     
                     </div>
                 </div>
 
-
-                @*<section id="externalLogins">
-                        @Html.Action("RemoveAccountList")
-                        @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
-                    </section>*@
-                @*</div>*@
 
 
             }

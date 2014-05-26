@@ -110,7 +110,16 @@ namespace WebApplication.Controllers
             }
             return View(model);
         }
-        //Parsa
+
+       //Download file
+
+        /// <summary>
+        /// Funktion til download af Job
+        /// filenavn og filtype hentes fra database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>filenavn med mappen,filetypen, filnavn for at gemme</returns>
+
         [NewAuthorize(Roles = "Admin")]
         public FileResult DownloadFile (long? id)
         {

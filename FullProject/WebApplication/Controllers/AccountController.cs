@@ -165,7 +165,7 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
-        //Parsa
+        
         // GET: /Account/Activation
         public ActionResult Activation(MessageId? message)
         {
@@ -256,13 +256,16 @@ namespace WebApplication.Controllers
             return RedirectToAction("Manage", new { Message = message });
         }
 
-        //Parsa
+        
         // GET: /Account/Manage
+
         /// <summary>
-        /// 
+        /// GET: Funktion der opretter messeges til succes eller error i profil opdatering.
+        /// Bruger data hentes fra database via Usermanager der er nedarvet fra IdentityUser
+        /// Der oprettes en instans af ManageUserViewModel for at sende kun nødvendige data til View
         /// </summary>
-        /// <param name="message"></param>
-        /// <returns></returns>
+        /// <param name="message">Besked modtaget fra Enum MessageId</param>
+        /// <returns>Manage View samt ManageUserViewModel</returns>
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "Activation")]
         public ActionResult Manage(MessageId? message)
         {
@@ -290,6 +293,15 @@ namespace WebApplication.Controllers
 
         //
         // POST: /Account/Manage
+
+        /// <summary>
+        /// POST funktion til opdatering af profil
+        /// Oprettelse af to IdentityResult for at tjekke to new password er enes
+        /// Ny indtastet data der modtages som input gemmes i database  
+        /// </summary>
+        /// <param name="model">ViewModel modtages med ny indtastet data </param>
+        /// <returns>Manage View samt ManageUserViewModel</returns>
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [NewAuthorize(Roles = "Admin, User", NotifyUrl = "Activation")]
@@ -299,7 +311,6 @@ namespace WebApplication.Controllers
             bool hasPassword = HasPassword();
             bool hasFName = HasFName();
             ViewBag.HasLocalPassword = hasPassword;
-            ViewBag.FirstName = hasFName;
             ViewBag.ReturnUrl = Url.Action("Manage");
             IdentityResult result = new IdentityResult();
             IdentityResult result2= new IdentityResult();
@@ -316,8 +327,7 @@ namespace WebApplication.Controllers
                     user.Phone = model.PhoneNumber;   
         
                     result = await UserManager.UpdateAsync(user);
-                }
-                
+                }             
 
             if (model.NewPassword != null)
             {
@@ -740,7 +750,9 @@ namespace WebApplication.Controllers
             return false;
         }
 
-
+        /// <summary>
+        /// De forskellige Messeges der for validering 
+        /// </summary>
         public enum MessageId
         {
             ChangePasswordSuccess,
@@ -810,6 +822,11 @@ namespace WebApplication.Controllers
         #endregion
     }
     #region NewAuthorize
+
+    /// <summary>
+    /// Selvoprettet Authorize der nedarver AuthorizeAttribute
+    /// Bruges til at linke til "../Home/Index" 
+    /// </summary>
     public class NewAuthorize : AuthorizeAttribute
     {
         // Set default Unauthorized Page Url here
