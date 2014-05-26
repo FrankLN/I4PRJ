@@ -41,12 +41,14 @@ namespace GUI_first_iteration
         // -----------------------------------
         // CONSTRUCTOR - JobHistoryWindow ----
         // -----------------------------------
+
         /// <summary>
-        /// 
+        /// Constructor for JobHistoryWindow. Referencer til instanserne af de pågældende parametre gemmes som private datamembers. 
+        /// Datacontext sættes til den job der skal ses detaljer for.
         /// </summary>
-        /// <param name="mWin"></param>
-        /// <param name="ccom"></param>
-        /// <param name="user"></param>
+        /// <param name="mWin">Reference til instansen af MainMenuWindow, der JobHistoryWindow oprettes fra</param>
+        /// <param name="ccom">Reference til instansen af klassen ClienCmd, der står for kommunikation til serveren</param>
+        /// <param name="user">Reference til instansen af klassen UserClass, der repræsenterer den indloggede bruger</param>
         public JobHistoryWindow(MainMenuWindow mWin, IClientCmd ccom, UserClass user)
         {
             mainMenuWin = mWin;
@@ -65,9 +67,16 @@ namespace GUI_first_iteration
             // Center window at startup
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
+
         // -----------------------------------------------
         // Event - Receives the joblist after requset ----
         // -----------------------------------------------
+
+        /// <summary>
+        /// Event der kaldes når serveren svarer på GUIs request om at load jobs. 
+        /// Jobs der modtages fra server gemmes som private datamembers, organiseret i en List.
+        /// </summary>
+        /// <param name="msg">Besked modtaget fra server</param>
         private void LoadJobsEvent(IRequestJobsReplyMsg msg)
         {
             allJobs = msg.JobList;
@@ -77,6 +86,11 @@ namespace GUI_first_iteration
         // BUTTON - Back ---------------------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenu. Her lukkes JobHistoryWindow og MainMenuWindow vises
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             ((ClientCmd)clientCom).onJobListMsgReceived -= new ClientCmd.LoadJobListDelegate(LoadJobsEvent);
@@ -92,6 +106,11 @@ namespace GUI_first_iteration
         // BUTTON - Details ------------------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes ved tryk på knap for at tilgå detaljer for en bestemt jobu. Funktionen opretter og viser JobDetailsWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
             JobDetailsWindow jobDetailsWin = new JobDetailsWindow(clientCom, loggedInUser, selectedJob);
@@ -103,6 +122,11 @@ namespace GUI_first_iteration
         // METHOD - Window closing -----------
         // -----------------------------------
 
+        /// <summary>
+        /// Funktion der kaldes når vinduet lukkes manuelt. Denne funktion afslutter applikationen. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!ClosedInCode)
@@ -116,6 +140,9 @@ namespace GUI_first_iteration
         // Methods for databinding to listboxes 
         // -----------------------------------
 
+        /// <summary>
+        /// Denne propertys get-metode tilgår den lokale List over alle jobs og sorterer ud de jobs der har status planlagt.
+        /// </summary>
         public List<JobClass> ItemsPlanned
         {
             get
@@ -133,6 +160,9 @@ namespace GUI_first_iteration
             }
         }
 
+        /// <summary>
+        /// Denne propertys get-metode tilgår den lokale List over alle jobs og sorterer ud de jobs der har status igangsat.
+        /// </summary>
         public List<JobClass> ItemsInProgress
         {
             get
@@ -150,6 +180,9 @@ namespace GUI_first_iteration
             }
         }
 
+        /// <summary>
+        /// Denne propertys get-metode tilgår den lokale List over alle jobs og sorterer ud de jobs der har status færdig.
+        /// </summary>
         public List<JobClass> ItemsDone
         {
             get

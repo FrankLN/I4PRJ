@@ -164,7 +164,7 @@ namespace GUI_first_iteration
         // -----------------------------------
 
         /// <summary>
-        /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenu. Her lukkes vinduet og MainMenuWindow vises
+        /// Funktion der kaldes ved tryk på knap for at gå tilbage til hovedmenu. Her lukkes NewJobWindow og MainMenuWindow vises
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
