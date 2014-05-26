@@ -1,4 +1,17 @@
 ﻿/*For rounded corners on body content*/
+
+.thin-blue-line {
+    margin-left:0; 
+    margin-right:0;
+    height:8px; 
+    background-color: #3b5998;
+}
+
+.no-leftright-margin {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .round-silver-border {
     border-radius: 5px;
     border: 1px silver; 

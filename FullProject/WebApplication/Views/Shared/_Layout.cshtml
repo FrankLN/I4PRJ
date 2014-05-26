@@ -57,7 +57,7 @@
     
      
     @* Banner with logo *@
-    <div class="row" style="margin-left:0; margin-right:0;">
+    <div class="row, no-leftright-margin">
         <div class="col-md-12" style="padding: 0 0 0 0;">
             <div class="jumbotron" style="padding-top: 3px; padding-bottom: 3px; margin-top: 50px; margin-bottom: 0px; background-color: #F8F8FF; ">
                 <a href="/">
@@ -70,39 +70,27 @@
     
     @* Header bottom thin blue line *@
    
-    <div class="row" style="margin-left:0; margin-right:0;height:8px; background-color: #3b5998;">
-    </div>
-    
+    <div class="row, thin-blue-line"></div>
     
     @* Wrapper with body from loaded view *@
-    <div class="row" style="margin-left:0; margin-right:0;">
-        <div class="col-md-1">
-
-        </div>
+    <div class="row, no-leftright-margin">
+        <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="container, my-bodycontainer-style">
                 @RenderBody()
             </div>
-
             @Scripts.Render("~/bundles/jquery")
             @Scripts.Render("~/bundles/bootstrap")
             @RenderSection("scripts", required: false)
         </div>
-        <div class="col-md-1">
-
-        </div>
+        <div class="col-md-1"></div>
     </div>
 
-    <div class="row" style="margin-left:0; margin-right:0;">
-        <div class="col-md-12">
-            <div class="row" style="height:8px;background-color: #3b5998;">
-
-            </div>
-            <div class="row" style="background-color: #F8F8FF;">
-                <p style="text-align:center; margin-bottom: 1%; margin-top:1%;">&copy; @DateTime.Now.Year - Cartesius 3D Printer Jobliste System</p>
-            </div>
+    <div class="row, no-leftright-margin">
+        <div class="row, thin-blue-line"></div>
+        <div class="row" style="background-color: #F8F8FF;">
+            <p style="text-align:center; margin-bottom: 1%; margin-top:1%;">&copy; @DateTime.Now.Year - Cartesius 3D Printer Jobliste System</p>
         </div>
     </div>
-       
 </body>
 </html>
