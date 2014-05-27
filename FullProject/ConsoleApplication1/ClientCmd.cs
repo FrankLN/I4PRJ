@@ -10,6 +10,24 @@ namespace ClientApplication
     /// </summary>
     public class ClientCmd : IClientCmd
     {
+        private IReplyMessage _replyMessage = null;
+        private IClient client;
+
+        /// <summary>
+        /// The <c>ClientCmd</c>'s constructor. The default constructor with <c>Client</c> that connects to server port 9000
+        /// </summary>
+        public ClientCmd()
+        {
+            this.client = new Client(9000);
+        }
+        /// <summary>
+        /// The <c>ClientCmd</c>'s constructor. That an <c>IClient</c>
+        /// </summary>
+        /// <param name="client">The <c>IClient</c> that connects to the server</param>
+        public ClientCmd(IClient client)
+        {
+            this.client = client;
+        }
 
         /// <summary>
         /// <c>LogiDelegate</c> is used with the <c>onLogiMsgReceived</c> event.
@@ -105,9 +123,6 @@ namespace ClientApplication
         /// when the <c>ActivationReplyMsg</c> is received from the <c>Server</c>.
         /// </summary>
         public event ValidateActivationDelegate onValidateActivationMsgReceived;
-
-        private IReplyMessage _replyMessage = null;
-        private IClient client = new Client(9000);
 
         /// <summary>
         /// The <c>FireValidateActivationReply</c> methode triggeres the <c>onValidateActivationMsgReceived</c> event

@@ -12,9 +12,32 @@ namespace ClientApplication
     /// </summary>
     public interface IClient
     {
+        //Method for sending classobject
+        /// <summary>
+        /// <c>SendToServer</c> is the methode that sends serializable objects to the <c>Server</c>.
+        /// </summary>
+        /// <param name="objekt"> The objekt that is to be send to the <c>Server</c></param>
         void SendToServer(ISerializable message);
+
+        /// <summary>
+        /// <c>ReceiveMessage</c> is the methode that receives an objects from the <c>Server</c>.
+        /// </summary>
+        /// <returns>The message recieved from the <c>Server</c></returns>
+        /// 
         IReplyMessage ReceiveMessage();
+
+        /// <summary>
+        /// <c>ReceiveFile</c> is the methode that receives the file from the <c>Server</c>.
+        /// </summary>
+        /// <param name="fileSize">The size of the file that is to be received from the <c>Server</c></param>
+        /// <param name="fileName">The name of the file that is to be received from the <c>Server</c></param>
         void ReceiveFile(long fileSize,string fileName);
+
+        /// <summary>
+        /// <c>SendFile</c> is the methode that sendes the file to the <c>Server</c>.
+        /// </summary>
+        /// <param name="fileSize">The size of the file that is to be send to the <c>Server</c></param>
+        /// <param name="path">The name of the file that is to be send to the <c>Server</c></param>
         void SendFile(long fileSize, string path);
 
     }
@@ -30,25 +53,33 @@ namespace ClientApplication
         private BinaryFormatter bFormatter;
         private const int MaxPackageSize = 1000;
         private int _port;
+        private string _ip;
 
         //Constructor which take ip and port belonging to the targeting server
         /// <summary>
-        /// The <c>Client</c>'s constructor. The constructor calls the methode <c>Init</c>
+        /// The <c>Client</c>'s constructor. The constructor sets <c>ip</c>
+        /// This ip might might change... 
         /// </summary>
         /// <param name="port">The <c>port</c> of the server side</param>
         public Client(int port)
         {
-            Init(port);
+            _port = port;
+            // Change this in accordens with the server IHA VPN ip
+            _ip = "10.20.32.215";
+            clientSocket = new TcpClient();
+            bFormatter = new BinaryFormatter();
         }
 
-        //Init method for setting up the client 
+        //Constructor which take ip and port belonging to the targeting server
         /// <summary>
-        /// <c>Init</c> is the methode that initilize the <c>Client</c>'s memberdata.
+        /// The <c>Client</c>'s constructor.
         /// </summary>
-        /// <param name="port">The <c>Server</c>'s <c>port</c> number</param>
-        private void Init(int port)
+        /// <param name="port">The <c>port</c> of the server side</param>
+        /// <param name="ip">The <c>ip</c> of the server side</param>
+        public Client(int port, string ip)
         {
             _port = port;
+            _ip = ip;
             clientSocket = new TcpClient();
             bFormatter = new BinaryFormatter();
         }
@@ -63,16 +94,16 @@ namespace ClientApplication
         public void SendToServer(ISerializable objekt)
         {
             clientSocket = new TcpClient();
-            clientSocket.Connect("10.20.32.215", _port);
+            clientSocket.Connect(_ip, _port);
             outInStream = clientSocket.GetStream();
             bFormatter.Serialize(outInStream, objekt);
         }
+
         /// <summary>
         /// <c>ReceiveMessage</c> is the methode that receives serializable objects from the <c>Server</c>.
         /// <c>ReceiveMessage</c> formattes the incomming stream to an <c>IReplyMessage</c>.
         /// </summary>
         /// <returns>The message recieved from the <c>Server</c></returns>
-
         public IReplyMessage ReceiveMessage()
         {
             IReplyMessage reply = (IReplyMessage)bFormatter.Deserialize(outInStream);
