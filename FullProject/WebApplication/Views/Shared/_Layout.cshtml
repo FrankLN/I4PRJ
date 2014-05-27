@@ -8,8 +8,6 @@
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
         @Scripts.Render("~/bundles/jquery")
-        @*@Scripts.Render("~/bundles/jqueryui")
-    @Styles.Render("~/Content/themes/base/css", "~/Content/css")*@
     </head>
 <body>
     
@@ -56,9 +54,9 @@
     </div>
     
 
-    @* Banner with logo *@
+    @* Header with logo *@
     <div class="row">
-        <div class="col-md-12" style="padding: 0 0 0 0;">
+        <div class="col-md-12">
             <div class="jumbotron" style="padding-top: 3px; padding-bottom: 3px; margin-top: 50px; margin-bottom: 0px; background-color: #F8F8FF; ">
                 <a href="/">
                     <img style="margin-left: calc(50% - 152px);" src="/Content/Images/C3DP.png" />
@@ -66,10 +64,6 @@
             </div>
         </div>
     </div>
-
-    
-    @* Header bottom thin blue line *@
-   
     <div class="row">
         <div class="thin-blue-line"></div>
     </div>
@@ -81,20 +75,18 @@
             <div class="container, my-bodycontainer-style">
                 @RenderBody()
             </div>
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")
-            @RenderSection("scripts", required: false)
+            <hr />
+            <footer>
+                <p style="text-align:center; margin-bottom: 1%; margin-top:1%;">&copy; @DateTime.Now.Year - Cartesius 3D Printer Jobliste System</p>
+            </footer>
         </div>
         <div class="col-md-1"></div>
     </div>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 
-    <div class="row">
-        <div class="row">
-            <div class="thin-blue-line"></div>
-        </div>
-        <div class="row" style="background-color: #F8F8FF;">
-            <p style="text-align:center; margin-bottom: 1%; margin-top:1%;">&copy; @DateTime.Now.Year - Cartesius 3D Printer Jobliste System</p>
-        </div>
-    </div>
 </body>
 </html>
+
