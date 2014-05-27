@@ -50,12 +50,12 @@ namespace ServerApplication
         /// <summary>
         /// <c>SendEmail</c> is a methode that sends an email.
         /// </summary>
-        /// <param name="email"></param>
-        /// The reciever email.
-        /// <param name="subject"></param>
-        /// The subject to the email.
-        /// <param name="text"></param>
-        /// The text of the email.
+        /// <param name="email">The reciever email.</param>
+        /// 
+        /// <param name="subject">The subject to the email.</param>
+        /// 
+        /// <param name="text">The text of the email.</param>
+        /// 
         private void SendEmail(string email, string subject, string text)
         {
             var client = new SmtpClient("smtp.gmail.com", 587)
@@ -70,10 +70,10 @@ namespace ServerApplication
         /// <summary>
         /// The <c>ServerApp</c> constructor.
         /// </summary>
-        /// <param name="port"></param>
-        /// The port which the ServerApp should listen to.
-        /// <param name="database"></param>
-        /// The database interface the ServerApp use to handle data.
+        /// <param name="port">The port which the ServerApp should listen to.</param>
+        /// 
+        /// <param name="database">The database interface the ServerApp use to handle data.</param>
+        /// 
         public ServerApp(int port, IDatabase database)
         {
             _port = port;
@@ -108,8 +108,7 @@ namespace ServerApplication
         /// <c>RecieveMessage</c> is the methode for handling messages.
         /// A new instance of <c>Server</c> is created
         /// </summary>
-        /// <param name="stateInfo"></param>
-        /// Contains a TcpListener and a TcpClient
+        /// <param name="stateInfo">Contains a TcpListener and a TcpClient</param>
         private void ReciveMessage(Object stateInfo)
         {
             object[] array = stateInfo as object[];
@@ -123,10 +122,8 @@ namespace ServerApplication
         /// <summary>
         /// <c>VerifyLogin</c> is the methode for handling login requests.
         /// </summary>
-        /// <param name="loginMsg"></param>
-        /// The message recieved from the <c>Client</c>.
-        /// <param name="server"></param>
-        /// The <c>Server</c> instance to reply with.
+        /// <param name="loginMsg">The message recieved from the <c>Client</c>.</param>
+        /// <param name="server">The <c>Server</c> instance to reply with.</param>
         public void VerifyLogin(ILoginMsg loginMsg, IServer server)
         {
             LoginReplyMsg loginReplyMsg = new LoginReplyMsg();
@@ -161,10 +158,8 @@ namespace ServerApplication
         /// <summary>
         /// <c>CreateUser</c> is the methode for handling new user requests.
         /// </summary>
-        /// <param name="createUserMsg"></param>
-        /// The message recieved from the <c>Client</c>
-        /// <param name="server"></param>
-        /// The <c>Server</c> instance to reply with.
+        /// <param name="createUserMsg">The message recieved from the <c>Client</c></param>
+        /// <param name="server">The <c>Server</c> instance to reply with.</param>
         public void CreateUser(ICreateUserMsg createUserMsg, IServer server)
         {
             CreateUserReplyMsg createUserReplyMsg = new CreateUserReplyMsg();
@@ -190,10 +185,8 @@ namespace ServerApplication
         /// <summary>
         /// <c>CreateJob</c> is the methode for handling new job requests.
         /// </summary>
-        /// <param name="createJobMsg"></param>
-        /// The message recieved from the <c>Client</c>
-        /// <param name="server"></param>
-        /// The <c>Server</c> instance to reply with.
+        /// <param name="createJobMsg">The message recieved from the <c>Client</c></param>
+        /// <param name="server">The <c>Server</c> instance to reply with.</param>
         public void CreateJob(ICreateJobMsg createJobMsg, IServer server)
         {
             CreateJobReplyMsg createJobReplyMsg = new CreateJobReplyMsg();
@@ -218,10 +211,8 @@ namespace ServerApplication
         /// <summary>
         /// <c>RequestJobs</c> is the methode for handling list of jobs requests.
         /// </summary>
-        /// <param name="requestJobsMsg"></param>
-        /// The message recieved from the <c>Client</c>
-        /// <param name="server"></param>
-        /// The <c>Server</c> instance to reply with.
+        /// <param name="requestJobsMsg">The message recieved from the <c>Client</c></param> 
+        /// <param name="server">The <c>Server</c> instance to reply with.</param>
         public void RequestJobs(IRequestJobsMsg requestJobsMsg, IServer server)
         {
             RequestJobsReplyMsg requestJobsReplyMsg = new RequestJobsReplyMsg();
@@ -234,10 +225,8 @@ namespace ServerApplication
         /// <summary>
         /// <c>DownloadJob</c> is the methode for handling download job requests.
         /// </summary>
-        /// <param name="downloadJobMsg"></param>
-        /// The message recieved from the <c>Client</c>
-        /// <param name="server"></param>
-        /// The <c>Server</c> instance to reply with.
+        /// <param name="downloadJobMsg">The message recieved from the <c>Client</c></param>
+        /// <param name="server">The <c>Server</c> instance to reply with.</param>
         public void DownloadJob(IDownloadJobMsg downloadJobMsg, IServer server)
         {
             DownloadJobReplyMsg downloadJobReplyMsg = new DownloadJobReplyMsg();
@@ -261,10 +250,10 @@ namespace ServerApplication
         /// <summary>
         /// <c>GetMaterials</c> is the methode for handling list of material requests.
         /// </summary>
-        /// <param name="getMaterialsMsg"></param>
-        /// The message recieved from the <c>Client</c>
-        /// <param name="server"></param>
-        /// The <c>Server</c> instance to reply with.
+        /// <param name="getMaterialsMsg">The message recieved from the <c>Client</c></param>
+        /// 
+        /// <param name="server">The <c>Server</c> instance to reply with.</param>
+        /// 
         public void GetMaterials(IGetMaterialsMsg getMaterialsMsg, IServer server)
         {
             GetMaterialsReplyMsg getMaterialsReplyMsg = new GetMaterialsReplyMsg();
@@ -279,10 +268,10 @@ namespace ServerApplication
         /// <summary>
         /// <c>ActivationCodeRequest</c> is the methode for handling new activation code request.
         /// </summary>
-        /// <param name="activationCodeRequestMsg"></param>
-        /// The message recieved from the <c>Client</c>
-        /// <param name="server"></param>
-        /// The <c>Server</c> instance to reply with.
+        /// <param name="activationCodeRequestMsg">The message recieved from the <c>Client</c></param>
+        /// 
+        /// <param name="server">The <c>Server</c> instance to reply with.</param>
+        /// 
         public void ActivationCodeRequest(IActivationCodeRequestMsg activationCodeRequestMsg, IServer server)
         {
              ActivationCodeRequestReplyMsg activationCodeRequestReplyMsg = new ActivationCodeRequestReplyMsg();
@@ -316,10 +305,10 @@ namespace ServerApplication
         /// <summary>
         /// <c>ActivateUser</c> is the methode for handling user activation request.
         /// </summary>
-        /// <param name="activationMsg"></param>
-        /// The message recieved from the <c>Client</c>
-        /// <param name="server"></param>
-        /// The <c>Server</c> instance to reply with.
+        /// <param name="activationMsg">The message recieved from the <c>Client</c></param>
+        /// 
+        /// <param name="server">The <c>Server</c> instance to reply with.</param>
+        /// 
         public void ActivateUser(IActivationMsg activationMsg, IServer server)
         {
             ActivationReplyMsg activationReplyMsg = new ActivationReplyMsg();
