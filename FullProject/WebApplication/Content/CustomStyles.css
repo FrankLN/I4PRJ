@@ -45,8 +45,7 @@ html, body {
     background-color: #F8F8FF;
 }
 
-.my-bodycontainer-style {
-    min-height:500px; 
+.my-bodycontainer-style { 
     border: 1px solid silver; 
     border-radius: 2px; 
     background-color: #F8F8FF; 
