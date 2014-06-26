@@ -20,6 +20,7 @@
             @Html.LabelFor(model => model.Owner, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayTextFor(model => model.Owner)
+                @Html.HiddenFor(model => model.Owner)
             </div>
         </div>
 
@@ -27,6 +28,7 @@
             @Html.LabelFor(model => model.Deadline, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayTextFor(model => model.Deadline)
+                @Html.HiddenFor(model => model.Deadline)
             </div>
         </div>
 
