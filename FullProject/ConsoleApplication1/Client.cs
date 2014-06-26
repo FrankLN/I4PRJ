@@ -65,7 +65,7 @@ namespace ClientApplication
         {
             _port = port;
             // Change this in accordens with the server IHA VPN ip
-            _ip = "10.20.32.215";
+            _ip = "10.192.25.182";
             clientSocket = new TcpClient();
             bFormatter = new BinaryFormatter();
         }

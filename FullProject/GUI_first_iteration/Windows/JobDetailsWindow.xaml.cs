@@ -91,7 +91,7 @@ namespace GUI_first_iteration
         private void downloadEvent(IDownloadJobReplyMsg msg)
         {
             MessageBox.Show("Download started\n Find the file in your download folder!");
-            clientCom.receiveFromFileServer(msg.Job.FileSize, currentJob.File);
+            //clientCom.receiveFromFileServer(msg.Job.FileSize, currentJob.File);
         }
     }
 }
